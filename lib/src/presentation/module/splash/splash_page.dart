@@ -10,7 +10,7 @@ class SplashPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final timer = Timer(const Duration(), () {
+    final timer = Timer(const Duration(seconds: 3), () {
       context.router.replace(const RootRoute());
     });
     useEffect(() {

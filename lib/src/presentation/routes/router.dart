@@ -7,7 +7,6 @@ import 'package:nu_share_destination_user/src/presentation/module/home/home_page
 import 'package:nu_share_destination_user/src/presentation/module/inbox/list/inbox_list_page.dart';
 import 'package:nu_share_destination_user/src/presentation/module/root/root_page.dart';
 import 'package:nu_share_destination_user/src/presentation/module/splash/splash_page.dart';
-import 'package:nu_share_destination_user/src/presentation/routes/router.gr.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: "Page,Route",
