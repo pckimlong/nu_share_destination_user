@@ -42,6 +42,10 @@ class _$AuthFailureTearOff {
     return const _Unauthorized();
   }
 
+  _CancelledByUser cancelledByUser() {
+    return const _CancelledByUser();
+  }
+
   _InvalidVertificationCode invalidVerificationCode() {
     return const _InvalidVertificationCode();
   }
@@ -60,6 +64,7 @@ mixin _$AuthFailure {
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
     required TResult Function() unauthorized,
+    required TResult Function() cancelledByUser,
     required TResult Function() invalidVerificationCode,
   }) =>
       throw _privateConstructorUsedError;
@@ -71,6 +76,7 @@ mixin _$AuthFailure {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
   }) =>
       throw _privateConstructorUsedError;
@@ -82,6 +88,7 @@ mixin _$AuthFailure {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
     required TResult orElse(),
   }) =>
@@ -94,6 +101,7 @@ mixin _$AuthFailure {
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
     required TResult Function(_Unauthorized value) unauthorized,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
     required TResult Function(_InvalidVertificationCode value)
         invalidVerificationCode,
   }) =>
@@ -106,6 +114,7 @@ mixin _$AuthFailure {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
   }) =>
       throw _privateConstructorUsedError;
@@ -117,6 +126,7 @@ mixin _$AuthFailure {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
     required TResult orElse(),
   }) =>
@@ -185,6 +195,7 @@ class _$_ServerError implements _ServerError {
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
     required TResult Function() unauthorized,
+    required TResult Function() cancelledByUser,
     required TResult Function() invalidVerificationCode,
   }) {
     return serverError();
@@ -199,6 +210,7 @@ class _$_ServerError implements _ServerError {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
   }) {
     return serverError?.call();
@@ -213,6 +225,7 @@ class _$_ServerError implements _ServerError {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
     required TResult orElse(),
   }) {
@@ -231,6 +244,7 @@ class _$_ServerError implements _ServerError {
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
     required TResult Function(_Unauthorized value) unauthorized,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
     required TResult Function(_InvalidVertificationCode value)
         invalidVerificationCode,
   }) {
@@ -246,6 +260,7 @@ class _$_ServerError implements _ServerError {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
   }) {
     return serverError?.call(this);
@@ -260,6 +275,7 @@ class _$_ServerError implements _ServerError {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
     required TResult orElse(),
   }) {
@@ -321,6 +337,7 @@ class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
     required TResult Function() unauthorized,
+    required TResult Function() cancelledByUser,
     required TResult Function() invalidVerificationCode,
   }) {
     return invalidPhoneNumber();
@@ -335,6 +352,7 @@ class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
   }) {
     return invalidPhoneNumber?.call();
@@ -349,6 +367,7 @@ class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
     required TResult orElse(),
   }) {
@@ -367,6 +386,7 @@ class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
     required TResult Function(_Unauthorized value) unauthorized,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
     required TResult Function(_InvalidVertificationCode value)
         invalidVerificationCode,
   }) {
@@ -382,6 +402,7 @@ class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
   }) {
     return invalidPhoneNumber?.call(this);
@@ -396,6 +417,7 @@ class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
     required TResult orElse(),
   }) {
@@ -456,6 +478,7 @@ class _$_ToManyRequest implements _ToManyRequest {
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
     required TResult Function() unauthorized,
+    required TResult Function() cancelledByUser,
     required TResult Function() invalidVerificationCode,
   }) {
     return toManyRequest();
@@ -470,6 +493,7 @@ class _$_ToManyRequest implements _ToManyRequest {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
   }) {
     return toManyRequest?.call();
@@ -484,6 +508,7 @@ class _$_ToManyRequest implements _ToManyRequest {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
     required TResult orElse(),
   }) {
@@ -502,6 +527,7 @@ class _$_ToManyRequest implements _ToManyRequest {
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
     required TResult Function(_Unauthorized value) unauthorized,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
     required TResult Function(_InvalidVertificationCode value)
         invalidVerificationCode,
   }) {
@@ -517,6 +543,7 @@ class _$_ToManyRequest implements _ToManyRequest {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
   }) {
     return toManyRequest?.call(this);
@@ -531,6 +558,7 @@ class _$_ToManyRequest implements _ToManyRequest {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
     required TResult orElse(),
   }) {
@@ -591,6 +619,7 @@ class _$_SmsTimeout implements _SmsTimeout {
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
     required TResult Function() unauthorized,
+    required TResult Function() cancelledByUser,
     required TResult Function() invalidVerificationCode,
   }) {
     return smsTimeout();
@@ -605,6 +634,7 @@ class _$_SmsTimeout implements _SmsTimeout {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
   }) {
     return smsTimeout?.call();
@@ -619,6 +649,7 @@ class _$_SmsTimeout implements _SmsTimeout {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
     required TResult orElse(),
   }) {
@@ -637,6 +668,7 @@ class _$_SmsTimeout implements _SmsTimeout {
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
     required TResult Function(_Unauthorized value) unauthorized,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
     required TResult Function(_InvalidVertificationCode value)
         invalidVerificationCode,
   }) {
@@ -652,6 +684,7 @@ class _$_SmsTimeout implements _SmsTimeout {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
   }) {
     return smsTimeout?.call(this);
@@ -666,6 +699,7 @@ class _$_SmsTimeout implements _SmsTimeout {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
     required TResult orElse(),
   }) {
@@ -727,6 +761,7 @@ class _$_SessionExpired implements _SessionExpired {
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
     required TResult Function() unauthorized,
+    required TResult Function() cancelledByUser,
     required TResult Function() invalidVerificationCode,
   }) {
     return sessionExpired();
@@ -741,6 +776,7 @@ class _$_SessionExpired implements _SessionExpired {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
   }) {
     return sessionExpired?.call();
@@ -755,6 +791,7 @@ class _$_SessionExpired implements _SessionExpired {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
     required TResult orElse(),
   }) {
@@ -773,6 +810,7 @@ class _$_SessionExpired implements _SessionExpired {
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
     required TResult Function(_Unauthorized value) unauthorized,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
     required TResult Function(_InvalidVertificationCode value)
         invalidVerificationCode,
   }) {
@@ -788,6 +826,7 @@ class _$_SessionExpired implements _SessionExpired {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
   }) {
     return sessionExpired?.call(this);
@@ -802,6 +841,7 @@ class _$_SessionExpired implements _SessionExpired {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
     required TResult orElse(),
   }) {
@@ -862,6 +902,7 @@ class _$_Unauthorized implements _Unauthorized {
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
     required TResult Function() unauthorized,
+    required TResult Function() cancelledByUser,
     required TResult Function() invalidVerificationCode,
   }) {
     return unauthorized();
@@ -876,6 +917,7 @@ class _$_Unauthorized implements _Unauthorized {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
   }) {
     return unauthorized?.call();
@@ -890,6 +932,7 @@ class _$_Unauthorized implements _Unauthorized {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
     required TResult orElse(),
   }) {
@@ -908,6 +951,7 @@ class _$_Unauthorized implements _Unauthorized {
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
     required TResult Function(_Unauthorized value) unauthorized,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
     required TResult Function(_InvalidVertificationCode value)
         invalidVerificationCode,
   }) {
@@ -923,6 +967,7 @@ class _$_Unauthorized implements _Unauthorized {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
   }) {
     return unauthorized?.call(this);
@@ -937,6 +982,7 @@ class _$_Unauthorized implements _Unauthorized {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
     required TResult orElse(),
   }) {
@@ -949,6 +995,148 @@ class _$_Unauthorized implements _Unauthorized {
 
 abstract class _Unauthorized implements AuthFailure {
   const factory _Unauthorized() = _$_Unauthorized;
+}
+
+/// @nodoc
+abstract class _$CancelledByUserCopyWith<$Res> {
+  factory _$CancelledByUserCopyWith(
+          _CancelledByUser value, $Res Function(_CancelledByUser) then) =
+      __$CancelledByUserCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$CancelledByUserCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$CancelledByUserCopyWith<$Res> {
+  __$CancelledByUserCopyWithImpl(
+      _CancelledByUser _value, $Res Function(_CancelledByUser) _then)
+      : super(_value, (v) => _then(v as _CancelledByUser));
+
+  @override
+  _CancelledByUser get _value => super._value as _CancelledByUser;
+}
+
+/// @nodoc
+
+class _$_CancelledByUser implements _CancelledByUser {
+  const _$_CancelledByUser();
+
+  @override
+  String toString() {
+    return 'AuthFailure.cancelledByUser()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _CancelledByUser);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() toManyRequest,
+    required TResult Function() smsTimeout,
+    required TResult Function() sessionExpired,
+    required TResult Function() unauthorized,
+    required TResult Function() cancelledByUser,
+    required TResult Function() invalidVerificationCode,
+  }) {
+    return cancelledByUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? toManyRequest,
+    TResult Function()? smsTimeout,
+    TResult Function()? sessionExpired,
+    TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
+    TResult Function()? invalidVerificationCode,
+  }) {
+    return cancelledByUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? toManyRequest,
+    TResult Function()? smsTimeout,
+    TResult Function()? sessionExpired,
+    TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
+    TResult Function()? invalidVerificationCode,
+    required TResult orElse(),
+  }) {
+    if (cancelledByUser != null) {
+      return cancelledByUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_ToManyRequest value) toManyRequest,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_SessionExpired value) sessionExpired,
+    required TResult Function(_Unauthorized value) unauthorized,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
+    required TResult Function(_InvalidVertificationCode value)
+        invalidVerificationCode,
+  }) {
+    return cancelledByUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_ToManyRequest value)? toManyRequest,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_SessionExpired value)? sessionExpired,
+    TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
+    TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
+  }) {
+    return cancelledByUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_ToManyRequest value)? toManyRequest,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_SessionExpired value)? sessionExpired,
+    TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
+    TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
+    required TResult orElse(),
+  }) {
+    if (cancelledByUser != null) {
+      return cancelledByUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CancelledByUser implements AuthFailure {
+  const factory _CancelledByUser() = _$_CancelledByUser;
 }
 
 /// @nodoc
@@ -1000,6 +1188,7 @@ class _$_InvalidVertificationCode implements _InvalidVertificationCode {
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
     required TResult Function() unauthorized,
+    required TResult Function() cancelledByUser,
     required TResult Function() invalidVerificationCode,
   }) {
     return invalidVerificationCode();
@@ -1014,6 +1203,7 @@ class _$_InvalidVertificationCode implements _InvalidVertificationCode {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
   }) {
     return invalidVerificationCode?.call();
@@ -1028,6 +1218,7 @@ class _$_InvalidVertificationCode implements _InvalidVertificationCode {
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
     TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
     TResult Function()? invalidVerificationCode,
     required TResult orElse(),
   }) {
@@ -1046,6 +1237,7 @@ class _$_InvalidVertificationCode implements _InvalidVertificationCode {
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
     required TResult Function(_Unauthorized value) unauthorized,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
     required TResult Function(_InvalidVertificationCode value)
         invalidVerificationCode,
   }) {
@@ -1061,6 +1253,7 @@ class _$_InvalidVertificationCode implements _InvalidVertificationCode {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
   }) {
     return invalidVerificationCode?.call(this);
@@ -1075,6 +1268,7 @@ class _$_InvalidVertificationCode implements _InvalidVertificationCode {
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
     TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
     required TResult orElse(),
   }) {

@@ -1,15 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:nu_share_destination_user/src/domain/auth/auth_user_entity.dart';
 
 import 'auth_failure.dart';
 
 abstract class IAuthFacade {
-  /// Notified when the authentication status change
-  Stream<Option<AuthUserEntity>> watchAuthStateChanges();
-
-  Future<Option<AuthUserEntity>> getSignedInUser();
-
-  Future<Either<AuthFailure, Unit>> updateUserInfo(AuthUserEntity user);
+  /// Watch auth state. return [none()] if unauthenticated
+  /// return uid, or token... if authenticated
+  Stream<Option<String>> watchAuthStateChanges();
 
   Future<void> signOut();
 

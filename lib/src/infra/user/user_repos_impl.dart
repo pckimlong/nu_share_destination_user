@@ -1,9 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:nu_share_destination_user/src/domain/user/i_user_repository.dart';
 import 'package:nu_share_destination_user/src/domain/user/user_failure.dart';
 import 'package:nu_share_destination_user/src/domain/user/user_entity.dart';
+import 'package:nu_share_destination_user/src/infra/_core/firebase/firebase_extensions.dart';
+import 'user_entity_dto.dart';
 
-class UserRepository implements IUserRepository {
+class UserReposImpl implements IUserRepository {
+  final FirebaseFirestore _firestore;
+
+  UserReposImpl(this._firestore);
+
   @override
   Future<Either<UserFailure, Unit>> create(UserEntity user) {
     // TODO: implement create
@@ -18,7 +25,16 @@ class UserRepository implements IUserRepository {
 
   @override
   Stream<Either<UserFailure, UserEntity>> watchOne(String uid) {
-    // TODO: implement watchOne
-    throw UnimplementedError();
+    return _firestore.userColRef.doc(uid).snapshots().map(
+      (user) {
+        if (!user.exists) {
+          return left(const UserFailure.userNotExisted());
+        }
+
+        return right(user.data()!.toDomain());
+      },
+    )..handleError((_) {
+        return left(const UserFailure.serverError());
+      });
   }
 }

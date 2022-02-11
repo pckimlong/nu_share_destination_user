@@ -22,6 +22,10 @@ class _$UserFailureTearOff {
     return const UserNotExisted();
   }
 
+  ServerError serverError() {
+    return const ServerError();
+  }
+
   ErrorCreatingUser errorCreatingUser() {
     return const ErrorCreatingUser();
   }
@@ -39,6 +43,7 @@ mixin _$UserFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() userNotExisted,
+    required TResult Function() serverError,
     required TResult Function() errorCreatingUser,
     required TResult Function() errorUpdatingUser,
   }) =>
@@ -46,6 +51,7 @@ mixin _$UserFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
   }) =>
@@ -53,6 +59,7 @@ mixin _$UserFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
     required TResult orElse(),
@@ -61,6 +68,7 @@ mixin _$UserFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UserNotExisted value) userNotExisted,
+    required TResult Function(ServerError value) serverError,
     required TResult Function(ErrorCreatingUser value) errorCreatingUser,
     required TResult Function(ErrorUpdatingUser value) errorUpdatingUser,
   }) =>
@@ -68,6 +76,7 @@ mixin _$UserFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
   }) =>
@@ -75,6 +84,7 @@ mixin _$UserFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
     required TResult orElse(),
@@ -139,6 +149,7 @@ class _$UserNotExisted implements UserNotExisted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() userNotExisted,
+    required TResult Function() serverError,
     required TResult Function() errorCreatingUser,
     required TResult Function() errorUpdatingUser,
   }) {
@@ -149,6 +160,7 @@ class _$UserNotExisted implements UserNotExisted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
   }) {
@@ -159,6 +171,7 @@ class _$UserNotExisted implements UserNotExisted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
     required TResult orElse(),
@@ -173,6 +186,7 @@ class _$UserNotExisted implements UserNotExisted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UserNotExisted value) userNotExisted,
+    required TResult Function(ServerError value) serverError,
     required TResult Function(ErrorCreatingUser value) errorCreatingUser,
     required TResult Function(ErrorUpdatingUser value) errorUpdatingUser,
   }) {
@@ -183,6 +197,7 @@ class _$UserNotExisted implements UserNotExisted {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
   }) {
@@ -193,6 +208,7 @@ class _$UserNotExisted implements UserNotExisted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
     required TResult orElse(),
@@ -206,6 +222,122 @@ class _$UserNotExisted implements UserNotExisted {
 
 abstract class UserNotExisted implements UserFailure {
   const factory UserNotExisted() = _$UserNotExisted;
+}
+
+/// @nodoc
+abstract class $ServerErrorCopyWith<$Res> {
+  factory $ServerErrorCopyWith(
+          ServerError value, $Res Function(ServerError) then) =
+      _$ServerErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ServerErrorCopyWithImpl<$Res> extends _$UserFailureCopyWithImpl<$Res>
+    implements $ServerErrorCopyWith<$Res> {
+  _$ServerErrorCopyWithImpl(
+      ServerError _value, $Res Function(ServerError) _then)
+      : super(_value, (v) => _then(v as ServerError));
+
+  @override
+  ServerError get _value => super._value as ServerError;
+}
+
+/// @nodoc
+
+class _$ServerError implements ServerError {
+  const _$ServerError();
+
+  @override
+  String toString() {
+    return 'UserFailure.serverError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is ServerError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() userNotExisted,
+    required TResult Function() serverError,
+    required TResult Function() errorCreatingUser,
+    required TResult Function() errorUpdatingUser,
+  }) {
+    return serverError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? userNotExisted,
+    TResult Function()? serverError,
+    TResult Function()? errorCreatingUser,
+    TResult Function()? errorUpdatingUser,
+  }) {
+    return serverError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? userNotExisted,
+    TResult Function()? serverError,
+    TResult Function()? errorCreatingUser,
+    TResult Function()? errorUpdatingUser,
+    required TResult orElse(),
+  }) {
+    if (serverError != null) {
+      return serverError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserNotExisted value) userNotExisted,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ErrorCreatingUser value) errorCreatingUser,
+    required TResult Function(ErrorUpdatingUser value) errorUpdatingUser,
+  }) {
+    return serverError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ErrorCreatingUser value)? errorCreatingUser,
+    TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
+  }) {
+    return serverError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ErrorCreatingUser value)? errorCreatingUser,
+    TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
+    required TResult orElse(),
+  }) {
+    if (serverError != null) {
+      return serverError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ServerError implements UserFailure {
+  const factory ServerError() = _$ServerError;
 }
 
 /// @nodoc
@@ -250,6 +382,7 @@ class _$ErrorCreatingUser implements ErrorCreatingUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() userNotExisted,
+    required TResult Function() serverError,
     required TResult Function() errorCreatingUser,
     required TResult Function() errorUpdatingUser,
   }) {
@@ -260,6 +393,7 @@ class _$ErrorCreatingUser implements ErrorCreatingUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
   }) {
@@ -270,6 +404,7 @@ class _$ErrorCreatingUser implements ErrorCreatingUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
     required TResult orElse(),
@@ -284,6 +419,7 @@ class _$ErrorCreatingUser implements ErrorCreatingUser {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UserNotExisted value) userNotExisted,
+    required TResult Function(ServerError value) serverError,
     required TResult Function(ErrorCreatingUser value) errorCreatingUser,
     required TResult Function(ErrorUpdatingUser value) errorUpdatingUser,
   }) {
@@ -294,6 +430,7 @@ class _$ErrorCreatingUser implements ErrorCreatingUser {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
   }) {
@@ -304,6 +441,7 @@ class _$ErrorCreatingUser implements ErrorCreatingUser {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
     required TResult orElse(),
@@ -361,6 +499,7 @@ class _$ErrorUpdatingUser implements ErrorUpdatingUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() userNotExisted,
+    required TResult Function() serverError,
     required TResult Function() errorCreatingUser,
     required TResult Function() errorUpdatingUser,
   }) {
@@ -371,6 +510,7 @@ class _$ErrorUpdatingUser implements ErrorUpdatingUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
   }) {
@@ -381,6 +521,7 @@ class _$ErrorUpdatingUser implements ErrorUpdatingUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
     required TResult orElse(),
@@ -395,6 +536,7 @@ class _$ErrorUpdatingUser implements ErrorUpdatingUser {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UserNotExisted value) userNotExisted,
+    required TResult Function(ServerError value) serverError,
     required TResult Function(ErrorCreatingUser value) errorCreatingUser,
     required TResult Function(ErrorUpdatingUser value) errorUpdatingUser,
   }) {
@@ -405,6 +547,7 @@ class _$ErrorUpdatingUser implements ErrorUpdatingUser {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
   }) {
@@ -415,6 +558,7 @@ class _$ErrorUpdatingUser implements ErrorUpdatingUser {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
     required TResult orElse(),

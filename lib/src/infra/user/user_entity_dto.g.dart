@@ -12,10 +12,16 @@ _$_UserEntityDto _$$_UserEntityDtoFromJson(Map<String, dynamic> json) =>
       dateOfBirth: json['dateOfBirth'] == null
           ? null
           : DateTime.parse(json['dateOfBirth'] as String),
+      email: json['email'] as String?,
+      phone: json['phone'] as String?,
+      photoUrl: json['photoUrl'] as String?,
     );
 
 Map<String, dynamic> _$$_UserEntityDtoToJson(_$_UserEntityDto instance) =>
     <String, dynamic>{
       'fullname': instance.fullname,
       'dateOfBirth': instance.dateOfBirth?.toIso8601String(),
+      'email': instance.email,
+      'phone': instance.phone,
+      'photoUrl': instance.photoUrl,
     };

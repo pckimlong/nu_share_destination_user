@@ -2,33 +2,64 @@ import 'dart:async';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nu_share_destination_user/src/domain/auth/auth_failure.dart';
-import 'package:nu_share_destination_user/src/domain/auth/auth_user_entity.dart';
 import 'package:nu_share_destination_user/src/domain/auth/i_auth_facade.dart';
-import 'firebase_user_mapper.dart';
 
 class AuthFacadeImpl implements IAuthFacade {
-  AuthFacadeImpl(this._auth);
+  AuthFacadeImpl(
+    this._auth,
+    this._googleSignIn,
+    this._facebookAuth,
+  );
 
   final FirebaseAuth _auth;
+  final GoogleSignIn _googleSignIn;
+  final FacebookAuth _facebookAuth;
 
   @override
-  Future<Option<AuthUserEntity>> getSignedInUser() async {
-    final firebaseUser = _auth.currentUser;
-    if (firebaseUser == null) return none();
-    return some(firebaseUser.toDomain());
+  Future<Either<AuthFailure, Unit>> signInWithFacebook() async {
+    try {
+      final result = await _facebookAuth.login();
+
+      if (result.accessToken == null) {
+        debugPrint(result.message);
+        return const Left(AuthFailure.cancelledByUser());
+      }
+
+      final fbAuthCredential = FacebookAuthProvider.credential(
+        result.accessToken!.token,
+      );
+
+      await _auth.signInWithCredential(fbAuthCredential);
+      return right(unit);
+    } on Exception catch (_) {
+      debugPrint(_.toString());
+      return left(const AuthFailure.serverError());
+    }
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithFacebook() {
-    // TODO: implement signInWithFacebook
-    throw UnimplementedError();
-  }
+  Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
+    try {
+      final googleUser = await _googleSignIn.signIn();
 
-  @override
-  Future<Either<AuthFailure, Unit>> signInWithGoogle() {
-    // TODO: implement signInWithGoogle
-    throw UnimplementedError();
+      if (googleUser == null) {
+        return const Left(AuthFailure.cancelledByUser());
+      }
+
+      final googleAuth = await googleUser.authentication;
+      final authCredential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      await _auth.signInWithCredential(authCredential);
+      return right(unit);
+    } on Exception catch (_) {
+      return left(const AuthFailure.serverError());
+    }
   }
 
   @override
@@ -43,6 +74,7 @@ class AuthFacadeImpl implements IAuthFacade {
       verificationCompleted: (_) {},
       verificationFailed: (FirebaseAuthException err) {
         late final Either<AuthFailure, String> result;
+        debugPrint('Firebase auth exception code: ${err.code}');
         switch (err.code) {
           case 'invalid-phone-number':
             result = left(const AuthFailure.invalidPhoneNumber());
@@ -63,30 +95,17 @@ class AuthFacadeImpl implements IAuthFacade {
         streamController.add(left(const AuthFailure.smsTimeout()));
       },
     );
+
+    yield* streamController.stream;
   }
 
   @override
   Future<void> signOut() async {
-    await _auth.signOut();
-  }
-
-  @override
-  Future<Either<AuthFailure, Unit>> updateUserInfo(AuthUserEntity user) async {
-    try {
-      final currentFirebaseUser = _auth.currentUser;
-      if (currentFirebaseUser == null) {
-        return left(const AuthFailure.unauthorized());
-      }
-      await Future.wait([
-        currentFirebaseUser.updateDisplayName(user.fullname),
-        currentFirebaseUser.updateEmail(user.email ?? ''),
-        currentFirebaseUser.updatePhotoURL(user.photoURL),
-      ]);
-      return const Right(unit);
-    } on FirebaseAuthException catch (e) {
-      //todo - return correct failure
-      return left(const AuthFailure.serverError());
-    }
+    await Future.wait([
+      _auth.signOut(),
+      _googleSignIn.signOut(),
+      _facebookAuth.logOut(),
+    ]);
   }
 
   @override
@@ -114,10 +133,11 @@ class AuthFacadeImpl implements IAuthFacade {
   }
 
   @override
-  Stream<Option<AuthUserEntity>> watchAuthStateChanges() {
+  Stream<Option<String>> watchAuthStateChanges() {
     return _auth.authStateChanges().map((user) {
       if (user == null) return none();
-      return some(user.toDomain());
+      print(user.toString());
+      return some(user.uid);
     });
   }
 }
