@@ -22,7 +22,7 @@ class AppWidget extends HookWidget {
         appBarTheme: ThemeData().appBarTheme.copyWith(
               backgroundColor: Colors.white,
               foregroundColor: Colors.black,
-              elevation: 0.0,
+              elevation: 0,
               titleSpacing: 0.0,
               centerTitle: true,
             ),

@@ -16,6 +16,7 @@ import 'package:nu_share_destination_user/src/presentation/module/saved_place/li
 import 'package:nu_share_destination_user/src/presentation/module/saved_place/picker/saved_places_picker_page.dart';
 import 'package:nu_share_destination_user/src/presentation/module/setting/setting_page.dart';
 import 'package:nu_share_destination_user/src/presentation/module/splash/splash_page.dart';
+import 'package:nu_share_destination_user/src/presentation/module/trip/booking/trip_booking_page.dart';
 import 'package:nu_share_destination_user/src/presentation/module/voucher/list/voucher_list_page.dart';
 import 'package:nu_share_destination_user/src/presentation/module/voucher/picker/voucher_picker_page.dart';
 
@@ -38,6 +39,10 @@ import 'package:nu_share_destination_user/src/presentation/module/voucher/picker
     AutoRoute(
       path: '/edit-profile',
       page: EditProfilePage,
+    ),
+    AutoRoute(
+      path: '/booking',
+      page: TripBookingPage,
     ),
 
     //! Voucher-------------------------

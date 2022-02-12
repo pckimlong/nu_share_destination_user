@@ -2,9 +2,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/_core/value_object.dart';
 import '../../domain/user/user_entity.dart';
-import '../../domain/user/value_objects.dart';
 
 part 'user_entity_dto.freezed.dart';
 part 'user_entity_dto.g.dart';

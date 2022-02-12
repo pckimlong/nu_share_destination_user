@@ -27,26 +27,64 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  # Store cache data
+  get_storage: ^2.0.3
+  # Pre-defined auth button like facebook, google etc
   auth_buttons: ^2.0.4
+  # For routing
   auto_route: ^3.2.2
+  # Showing infomation to user
   bot_toast: ^4.0.1
+  # Caches network image
   cached_network_image: ^3.2.0
+  # For real-time database
   cloud_firestore: ^3.1.7
   cupertino_icons: ^1.0.2
+  # Use functional programming inside dart
   dartz: ^0.10.1
+  # For authentication
   firebase_auth: ^3.3.6
+  # Core of firebase
   firebase_core: ^1.12.0
   flutter:
     sdk: flutter
+  # For sign in with facebook
   flutter_facebook_auth: ^4.0.1
+  # Use hook in flutter
   flutter_hooks: ^0.18.2+1
-  flutter_modular: ^4.4.0+1
+  # For generate data class
   freezed_annotation: ^1.1.0
+  # For sign in with google
   google_sign_in: ^5.2.3
+  # State management
   hooks_riverpod: ^1.0.3
+  # Serialize toJson() and fromJson();
   json_annotation: ^4.4.0
+  # For animated stylise bottom navigation bar
   salomon_bottom_bar: ^3.2.0
+  # generate unique ID
   uuid: ^3.0.5
+  rxdart: ^0.27.3
+  # Push notification
+  firebase_messaging: ^11.2.5
+  # Launch other app, share etc...
+  url_launcher: ^6.0.18
+  # For immutable list, faster list 
+  fast_immutable_collections: ^7.2.0
+  # Store media file inside firebase
+  firebase_storage: ^10.2.7
+  # Core google map plugin
+  google_maps_flutter: ^2.1.1
+  # For auto complete search suggestion
+  # flutter_google_places: 
+  # Get device location, provide callback when location changed
+  location: ^4.3.0
+  # Get more info about location
+  geolocator: ^8.1.1
+  # Helper for retrive location
+  geoflutterfire: ^3.0.2
+  geocoder: ^0.2.1
+
 
 dev_dependencies:
   auto_route_generator: ^3.2.1

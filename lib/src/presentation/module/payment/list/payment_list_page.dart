@@ -15,7 +15,7 @@ class PaymentListPage extends ConsumerWidget {
       appBar: AppBar(
         title: openAsPicker
             ? const Text('Select Payment')
-            : const Text('My Payments'),
+            : const Text('Payments'),
       ),
     );
   }

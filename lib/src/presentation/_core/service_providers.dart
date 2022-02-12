@@ -2,8 +2,10 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nu_share_destination_user/src/domain/auth/i_auth_facade.dart';
+import 'package:nu_share_destination_user/src/domain/cache/i_cache_service.dart';
 import 'package:nu_share_destination_user/src/domain/user/i_user_repository.dart';
 import 'package:nu_share_destination_user/src/infra/auth/auth_facade_impl.dart';
+import 'package:nu_share_destination_user/src/infra/cache/cache_service.dart';
 import 'package:nu_share_destination_user/src/infra/user/user_repos_impl.dart';
 
 import 'common_provider.dart';
@@ -24,4 +26,9 @@ final userReposProvider = Provider<IUserRepository>((ref) {
   final firestore = ref.watch(firestoreProvider);
   final auth = ref.watch(firebaseAuthProvider);
   return UserReposImpl(firestore, auth);
+});
+
+final cachServiceProvider = Provider<ICacheService>((ref) {
+  final getStorage = ref.watch(getStorageProvider);
+  return CacheServiceImpl(getStorage);
 });
