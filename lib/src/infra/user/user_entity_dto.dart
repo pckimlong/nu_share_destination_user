@@ -11,6 +11,7 @@ part 'user_entity_dto.g.dart';
 
 @freezed
 class UserEntityDto with _$UserEntityDto {
+  const UserEntityDto._();
   static const dateOfBirthKey = "dateOfBirth";
   static const emailKey = "email";
   static const fullnameKey = "fullname";
@@ -19,18 +20,25 @@ class UserEntityDto with _$UserEntityDto {
 
   factory UserEntityDto({
     @JsonKey(ignore: true) String? id,
-    @JsonKey(name: UserEntityDto.fullnameKey) required String fullname,
+
+    /// Fullname
+    @JsonKey(name: UserEntityDto.fullnameKey) @Default('') String fullname,
     @JsonKey(name: UserEntityDto.dateOfBirthKey) DateTime? dateOfBirth,
     @JsonKey(name: UserEntityDto.emailKey) String? email,
     @JsonKey(name: UserEntityDto.phoneKey) String? phone,
     @JsonKey(name: UserEntityDto.photoUrlKey) String? photoUrl,
   }) = _UserEntityDto;
 
+  /// User not register yet, No any information like name
+  bool get isUnregistered => fullname.trim().isEmpty;
+
   factory UserEntityDto.fromDomain(UserEntity user) {
     return UserEntityDto(
       id: user.id,
       fullname: user.fullname,
-      dateOfBirth: user.dateOfBirth,
+      email: user.email,
+      phone: user.phone,
+      photoUrl: user.photoUrl,
     );
   }
 
@@ -43,7 +51,6 @@ extension UserEntityDtoX on UserEntityDto {
     return UserEntity(
       id: id,
       fullname: fullname,
-      dateOfBirth: dateOfBirth,
       email: email,
       phone: phone,
       photoUrl: photoUrl,

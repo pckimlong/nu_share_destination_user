@@ -17,6 +17,8 @@ class UserState with _$UserState {
 
   factory UserState.initial() => UserState(user: none(), failureOption: none());
 
+  /// Get the current user. if it is none() throw error
+  UserEntity get userOrCrash => user.getOrElse(() => throw Error());
   bool get isLoggedIn => user.isSome();
   bool get hasError => failureOption.isSome();
 }

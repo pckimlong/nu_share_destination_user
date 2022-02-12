@@ -136,7 +136,6 @@ class AuthFacadeImpl implements IAuthFacade {
   Stream<Option<String>> watchAuthStateChanges() {
     return _auth.authStateChanges().map((user) {
       if (user == null) return none();
-      print(user.toString());
       return some(user.uid);
     });
   }

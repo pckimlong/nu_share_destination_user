@@ -24,7 +24,7 @@ class _$UserEntityDtoTearOff {
 
   _UserEntityDto call(
       {@JsonKey(ignore: true) String? id,
-      @JsonKey(name: UserEntityDto.fullnameKey) required String fullname,
+      @JsonKey(name: UserEntityDto.fullnameKey) String fullname = '',
       @JsonKey(name: UserEntityDto.dateOfBirthKey) DateTime? dateOfBirth,
       @JsonKey(name: UserEntityDto.emailKey) String? email,
       @JsonKey(name: UserEntityDto.phoneKey) String? phone,
@@ -51,6 +51,8 @@ const $UserEntityDto = _$UserEntityDtoTearOff();
 mixin _$UserEntityDto {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
+
+  /// Fullname
   @JsonKey(name: UserEntityDto.fullnameKey)
   String get fullname => throw _privateConstructorUsedError;
   @JsonKey(name: UserEntityDto.dateOfBirthKey)
@@ -196,14 +198,15 @@ class __$UserEntityDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserEntityDto implements _UserEntityDto {
+class _$_UserEntityDto extends _UserEntityDto {
   _$_UserEntityDto(
       {@JsonKey(ignore: true) this.id,
-      @JsonKey(name: UserEntityDto.fullnameKey) required this.fullname,
+      @JsonKey(name: UserEntityDto.fullnameKey) this.fullname = '',
       @JsonKey(name: UserEntityDto.dateOfBirthKey) this.dateOfBirth,
       @JsonKey(name: UserEntityDto.emailKey) this.email,
       @JsonKey(name: UserEntityDto.phoneKey) this.phone,
-      @JsonKey(name: UserEntityDto.photoUrlKey) this.photoUrl});
+      @JsonKey(name: UserEntityDto.photoUrlKey) this.photoUrl})
+      : super._();
 
   factory _$_UserEntityDto.fromJson(Map<String, dynamic> json) =>
       _$$_UserEntityDtoFromJson(json);
@@ -212,6 +215,8 @@ class _$_UserEntityDto implements _UserEntityDto {
   @JsonKey(ignore: true)
   final String? id;
   @override
+
+  /// Fullname
   @JsonKey(name: UserEntityDto.fullnameKey)
   final String fullname;
   @override
@@ -267,15 +272,16 @@ class _$_UserEntityDto implements _UserEntityDto {
   }
 }
 
-abstract class _UserEntityDto implements UserEntityDto {
+abstract class _UserEntityDto extends UserEntityDto {
   factory _UserEntityDto(
           {@JsonKey(ignore: true) String? id,
-          @JsonKey(name: UserEntityDto.fullnameKey) required String fullname,
+          @JsonKey(name: UserEntityDto.fullnameKey) String fullname,
           @JsonKey(name: UserEntityDto.dateOfBirthKey) DateTime? dateOfBirth,
           @JsonKey(name: UserEntityDto.emailKey) String? email,
           @JsonKey(name: UserEntityDto.phoneKey) String? phone,
           @JsonKey(name: UserEntityDto.photoUrlKey) String? photoUrl}) =
       _$_UserEntityDto;
+  _UserEntityDto._() : super._();
 
   factory _UserEntityDto.fromJson(Map<String, dynamic> json) =
       _$_UserEntityDto.fromJson;
@@ -284,6 +290,8 @@ abstract class _UserEntityDto implements UserEntityDto {
   @JsonKey(ignore: true)
   String? get id;
   @override
+
+  /// Fullname
   @JsonKey(name: UserEntityDto.fullnameKey)
   String get fullname;
   @override

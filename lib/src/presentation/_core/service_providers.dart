@@ -22,5 +22,6 @@ final authFacadeProvider = Provider<IAuthFacade>((ref) {
 
 final userReposProvider = Provider<IUserRepository>((ref) {
   final firestore = ref.watch(firestoreProvider);
-  return UserReposImpl(firestore);
+  final auth = ref.watch(firebaseAuthProvider);
+  return UserReposImpl(firestore, auth);
 });

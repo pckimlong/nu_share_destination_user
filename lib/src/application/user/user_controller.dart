@@ -18,9 +18,19 @@ class UserControllerNotifier extends StateNotifier<UserState> {
           (userOrFailure) {
             userOrFailure.fold(
               (failure) {
-                state = state.copyWith(
-                  user: none(),
-                  failureOption: some(failure),
+                failure.maybeWhen(
+                  missedRequiredInfoField: (missInfoUser) {
+                    state = state.copyWith(
+                      user: some(missInfoUser),
+                      failureOption: some(failure),
+                    );
+                  },
+                  orElse: () {
+                    state = state.copyWith(
+                      user: none(),
+                      failureOption: some(failure),
+                    );
+                  },
                 );
               },
               (user) {
@@ -49,5 +59,24 @@ class UserControllerNotifier extends StateNotifier<UserState> {
   void dispose() {
     _streamSubscription?.cancel();
     super.dispose();
+  }
+
+  Future<void> update({
+    required String fullName,
+    required String? email,
+    required String? phone,
+  }) async {
+    final entity = state.user.getOrElse(() => throw Error());
+    final result = await _repository.update(
+      entity.copyWith(
+        fullname: fullName,
+        email: email,
+        phone: phone,
+      ),
+    );
+    result.fold(
+      (failure) => state = state.copyWith(failureOption: some(failure)),
+      (r) => state = state.copyWith(failureOption: none()),
+    );
   }
 }

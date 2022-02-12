@@ -7,13 +7,8 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    return InkWell(
-      onTap: () async {
-        await ref.read(authControllerProvider.notifier).signOut();
-      },
-      child: const Center(
-        child: Text('Home'),
-      ),
+    return const Center(
+      child: Text('Home'),
     );
   }
 }

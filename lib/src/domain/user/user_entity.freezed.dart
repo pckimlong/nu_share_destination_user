@@ -23,14 +23,12 @@ class _$UserEntityTearOff {
       required String fullname,
       required String? email,
       required String? phone,
-      required DateTime? dateOfBirth,
       required String? photoUrl}) {
     return _UserEntity(
       id: id,
       fullname: fullname,
       email: email,
       phone: phone,
-      dateOfBirth: dateOfBirth,
       photoUrl: photoUrl,
     );
   }
@@ -45,7 +43,6 @@ mixin _$UserEntity {
   String get fullname => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
-  DateTime? get dateOfBirth => throw _privateConstructorUsedError;
   String? get photoUrl => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -63,7 +60,6 @@ abstract class $UserEntityCopyWith<$Res> {
       String fullname,
       String? email,
       String? phone,
-      DateTime? dateOfBirth,
       String? photoUrl});
 }
 
@@ -81,7 +77,6 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
     Object? fullname = freezed,
     Object? email = freezed,
     Object? phone = freezed,
-    Object? dateOfBirth = freezed,
     Object? photoUrl = freezed,
   }) {
     return _then(_value.copyWith(
@@ -101,10 +96,6 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      dateOfBirth: dateOfBirth == freezed
-          ? _value.dateOfBirth
-          : dateOfBirth // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
       photoUrl: photoUrl == freezed
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
@@ -124,7 +115,6 @@ abstract class _$UserEntityCopyWith<$Res> implements $UserEntityCopyWith<$Res> {
       String fullname,
       String? email,
       String? phone,
-      DateTime? dateOfBirth,
       String? photoUrl});
 }
 
@@ -144,7 +134,6 @@ class __$UserEntityCopyWithImpl<$Res> extends _$UserEntityCopyWithImpl<$Res>
     Object? fullname = freezed,
     Object? email = freezed,
     Object? phone = freezed,
-    Object? dateOfBirth = freezed,
     Object? photoUrl = freezed,
   }) {
     return _then(_UserEntity(
@@ -164,10 +153,6 @@ class __$UserEntityCopyWithImpl<$Res> extends _$UserEntityCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      dateOfBirth: dateOfBirth == freezed
-          ? _value.dateOfBirth
-          : dateOfBirth // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
       photoUrl: photoUrl == freezed
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
@@ -184,7 +169,6 @@ class _$_UserEntity implements _UserEntity {
       required this.fullname,
       required this.email,
       required this.phone,
-      required this.dateOfBirth,
       required this.photoUrl});
 
   @override
@@ -196,13 +180,11 @@ class _$_UserEntity implements _UserEntity {
   @override
   final String? phone;
   @override
-  final DateTime? dateOfBirth;
-  @override
   final String? photoUrl;
 
   @override
   String toString() {
-    return 'UserEntity(id: $id, fullname: $fullname, email: $email, phone: $phone, dateOfBirth: $dateOfBirth, photoUrl: $photoUrl)';
+    return 'UserEntity(id: $id, fullname: $fullname, email: $email, phone: $phone, photoUrl: $photoUrl)';
   }
 
   @override
@@ -214,8 +196,6 @@ class _$_UserEntity implements _UserEntity {
             const DeepCollectionEquality().equals(other.fullname, fullname) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
-            const DeepCollectionEquality()
-                .equals(other.dateOfBirth, dateOfBirth) &&
             const DeepCollectionEquality().equals(other.photoUrl, photoUrl));
   }
 
@@ -226,7 +206,6 @@ class _$_UserEntity implements _UserEntity {
       const DeepCollectionEquality().hash(fullname),
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(phone),
-      const DeepCollectionEquality().hash(dateOfBirth),
       const DeepCollectionEquality().hash(photoUrl));
 
   @JsonKey(ignore: true)
@@ -241,7 +220,6 @@ abstract class _UserEntity implements UserEntity {
       required String fullname,
       required String? email,
       required String? phone,
-      required DateTime? dateOfBirth,
       required String? photoUrl}) = _$_UserEntity;
 
   @override
@@ -252,8 +230,6 @@ abstract class _UserEntity implements UserEntity {
   String? get email;
   @override
   String? get phone;
-  @override
-  DateTime? get dateOfBirth;
   @override
   String? get photoUrl;
   @override

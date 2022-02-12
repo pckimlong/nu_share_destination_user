@@ -8,7 +8,7 @@ part of 'user_entity_dto.dart';
 
 _$_UserEntityDto _$$_UserEntityDtoFromJson(Map<String, dynamic> json) =>
     _$_UserEntityDto(
-      fullname: json['fullname'] as String,
+      fullname: json['fullname'] as String? ?? '',
       dateOfBirth: json['dateOfBirth'] == null
           ? null
           : DateTime.parse(json['dateOfBirth'] as String),

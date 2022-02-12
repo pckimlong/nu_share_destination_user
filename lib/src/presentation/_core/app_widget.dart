@@ -20,13 +20,16 @@ class AppWidget extends HookWidget {
       ),
       theme: ThemeData(
         appBarTheme: ThemeData().appBarTheme.copyWith(
-            backgroundColor: Colors.white,
-            foregroundColor: Colors.black,
-            elevation: 0.0,
-            titleSpacing: 0.0),
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.black,
+              elevation: 0.0,
+              titleSpacing: 0.0,
+              centerTitle: true,
+            ),
         primarySwatch: Colors.green,
         primaryColor: Colors.green,
         hintColor: AppColors.hintColor,
+        scaffoldBackgroundColor: Colors.white,
       ),
       builder: BotToastInit(),
     );

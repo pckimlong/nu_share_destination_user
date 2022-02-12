@@ -22,6 +22,12 @@ class _$UserFailureTearOff {
     return const UserNotExisted();
   }
 
+  MissedRequiredInfoField missedRequiredInfoField(UserEntity user) {
+    return MissedRequiredInfoField(
+      user,
+    );
+  }
+
   ServerError serverError() {
     return const ServerError();
   }
@@ -43,6 +49,7 @@ mixin _$UserFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() userNotExisted,
+    required TResult Function(UserEntity user) missedRequiredInfoField,
     required TResult Function() serverError,
     required TResult Function() errorCreatingUser,
     required TResult Function() errorUpdatingUser,
@@ -51,6 +58,7 @@ mixin _$UserFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function(UserEntity user)? missedRequiredInfoField,
     TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
@@ -59,6 +67,7 @@ mixin _$UserFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function(UserEntity user)? missedRequiredInfoField,
     TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
@@ -68,6 +77,8 @@ mixin _$UserFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UserNotExisted value) userNotExisted,
+    required TResult Function(MissedRequiredInfoField value)
+        missedRequiredInfoField,
     required TResult Function(ServerError value) serverError,
     required TResult Function(ErrorCreatingUser value) errorCreatingUser,
     required TResult Function(ErrorUpdatingUser value) errorUpdatingUser,
@@ -76,6 +87,7 @@ mixin _$UserFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(MissedRequiredInfoField value)? missedRequiredInfoField,
     TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
@@ -84,6 +96,7 @@ mixin _$UserFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(MissedRequiredInfoField value)? missedRequiredInfoField,
     TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
@@ -149,6 +162,7 @@ class _$UserNotExisted implements UserNotExisted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() userNotExisted,
+    required TResult Function(UserEntity user) missedRequiredInfoField,
     required TResult Function() serverError,
     required TResult Function() errorCreatingUser,
     required TResult Function() errorUpdatingUser,
@@ -160,6 +174,7 @@ class _$UserNotExisted implements UserNotExisted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function(UserEntity user)? missedRequiredInfoField,
     TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
@@ -171,6 +186,7 @@ class _$UserNotExisted implements UserNotExisted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function(UserEntity user)? missedRequiredInfoField,
     TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
@@ -186,6 +202,8 @@ class _$UserNotExisted implements UserNotExisted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UserNotExisted value) userNotExisted,
+    required TResult Function(MissedRequiredInfoField value)
+        missedRequiredInfoField,
     required TResult Function(ServerError value) serverError,
     required TResult Function(ErrorCreatingUser value) errorCreatingUser,
     required TResult Function(ErrorUpdatingUser value) errorUpdatingUser,
@@ -197,6 +215,7 @@ class _$UserNotExisted implements UserNotExisted {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(MissedRequiredInfoField value)? missedRequiredInfoField,
     TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
@@ -208,6 +227,7 @@ class _$UserNotExisted implements UserNotExisted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(MissedRequiredInfoField value)? missedRequiredInfoField,
     TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
@@ -222,6 +242,170 @@ class _$UserNotExisted implements UserNotExisted {
 
 abstract class UserNotExisted implements UserFailure {
   const factory UserNotExisted() = _$UserNotExisted;
+}
+
+/// @nodoc
+abstract class $MissedRequiredInfoFieldCopyWith<$Res> {
+  factory $MissedRequiredInfoFieldCopyWith(MissedRequiredInfoField value,
+          $Res Function(MissedRequiredInfoField) then) =
+      _$MissedRequiredInfoFieldCopyWithImpl<$Res>;
+  $Res call({UserEntity user});
+
+  $UserEntityCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class _$MissedRequiredInfoFieldCopyWithImpl<$Res>
+    extends _$UserFailureCopyWithImpl<$Res>
+    implements $MissedRequiredInfoFieldCopyWith<$Res> {
+  _$MissedRequiredInfoFieldCopyWithImpl(MissedRequiredInfoField _value,
+      $Res Function(MissedRequiredInfoField) _then)
+      : super(_value, (v) => _then(v as MissedRequiredInfoField));
+
+  @override
+  MissedRequiredInfoField get _value => super._value as MissedRequiredInfoField;
+
+  @override
+  $Res call({
+    Object? user = freezed,
+  }) {
+    return _then(MissedRequiredInfoField(
+      user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserEntity,
+    ));
+  }
+
+  @override
+  $UserEntityCopyWith<$Res> get user {
+    return $UserEntityCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$MissedRequiredInfoField implements MissedRequiredInfoField {
+  const _$MissedRequiredInfoField(this.user);
+
+  @override
+  final UserEntity user;
+
+  @override
+  String toString() {
+    return 'UserFailure.missedRequiredInfoField(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is MissedRequiredInfoField &&
+            const DeepCollectionEquality().equals(other.user, user));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
+
+  @JsonKey(ignore: true)
+  @override
+  $MissedRequiredInfoFieldCopyWith<MissedRequiredInfoField> get copyWith =>
+      _$MissedRequiredInfoFieldCopyWithImpl<MissedRequiredInfoField>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() userNotExisted,
+    required TResult Function(UserEntity user) missedRequiredInfoField,
+    required TResult Function() serverError,
+    required TResult Function() errorCreatingUser,
+    required TResult Function() errorUpdatingUser,
+  }) {
+    return missedRequiredInfoField(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? userNotExisted,
+    TResult Function(UserEntity user)? missedRequiredInfoField,
+    TResult Function()? serverError,
+    TResult Function()? errorCreatingUser,
+    TResult Function()? errorUpdatingUser,
+  }) {
+    return missedRequiredInfoField?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? userNotExisted,
+    TResult Function(UserEntity user)? missedRequiredInfoField,
+    TResult Function()? serverError,
+    TResult Function()? errorCreatingUser,
+    TResult Function()? errorUpdatingUser,
+    required TResult orElse(),
+  }) {
+    if (missedRequiredInfoField != null) {
+      return missedRequiredInfoField(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserNotExisted value) userNotExisted,
+    required TResult Function(MissedRequiredInfoField value)
+        missedRequiredInfoField,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ErrorCreatingUser value) errorCreatingUser,
+    required TResult Function(ErrorUpdatingUser value) errorUpdatingUser,
+  }) {
+    return missedRequiredInfoField(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(MissedRequiredInfoField value)? missedRequiredInfoField,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ErrorCreatingUser value)? errorCreatingUser,
+    TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
+  }) {
+    return missedRequiredInfoField?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(MissedRequiredInfoField value)? missedRequiredInfoField,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ErrorCreatingUser value)? errorCreatingUser,
+    TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
+    required TResult orElse(),
+  }) {
+    if (missedRequiredInfoField != null) {
+      return missedRequiredInfoField(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MissedRequiredInfoField implements UserFailure {
+  const factory MissedRequiredInfoField(UserEntity user) =
+      _$MissedRequiredInfoField;
+
+  UserEntity get user;
+  @JsonKey(ignore: true)
+  $MissedRequiredInfoFieldCopyWith<MissedRequiredInfoField> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -265,6 +449,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() userNotExisted,
+    required TResult Function(UserEntity user) missedRequiredInfoField,
     required TResult Function() serverError,
     required TResult Function() errorCreatingUser,
     required TResult Function() errorUpdatingUser,
@@ -276,6 +461,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function(UserEntity user)? missedRequiredInfoField,
     TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
@@ -287,6 +473,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function(UserEntity user)? missedRequiredInfoField,
     TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
@@ -302,6 +489,8 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UserNotExisted value) userNotExisted,
+    required TResult Function(MissedRequiredInfoField value)
+        missedRequiredInfoField,
     required TResult Function(ServerError value) serverError,
     required TResult Function(ErrorCreatingUser value) errorCreatingUser,
     required TResult Function(ErrorUpdatingUser value) errorUpdatingUser,
@@ -313,6 +502,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(MissedRequiredInfoField value)? missedRequiredInfoField,
     TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
@@ -324,6 +514,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(MissedRequiredInfoField value)? missedRequiredInfoField,
     TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
@@ -382,6 +573,7 @@ class _$ErrorCreatingUser implements ErrorCreatingUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() userNotExisted,
+    required TResult Function(UserEntity user) missedRequiredInfoField,
     required TResult Function() serverError,
     required TResult Function() errorCreatingUser,
     required TResult Function() errorUpdatingUser,
@@ -393,6 +585,7 @@ class _$ErrorCreatingUser implements ErrorCreatingUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function(UserEntity user)? missedRequiredInfoField,
     TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
@@ -404,6 +597,7 @@ class _$ErrorCreatingUser implements ErrorCreatingUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function(UserEntity user)? missedRequiredInfoField,
     TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
@@ -419,6 +613,8 @@ class _$ErrorCreatingUser implements ErrorCreatingUser {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UserNotExisted value) userNotExisted,
+    required TResult Function(MissedRequiredInfoField value)
+        missedRequiredInfoField,
     required TResult Function(ServerError value) serverError,
     required TResult Function(ErrorCreatingUser value) errorCreatingUser,
     required TResult Function(ErrorUpdatingUser value) errorUpdatingUser,
@@ -430,6 +626,7 @@ class _$ErrorCreatingUser implements ErrorCreatingUser {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(MissedRequiredInfoField value)? missedRequiredInfoField,
     TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
@@ -441,6 +638,7 @@ class _$ErrorCreatingUser implements ErrorCreatingUser {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(MissedRequiredInfoField value)? missedRequiredInfoField,
     TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
@@ -499,6 +697,7 @@ class _$ErrorUpdatingUser implements ErrorUpdatingUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() userNotExisted,
+    required TResult Function(UserEntity user) missedRequiredInfoField,
     required TResult Function() serverError,
     required TResult Function() errorCreatingUser,
     required TResult Function() errorUpdatingUser,
@@ -510,6 +709,7 @@ class _$ErrorUpdatingUser implements ErrorUpdatingUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function(UserEntity user)? missedRequiredInfoField,
     TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
@@ -521,6 +721,7 @@ class _$ErrorUpdatingUser implements ErrorUpdatingUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? userNotExisted,
+    TResult Function(UserEntity user)? missedRequiredInfoField,
     TResult Function()? serverError,
     TResult Function()? errorCreatingUser,
     TResult Function()? errorUpdatingUser,
@@ -536,6 +737,8 @@ class _$ErrorUpdatingUser implements ErrorUpdatingUser {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UserNotExisted value) userNotExisted,
+    required TResult Function(MissedRequiredInfoField value)
+        missedRequiredInfoField,
     required TResult Function(ServerError value) serverError,
     required TResult Function(ErrorCreatingUser value) errorCreatingUser,
     required TResult Function(ErrorUpdatingUser value) errorUpdatingUser,
@@ -547,6 +750,7 @@ class _$ErrorUpdatingUser implements ErrorUpdatingUser {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(MissedRequiredInfoField value)? missedRequiredInfoField,
     TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,
@@ -558,6 +762,7 @@ class _$ErrorUpdatingUser implements ErrorUpdatingUser {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UserNotExisted value)? userNotExisted,
+    TResult Function(MissedRequiredInfoField value)? missedRequiredInfoField,
     TResult Function(ServerError value)? serverError,
     TResult Function(ErrorCreatingUser value)? errorCreatingUser,
     TResult Function(ErrorUpdatingUser value)? errorUpdatingUser,

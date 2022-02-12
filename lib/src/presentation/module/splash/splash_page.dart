@@ -5,6 +5,7 @@ import 'package:nu_share_destination_user/src/presentation/routes/router.gr.dart
 
 import '../../../application/auth/auth_state.dart';
 import '../../_providers/user_provider.dart';
+import '../../routes/router.gr.dart';
 
 class SplashPage extends HookConsumerWidget {
   const SplashPage({Key? key}) : super(key: key);

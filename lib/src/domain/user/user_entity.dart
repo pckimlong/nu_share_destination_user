@@ -9,7 +9,6 @@ class UserEntity with _$UserEntity {
     required String fullname,
     required String? email,
     required String? phone,
-    required DateTime? dateOfBirth,
     required String? photoUrl,
   }) = _UserEntity;
 }

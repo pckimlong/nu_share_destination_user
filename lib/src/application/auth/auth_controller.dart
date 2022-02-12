@@ -41,5 +41,6 @@ class AuthControllerNotifier extends StateNotifier<AuthState> {
 
   Future<void> signOut() async {
     await _authFacade.signOut();
+    state = const AuthState.initial();
   }
 }
