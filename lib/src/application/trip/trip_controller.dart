@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:nu_share_destination_user/src/application/trip/trip_event.dart';
 
 import 'package:nu_share_destination_user/src/application/trip/trip_state.dart';
 import 'package:nu_share_destination_user/src/domain/driver/i_driver_repository.dart';

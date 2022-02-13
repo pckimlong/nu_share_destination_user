@@ -18,10 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$TripEventTearOff {
   const _$TripEventTearOff();
 
-  _TripEvent call() {
-    return _TripEvent();
-  }
-
   _CreateRequest bookTrip({required PassengerEntity passengerEntity}) {
     return _CreateRequest(
       passengerEntity: passengerEntity,
@@ -35,6 +31,12 @@ class _$TripEventTearOff {
   _CancelTrip cancelTrip() {
     return const _CancelTrip();
   }
+
+  _ChangeOriginPosition changeOriginPosition(Coordinate coordinate) {
+    return _ChangeOriginPosition(
+      coordinate,
+    );
+  }
 }
 
 /// @nodoc
@@ -43,52 +45,52 @@ const $TripEvent = _$TripEventTearOff();
 /// @nodoc
 mixin _$TripEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function(PassengerEntity passengerEntity) bookTrip,
     required TResult Function() toggleShareMode,
     required TResult Function() cancelTrip,
+    required TResult Function(Coordinate coordinate) changeOriginPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult Function(PassengerEntity passengerEntity)? bookTrip,
     TResult Function()? toggleShareMode,
     TResult Function()? cancelTrip,
+    TResult Function(Coordinate coordinate)? changeOriginPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function(PassengerEntity passengerEntity)? bookTrip,
     TResult Function()? toggleShareMode,
     TResult Function()? cancelTrip,
+    TResult Function(Coordinate coordinate)? changeOriginPosition,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_TripEvent value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(_CreateRequest value) bookTrip,
     required TResult Function(_ToggleShareMode value) toggleShareMode,
     required TResult Function(_CancelTrip value) cancelTrip,
+    required TResult Function(_ChangeOriginPosition value) changeOriginPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_TripEvent value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_CreateRequest value)? bookTrip,
     TResult Function(_ToggleShareMode value)? toggleShareMode,
     TResult Function(_CancelTrip value)? cancelTrip,
+    TResult Function(_ChangeOriginPosition value)? changeOriginPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_TripEvent value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(_CreateRequest value)? bookTrip,
     TResult Function(_ToggleShareMode value)? toggleShareMode,
     TResult Function(_CancelTrip value)? cancelTrip,
+    TResult Function(_ChangeOriginPosition value)? changeOriginPosition,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,121 +109,6 @@ class _$TripEventCopyWithImpl<$Res> implements $TripEventCopyWith<$Res> {
   final TripEvent _value;
   // ignore: unused_field
   final $Res Function(TripEvent) _then;
-}
-
-/// @nodoc
-abstract class _$TripEventCopyWith<$Res> {
-  factory _$TripEventCopyWith(
-          _TripEvent value, $Res Function(_TripEvent) then) =
-      __$TripEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$TripEventCopyWithImpl<$Res> extends _$TripEventCopyWithImpl<$Res>
-    implements _$TripEventCopyWith<$Res> {
-  __$TripEventCopyWithImpl(_TripEvent _value, $Res Function(_TripEvent) _then)
-      : super(_value, (v) => _then(v as _TripEvent));
-
-  @override
-  _TripEvent get _value => super._value as _TripEvent;
-}
-
-/// @nodoc
-
-class _$_TripEvent implements _TripEvent {
-  _$_TripEvent();
-
-  @override
-  String toString() {
-    return 'TripEvent()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _TripEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function(PassengerEntity passengerEntity) bookTrip,
-    required TResult Function() toggleShareMode,
-    required TResult Function() cancelTrip,
-  }) {
-    return $default();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function(PassengerEntity passengerEntity)? bookTrip,
-    TResult Function()? toggleShareMode,
-    TResult Function()? cancelTrip,
-  }) {
-    return $default?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function(PassengerEntity passengerEntity)? bookTrip,
-    TResult Function()? toggleShareMode,
-    TResult Function()? cancelTrip,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_TripEvent value) $default, {
-    required TResult Function(_CreateRequest value) bookTrip,
-    required TResult Function(_ToggleShareMode value) toggleShareMode,
-    required TResult Function(_CancelTrip value) cancelTrip,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_TripEvent value)? $default, {
-    TResult Function(_CreateRequest value)? bookTrip,
-    TResult Function(_ToggleShareMode value)? toggleShareMode,
-    TResult Function(_CancelTrip value)? cancelTrip,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_TripEvent value)? $default, {
-    TResult Function(_CreateRequest value)? bookTrip,
-    TResult Function(_ToggleShareMode value)? toggleShareMode,
-    TResult Function(_CancelTrip value)? cancelTrip,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _TripEvent implements TripEvent {
-  factory _TripEvent() = _$_TripEvent;
 }
 
 /// @nodoc
@@ -297,33 +184,33 @@ class _$_CreateRequest implements _CreateRequest {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function(PassengerEntity passengerEntity) bookTrip,
     required TResult Function() toggleShareMode,
     required TResult Function() cancelTrip,
+    required TResult Function(Coordinate coordinate) changeOriginPosition,
   }) {
     return bookTrip(passengerEntity);
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult Function(PassengerEntity passengerEntity)? bookTrip,
     TResult Function()? toggleShareMode,
     TResult Function()? cancelTrip,
+    TResult Function(Coordinate coordinate)? changeOriginPosition,
   }) {
     return bookTrip?.call(passengerEntity);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function(PassengerEntity passengerEntity)? bookTrip,
     TResult Function()? toggleShareMode,
     TResult Function()? cancelTrip,
+    TResult Function(Coordinate coordinate)? changeOriginPosition,
     required TResult orElse(),
   }) {
     if (bookTrip != null) {
@@ -334,33 +221,33 @@ class _$_CreateRequest implements _CreateRequest {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_TripEvent value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(_CreateRequest value) bookTrip,
     required TResult Function(_ToggleShareMode value) toggleShareMode,
     required TResult Function(_CancelTrip value) cancelTrip,
+    required TResult Function(_ChangeOriginPosition value) changeOriginPosition,
   }) {
     return bookTrip(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_TripEvent value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_CreateRequest value)? bookTrip,
     TResult Function(_ToggleShareMode value)? toggleShareMode,
     TResult Function(_CancelTrip value)? cancelTrip,
+    TResult Function(_ChangeOriginPosition value)? changeOriginPosition,
   }) {
     return bookTrip?.call(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_TripEvent value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(_CreateRequest value)? bookTrip,
     TResult Function(_ToggleShareMode value)? toggleShareMode,
     TResult Function(_CancelTrip value)? cancelTrip,
+    TResult Function(_ChangeOriginPosition value)? changeOriginPosition,
     required TResult orElse(),
   }) {
     if (bookTrip != null) {
@@ -419,33 +306,33 @@ class _$_ToggleShareMode implements _ToggleShareMode {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function(PassengerEntity passengerEntity) bookTrip,
     required TResult Function() toggleShareMode,
     required TResult Function() cancelTrip,
+    required TResult Function(Coordinate coordinate) changeOriginPosition,
   }) {
     return toggleShareMode();
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult Function(PassengerEntity passengerEntity)? bookTrip,
     TResult Function()? toggleShareMode,
     TResult Function()? cancelTrip,
+    TResult Function(Coordinate coordinate)? changeOriginPosition,
   }) {
     return toggleShareMode?.call();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function(PassengerEntity passengerEntity)? bookTrip,
     TResult Function()? toggleShareMode,
     TResult Function()? cancelTrip,
+    TResult Function(Coordinate coordinate)? changeOriginPosition,
     required TResult orElse(),
   }) {
     if (toggleShareMode != null) {
@@ -456,33 +343,33 @@ class _$_ToggleShareMode implements _ToggleShareMode {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_TripEvent value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(_CreateRequest value) bookTrip,
     required TResult Function(_ToggleShareMode value) toggleShareMode,
     required TResult Function(_CancelTrip value) cancelTrip,
+    required TResult Function(_ChangeOriginPosition value) changeOriginPosition,
   }) {
     return toggleShareMode(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_TripEvent value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_CreateRequest value)? bookTrip,
     TResult Function(_ToggleShareMode value)? toggleShareMode,
     TResult Function(_CancelTrip value)? cancelTrip,
+    TResult Function(_ChangeOriginPosition value)? changeOriginPosition,
   }) {
     return toggleShareMode?.call(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_TripEvent value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(_CreateRequest value)? bookTrip,
     TResult Function(_ToggleShareMode value)? toggleShareMode,
     TResult Function(_CancelTrip value)? cancelTrip,
+    TResult Function(_ChangeOriginPosition value)? changeOriginPosition,
     required TResult orElse(),
   }) {
     if (toggleShareMode != null) {
@@ -535,33 +422,33 @@ class _$_CancelTrip implements _CancelTrip {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function(PassengerEntity passengerEntity) bookTrip,
     required TResult Function() toggleShareMode,
     required TResult Function() cancelTrip,
+    required TResult Function(Coordinate coordinate) changeOriginPosition,
   }) {
     return cancelTrip();
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult Function(PassengerEntity passengerEntity)? bookTrip,
     TResult Function()? toggleShareMode,
     TResult Function()? cancelTrip,
+    TResult Function(Coordinate coordinate)? changeOriginPosition,
   }) {
     return cancelTrip?.call();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function(PassengerEntity passengerEntity)? bookTrip,
     TResult Function()? toggleShareMode,
     TResult Function()? cancelTrip,
+    TResult Function(Coordinate coordinate)? changeOriginPosition,
     required TResult orElse(),
   }) {
     if (cancelTrip != null) {
@@ -572,33 +459,33 @@ class _$_CancelTrip implements _CancelTrip {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_TripEvent value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(_CreateRequest value) bookTrip,
     required TResult Function(_ToggleShareMode value) toggleShareMode,
     required TResult Function(_CancelTrip value) cancelTrip,
+    required TResult Function(_ChangeOriginPosition value) changeOriginPosition,
   }) {
     return cancelTrip(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_TripEvent value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_CreateRequest value)? bookTrip,
     TResult Function(_ToggleShareMode value)? toggleShareMode,
     TResult Function(_CancelTrip value)? cancelTrip,
+    TResult Function(_ChangeOriginPosition value)? changeOriginPosition,
   }) {
     return cancelTrip?.call(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_TripEvent value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(_CreateRequest value)? bookTrip,
     TResult Function(_ToggleShareMode value)? toggleShareMode,
     TResult Function(_CancelTrip value)? cancelTrip,
+    TResult Function(_ChangeOriginPosition value)? changeOriginPosition,
     required TResult orElse(),
   }) {
     if (cancelTrip != null) {
@@ -610,4 +497,162 @@ class _$_CancelTrip implements _CancelTrip {
 
 abstract class _CancelTrip implements TripEvent {
   const factory _CancelTrip() = _$_CancelTrip;
+}
+
+/// @nodoc
+abstract class _$ChangeOriginPositionCopyWith<$Res> {
+  factory _$ChangeOriginPositionCopyWith(_ChangeOriginPosition value,
+          $Res Function(_ChangeOriginPosition) then) =
+      __$ChangeOriginPositionCopyWithImpl<$Res>;
+  $Res call({Coordinate coordinate});
+
+  $CoordinateCopyWith<$Res> get coordinate;
+}
+
+/// @nodoc
+class __$ChangeOriginPositionCopyWithImpl<$Res>
+    extends _$TripEventCopyWithImpl<$Res>
+    implements _$ChangeOriginPositionCopyWith<$Res> {
+  __$ChangeOriginPositionCopyWithImpl(
+      _ChangeOriginPosition _value, $Res Function(_ChangeOriginPosition) _then)
+      : super(_value, (v) => _then(v as _ChangeOriginPosition));
+
+  @override
+  _ChangeOriginPosition get _value => super._value as _ChangeOriginPosition;
+
+  @override
+  $Res call({
+    Object? coordinate = freezed,
+  }) {
+    return _then(_ChangeOriginPosition(
+      coordinate == freezed
+          ? _value.coordinate
+          : coordinate // ignore: cast_nullable_to_non_nullable
+              as Coordinate,
+    ));
+  }
+
+  @override
+  $CoordinateCopyWith<$Res> get coordinate {
+    return $CoordinateCopyWith<$Res>(_value.coordinate, (value) {
+      return _then(_value.copyWith(coordinate: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_ChangeOriginPosition implements _ChangeOriginPosition {
+  const _$_ChangeOriginPosition(this.coordinate);
+
+  @override
+  final Coordinate coordinate;
+
+  @override
+  String toString() {
+    return 'TripEvent.changeOriginPosition(coordinate: $coordinate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ChangeOriginPosition &&
+            const DeepCollectionEquality()
+                .equals(other.coordinate, coordinate));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(coordinate));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ChangeOriginPositionCopyWith<_ChangeOriginPosition> get copyWith =>
+      __$ChangeOriginPositionCopyWithImpl<_ChangeOriginPosition>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PassengerEntity passengerEntity) bookTrip,
+    required TResult Function() toggleShareMode,
+    required TResult Function() cancelTrip,
+    required TResult Function(Coordinate coordinate) changeOriginPosition,
+  }) {
+    return changeOriginPosition(coordinate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(PassengerEntity passengerEntity)? bookTrip,
+    TResult Function()? toggleShareMode,
+    TResult Function()? cancelTrip,
+    TResult Function(Coordinate coordinate)? changeOriginPosition,
+  }) {
+    return changeOriginPosition?.call(coordinate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PassengerEntity passengerEntity)? bookTrip,
+    TResult Function()? toggleShareMode,
+    TResult Function()? cancelTrip,
+    TResult Function(Coordinate coordinate)? changeOriginPosition,
+    required TResult orElse(),
+  }) {
+    if (changeOriginPosition != null) {
+      return changeOriginPosition(coordinate);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CreateRequest value) bookTrip,
+    required TResult Function(_ToggleShareMode value) toggleShareMode,
+    required TResult Function(_CancelTrip value) cancelTrip,
+    required TResult Function(_ChangeOriginPosition value) changeOriginPosition,
+  }) {
+    return changeOriginPosition(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_CreateRequest value)? bookTrip,
+    TResult Function(_ToggleShareMode value)? toggleShareMode,
+    TResult Function(_CancelTrip value)? cancelTrip,
+    TResult Function(_ChangeOriginPosition value)? changeOriginPosition,
+  }) {
+    return changeOriginPosition?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CreateRequest value)? bookTrip,
+    TResult Function(_ToggleShareMode value)? toggleShareMode,
+    TResult Function(_CancelTrip value)? cancelTrip,
+    TResult Function(_ChangeOriginPosition value)? changeOriginPosition,
+    required TResult orElse(),
+  }) {
+    if (changeOriginPosition != null) {
+      return changeOriginPosition(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeOriginPosition implements TripEvent {
+  const factory _ChangeOriginPosition(Coordinate coordinate) =
+      _$_ChangeOriginPosition;
+
+  Coordinate get coordinate;
+  @JsonKey(ignore: true)
+  _$ChangeOriginPositionCopyWith<_ChangeOriginPosition> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:nu_share_destination_user/src/application/trip/booking/booking_controller.dart';
+import 'package:nu_share_destination_user/src/application/trip/booking/booking_state.dart';
+import 'package:nu_share_destination_user/src/presentation/_core/service_providers.dart';
+import 'package:nu_share_destination_user/src/presentation/_providers/user_provider.dart';
+import 'package:nu_share_destination_user/src/presentation/widgets/location_pin_widget.dart';
 
 import '../../../_core/app_styles.dart';
 import '../../../widgets/circle_location_button.dart';
@@ -10,6 +15,14 @@ part 'widgets/actions_tile_bar_widget.dart';
 part 'widgets/book_now_button.dart';
 part 'widgets/vehicle_tile_widget.dart';
 part 'widgets/where_to_tile_widget.dart';
+
+final bookControllerProvider =
+    StateNotifierProvider.autoDispose<BookControllerNotifier, BookingState?>(
+  (ref) => BookControllerNotifier(
+    ref.watch(locationServiceProvider),
+    ref.watch(userControllerProvider).userOrCrash,
+  ),
+);
 
 class TripBookingPage extends StatefulHookConsumerWidget {
   const TripBookingPage({Key? key}) : super(key: key);
@@ -27,6 +40,8 @@ class _TripBookingPageState extends ConsumerState<TripBookingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final bookingState = ref.watch(bookControllerProvider);
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -62,11 +77,11 @@ class _TripBookingPageState extends ConsumerState<TripBookingPage> {
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.9),
                       ),
-                      child: const Center(
+                      child: Center(
                         child: Text(
-                          'Phnom Penh',
+                          bookingState?.address ?? "",
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
                           ),
@@ -84,11 +99,9 @@ class _TripBookingPageState extends ConsumerState<TripBookingPage> {
                     ),
                   ],
                 ),
-                const Center(
-                  child: Icon(
-                    Icons.location_on,
-                    color: Colors.red,
-                    size: 42,
+                Center(
+                  child: LocationPinWidget(
+                    isLoading: bookingState?.isLoading ?? false,
                   ),
                 ),
               ],
@@ -132,7 +145,7 @@ class _ActionCard extends StatelessWidget {
           Divider(height: 0),
           _ActionsTileBar(),
           // Divider(),
-          SizedBox(height: 12),
+          SizedBox(height: 4),
           _BookNowButton(),
         ],
       ),

@@ -15,6 +15,7 @@ _$_LocationDetail _$$_LocationDetailFromJson(Map<String, dynamic> json) =>
       speed: (json['speed'] as num).toDouble(),
       speedAccuracy: (json['speedAccuracy'] as num).toDouble(),
       heading: (json['heading'] as num).toDouble(),
+      time: DateTime.parse(json['time'] as String),
     );
 
 Map<String, dynamic> _$$_LocationDetailToJson(_$_LocationDetail instance) =>
@@ -25,4 +26,5 @@ Map<String, dynamic> _$$_LocationDetailToJson(_$_LocationDetail instance) =>
       'speed': instance.speed,
       'speedAccuracy': instance.speedAccuracy,
       'heading': instance.heading,
+      'time': instance.time.toIso8601String(),
     };
