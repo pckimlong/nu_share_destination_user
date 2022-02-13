@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:nu_share_destination_user/src/presentation/routes/router.gr.dart';
 
-import '../constants/app_styles.dart';
+import '../_core/app_styles.dart';
+import '../routes/router_obs.dart';
 
 class AppWidget extends HookWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -16,7 +17,10 @@ class AppWidget extends HookWidget {
       debugShowCheckedModeBanner: false,
       routeInformationParser: _appRouter.defaultRouteParser(),
       routerDelegate: _appRouter.delegate(
-        navigatorObservers: () => [BotToastNavigatorObserver()],
+        navigatorObservers: () => [
+          BotToastNavigatorObserver(),
+          MyRouterObserver(),
+        ],
       ),
       theme: ThemeData(
         appBarTheme: ThemeData().appBarTheme.copyWith(

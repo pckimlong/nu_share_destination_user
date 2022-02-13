@@ -129,7 +129,7 @@ class __$CoordinateCopyWithImpl<$Res> extends _$CoordinateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Coordinate extends _Coordinate {
-  _$_Coordinate(@JsonKey(name: Coordinate.latitudeKey) this.latitude,
+  const _$_Coordinate(@JsonKey(name: Coordinate.latitudeKey) this.latitude,
       @JsonKey(name: Coordinate.longitudeKey) this.longitude)
       : super._();
 
@@ -175,9 +175,10 @@ class _$_Coordinate extends _Coordinate {
 }
 
 abstract class _Coordinate extends Coordinate {
-  factory _Coordinate(@JsonKey(name: Coordinate.latitudeKey) double latitude,
+  const factory _Coordinate(
+      @JsonKey(name: Coordinate.latitudeKey) double latitude,
       @JsonKey(name: Coordinate.longitudeKey) double longitude) = _$_Coordinate;
-  _Coordinate._() : super._();
+  const _Coordinate._() : super._();
 
   factory _Coordinate.fromJson(Map<String, dynamic> json) =
       _$_Coordinate.fromJson;

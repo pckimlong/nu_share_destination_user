@@ -7,4 +7,5 @@ import 'driver_entity.dart';
 
 abstract class IDriverRepository {
   Stream<Either<DriverFailure, fic.IList<DriverEntity>>> watchAllNearby();
+  Stream<Either<DriverFailure, DriverEntity>> watchOne(String driverId);
 }

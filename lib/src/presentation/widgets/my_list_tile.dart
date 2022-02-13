@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../constants/app_styles.dart';
+import '../_core/app_styles.dart';
 
 class MyListTile extends StatelessWidget {
   const MyListTile({

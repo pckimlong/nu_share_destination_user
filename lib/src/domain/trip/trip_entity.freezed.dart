@@ -23,7 +23,7 @@ class _$TripEntityTearOff {
       required TripStatus status,
       required PassengerEntity passenger1,
       required Option<PassengerEntity> passenger2,
-      required Option<DriverEntity> driver,
+      required Option<String> driverId,
       required Option<DateTime> startedTime,
       required Option<DateTime> endedTime}) {
     return _TripEntity(
@@ -31,7 +31,7 @@ class _$TripEntityTearOff {
       status: status,
       passenger1: passenger1,
       passenger2: passenger2,
-      driver: driver,
+      driverId: driverId,
       startedTime: startedTime,
       endedTime: endedTime,
     );
@@ -56,8 +56,10 @@ mixin _$TripEntity {
   Option<PassengerEntity> get passenger2 => throw _privateConstructorUsedError;
 
   /// This will be none() when trip entity created
-  /// And in picking state the driver will be some
-  Option<DriverEntity> get driver => throw _privateConstructorUsedError;
+  /// And in picking state the driver will be some()
+  /// This also use to update driver doc like there visible state when
+  /// passenger1 allow share is toggle
+  Option<String> get driverId => throw _privateConstructorUsedError;
 
   /// Started time since taxi riding to pick passenger
   /// This will be update to some() when taxi accepted and start picking up
@@ -83,7 +85,7 @@ abstract class $TripEntityCopyWith<$Res> {
       TripStatus status,
       PassengerEntity passenger1,
       Option<PassengerEntity> passenger2,
-      Option<DriverEntity> driver,
+      Option<String> driverId,
       Option<DateTime> startedTime,
       Option<DateTime> endedTime});
 
@@ -105,7 +107,7 @@ class _$TripEntityCopyWithImpl<$Res> implements $TripEntityCopyWith<$Res> {
     Object? status = freezed,
     Object? passenger1 = freezed,
     Object? passenger2 = freezed,
-    Object? driver = freezed,
+    Object? driverId = freezed,
     Object? startedTime = freezed,
     Object? endedTime = freezed,
   }) {
@@ -126,10 +128,10 @@ class _$TripEntityCopyWithImpl<$Res> implements $TripEntityCopyWith<$Res> {
           ? _value.passenger2
           : passenger2 // ignore: cast_nullable_to_non_nullable
               as Option<PassengerEntity>,
-      driver: driver == freezed
-          ? _value.driver
-          : driver // ignore: cast_nullable_to_non_nullable
-              as Option<DriverEntity>,
+      driverId: driverId == freezed
+          ? _value.driverId
+          : driverId // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
       startedTime: startedTime == freezed
           ? _value.startedTime
           : startedTime // ignore: cast_nullable_to_non_nullable
@@ -167,7 +169,7 @@ abstract class _$TripEntityCopyWith<$Res> implements $TripEntityCopyWith<$Res> {
       TripStatus status,
       PassengerEntity passenger1,
       Option<PassengerEntity> passenger2,
-      Option<DriverEntity> driver,
+      Option<String> driverId,
       Option<DateTime> startedTime,
       Option<DateTime> endedTime});
 
@@ -193,7 +195,7 @@ class __$TripEntityCopyWithImpl<$Res> extends _$TripEntityCopyWithImpl<$Res>
     Object? status = freezed,
     Object? passenger1 = freezed,
     Object? passenger2 = freezed,
-    Object? driver = freezed,
+    Object? driverId = freezed,
     Object? startedTime = freezed,
     Object? endedTime = freezed,
   }) {
@@ -214,10 +216,10 @@ class __$TripEntityCopyWithImpl<$Res> extends _$TripEntityCopyWithImpl<$Res>
           ? _value.passenger2
           : passenger2 // ignore: cast_nullable_to_non_nullable
               as Option<PassengerEntity>,
-      driver: driver == freezed
-          ? _value.driver
-          : driver // ignore: cast_nullable_to_non_nullable
-              as Option<DriverEntity>,
+      driverId: driverId == freezed
+          ? _value.driverId
+          : driverId // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
       startedTime: startedTime == freezed
           ? _value.startedTime
           : startedTime // ignore: cast_nullable_to_non_nullable
@@ -238,7 +240,7 @@ class _$_TripEntity extends _TripEntity with DiagnosticableTreeMixin {
       required this.status,
       required this.passenger1,
       required this.passenger2,
-      required this.driver,
+      required this.driverId,
       required this.startedTime,
       required this.endedTime})
       : super._();
@@ -261,8 +263,10 @@ class _$_TripEntity extends _TripEntity with DiagnosticableTreeMixin {
   @override
 
   /// This will be none() when trip entity created
-  /// And in picking state the driver will be some
-  final Option<DriverEntity> driver;
+  /// And in picking state the driver will be some()
+  /// This also use to update driver doc like there visible state when
+  /// passenger1 allow share is toggle
+  final Option<String> driverId;
   @override
 
   /// Started time since taxi riding to pick passenger
@@ -277,7 +281,7 @@ class _$_TripEntity extends _TripEntity with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TripEntity(id: $id, status: $status, passenger1: $passenger1, passenger2: $passenger2, driver: $driver, startedTime: $startedTime, endedTime: $endedTime)';
+    return 'TripEntity(id: $id, status: $status, passenger1: $passenger1, passenger2: $passenger2, driverId: $driverId, startedTime: $startedTime, endedTime: $endedTime)';
   }
 
   @override
@@ -289,7 +293,7 @@ class _$_TripEntity extends _TripEntity with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('passenger1', passenger1))
       ..add(DiagnosticsProperty('passenger2', passenger2))
-      ..add(DiagnosticsProperty('driver', driver))
+      ..add(DiagnosticsProperty('driverId', driverId))
       ..add(DiagnosticsProperty('startedTime', startedTime))
       ..add(DiagnosticsProperty('endedTime', endedTime));
   }
@@ -305,7 +309,7 @@ class _$_TripEntity extends _TripEntity with DiagnosticableTreeMixin {
                 .equals(other.passenger1, passenger1) &&
             const DeepCollectionEquality()
                 .equals(other.passenger2, passenger2) &&
-            const DeepCollectionEquality().equals(other.driver, driver) &&
+            const DeepCollectionEquality().equals(other.driverId, driverId) &&
             const DeepCollectionEquality()
                 .equals(other.startedTime, startedTime) &&
             const DeepCollectionEquality().equals(other.endedTime, endedTime));
@@ -318,7 +322,7 @@ class _$_TripEntity extends _TripEntity with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(passenger1),
       const DeepCollectionEquality().hash(passenger2),
-      const DeepCollectionEquality().hash(driver),
+      const DeepCollectionEquality().hash(driverId),
       const DeepCollectionEquality().hash(startedTime),
       const DeepCollectionEquality().hash(endedTime));
 
@@ -334,7 +338,7 @@ abstract class _TripEntity extends TripEntity {
       required TripStatus status,
       required PassengerEntity passenger1,
       required Option<PassengerEntity> passenger2,
-      required Option<DriverEntity> driver,
+      required Option<String> driverId,
       required Option<DateTime> startedTime,
       required Option<DateTime> endedTime}) = _$_TripEntity;
   _TripEntity._() : super._();
@@ -357,8 +361,10 @@ abstract class _TripEntity extends TripEntity {
   @override
 
   /// This will be none() when trip entity created
-  /// And in picking state the driver will be some
-  Option<DriverEntity> get driver;
+  /// And in picking state the driver will be some()
+  /// This also use to update driver doc like there visible state when
+  /// passenger1 allow share is toggle
+  Option<String> get driverId;
   @override
 
   /// Started time since taxi riding to pick passenger
@@ -720,10 +726,24 @@ abstract class _PassengerEntity implements PassengerEntity {
 class _$TripStatusTearOff {
   const _$TripStatusTearOff();
 
-  _TripStatus call(String value) {
-    return _TripStatus(
-      value,
-    );
+  _Booking booking() {
+    return _Booking();
+  }
+
+  _Cancelled cancelled() {
+    return _Cancelled();
+  }
+
+  _Picking picking() {
+    return _Picking();
+  }
+
+  _InProgress inProgress() {
+    return _InProgress();
+  }
+
+  _Finished finished() {
+    return _Finished();
   }
 }
 
@@ -732,10 +752,61 @@ const $TripStatus = _$TripStatusTearOff();
 
 /// @nodoc
 mixin _$TripStatus {
-  String get value => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $TripStatusCopyWith<TripStatus> get copyWith =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() booking,
+    required TResult Function() cancelled,
+    required TResult Function() picking,
+    required TResult Function() inProgress,
+    required TResult Function() finished,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? booking,
+    TResult Function()? cancelled,
+    TResult Function()? picking,
+    TResult Function()? inProgress,
+    TResult Function()? finished,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? booking,
+    TResult Function()? cancelled,
+    TResult Function()? picking,
+    TResult Function()? inProgress,
+    TResult Function()? finished,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Booking value) booking,
+    required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_Picking value) picking,
+    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(_Finished value) finished,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Booking value)? booking,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Picking value)? picking,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Finished value)? finished,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Booking value)? booking,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Picking value)? picking,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Finished value)? finished,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -744,7 +815,6 @@ abstract class $TripStatusCopyWith<$Res> {
   factory $TripStatusCopyWith(
           TripStatus value, $Res Function(TripStatus) then) =
       _$TripStatusCopyWithImpl<$Res>;
-  $Res call({String value});
 }
 
 /// @nodoc
@@ -754,98 +824,637 @@ class _$TripStatusCopyWithImpl<$Res> implements $TripStatusCopyWith<$Res> {
   final TripStatus _value;
   // ignore: unused_field
   final $Res Function(TripStatus) _then;
-
-  @override
-  $Res call({
-    Object? value = freezed,
-  }) {
-    return _then(_value.copyWith(
-      value: value == freezed
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$TripStatusCopyWith<$Res> implements $TripStatusCopyWith<$Res> {
-  factory _$TripStatusCopyWith(
-          _TripStatus value, $Res Function(_TripStatus) then) =
-      __$TripStatusCopyWithImpl<$Res>;
-  @override
-  $Res call({String value});
+abstract class _$BookingCopyWith<$Res> {
+  factory _$BookingCopyWith(_Booking value, $Res Function(_Booking) then) =
+      __$BookingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$TripStatusCopyWithImpl<$Res> extends _$TripStatusCopyWithImpl<$Res>
-    implements _$TripStatusCopyWith<$Res> {
-  __$TripStatusCopyWithImpl(
-      _TripStatus _value, $Res Function(_TripStatus) _then)
-      : super(_value, (v) => _then(v as _TripStatus));
+class __$BookingCopyWithImpl<$Res> extends _$TripStatusCopyWithImpl<$Res>
+    implements _$BookingCopyWith<$Res> {
+  __$BookingCopyWithImpl(_Booking _value, $Res Function(_Booking) _then)
+      : super(_value, (v) => _then(v as _Booking));
 
   @override
-  _TripStatus get _value => super._value as _TripStatus;
-
-  @override
-  $Res call({
-    Object? value = freezed,
-  }) {
-    return _then(_TripStatus(
-      value == freezed
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+  _Booking get _value => super._value as _Booking;
 }
 
 /// @nodoc
 
-class _$_TripStatus with DiagnosticableTreeMixin implements _TripStatus {
-  _$_TripStatus(this.value);
-
-  @override
-  final String value;
+class _$_Booking with DiagnosticableTreeMixin implements _Booking {
+  _$_Booking();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TripStatus(value: $value)';
+    return 'TripStatus.booking()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TripStatus'))
-      ..add(DiagnosticsProperty('value', value));
+    properties..add(DiagnosticsProperty('type', 'TripStatus.booking'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _TripStatus &&
-            const DeepCollectionEquality().equals(other.value, value));
+        (other.runtimeType == runtimeType && other is _Booking);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => runtimeType.hashCode;
 
-  @JsonKey(ignore: true)
   @override
-  _$TripStatusCopyWith<_TripStatus> get copyWith =>
-      __$TripStatusCopyWithImpl<_TripStatus>(this, _$identity);
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() booking,
+    required TResult Function() cancelled,
+    required TResult Function() picking,
+    required TResult Function() inProgress,
+    required TResult Function() finished,
+  }) {
+    return booking();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? booking,
+    TResult Function()? cancelled,
+    TResult Function()? picking,
+    TResult Function()? inProgress,
+    TResult Function()? finished,
+  }) {
+    return booking?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? booking,
+    TResult Function()? cancelled,
+    TResult Function()? picking,
+    TResult Function()? inProgress,
+    TResult Function()? finished,
+    required TResult orElse(),
+  }) {
+    if (booking != null) {
+      return booking();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Booking value) booking,
+    required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_Picking value) picking,
+    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(_Finished value) finished,
+  }) {
+    return booking(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Booking value)? booking,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Picking value)? picking,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Finished value)? finished,
+  }) {
+    return booking?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Booking value)? booking,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Picking value)? picking,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Finished value)? finished,
+    required TResult orElse(),
+  }) {
+    if (booking != null) {
+      return booking(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _TripStatus implements TripStatus {
-  factory _TripStatus(String value) = _$_TripStatus;
+abstract class _Booking implements TripStatus {
+  factory _Booking() = _$_Booking;
+}
+
+/// @nodoc
+abstract class _$CancelledCopyWith<$Res> {
+  factory _$CancelledCopyWith(
+          _Cancelled value, $Res Function(_Cancelled) then) =
+      __$CancelledCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$CancelledCopyWithImpl<$Res> extends _$TripStatusCopyWithImpl<$Res>
+    implements _$CancelledCopyWith<$Res> {
+  __$CancelledCopyWithImpl(_Cancelled _value, $Res Function(_Cancelled) _then)
+      : super(_value, (v) => _then(v as _Cancelled));
 
   @override
-  String get value;
+  _Cancelled get _value => super._value as _Cancelled;
+}
+
+/// @nodoc
+
+class _$_Cancelled with DiagnosticableTreeMixin implements _Cancelled {
+  _$_Cancelled();
+
   @override
-  @JsonKey(ignore: true)
-  _$TripStatusCopyWith<_TripStatus> get copyWith =>
-      throw _privateConstructorUsedError;
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'TripStatus.cancelled()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'TripStatus.cancelled'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Cancelled);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() booking,
+    required TResult Function() cancelled,
+    required TResult Function() picking,
+    required TResult Function() inProgress,
+    required TResult Function() finished,
+  }) {
+    return cancelled();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? booking,
+    TResult Function()? cancelled,
+    TResult Function()? picking,
+    TResult Function()? inProgress,
+    TResult Function()? finished,
+  }) {
+    return cancelled?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? booking,
+    TResult Function()? cancelled,
+    TResult Function()? picking,
+    TResult Function()? inProgress,
+    TResult Function()? finished,
+    required TResult orElse(),
+  }) {
+    if (cancelled != null) {
+      return cancelled();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Booking value) booking,
+    required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_Picking value) picking,
+    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(_Finished value) finished,
+  }) {
+    return cancelled(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Booking value)? booking,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Picking value)? picking,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Finished value)? finished,
+  }) {
+    return cancelled?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Booking value)? booking,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Picking value)? picking,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Finished value)? finished,
+    required TResult orElse(),
+  }) {
+    if (cancelled != null) {
+      return cancelled(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Cancelled implements TripStatus {
+  factory _Cancelled() = _$_Cancelled;
+}
+
+/// @nodoc
+abstract class _$PickingCopyWith<$Res> {
+  factory _$PickingCopyWith(_Picking value, $Res Function(_Picking) then) =
+      __$PickingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$PickingCopyWithImpl<$Res> extends _$TripStatusCopyWithImpl<$Res>
+    implements _$PickingCopyWith<$Res> {
+  __$PickingCopyWithImpl(_Picking _value, $Res Function(_Picking) _then)
+      : super(_value, (v) => _then(v as _Picking));
+
+  @override
+  _Picking get _value => super._value as _Picking;
+}
+
+/// @nodoc
+
+class _$_Picking with DiagnosticableTreeMixin implements _Picking {
+  _$_Picking();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'TripStatus.picking()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'TripStatus.picking'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Picking);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() booking,
+    required TResult Function() cancelled,
+    required TResult Function() picking,
+    required TResult Function() inProgress,
+    required TResult Function() finished,
+  }) {
+    return picking();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? booking,
+    TResult Function()? cancelled,
+    TResult Function()? picking,
+    TResult Function()? inProgress,
+    TResult Function()? finished,
+  }) {
+    return picking?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? booking,
+    TResult Function()? cancelled,
+    TResult Function()? picking,
+    TResult Function()? inProgress,
+    TResult Function()? finished,
+    required TResult orElse(),
+  }) {
+    if (picking != null) {
+      return picking();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Booking value) booking,
+    required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_Picking value) picking,
+    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(_Finished value) finished,
+  }) {
+    return picking(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Booking value)? booking,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Picking value)? picking,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Finished value)? finished,
+  }) {
+    return picking?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Booking value)? booking,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Picking value)? picking,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Finished value)? finished,
+    required TResult orElse(),
+  }) {
+    if (picking != null) {
+      return picking(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Picking implements TripStatus {
+  factory _Picking() = _$_Picking;
+}
+
+/// @nodoc
+abstract class _$InProgressCopyWith<$Res> {
+  factory _$InProgressCopyWith(
+          _InProgress value, $Res Function(_InProgress) then) =
+      __$InProgressCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$InProgressCopyWithImpl<$Res> extends _$TripStatusCopyWithImpl<$Res>
+    implements _$InProgressCopyWith<$Res> {
+  __$InProgressCopyWithImpl(
+      _InProgress _value, $Res Function(_InProgress) _then)
+      : super(_value, (v) => _then(v as _InProgress));
+
+  @override
+  _InProgress get _value => super._value as _InProgress;
+}
+
+/// @nodoc
+
+class _$_InProgress with DiagnosticableTreeMixin implements _InProgress {
+  _$_InProgress();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'TripStatus.inProgress()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'TripStatus.inProgress'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _InProgress);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() booking,
+    required TResult Function() cancelled,
+    required TResult Function() picking,
+    required TResult Function() inProgress,
+    required TResult Function() finished,
+  }) {
+    return inProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? booking,
+    TResult Function()? cancelled,
+    TResult Function()? picking,
+    TResult Function()? inProgress,
+    TResult Function()? finished,
+  }) {
+    return inProgress?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? booking,
+    TResult Function()? cancelled,
+    TResult Function()? picking,
+    TResult Function()? inProgress,
+    TResult Function()? finished,
+    required TResult orElse(),
+  }) {
+    if (inProgress != null) {
+      return inProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Booking value) booking,
+    required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_Picking value) picking,
+    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(_Finished value) finished,
+  }) {
+    return inProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Booking value)? booking,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Picking value)? picking,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Finished value)? finished,
+  }) {
+    return inProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Booking value)? booking,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Picking value)? picking,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Finished value)? finished,
+    required TResult orElse(),
+  }) {
+    if (inProgress != null) {
+      return inProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InProgress implements TripStatus {
+  factory _InProgress() = _$_InProgress;
+}
+
+/// @nodoc
+abstract class _$FinishedCopyWith<$Res> {
+  factory _$FinishedCopyWith(_Finished value, $Res Function(_Finished) then) =
+      __$FinishedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$FinishedCopyWithImpl<$Res> extends _$TripStatusCopyWithImpl<$Res>
+    implements _$FinishedCopyWith<$Res> {
+  __$FinishedCopyWithImpl(_Finished _value, $Res Function(_Finished) _then)
+      : super(_value, (v) => _then(v as _Finished));
+
+  @override
+  _Finished get _value => super._value as _Finished;
+}
+
+/// @nodoc
+
+class _$_Finished with DiagnosticableTreeMixin implements _Finished {
+  _$_Finished();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'TripStatus.finished()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'TripStatus.finished'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Finished);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() booking,
+    required TResult Function() cancelled,
+    required TResult Function() picking,
+    required TResult Function() inProgress,
+    required TResult Function() finished,
+  }) {
+    return finished();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? booking,
+    TResult Function()? cancelled,
+    TResult Function()? picking,
+    TResult Function()? inProgress,
+    TResult Function()? finished,
+  }) {
+    return finished?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? booking,
+    TResult Function()? cancelled,
+    TResult Function()? picking,
+    TResult Function()? inProgress,
+    TResult Function()? finished,
+    required TResult orElse(),
+  }) {
+    if (finished != null) {
+      return finished();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Booking value) booking,
+    required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_Picking value) picking,
+    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(_Finished value) finished,
+  }) {
+    return finished(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Booking value)? booking,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Picking value)? picking,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Finished value)? finished,
+  }) {
+    return finished?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Booking value)? booking,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Picking value)? picking,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_Finished value)? finished,
+    required TResult orElse(),
+  }) {
+    if (finished != null) {
+      return finished(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Finished implements TripStatus {
+  factory _Finished() = _$_Finished;
 }

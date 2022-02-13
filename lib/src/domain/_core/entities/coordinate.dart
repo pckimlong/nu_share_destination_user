@@ -10,7 +10,7 @@ class Coordinate with _$Coordinate {
   static const latitudeKey = "latitude";
   static const longitudeKey = "longitude";
 
-  factory Coordinate(
+  const factory Coordinate(
     @JsonKey(name: Coordinate.latitudeKey) double latitude,
     @JsonKey(name: Coordinate.longitudeKey) double longitude,
   ) = _Coordinate;

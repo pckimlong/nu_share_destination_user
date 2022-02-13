@@ -23,13 +23,15 @@ class _$DriverEntityTearOff {
       required String fullname,
       required bool visible,
       required LocationDetail location,
-      required VehicleTypes vehicleType}) {
+      required VehicleTypes vehicleType,
+      required Option<String> inProgressTrip}) {
     return _DriverEntity(
       id: id,
       fullname: fullname,
       visible: visible,
       location: location,
       vehicleType: vehicleType,
+      inProgressTrip: inProgressTrip,
     );
   }
 }
@@ -42,10 +44,33 @@ mixin _$DriverEntity {
   String? get id => throw _privateConstructorUsedError;
   String get fullname => throw _privateConstructorUsedError;
 
-  /// Make driver visible to map or not
+  /// Make driver visible to map or not. There are two way to toggle this:
+  /// - one is when driver turn it off or on manualy
+  /// - second is automatic turn off or on when driver is in the trip. this
+  /// will update from passenger entity call
+  /// When trip finished (if available) this will update to true automatically
+  /// unless driver turn it of manualy
   bool get visible => throw _privateConstructorUsedError;
+
+  /// This is the location of driver. To improve app performance and battery
+  /// This only update when meet the condition, not update everytime
+  /// My idea is to update it every defined meter and also when there are any
+  /// passenger nearby. This can accomplish by having a method to watch for all
+  /// nearby passenger request. If there is any nearby, do update the location.
+  /// This will visible to those passenger
   LocationDetail get location => throw _privateConstructorUsedError;
+
+  /// Vihicle type of taxi.
+  ///
+  /// This will be use to query in database. Allow user to find correct vehicle
+  /// type they want, also help to find trip request which need this type of
+  /// vehicle
   VehicleTypes get vehicleType => throw _privateConstructorUsedError;
+
+  /// This return some() when driver is attach to a trip, mean he is accepted
+  /// a trip from user request. When trip ended this will update to none();
+  /// This will be use to fetch the trip request entity to show on screen
+  Option<String> get inProgressTrip => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DriverEntityCopyWith<DriverEntity> get copyWith =>
@@ -62,7 +87,8 @@ abstract class $DriverEntityCopyWith<$Res> {
       String fullname,
       bool visible,
       LocationDetail location,
-      VehicleTypes vehicleType});
+      VehicleTypes vehicleType,
+      Option<String> inProgressTrip});
 
   $LocationDetailCopyWith<$Res> get location;
 }
@@ -82,6 +108,7 @@ class _$DriverEntityCopyWithImpl<$Res> implements $DriverEntityCopyWith<$Res> {
     Object? visible = freezed,
     Object? location = freezed,
     Object? vehicleType = freezed,
+    Object? inProgressTrip = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -104,6 +131,10 @@ class _$DriverEntityCopyWithImpl<$Res> implements $DriverEntityCopyWith<$Res> {
           ? _value.vehicleType
           : vehicleType // ignore: cast_nullable_to_non_nullable
               as VehicleTypes,
+      inProgressTrip: inProgressTrip == freezed
+          ? _value.inProgressTrip
+          : inProgressTrip // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
     ));
   }
 
@@ -127,7 +158,8 @@ abstract class _$DriverEntityCopyWith<$Res>
       String fullname,
       bool visible,
       LocationDetail location,
-      VehicleTypes vehicleType});
+      VehicleTypes vehicleType,
+      Option<String> inProgressTrip});
 
   @override
   $LocationDetailCopyWith<$Res> get location;
@@ -150,6 +182,7 @@ class __$DriverEntityCopyWithImpl<$Res> extends _$DriverEntityCopyWithImpl<$Res>
     Object? visible = freezed,
     Object? location = freezed,
     Object? vehicleType = freezed,
+    Object? inProgressTrip = freezed,
   }) {
     return _then(_DriverEntity(
       id: id == freezed
@@ -172,19 +205,25 @@ class __$DriverEntityCopyWithImpl<$Res> extends _$DriverEntityCopyWithImpl<$Res>
           ? _value.vehicleType
           : vehicleType // ignore: cast_nullable_to_non_nullable
               as VehicleTypes,
+      inProgressTrip: inProgressTrip == freezed
+          ? _value.inProgressTrip
+          : inProgressTrip // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_DriverEntity implements _DriverEntity {
+class _$_DriverEntity extends _DriverEntity {
   _$_DriverEntity(
       {required this.id,
       required this.fullname,
       required this.visible,
       required this.location,
-      required this.vehicleType});
+      required this.vehicleType,
+      required this.inProgressTrip})
+      : super._();
 
   @override
   final String? id;
@@ -192,16 +231,40 @@ class _$_DriverEntity implements _DriverEntity {
   final String fullname;
   @override
 
-  /// Make driver visible to map or not
+  /// Make driver visible to map or not. There are two way to toggle this:
+  /// - one is when driver turn it off or on manualy
+  /// - second is automatic turn off or on when driver is in the trip. this
+  /// will update from passenger entity call
+  /// When trip finished (if available) this will update to true automatically
+  /// unless driver turn it of manualy
   final bool visible;
   @override
+
+  /// This is the location of driver. To improve app performance and battery
+  /// This only update when meet the condition, not update everytime
+  /// My idea is to update it every defined meter and also when there are any
+  /// passenger nearby. This can accomplish by having a method to watch for all
+  /// nearby passenger request. If there is any nearby, do update the location.
+  /// This will visible to those passenger
   final LocationDetail location;
   @override
+
+  /// Vihicle type of taxi.
+  ///
+  /// This will be use to query in database. Allow user to find correct vehicle
+  /// type they want, also help to find trip request which need this type of
+  /// vehicle
   final VehicleTypes vehicleType;
+  @override
+
+  /// This return some() when driver is attach to a trip, mean he is accepted
+  /// a trip from user request. When trip ended this will update to none();
+  /// This will be use to fetch the trip request entity to show on screen
+  final Option<String> inProgressTrip;
 
   @override
   String toString() {
-    return 'DriverEntity(id: $id, fullname: $fullname, visible: $visible, location: $location, vehicleType: $vehicleType)';
+    return 'DriverEntity(id: $id, fullname: $fullname, visible: $visible, location: $location, vehicleType: $vehicleType, inProgressTrip: $inProgressTrip)';
   }
 
   @override
@@ -214,7 +277,9 @@ class _$_DriverEntity implements _DriverEntity {
             const DeepCollectionEquality().equals(other.visible, visible) &&
             const DeepCollectionEquality().equals(other.location, location) &&
             const DeepCollectionEquality()
-                .equals(other.vehicleType, vehicleType));
+                .equals(other.vehicleType, vehicleType) &&
+            const DeepCollectionEquality()
+                .equals(other.inProgressTrip, inProgressTrip));
   }
 
   @override
@@ -224,7 +289,8 @@ class _$_DriverEntity implements _DriverEntity {
       const DeepCollectionEquality().hash(fullname),
       const DeepCollectionEquality().hash(visible),
       const DeepCollectionEquality().hash(location),
-      const DeepCollectionEquality().hash(vehicleType));
+      const DeepCollectionEquality().hash(vehicleType),
+      const DeepCollectionEquality().hash(inProgressTrip));
 
   @JsonKey(ignore: true)
   @override
@@ -232,13 +298,15 @@ class _$_DriverEntity implements _DriverEntity {
       __$DriverEntityCopyWithImpl<_DriverEntity>(this, _$identity);
 }
 
-abstract class _DriverEntity implements DriverEntity {
+abstract class _DriverEntity extends DriverEntity {
   factory _DriverEntity(
       {required String? id,
       required String fullname,
       required bool visible,
       required LocationDetail location,
-      required VehicleTypes vehicleType}) = _$_DriverEntity;
+      required VehicleTypes vehicleType,
+      required Option<String> inProgressTrip}) = _$_DriverEntity;
+  _DriverEntity._() : super._();
 
   @override
   String? get id;
@@ -246,12 +314,36 @@ abstract class _DriverEntity implements DriverEntity {
   String get fullname;
   @override
 
-  /// Make driver visible to map or not
+  /// Make driver visible to map or not. There are two way to toggle this:
+  /// - one is when driver turn it off or on manualy
+  /// - second is automatic turn off or on when driver is in the trip. this
+  /// will update from passenger entity call
+  /// When trip finished (if available) this will update to true automatically
+  /// unless driver turn it of manualy
   bool get visible;
   @override
+
+  /// This is the location of driver. To improve app performance and battery
+  /// This only update when meet the condition, not update everytime
+  /// My idea is to update it every defined meter and also when there are any
+  /// passenger nearby. This can accomplish by having a method to watch for all
+  /// nearby passenger request. If there is any nearby, do update the location.
+  /// This will visible to those passenger
   LocationDetail get location;
   @override
+
+  /// Vihicle type of taxi.
+  ///
+  /// This will be use to query in database. Allow user to find correct vehicle
+  /// type they want, also help to find trip request which need this type of
+  /// vehicle
   VehicleTypes get vehicleType;
+  @override
+
+  /// This return some() when driver is attach to a trip, mean he is accepted
+  /// a trip from user request. When trip ended this will update to none();
+  /// This will be use to fetch the trip request entity to show on screen
+  Option<String> get inProgressTrip;
   @override
   @JsonKey(ignore: true)
   _$DriverEntityCopyWith<_DriverEntity> get copyWith =>

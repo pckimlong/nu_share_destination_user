@@ -14,26 +14,26 @@ import 'package:auto_route/auto_route.dart' as _i17;
 import 'package:flutter/material.dart' as _i22;
 
 import '../../domain/_core/enums/vehicle_types.dart' as _i23;
-import '../module/account/account_page.dart' as _i21;
-import '../module/account/edit/edit_profile_page.dart' as _i4;
-import '../module/account/register/user_register_page.dart' as _i3;
-import '../module/auth/sign_in_page.dart' as _i2;
-import '../module/contact_us/contact_us_page.dart' as _i13;
-import '../module/history/detail/history_detail_page.dart' as _i19;
-import '../module/history/list/history_list_page.dart' as _i18;
-import '../module/home/home_page.dart' as _i16;
-import '../module/inbox/list/inbox_list_page.dart' as _i20;
-import '../module/message/list/message_list_page.dart' as _i14;
-import '../module/payment/list/payment_list_page.dart' as _i9;
-import '../module/payment/picker/payment_picker_page.dart' as _i10;
-import '../module/root/root_page.dart' as _i15;
-import '../module/saved_place/list/saved_places_list_page.dart' as _i11;
-import '../module/saved_place/picker/saved_places_picker_page.dart' as _i12;
-import '../module/setting/setting_page.dart' as _i8;
-import '../module/splash/splash_page.dart' as _i1;
-import '../module/trip/booking/trip_booking_page.dart' as _i5;
-import '../module/voucher/list/voucher_list_page.dart' as _i6;
-import '../module/voucher/picker/voucher_picker_page.dart' as _i7;
+import '../modules/account/account_page.dart' as _i21;
+import '../modules/account/edit/edit_profile_page.dart' as _i4;
+import '../modules/account/register/user_register_page.dart' as _i3;
+import '../modules/auth/sign_in_page.dart' as _i2;
+import '../modules/contact_us/contact_us_page.dart' as _i13;
+import '../modules/history/detail/history_detail_page.dart' as _i19;
+import '../modules/history/list/history_list_page.dart' as _i18;
+import '../modules/home/home_page.dart' as _i16;
+import '../modules/inbox/list/inbox_list_page.dart' as _i20;
+import '../modules/message/list/message_list_page.dart' as _i14;
+import '../modules/payment/list/payment_list_page.dart' as _i9;
+import '../modules/payment/picker/payment_picker_page.dart' as _i10;
+import '../modules/root/root_page.dart' as _i15;
+import '../modules/saved_place/list/saved_places_list_page.dart' as _i11;
+import '../modules/saved_place/picker/saved_places_picker_page.dart' as _i12;
+import '../modules/setting/setting_page.dart' as _i8;
+import '../modules/splash/splash_page.dart' as _i1;
+import '../modules/trip/booking/trip_booking_page.dart' as _i5;
+import '../modules/voucher/list/voucher_list_page.dart' as _i6;
+import '../modules/voucher/picker/voucher_picker_page.dart' as _i7;
 
 class AppRouter extends _i17.RootStackRouter {
   AppRouter([_i22.GlobalKey<_i22.NavigatorState>? navigatorKey])

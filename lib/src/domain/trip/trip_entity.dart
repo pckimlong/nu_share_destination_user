@@ -1,11 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/location_detail.dart';
 import 'package:nu_share_destination_user/src/domain/_core/entities/location_point_detail.dart';
 import 'package:nu_share_destination_user/src/domain/user/user_entity.dart';
-
-import '../driver/driver_entity.dart';
 
 part 'trip_entity.freezed.dart';
 
@@ -27,8 +24,10 @@ class TripEntity with _$TripEntity {
     required Option<PassengerEntity> passenger2,
 
     /// This will be none() when trip entity created
-    /// And in picking state the driver will be some
-    required Option<DriverEntity> driver,
+    /// And in picking state the driver will be some()
+    /// This also use to update driver doc like there visible state when
+    /// passenger1 allow share is toggle
+    required Option<String> driverId,
 
     /// Started time since taxi riding to pick passenger
     /// This will be update to some() when taxi accepted and start picking up
@@ -39,14 +38,6 @@ class TripEntity with _$TripEntity {
     /// the trip
     required Option<DateTime> endedTime,
   }) = _TripEntity;
-
-  /// Return location to show on map, also spead, heading...
-  Option<LocationDetail> get location {
-    return driver.fold(
-      () => none(),
-      (a) => some(a.location),
-    );
-  }
 
   bool get allowSharing => passenger1.allowToShare;
 
@@ -60,7 +51,7 @@ class TripEntity with _$TripEntity {
         status: TripStatus.booking(),
         passenger1: passenger,
         passenger2: none(),
-        driver: none(),
+        driverId: none(),
         startedTime: none(),
         endedTime: none(),
       );
@@ -90,20 +81,18 @@ class PassengerEntity with _$PassengerEntity {
 
 @freezed
 class TripStatus with _$TripStatus {
-  factory TripStatus(String value) = _TripStatus;
-
   /// When user booking for taxi
-  factory TripStatus.booking() => TripStatus('Booking');
+  factory TripStatus.booking() = _Booking;
 
   /// When somehow cancelled trip
-  factory TripStatus.cancelled() => TripStatus('Cancelled');
+  factory TripStatus.cancelled() = _Cancelled;
 
   /// When taxi accepted and ride to pick passenger
-  factory TripStatus.picking() => TripStatus('Picking');
+  factory TripStatus.picking() = _Picking;
 
   /// When trip is in progress
-  factory TripStatus.inProgress() => TripStatus('In-Progress');
+  factory TripStatus.inProgress() = _InProgress;
 
   /// When trip has been finished
-  factory TripStatus.finished() => TripStatus('Finished');
+  factory TripStatus.finished() = _Finished;
 }
