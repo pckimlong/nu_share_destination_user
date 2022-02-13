@@ -27,7 +27,7 @@ class HomePage extends ConsumerWidget {
                   seatCount: 3,
                   onTap: () {
                     AutoRouter.of(context).push(
-                      TripBookingRoute(vehicleTypes: VehicleTypes.ricksaw),
+                      TripRoute(vehicleTypes: VehicleTypes.ricksaw),
                     );
                   },
                 ),

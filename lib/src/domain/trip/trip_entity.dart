@@ -95,4 +95,8 @@ class TripStatus with _$TripStatus {
 
   /// When trip has been finished
   factory TripStatus.finished() = _Finished;
+
+  //todo -- add expired when user wait for a long amount of time,
+  // this show retry button
+  // factory TripStatus.finished() = _Finished;
 }

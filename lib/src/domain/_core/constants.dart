@@ -10,4 +10,7 @@ abstract class DomainValues {
   static const initialMapPoint = Coordinate(11.56, 104.88);
   static const initialMapZoom = 16.0;
   static const mapPointZoom = 18.0;
+
+  // Vehicle static price
+
 }

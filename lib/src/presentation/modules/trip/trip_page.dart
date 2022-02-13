@@ -21,22 +21,24 @@ class TripPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final stateOption = ref.watch(tripController);
 
-    return stateOption.fold(
-      /// User not yet booking trip. This leave it none() option
-      /// So show trip booking page
-      () => TripBookingPage(vehicleTypes: vehicleTypes),
+    return Scaffold(
+      body: stateOption.fold(
+        /// User not yet booking trip. This leave it none() option
+        /// So show trip booking page
+        () => const TripBookingPage(),
 
-      /// After booked and create trip request. State option become some()
-      (tripState) {
-        /// Change the screen depening on status of trip
-        return tripState.tripStatus.when(
-          booking: () => const TripBookingStartPage(),
-          cancelled: () => const TripCancelPage(),
-          picking: () => const TripPickingPage(),
-          inProgress: () => const TripInProgressPage(),
-          finished: () => const TripFinishedPage(),
-        );
-      },
+        /// After booked and create trip request. State option become some()
+        (tripState) {
+          /// Change the screen depening on status of trip
+          return tripState.tripStatus.when(
+            booking: () => const TripBookingStartPage(),
+            cancelled: () => const TripCancelPage(),
+            picking: () => const TripPickingPage(),
+            inProgress: () => const TripInProgressPage(),
+            finished: () => const TripFinishedPage(),
+          );
+        },
+      ),
     );
   }
 }

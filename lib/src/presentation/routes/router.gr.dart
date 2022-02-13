@@ -31,7 +31,7 @@ import '../modules/saved_place/list/saved_places_list_page.dart' as _i11;
 import '../modules/saved_place/picker/saved_places_picker_page.dart' as _i12;
 import '../modules/setting/setting_page.dart' as _i8;
 import '../modules/splash/splash_page.dart' as _i1;
-import '../modules/trip/booking/trip_booking_page.dart' as _i5;
+import '../modules/trip/trip_page.dart' as _i5;
 import '../modules/voucher/list/voucher_list_page.dart' as _i6;
 import '../modules/voucher/picker/voucher_picker_page.dart' as _i7;
 
@@ -61,12 +61,11 @@ class AppRouter extends _i17.RootStackRouter {
       return _i17.CupertinoPageX<dynamic>(
           routeData: routeData, child: const _i4.EditProfilePage());
     },
-    TripBookingRoute.name: (routeData) {
-      final args = routeData.argsAs<TripBookingRouteArgs>();
+    TripRoute.name: (routeData) {
+      final args = routeData.argsAs<TripRouteArgs>();
       return _i17.CupertinoPageX<dynamic>(
           routeData: routeData,
-          child: _i5.TripBookingPage(
-              key: args.key, vehicleTypes: args.vehicleTypes));
+          child: _i5.TripPage(key: args.key, vehicleTypes: args.vehicleTypes));
     },
     VoucherListRoute.name: (routeData) {
       final args = routeData.argsAs<VoucherListRouteArgs>(
@@ -165,7 +164,7 @@ class AppRouter extends _i17.RootStackRouter {
         _i17.RouteConfig(SignInRoute.name, path: '/sign-in'),
         _i17.RouteConfig(UserRegisterRoute.name, path: '/register'),
         _i17.RouteConfig(EditProfileRoute.name, path: '/edit-profile'),
-        _i17.RouteConfig(TripBookingRoute.name, path: '/booking'),
+        _i17.RouteConfig(TripRoute.name, path: '/trip'),
         _i17.RouteConfig(VoucherListRoute.name, path: '/vouchers-list'),
         _i17.RouteConfig(VoucherPickerRoute.name, path: '/voucher-picker'),
         _i17.RouteConfig(SettingRoute.name, path: '/setting'),
@@ -257,18 +256,18 @@ class EditProfileRoute extends _i17.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.TripBookingPage]
-class TripBookingRoute extends _i17.PageRouteInfo<TripBookingRouteArgs> {
-  TripBookingRoute({_i22.Key? key, required _i23.VehicleTypes vehicleTypes})
-      : super(TripBookingRoute.name,
-            path: '/booking',
-            args: TripBookingRouteArgs(key: key, vehicleTypes: vehicleTypes));
+/// [_i5.TripPage]
+class TripRoute extends _i17.PageRouteInfo<TripRouteArgs> {
+  TripRoute({_i22.Key? key, required _i23.VehicleTypes vehicleTypes})
+      : super(TripRoute.name,
+            path: '/trip',
+            args: TripRouteArgs(key: key, vehicleTypes: vehicleTypes));
 
-  static const String name = 'TripBookingRoute';
+  static const String name = 'TripRoute';
 }
 
-class TripBookingRouteArgs {
-  const TripBookingRouteArgs({this.key, required this.vehicleTypes});
+class TripRouteArgs {
+  const TripRouteArgs({this.key, required this.vehicleTypes});
 
   final _i22.Key? key;
 
@@ -276,7 +275,7 @@ class TripBookingRouteArgs {
 
   @override
   String toString() {
-    return 'TripBookingRouteArgs{key: $key, vehicleTypes: $vehicleTypes}';
+    return 'TripRouteArgs{key: $key, vehicleTypes: $vehicleTypes}';
   }
 }
 
