@@ -1,7 +1,10 @@
 import 'package:dartz/dartz.dart';
+import 'package:fast_immutable_collections/fast_immutable_collections.dart'
+    as fic;
 import 'package:flutter/foundation.dart';
 import 'package:geocoding/geocoding.dart' as geo_coding;
 import 'package:geoflutterfire/geoflutterfire.dart';
+import 'package:google_place/google_place.dart' as gp;
 import 'package:location/location.dart';
 
 import 'package:nu_share_destination_user/src/domain/_core/entities/coordinate.dart';
@@ -10,15 +13,19 @@ import 'package:nu_share_destination_user/src/domain/_core/entities/location_poi
 import 'package:nu_share_destination_user/src/domain/_core/entities/location_point_detail.dart';
 import 'package:nu_share_destination_user/src/domain/location/i_location_service.dart';
 import 'package:nu_share_destination_user/src/domain/location/location_failure.dart';
+import 'package:nu_share_destination_user/src/domain/location/place_entity.dart';
+import 'package:nu_share_destination_user/src/infra/location/place_entity_mapper.dart';
 import 'mappers.dart';
 
 class LocationServiceImpl implements ILocationService {
   final Location _location;
   final Geoflutterfire _geoflutterfire;
+  final gp.GooglePlace _googlePlace;
 
   LocationServiceImpl(
     this._location,
     this._geoflutterfire,
+    this._googlePlace,
   );
 
   @override
@@ -134,5 +141,34 @@ class LocationServiceImpl implements ILocationService {
   @override
   void dispose() {
     // TODO: implement dispose
+  }
+
+  @override
+  Future<Either<LocationFailure, fic.IList<PlaceEntity>>> findAllPlaceByString(
+      String query) async {
+    try {
+      final result = await _googlePlace.search.getTextSearch(query);
+
+      if (result?.status == "REQUEST_DENIED") {
+        return const Left(LocationFailure.requestDenied());
+      }
+
+      final places = result?.results ?? [];
+
+      final results = places.map((place) => place.toDomain()).toIList();
+
+      return right(results);
+    } catch (e) {
+      return Left(LocationFailure.packageError(e.toString()));
+    }
+  }
+
+  @override
+  Future<LocationPoint> coordinateToLocationPoint(Coordinate coordinate) async {
+    final geoPoint = _geoflutterfire.point(
+      latitude: coordinate.latitude,
+      longitude: coordinate.longitude,
+    );
+    return geoPoint.toDomain();
   }
 }

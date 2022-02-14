@@ -52,5 +52,6 @@ final locationServiceProvider = Provider<ILocationService>((ref) {
   return LocationServiceImpl(
     ref.watch(locationProvider),
     ref.watch(geoFireProvider),
+    ref.watch(googlePlaceProvider),
   );
 });

@@ -48,7 +48,7 @@ class TripEntity with _$TripEntity {
   /// For first request
   factory TripEntity.create(PassengerEntity passenger) => TripEntity(
         id: none(),
-        status: TripStatus.booking(),
+        status: TripStatus.exploring(),
         passenger1: passenger,
         passenger2: none(),
         driverId: none(),
@@ -72,6 +72,7 @@ class PassengerEntity with _$PassengerEntity {
     required LocationPointDetail startedPositionDetail,
 
     /// Location where user want to go when booking
+    ///todo: multiple location - will update in the next version
     required Option<LocationPointDetail> expectedEndedPositionDetail,
 
     /// if user stop the trip in the middle way without reach destination
@@ -81,8 +82,9 @@ class PassengerEntity with _$PassengerEntity {
 
 @freezed
 class TripStatus with _$TripStatus {
-  /// When user booking for taxi
-  factory TripStatus.booking() = _Booking;
+  /// When user exploring for taxi. this state when taxi can see user location and
+  /// accepted
+  factory TripStatus.exploring() = _Exploring;
 
   /// When somehow cancelled trip
   factory TripStatus.cancelled() = _Cancelled;

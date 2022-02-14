@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nu_share_destination_user/src/domain/_core/errors.dart';
 
 import '../../domain/user/user_entity.dart';
 import '../../domain/user/user_failure.dart';
@@ -18,7 +19,8 @@ class UserState with _$UserState {
   factory UserState.initial() => UserState(user: none(), failureOption: none());
 
   /// Get the current user. if it is none() throw error
-  UserEntity get userOrCrash => user.getOrElse(() => throw Error());
+  UserEntity get userOrCrash =>
+      user.getOrElse(() => throw EmptyRequiredFieldError(user));
   bool get isLoggedIn => user.isSome();
   bool get hasError => failureOption.isSome();
 }

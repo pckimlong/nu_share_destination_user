@@ -1,8 +1,13 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
+import 'package:nu_share_destination_user/src/domain/_core/entities/location_point_detail.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/account/account_page.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/account/edit/edit_profile_page.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/account/register/user_register_page.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/auth/sign_in_page.dart';
+import 'package:nu_share_destination_user/src/presentation/modules/common/location_picker_map_page.dart';
+import 'package:nu_share_destination_user/src/presentation/modules/common/location_picker_page.dart';
+import 'package:nu_share_destination_user/src/presentation/modules/common/text_input_page.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/contact_us/contact_us_page.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/history/detail/history_detail_page.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/history/list/history_list_page.dart';
@@ -148,6 +153,22 @@ import 'package:nu_share_destination_user/src/presentation/modules/voucher/picke
           ],
         ),
       ],
+    ),
+
+    //! Utilz page------------------------------------
+    CupertinoRoute<String?>(
+      path: '/text-input',
+      page: TextInputPage,
+      fullscreenDialog: true,
+    ),
+    CupertinoRoute<Option<LocationPointDetail>?>(
+      path: '/location-detail-picker',
+      page: LocationPickerPage,
+      fullscreenDialog: true,
+    ),
+    CupertinoRoute<LocationPointDetail?>(
+      path: '/location-picker-map',
+      page: LocationPickerFromMapPage,
     ),
   ],
 )

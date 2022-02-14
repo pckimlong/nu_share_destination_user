@@ -40,15 +40,7 @@ class _ActionsTileBar extends ConsumerWidget {
             onTap: () {},
           ),
           const VerticalDivider(width: 0),
-          _Item(
-            icon: const Icon(
-              Icons.notes_outlined,
-              size: 36,
-              color: AppColors.primaryColor,
-            ),
-            label: 'Note to Driver',
-            onTap: () {},
-          ),
+          const _NoteToDriverButton(),
         ],
       ),
     );
@@ -69,15 +61,22 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width / 4 * 0.9,
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        children: [
-          icon,
-          const SizedBox(height: 6),
-          Text(label, style: Theme.of(context).textTheme.bodySmall),
-        ],
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: MediaQuery.of(context).size.width / 4 * 0.9,
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Column(
+          children: [
+            icon,
+            const SizedBox(height: 6),
+            Text(
+              label,
+              style: Theme.of(context).textTheme.bodySmall,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
       ),
     );
   }
