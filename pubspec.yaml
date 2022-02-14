@@ -85,7 +85,8 @@ dependencies:
   geolocator: ^8.1.1
   # Helper for retrive location
   geoflutterfire: ^3.0.2
-  geocoder: ^0.2.1
+  # use to translate address to point or point to address
+  geocoding: ^2.0.2
 
 
 dev_dependencies:

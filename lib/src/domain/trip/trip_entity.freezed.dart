@@ -391,7 +391,7 @@ class _$PassengerEntityTearOff {
       required String note,
       required bool allowToShare,
       required LocationPointDetail startedPositionDetail,
-      required LocationPointDetail expectedEndedPositionDetail,
+      required Option<LocationPointDetail> expectedEndedPositionDetail,
       required Option<LocationPointDetail> actualEndedPositionDetail}) {
     return _PassengerEntity(
       user: user,
@@ -422,7 +422,7 @@ mixin _$PassengerEntity {
       throw _privateConstructorUsedError;
 
   /// Location where user want to go when booking
-  LocationPointDetail get expectedEndedPositionDetail =>
+  Option<LocationPointDetail> get expectedEndedPositionDetail =>
       throw _privateConstructorUsedError;
 
   /// if user stop the trip in the middle way without reach destination
@@ -444,12 +444,11 @@ abstract class $PassengerEntityCopyWith<$Res> {
       String note,
       bool allowToShare,
       LocationPointDetail startedPositionDetail,
-      LocationPointDetail expectedEndedPositionDetail,
+      Option<LocationPointDetail> expectedEndedPositionDetail,
       Option<LocationPointDetail> actualEndedPositionDetail});
 
   $UserEntityCopyWith<$Res> get user;
   $LocationPointDetailCopyWith<$Res> get startedPositionDetail;
-  $LocationPointDetailCopyWith<$Res> get expectedEndedPositionDetail;
 }
 
 /// @nodoc
@@ -490,7 +489,7 @@ class _$PassengerEntityCopyWithImpl<$Res>
       expectedEndedPositionDetail: expectedEndedPositionDetail == freezed
           ? _value.expectedEndedPositionDetail
           : expectedEndedPositionDetail // ignore: cast_nullable_to_non_nullable
-              as LocationPointDetail,
+              as Option<LocationPointDetail>,
       actualEndedPositionDetail: actualEndedPositionDetail == freezed
           ? _value.actualEndedPositionDetail
           : actualEndedPositionDetail // ignore: cast_nullable_to_non_nullable
@@ -512,14 +511,6 @@ class _$PassengerEntityCopyWithImpl<$Res>
       return _then(_value.copyWith(startedPositionDetail: value));
     });
   }
-
-  @override
-  $LocationPointDetailCopyWith<$Res> get expectedEndedPositionDetail {
-    return $LocationPointDetailCopyWith<$Res>(
-        _value.expectedEndedPositionDetail, (value) {
-      return _then(_value.copyWith(expectedEndedPositionDetail: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -534,15 +525,13 @@ abstract class _$PassengerEntityCopyWith<$Res>
       String note,
       bool allowToShare,
       LocationPointDetail startedPositionDetail,
-      LocationPointDetail expectedEndedPositionDetail,
+      Option<LocationPointDetail> expectedEndedPositionDetail,
       Option<LocationPointDetail> actualEndedPositionDetail});
 
   @override
   $UserEntityCopyWith<$Res> get user;
   @override
   $LocationPointDetailCopyWith<$Res> get startedPositionDetail;
-  @override
-  $LocationPointDetailCopyWith<$Res> get expectedEndedPositionDetail;
 }
 
 /// @nodoc
@@ -585,7 +574,7 @@ class __$PassengerEntityCopyWithImpl<$Res>
       expectedEndedPositionDetail: expectedEndedPositionDetail == freezed
           ? _value.expectedEndedPositionDetail
           : expectedEndedPositionDetail // ignore: cast_nullable_to_non_nullable
-              as LocationPointDetail,
+              as Option<LocationPointDetail>,
       actualEndedPositionDetail: actualEndedPositionDetail == freezed
           ? _value.actualEndedPositionDetail
           : actualEndedPositionDetail // ignore: cast_nullable_to_non_nullable
@@ -624,7 +613,7 @@ class _$_PassengerEntity
   @override
 
   /// Location where user want to go when booking
-  final LocationPointDetail expectedEndedPositionDetail;
+  final Option<LocationPointDetail> expectedEndedPositionDetail;
   @override
 
   /// if user stop the trip in the middle way without reach destination
@@ -690,7 +679,7 @@ abstract class _PassengerEntity implements PassengerEntity {
           required String note,
           required bool allowToShare,
           required LocationPointDetail startedPositionDetail,
-          required LocationPointDetail expectedEndedPositionDetail,
+          required Option<LocationPointDetail> expectedEndedPositionDetail,
           required Option<LocationPointDetail> actualEndedPositionDetail}) =
       _$_PassengerEntity;
 
@@ -711,7 +700,7 @@ abstract class _PassengerEntity implements PassengerEntity {
   @override
 
   /// Location where user want to go when booking
-  LocationPointDetail get expectedEndedPositionDetail;
+  Option<LocationPointDetail> get expectedEndedPositionDetail;
   @override
 
   /// if user stop the trip in the middle way without reach destination

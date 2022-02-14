@@ -34,7 +34,9 @@ class _$LocationDetailTearOff {
       @JsonKey(name: LocationDetail.speedAccuracyKey)
           required double speedAccuracy,
       @JsonKey(name: LocationDetail.headingKey)
-          required double heading}) {
+          required double heading,
+      @JsonKey(name: LocationDetail.timeKey)
+          required DateTime time}) {
     return _LocationDetail(
       locationPoint: locationPoint,
       accuracy: accuracy,
@@ -42,6 +44,7 @@ class _$LocationDetailTearOff {
       speed: speed,
       speedAccuracy: speedAccuracy,
       heading: heading,
+      time: time,
     );
   }
 
@@ -68,6 +71,8 @@ mixin _$LocationDetail {
   double get speedAccuracy => throw _privateConstructorUsedError;
   @JsonKey(name: LocationDetail.headingKey)
   double get heading => throw _privateConstructorUsedError;
+  @JsonKey(name: LocationDetail.timeKey)
+  DateTime get time => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -92,7 +97,9 @@ abstract class $LocationDetailCopyWith<$Res> {
       @JsonKey(name: LocationDetail.speedAccuracyKey)
           double speedAccuracy,
       @JsonKey(name: LocationDetail.headingKey)
-          double heading});
+          double heading,
+      @JsonKey(name: LocationDetail.timeKey)
+          DateTime time});
 
   $LocationPointCopyWith<$Res> get locationPoint;
 }
@@ -114,6 +121,7 @@ class _$LocationDetailCopyWithImpl<$Res>
     Object? speed = freezed,
     Object? speedAccuracy = freezed,
     Object? heading = freezed,
+    Object? time = freezed,
   }) {
     return _then(_value.copyWith(
       locationPoint: locationPoint == freezed
@@ -140,6 +148,10 @@ class _$LocationDetailCopyWithImpl<$Res>
           ? _value.heading
           : heading // ignore: cast_nullable_to_non_nullable
               as double,
+      time: time == freezed
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 
@@ -170,7 +182,9 @@ abstract class _$LocationDetailCopyWith<$Res>
       @JsonKey(name: LocationDetail.speedAccuracyKey)
           double speedAccuracy,
       @JsonKey(name: LocationDetail.headingKey)
-          double heading});
+          double heading,
+      @JsonKey(name: LocationDetail.timeKey)
+          DateTime time});
 
   @override
   $LocationPointCopyWith<$Res> get locationPoint;
@@ -195,6 +209,7 @@ class __$LocationDetailCopyWithImpl<$Res>
     Object? speed = freezed,
     Object? speedAccuracy = freezed,
     Object? heading = freezed,
+    Object? time = freezed,
   }) {
     return _then(_LocationDetail(
       locationPoint: locationPoint == freezed
@@ -221,6 +236,10 @@ class __$LocationDetailCopyWithImpl<$Res>
           ? _value.heading
           : heading // ignore: cast_nullable_to_non_nullable
               as double,
+      time: time == freezed
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -240,7 +259,9 @@ class _$_LocationDetail extends _LocationDetail {
       @JsonKey(name: LocationDetail.speedAccuracyKey)
           required this.speedAccuracy,
       @JsonKey(name: LocationDetail.headingKey)
-          required this.heading})
+          required this.heading,
+      @JsonKey(name: LocationDetail.timeKey)
+          required this.time})
       : super._();
 
   factory _$_LocationDetail.fromJson(Map<String, dynamic> json) =>
@@ -266,10 +287,13 @@ class _$_LocationDetail extends _LocationDetail {
   @override
   @JsonKey(name: LocationDetail.headingKey)
   final double heading;
+  @override
+  @JsonKey(name: LocationDetail.timeKey)
+  final DateTime time;
 
   @override
   String toString() {
-    return 'LocationDetail(locationPoint: $locationPoint, accuracy: $accuracy, altitude: $altitude, speed: $speed, speedAccuracy: $speedAccuracy, heading: $heading)';
+    return 'LocationDetail(locationPoint: $locationPoint, accuracy: $accuracy, altitude: $altitude, speed: $speed, speedAccuracy: $speedAccuracy, heading: $heading, time: $time)';
   }
 
   @override
@@ -284,7 +308,8 @@ class _$_LocationDetail extends _LocationDetail {
             const DeepCollectionEquality().equals(other.speed, speed) &&
             const DeepCollectionEquality()
                 .equals(other.speedAccuracy, speedAccuracy) &&
-            const DeepCollectionEquality().equals(other.heading, heading));
+            const DeepCollectionEquality().equals(other.heading, heading) &&
+            const DeepCollectionEquality().equals(other.time, time));
   }
 
   @override
@@ -295,7 +320,8 @@ class _$_LocationDetail extends _LocationDetail {
       const DeepCollectionEquality().hash(altitude),
       const DeepCollectionEquality().hash(speed),
       const DeepCollectionEquality().hash(speedAccuracy),
-      const DeepCollectionEquality().hash(heading));
+      const DeepCollectionEquality().hash(heading),
+      const DeepCollectionEquality().hash(time));
 
   @JsonKey(ignore: true)
   @override
@@ -321,7 +347,9 @@ abstract class _LocationDetail extends LocationDetail {
       @JsonKey(name: LocationDetail.speedAccuracyKey)
           required double speedAccuracy,
       @JsonKey(name: LocationDetail.headingKey)
-          required double heading}) = _$_LocationDetail;
+          required double heading,
+      @JsonKey(name: LocationDetail.timeKey)
+          required DateTime time}) = _$_LocationDetail;
   _LocationDetail._() : super._();
 
   factory _LocationDetail.fromJson(Map<String, dynamic> json) =
@@ -347,6 +375,9 @@ abstract class _LocationDetail extends LocationDetail {
   @override
   @JsonKey(name: LocationDetail.headingKey)
   double get heading;
+  @override
+  @JsonKey(name: LocationDetail.timeKey)
+  DateTime get time;
   @override
   @JsonKey(ignore: true)
   _$LocationDetailCopyWith<_LocationDetail> get copyWith =>

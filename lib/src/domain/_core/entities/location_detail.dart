@@ -14,6 +14,7 @@ class LocationDetail with _$LocationDetail {
   static const speedKey = "speed";
   static const speedAccuracyKey = "speedAccuracy";
   static const headingKey = "heading";
+  static const timeKey = "time";
 
   const LocationDetail._();
   factory LocationDetail({
@@ -26,6 +27,7 @@ class LocationDetail with _$LocationDetail {
     @JsonKey(name: LocationDetail.speedAccuracyKey)
         required double speedAccuracy,
     @JsonKey(name: LocationDetail.headingKey) required double heading,
+    @JsonKey(name: LocationDetail.timeKey) required DateTime time,
   }) = _LocationDetail;
 
   factory LocationDetail.fromJson(Map<String, dynamic> json) =>

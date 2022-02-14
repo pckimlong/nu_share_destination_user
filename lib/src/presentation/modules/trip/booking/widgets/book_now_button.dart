@@ -9,7 +9,7 @@ class _BookNowButton extends ConsumerWidget {
       width: MediaQuery.of(context).size.width * 0.5,
       height: 40,
       child: MyElevatedButton(
-        label: 'Book Now',
+        label: 'Confirm Booking',
         onTap: () {},
       ),
     );

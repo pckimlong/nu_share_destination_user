@@ -72,7 +72,7 @@ class PassengerEntity with _$PassengerEntity {
     required LocationPointDetail startedPositionDetail,
 
     /// Location where user want to go when booking
-    required LocationPointDetail expectedEndedPositionDetail,
+    required Option<LocationPointDetail> expectedEndedPositionDetail,
 
     /// if user stop the trip in the middle way without reach destination
     required Option<LocationPointDetail> actualEndedPositionDetail,

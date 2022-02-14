@@ -6,7 +6,7 @@ class _VehicleTileWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      constraints: BoxConstraints(minHeight: 62),
+      constraints: BoxConstraints(minHeight: 58),
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
         children: [

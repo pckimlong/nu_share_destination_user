@@ -1,12 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nu_share_destination_user/src/domain/_core/entities/coordinate.dart';
 import 'package:nu_share_destination_user/src/domain/trip/trip_entity.dart';
 
 part 'trip_event.freezed.dart';
 
 @freezed
 class TripEvent with _$TripEvent {
-  factory TripEvent() = _TripEvent;
-
   /// Create trip request in database
   const factory TripEvent.bookTrip({
     required PassengerEntity passengerEntity,
@@ -16,4 +15,8 @@ class TripEvent with _$TripEvent {
   const factory TripEvent.toggleShareMode() = _ToggleShareMode;
 
   const factory TripEvent.cancelTrip() = _CancelTrip;
+
+  /// Change where taxi need to pickup. This will update the state as well
+  const factory TripEvent.changeOriginPosition(Coordinate coordinate) =
+      _ChangeOriginPosition;
 }

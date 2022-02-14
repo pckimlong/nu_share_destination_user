@@ -9,7 +9,7 @@ class _WhereToTileWidget extends ConsumerWidget {
       onTap: () {},
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14),
-        constraints: const BoxConstraints(minHeight: 62),
+        constraints: const BoxConstraints(minHeight: 58),
         child: Row(
           children: [
             const Text(

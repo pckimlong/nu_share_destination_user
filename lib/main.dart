@@ -26,6 +26,7 @@ void main() async {
 }
 
 final geo = Geoflutterfire();
+
 GeoFirePoint myLocation = geo.point(latitude: 12.960632, longitude: 77.641603);
 final a = myLocation.coords;
 final b = myLocation.data;
