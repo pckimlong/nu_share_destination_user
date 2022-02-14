@@ -87,6 +87,9 @@ dependencies:
   geoflutterfire: ^3.0.2
   # use to translate address to point or point to address
   geocoding: ^2.0.2
+  google_place: ^0.4.7
+  # For Delay fast callback, like on keyboad change...
+  easy_debounce: ^2.0.2+1
 
 
 dev_dependencies:

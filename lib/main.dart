@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_place/google_place.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nu_share_destination_user/firebase_options.dart';
 import 'package:nu_share_destination_user/src/presentation/_core/app_widget.dart';
@@ -27,9 +28,8 @@ void main() async {
 
 final geo = Geoflutterfire();
 
-GeoFirePoint myLocation = geo.point(latitude: 12.960632, longitude: 77.641603);
-final a = myLocation.coords;
-final b = myLocation.data;
+var googlePlace = GooglePlace("Your-Key");
+var result = googlePlace.search.getTextSearch("restaurants in Sydney");
 
 class Logger extends ProviderObserver {
   @override

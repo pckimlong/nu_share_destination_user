@@ -6,4 +6,5 @@ part 'location_failure.freezed.dart';
 class LocationFailure with _$LocationFailure {
   const factory LocationFailure.permissionDeny() = _PermissionDeny;
   const factory LocationFailure.packageError(String message) = _PackageError;
+  const factory LocationFailure.requestDenied() = _RequestDenied;
 }

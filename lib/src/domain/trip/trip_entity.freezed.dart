@@ -422,6 +422,7 @@ mixin _$PassengerEntity {
       throw _privateConstructorUsedError;
 
   /// Location where user want to go when booking
+  ///todo: multiple location - will update in the next version
   Option<LocationPointDetail> get expectedEndedPositionDetail =>
       throw _privateConstructorUsedError;
 
@@ -613,6 +614,7 @@ class _$_PassengerEntity
   @override
 
   /// Location where user want to go when booking
+  ///todo: multiple location - will update in the next version
   final Option<LocationPointDetail> expectedEndedPositionDetail;
   @override
 
@@ -700,6 +702,7 @@ abstract class _PassengerEntity implements PassengerEntity {
   @override
 
   /// Location where user want to go when booking
+  ///todo: multiple location - will update in the next version
   Option<LocationPointDetail> get expectedEndedPositionDetail;
   @override
 
@@ -715,8 +718,8 @@ abstract class _PassengerEntity implements PassengerEntity {
 class _$TripStatusTearOff {
   const _$TripStatusTearOff();
 
-  _Booking booking() {
-    return _Booking();
+  _Exploring exploring() {
+    return _Exploring();
   }
 
   _Cancelled cancelled() {
@@ -743,7 +746,7 @@ const $TripStatus = _$TripStatusTearOff();
 mixin _$TripStatus {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() booking,
+    required TResult Function() exploring,
     required TResult Function() cancelled,
     required TResult Function() picking,
     required TResult Function() inProgress,
@@ -752,7 +755,7 @@ mixin _$TripStatus {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? booking,
+    TResult Function()? exploring,
     TResult Function()? cancelled,
     TResult Function()? picking,
     TResult Function()? inProgress,
@@ -761,7 +764,7 @@ mixin _$TripStatus {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? booking,
+    TResult Function()? exploring,
     TResult Function()? cancelled,
     TResult Function()? picking,
     TResult Function()? inProgress,
@@ -771,7 +774,7 @@ mixin _$TripStatus {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Booking value) booking,
+    required TResult Function(_Exploring value) exploring,
     required TResult Function(_Cancelled value) cancelled,
     required TResult Function(_Picking value) picking,
     required TResult Function(_InProgress value) inProgress,
@@ -780,7 +783,7 @@ mixin _$TripStatus {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Booking value)? booking,
+    TResult Function(_Exploring value)? exploring,
     TResult Function(_Cancelled value)? cancelled,
     TResult Function(_Picking value)? picking,
     TResult Function(_InProgress value)? inProgress,
@@ -789,7 +792,7 @@ mixin _$TripStatus {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Booking value)? booking,
+    TResult Function(_Exploring value)? exploring,
     TResult Function(_Cancelled value)? cancelled,
     TResult Function(_Picking value)? picking,
     TResult Function(_InProgress value)? inProgress,
@@ -816,41 +819,42 @@ class _$TripStatusCopyWithImpl<$Res> implements $TripStatusCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$BookingCopyWith<$Res> {
-  factory _$BookingCopyWith(_Booking value, $Res Function(_Booking) then) =
-      __$BookingCopyWithImpl<$Res>;
+abstract class _$ExploringCopyWith<$Res> {
+  factory _$ExploringCopyWith(
+          _Exploring value, $Res Function(_Exploring) then) =
+      __$ExploringCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$BookingCopyWithImpl<$Res> extends _$TripStatusCopyWithImpl<$Res>
-    implements _$BookingCopyWith<$Res> {
-  __$BookingCopyWithImpl(_Booking _value, $Res Function(_Booking) _then)
-      : super(_value, (v) => _then(v as _Booking));
+class __$ExploringCopyWithImpl<$Res> extends _$TripStatusCopyWithImpl<$Res>
+    implements _$ExploringCopyWith<$Res> {
+  __$ExploringCopyWithImpl(_Exploring _value, $Res Function(_Exploring) _then)
+      : super(_value, (v) => _then(v as _Exploring));
 
   @override
-  _Booking get _value => super._value as _Booking;
+  _Exploring get _value => super._value as _Exploring;
 }
 
 /// @nodoc
 
-class _$_Booking with DiagnosticableTreeMixin implements _Booking {
-  _$_Booking();
+class _$_Exploring with DiagnosticableTreeMixin implements _Exploring {
+  _$_Exploring();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TripStatus.booking()';
+    return 'TripStatus.exploring()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'TripStatus.booking'));
+    properties..add(DiagnosticsProperty('type', 'TripStatus.exploring'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Booking);
+        (other.runtimeType == runtimeType && other is _Exploring);
   }
 
   @override
@@ -859,39 +863,39 @@ class _$_Booking with DiagnosticableTreeMixin implements _Booking {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() booking,
+    required TResult Function() exploring,
     required TResult Function() cancelled,
     required TResult Function() picking,
     required TResult Function() inProgress,
     required TResult Function() finished,
   }) {
-    return booking();
+    return exploring();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? booking,
+    TResult Function()? exploring,
     TResult Function()? cancelled,
     TResult Function()? picking,
     TResult Function()? inProgress,
     TResult Function()? finished,
   }) {
-    return booking?.call();
+    return exploring?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? booking,
+    TResult Function()? exploring,
     TResult Function()? cancelled,
     TResult Function()? picking,
     TResult Function()? inProgress,
     TResult Function()? finished,
     required TResult orElse(),
   }) {
-    if (booking != null) {
-      return booking();
+    if (exploring != null) {
+      return exploring();
     }
     return orElse();
   }
@@ -899,46 +903,46 @@ class _$_Booking with DiagnosticableTreeMixin implements _Booking {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Booking value) booking,
+    required TResult Function(_Exploring value) exploring,
     required TResult Function(_Cancelled value) cancelled,
     required TResult Function(_Picking value) picking,
     required TResult Function(_InProgress value) inProgress,
     required TResult Function(_Finished value) finished,
   }) {
-    return booking(this);
+    return exploring(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Booking value)? booking,
+    TResult Function(_Exploring value)? exploring,
     TResult Function(_Cancelled value)? cancelled,
     TResult Function(_Picking value)? picking,
     TResult Function(_InProgress value)? inProgress,
     TResult Function(_Finished value)? finished,
   }) {
-    return booking?.call(this);
+    return exploring?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Booking value)? booking,
+    TResult Function(_Exploring value)? exploring,
     TResult Function(_Cancelled value)? cancelled,
     TResult Function(_Picking value)? picking,
     TResult Function(_InProgress value)? inProgress,
     TResult Function(_Finished value)? finished,
     required TResult orElse(),
   }) {
-    if (booking != null) {
-      return booking(this);
+    if (exploring != null) {
+      return exploring(this);
     }
     return orElse();
   }
 }
 
-abstract class _Booking implements TripStatus {
-  factory _Booking() = _$_Booking;
+abstract class _Exploring implements TripStatus {
+  factory _Exploring() = _$_Exploring;
 }
 
 /// @nodoc
@@ -986,7 +990,7 @@ class _$_Cancelled with DiagnosticableTreeMixin implements _Cancelled {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() booking,
+    required TResult Function() exploring,
     required TResult Function() cancelled,
     required TResult Function() picking,
     required TResult Function() inProgress,
@@ -998,7 +1002,7 @@ class _$_Cancelled with DiagnosticableTreeMixin implements _Cancelled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? booking,
+    TResult Function()? exploring,
     TResult Function()? cancelled,
     TResult Function()? picking,
     TResult Function()? inProgress,
@@ -1010,7 +1014,7 @@ class _$_Cancelled with DiagnosticableTreeMixin implements _Cancelled {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? booking,
+    TResult Function()? exploring,
     TResult Function()? cancelled,
     TResult Function()? picking,
     TResult Function()? inProgress,
@@ -1026,7 +1030,7 @@ class _$_Cancelled with DiagnosticableTreeMixin implements _Cancelled {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Booking value) booking,
+    required TResult Function(_Exploring value) exploring,
     required TResult Function(_Cancelled value) cancelled,
     required TResult Function(_Picking value) picking,
     required TResult Function(_InProgress value) inProgress,
@@ -1038,7 +1042,7 @@ class _$_Cancelled with DiagnosticableTreeMixin implements _Cancelled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Booking value)? booking,
+    TResult Function(_Exploring value)? exploring,
     TResult Function(_Cancelled value)? cancelled,
     TResult Function(_Picking value)? picking,
     TResult Function(_InProgress value)? inProgress,
@@ -1050,7 +1054,7 @@ class _$_Cancelled with DiagnosticableTreeMixin implements _Cancelled {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Booking value)? booking,
+    TResult Function(_Exploring value)? exploring,
     TResult Function(_Cancelled value)? cancelled,
     TResult Function(_Picking value)? picking,
     TResult Function(_InProgress value)? inProgress,
@@ -1112,7 +1116,7 @@ class _$_Picking with DiagnosticableTreeMixin implements _Picking {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() booking,
+    required TResult Function() exploring,
     required TResult Function() cancelled,
     required TResult Function() picking,
     required TResult Function() inProgress,
@@ -1124,7 +1128,7 @@ class _$_Picking with DiagnosticableTreeMixin implements _Picking {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? booking,
+    TResult Function()? exploring,
     TResult Function()? cancelled,
     TResult Function()? picking,
     TResult Function()? inProgress,
@@ -1136,7 +1140,7 @@ class _$_Picking with DiagnosticableTreeMixin implements _Picking {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? booking,
+    TResult Function()? exploring,
     TResult Function()? cancelled,
     TResult Function()? picking,
     TResult Function()? inProgress,
@@ -1152,7 +1156,7 @@ class _$_Picking with DiagnosticableTreeMixin implements _Picking {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Booking value) booking,
+    required TResult Function(_Exploring value) exploring,
     required TResult Function(_Cancelled value) cancelled,
     required TResult Function(_Picking value) picking,
     required TResult Function(_InProgress value) inProgress,
@@ -1164,7 +1168,7 @@ class _$_Picking with DiagnosticableTreeMixin implements _Picking {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Booking value)? booking,
+    TResult Function(_Exploring value)? exploring,
     TResult Function(_Cancelled value)? cancelled,
     TResult Function(_Picking value)? picking,
     TResult Function(_InProgress value)? inProgress,
@@ -1176,7 +1180,7 @@ class _$_Picking with DiagnosticableTreeMixin implements _Picking {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Booking value)? booking,
+    TResult Function(_Exploring value)? exploring,
     TResult Function(_Cancelled value)? cancelled,
     TResult Function(_Picking value)? picking,
     TResult Function(_InProgress value)? inProgress,
@@ -1240,7 +1244,7 @@ class _$_InProgress with DiagnosticableTreeMixin implements _InProgress {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() booking,
+    required TResult Function() exploring,
     required TResult Function() cancelled,
     required TResult Function() picking,
     required TResult Function() inProgress,
@@ -1252,7 +1256,7 @@ class _$_InProgress with DiagnosticableTreeMixin implements _InProgress {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? booking,
+    TResult Function()? exploring,
     TResult Function()? cancelled,
     TResult Function()? picking,
     TResult Function()? inProgress,
@@ -1264,7 +1268,7 @@ class _$_InProgress with DiagnosticableTreeMixin implements _InProgress {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? booking,
+    TResult Function()? exploring,
     TResult Function()? cancelled,
     TResult Function()? picking,
     TResult Function()? inProgress,
@@ -1280,7 +1284,7 @@ class _$_InProgress with DiagnosticableTreeMixin implements _InProgress {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Booking value) booking,
+    required TResult Function(_Exploring value) exploring,
     required TResult Function(_Cancelled value) cancelled,
     required TResult Function(_Picking value) picking,
     required TResult Function(_InProgress value) inProgress,
@@ -1292,7 +1296,7 @@ class _$_InProgress with DiagnosticableTreeMixin implements _InProgress {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Booking value)? booking,
+    TResult Function(_Exploring value)? exploring,
     TResult Function(_Cancelled value)? cancelled,
     TResult Function(_Picking value)? picking,
     TResult Function(_InProgress value)? inProgress,
@@ -1304,7 +1308,7 @@ class _$_InProgress with DiagnosticableTreeMixin implements _InProgress {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Booking value)? booking,
+    TResult Function(_Exploring value)? exploring,
     TResult Function(_Cancelled value)? cancelled,
     TResult Function(_Picking value)? picking,
     TResult Function(_InProgress value)? inProgress,
@@ -1366,7 +1370,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() booking,
+    required TResult Function() exploring,
     required TResult Function() cancelled,
     required TResult Function() picking,
     required TResult Function() inProgress,
@@ -1378,7 +1382,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? booking,
+    TResult Function()? exploring,
     TResult Function()? cancelled,
     TResult Function()? picking,
     TResult Function()? inProgress,
@@ -1390,7 +1394,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? booking,
+    TResult Function()? exploring,
     TResult Function()? cancelled,
     TResult Function()? picking,
     TResult Function()? inProgress,
@@ -1406,7 +1410,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Booking value) booking,
+    required TResult Function(_Exploring value) exploring,
     required TResult Function(_Cancelled value) cancelled,
     required TResult Function(_Picking value) picking,
     required TResult Function(_InProgress value) inProgress,
@@ -1418,7 +1422,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Booking value)? booking,
+    TResult Function(_Exploring value)? exploring,
     TResult Function(_Cancelled value)? cancelled,
     TResult Function(_Picking value)? picking,
     TResult Function(_InProgress value)? inProgress,
@@ -1430,7 +1434,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Booking value)? booking,
+    TResult Function(_Exploring value)? exploring,
     TResult Function(_Cancelled value)? cancelled,
     TResult Function(_Picking value)? picking,
     TResult Function(_InProgress value)? inProgress,

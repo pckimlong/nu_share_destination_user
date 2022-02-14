@@ -4,6 +4,9 @@ import 'package:nu_share_destination_user/src/domain/_core/entities/location_det
 import 'package:nu_share_destination_user/src/domain/_core/entities/location_point.dart';
 import 'package:nu_share_destination_user/src/domain/_core/entities/location_point_detail.dart';
 import 'package:nu_share_destination_user/src/domain/location/location_failure.dart';
+import 'package:fast_immutable_collections/fast_immutable_collections.dart'
+    as fic;
+import 'package:nu_share_destination_user/src/domain/location/place_entity.dart';
 
 abstract class ILocationService {
   /// Get current device location point (geoPoint)
@@ -21,4 +24,10 @@ abstract class ILocationService {
       translateAddressToLocation(String address);
 
   void dispose();
+
+  /// Get the list of place
+  Future<Either<LocationFailure, fic.IList<PlaceEntity>>> findAllPlaceByString(
+      String query);
+
+  Future<LocationPoint> coordinateToLocationPoint(Coordinate coordinate);
 }

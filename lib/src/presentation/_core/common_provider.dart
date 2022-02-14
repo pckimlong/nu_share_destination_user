@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_place/google_place.dart' as gp;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:location/location.dart';
 
@@ -23,4 +24,8 @@ final getStorageProvider = Provider<GetStorage>((ref) {
 
 final geoFireProvider = Provider<Geoflutterfire>((ref) {
   return Geoflutterfire();
+});
+
+final googlePlaceProvider = Provider<gp.GooglePlace>((ref) {
+  return gp.GooglePlace('AIzaSyAKkIU49XTswfYXshm0kC5QnTHODKc3EIA');
 });

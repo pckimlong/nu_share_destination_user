@@ -1,49 +1,35 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/application/trip/booking/booking_controller.dart';
-import 'package:nu_share_destination_user/src/application/trip/booking/booking_state.dart';
-import 'package:nu_share_destination_user/src/presentation/_core/service_providers.dart';
-import 'package:nu_share_destination_user/src/presentation/_providers/user_provider.dart';
-import 'package:nu_share_destination_user/src/presentation/widgets/location_pin_widget.dart';
+import 'package:nu_share_destination_user/src/domain/_core/entities/location_point_detail.dart';
 
+import '../../../../application/trip/booking/booking_event.dart';
+import '../../../../domain/_core/constants.dart';
+import '../../../../domain/_core/entities/coordinate.dart';
 import '../../../_core/app_styles.dart';
+import '../../../routes/router.gr.dart';
 import '../../../widgets/circle_location_button.dart';
+import '../../../widgets/location_pin_widget.dart';
 import '../../../widgets/my_elevated_button.dart';
-import '../widgets/google_map_content.dart';
+import '../trip_provider.dart';
 
 part 'widgets/actions_tile_bar_widget.dart';
 part 'widgets/book_now_button.dart';
+part 'widgets/note_to_driver_button.dart';
 part 'widgets/vehicle_tile_widget.dart';
 part 'widgets/where_to_tile_widget.dart';
+part 'widgets/origin_address_name_widget.dart';
+part 'widgets/location_pin_widget.dart';
 
-final bookControllerProvider =
-    StateNotifierProvider.autoDispose<BookControllerNotifier, BookingState?>(
-  (ref) => BookControllerNotifier(
-    ref.watch(locationServiceProvider),
-    ref.watch(userControllerProvider).userOrCrash,
-  ),
-);
-
-class TripBookingPage extends StatefulHookConsumerWidget {
+class TripBookingPage extends ConsumerWidget {
   const TripBookingPage({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _TripBookingPageState();
-}
-
-class _TripBookingPageState extends ConsumerState<TripBookingPage> {
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final bookingState = ref.watch(bookControllerProvider);
-
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: const Text(
@@ -68,7 +54,7 @@ class _TripBookingPageState extends ConsumerState<TripBookingPage> {
                 //     ),
                 //   ),
                 // ),
-                const GoogleMapWidget(),
+                const _GoogleMap(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -77,33 +63,24 @@ class _TripBookingPageState extends ConsumerState<TripBookingPage> {
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.9),
                       ),
-                      child: Center(
-                        child: Text(
-                          bookingState?.address ?? "",
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
+                      child: const Center(child: _OriginAddressWidget()),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: CircleLocationButton(
-                          onTap: () {},
+                          onTap: () => ref
+                              .read(bookingController.notifier)
+                              .mapEventToState(
+                                const BookingEvent.moveToMyLocation(),
+                              ),
                         ),
                       ),
                     ),
                   ],
                 ),
-                Center(
-                  child: LocationPinWidget(
-                    isLoading: bookingState?.isLoading ?? false,
-                  ),
-                ),
+                const Center(child: _LocationPinWidget()),
               ],
             ),
           ),
@@ -144,11 +121,56 @@ class _ActionCard extends StatelessWidget {
           _VehicleTileWidget(),
           Divider(height: 0),
           _ActionsTileBar(),
-          // Divider(),
           SizedBox(height: 4),
           _BookNowButton(),
         ],
       ),
+    );
+  }
+}
+
+class _GoogleMap extends ConsumerWidget {
+  const _GoogleMap({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final initialCamera = LatLng(
+      DomainValues.initialMapPoint.latitude,
+      DomainValues.initialMapPoint.longitude,
+    );
+
+    final stateController = ref.watch(bookingController.notifier);
+
+    return GoogleMap(
+      initialCameraPosition: CameraPosition(
+        zoom: DomainValues.initialMapZoom,
+        target: initialCamera,
+      ),
+      onMapCreated: (controller) async {
+        stateController.mapEventToState(
+          BookingEvent.initializeMapController(controller),
+        );
+      },
+      onCameraMove: (pos) {
+        final coor = pos.target;
+        stateController.mapEventToState(
+          BookingEvent.onMapMoved(
+            Coordinate(
+              coor.latitude,
+              coor.longitude,
+            ),
+          ),
+        );
+      },
+      onCameraIdle: () async {
+        await stateController.mapEventToState(
+          const BookingEvent.updateOriginPosition(),
+        );
+      },
+      mapToolbarEnabled: true,
+      myLocationEnabled: true,
+      zoomControlsEnabled: false,
+      myLocationButtonEnabled: false,
     );
   }
 }

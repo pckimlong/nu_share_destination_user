@@ -22,6 +22,9 @@ class MyTextFormField extends StatelessWidget {
     this.onChanged,
     this.maxLines,
     this.prefixIcon,
+    this.suffixIcon,
+    this.textStyle,
+    this.initialValue,
   }) : super(key: key);
 
   final String? Function(String?)? validator;
@@ -38,8 +41,11 @@ class MyTextFormField extends StatelessWidget {
   final String? label;
   final int? maxLines;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final TextInputAction? textInputAction;
   final TextInputType? textInputType;
+  final TextStyle? textStyle;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +61,12 @@ class MyTextFormField extends StatelessWidget {
     var textField = Container(
       constraints:
           const BoxConstraints(minHeight: AppStyles.minTextFieldHeight),
-      padding: EdgeInsets.fromLTRB(prefixIcon == null ? 15 : 0, 0, 15, 0),
+      padding: EdgeInsets.fromLTRB(
+        prefixIcon == null ? 15 : 0,
+        0,
+        suffixIcon == null ? 15 : 0,
+        0,
+      ),
       decoration: BoxDecoration(
         color: AppColors.textFieldBgColor,
         borderRadius: AppStyles.textFieldRadius,
@@ -68,10 +79,12 @@ class MyTextFormField extends StatelessWidget {
             focusNode: focusNode,
             textCapitalization: capitalization,
             autofocus: autofocus,
+            initialValue: initialValue,
             textInputAction: textInputAction,
             keyboardType: textInputType,
             validator: validator,
             onChanged: onChanged,
+            style: textStyle,
             inputFormatters: formatter,
             onEditingComplete: onEditingComplete,
             maxLines: maxLines,
@@ -79,6 +92,7 @@ class MyTextFormField extends StatelessWidget {
               hintText: hintText,
               border: InputBorder.none,
               prefixIcon: prefixIcon,
+              suffixIcon: suffixIcon,
             ),
           ),
           if (errorMgs != null) errorBar,

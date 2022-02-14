@@ -27,6 +27,10 @@ class _$LocationFailureTearOff {
       message,
     );
   }
+
+  _RequestDenied requestDenied() {
+    return const _RequestDenied();
+  }
 }
 
 /// @nodoc
@@ -38,18 +42,21 @@ mixin _$LocationFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() permissionDeny,
     required TResult Function(String message) packageError,
+    required TResult Function() requestDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? permissionDeny,
     TResult Function(String message)? packageError,
+    TResult Function()? requestDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? permissionDeny,
     TResult Function(String message)? packageError,
+    TResult Function()? requestDenied,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,18 +64,21 @@ mixin _$LocationFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_PermissionDeny value) permissionDeny,
     required TResult Function(_PackageError value) packageError,
+    required TResult Function(_RequestDenied value) requestDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_PermissionDeny value)? permissionDeny,
     TResult Function(_PackageError value)? packageError,
+    TResult Function(_RequestDenied value)? requestDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PermissionDeny value)? permissionDeny,
     TResult Function(_PackageError value)? packageError,
+    TResult Function(_RequestDenied value)? requestDenied,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,6 +144,7 @@ class _$_PermissionDeny implements _PermissionDeny {
   TResult when<TResult extends Object?>({
     required TResult Function() permissionDeny,
     required TResult Function(String message) packageError,
+    required TResult Function() requestDenied,
   }) {
     return permissionDeny();
   }
@@ -143,6 +154,7 @@ class _$_PermissionDeny implements _PermissionDeny {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? permissionDeny,
     TResult Function(String message)? packageError,
+    TResult Function()? requestDenied,
   }) {
     return permissionDeny?.call();
   }
@@ -152,6 +164,7 @@ class _$_PermissionDeny implements _PermissionDeny {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? permissionDeny,
     TResult Function(String message)? packageError,
+    TResult Function()? requestDenied,
     required TResult orElse(),
   }) {
     if (permissionDeny != null) {
@@ -165,6 +178,7 @@ class _$_PermissionDeny implements _PermissionDeny {
   TResult map<TResult extends Object?>({
     required TResult Function(_PermissionDeny value) permissionDeny,
     required TResult Function(_PackageError value) packageError,
+    required TResult Function(_RequestDenied value) requestDenied,
   }) {
     return permissionDeny(this);
   }
@@ -174,6 +188,7 @@ class _$_PermissionDeny implements _PermissionDeny {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_PermissionDeny value)? permissionDeny,
     TResult Function(_PackageError value)? packageError,
+    TResult Function(_RequestDenied value)? requestDenied,
   }) {
     return permissionDeny?.call(this);
   }
@@ -183,6 +198,7 @@ class _$_PermissionDeny implements _PermissionDeny {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PermissionDeny value)? permissionDeny,
     TResult Function(_PackageError value)? packageError,
+    TResult Function(_RequestDenied value)? requestDenied,
     required TResult orElse(),
   }) {
     if (permissionDeny != null) {
@@ -263,6 +279,7 @@ class _$_PackageError implements _PackageError {
   TResult when<TResult extends Object?>({
     required TResult Function() permissionDeny,
     required TResult Function(String message) packageError,
+    required TResult Function() requestDenied,
   }) {
     return packageError(message);
   }
@@ -272,6 +289,7 @@ class _$_PackageError implements _PackageError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? permissionDeny,
     TResult Function(String message)? packageError,
+    TResult Function()? requestDenied,
   }) {
     return packageError?.call(message);
   }
@@ -281,6 +299,7 @@ class _$_PackageError implements _PackageError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? permissionDeny,
     TResult Function(String message)? packageError,
+    TResult Function()? requestDenied,
     required TResult orElse(),
   }) {
     if (packageError != null) {
@@ -294,6 +313,7 @@ class _$_PackageError implements _PackageError {
   TResult map<TResult extends Object?>({
     required TResult Function(_PermissionDeny value) permissionDeny,
     required TResult Function(_PackageError value) packageError,
+    required TResult Function(_RequestDenied value) requestDenied,
   }) {
     return packageError(this);
   }
@@ -303,6 +323,7 @@ class _$_PackageError implements _PackageError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_PermissionDeny value)? permissionDeny,
     TResult Function(_PackageError value)? packageError,
+    TResult Function(_RequestDenied value)? requestDenied,
   }) {
     return packageError?.call(this);
   }
@@ -312,6 +333,7 @@ class _$_PackageError implements _PackageError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PermissionDeny value)? permissionDeny,
     TResult Function(_PackageError value)? packageError,
+    TResult Function(_RequestDenied value)? requestDenied,
     required TResult orElse(),
   }) {
     if (packageError != null) {
@@ -328,4 +350,115 @@ abstract class _PackageError implements LocationFailure {
   @JsonKey(ignore: true)
   _$PackageErrorCopyWith<_PackageError> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$RequestDeniedCopyWith<$Res> {
+  factory _$RequestDeniedCopyWith(
+          _RequestDenied value, $Res Function(_RequestDenied) then) =
+      __$RequestDeniedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$RequestDeniedCopyWithImpl<$Res>
+    extends _$LocationFailureCopyWithImpl<$Res>
+    implements _$RequestDeniedCopyWith<$Res> {
+  __$RequestDeniedCopyWithImpl(
+      _RequestDenied _value, $Res Function(_RequestDenied) _then)
+      : super(_value, (v) => _then(v as _RequestDenied));
+
+  @override
+  _RequestDenied get _value => super._value as _RequestDenied;
+}
+
+/// @nodoc
+
+class _$_RequestDenied implements _RequestDenied {
+  const _$_RequestDenied();
+
+  @override
+  String toString() {
+    return 'LocationFailure.requestDenied()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _RequestDenied);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() permissionDeny,
+    required TResult Function(String message) packageError,
+    required TResult Function() requestDenied,
+  }) {
+    return requestDenied();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? permissionDeny,
+    TResult Function(String message)? packageError,
+    TResult Function()? requestDenied,
+  }) {
+    return requestDenied?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? permissionDeny,
+    TResult Function(String message)? packageError,
+    TResult Function()? requestDenied,
+    required TResult orElse(),
+  }) {
+    if (requestDenied != null) {
+      return requestDenied();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PermissionDeny value) permissionDeny,
+    required TResult Function(_PackageError value) packageError,
+    required TResult Function(_RequestDenied value) requestDenied,
+  }) {
+    return requestDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PermissionDeny value)? permissionDeny,
+    TResult Function(_PackageError value)? packageError,
+    TResult Function(_RequestDenied value)? requestDenied,
+  }) {
+    return requestDenied?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PermissionDeny value)? permissionDeny,
+    TResult Function(_PackageError value)? packageError,
+    TResult Function(_RequestDenied value)? requestDenied,
+    required TResult orElse(),
+  }) {
+    if (requestDenied != null) {
+      return requestDenied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RequestDenied implements LocationFailure {
+  const factory _RequestDenied() = _$_RequestDenied;
 }
