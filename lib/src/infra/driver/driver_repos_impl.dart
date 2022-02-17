@@ -2,32 +2,40 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart'
     as fic;
+import 'package:firebase_database/firebase_database.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
-
 import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
 import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
 import 'package:nu_share_destination_user/src/domain/driver/driver_entity.dart';
 import 'package:nu_share_destination_user/src/domain/driver/driver_failure.dart';
 import 'package:nu_share_destination_user/src/domain/driver/i_driver_repository.dart';
-import 'package:nu_share_destination_user/src/domain/trip/trip_entity.dart';
 import 'package:nu_share_destination_user/src/infra/driver/driver_entity_dto.dart';
-import 'package:nu_share_destination_user/src/infra/trip/trip_entity_dto.dart';
+
 import '../_core/firebase/firebase_extensions.dart';
 import '../location/mappers.dart';
 
 class DriverReposImpl implements IDriverRepository {
   final FirebaseFirestore _firestore;
   final Geoflutterfire _geoflutterfire;
+  final FirebaseDatabase _realTimeDatabase;
 
   DriverReposImpl(
     this._firestore,
     this._geoflutterfire,
+    this._realTimeDatabase,
   );
 
   @override
   Stream<Either<DriverFailure, DriverEntity>> watchOne(String driverId) {
-    // TODO: implement watchOne
-    throw UnimplementedError();
+    return _firestore.driverColRef.doc(driverId).snapshots().map(
+      (event) {
+        if (!event.exists) {
+          return Left(DriverFailure.notExisted());
+        }
+        final domain = event.data()!.toDomain();
+        return Right(domain);
+      },
+    );
   }
 
   @override
@@ -47,7 +55,14 @@ class DriverReposImpl implements IDriverRepository {
         radius: radius,
         field: DriverEntityDto.geoFirePointKey,
       );
-      return Right(<DriverEntity>[].lock);
+
+      final resultFuture = await result.first;
+      final r = resultFuture
+          .map((e) => DriverEntityDto.fromDocument(e).toDomain())
+          .toList()
+          .lock;
+
+      return Right(r);
     } on FirebaseException catch (e) {
       return Left(DriverFailure.serverError(e.message));
     }
@@ -84,74 +99,41 @@ class DriverReposImpl implements IDriverRepository {
 
   @override
   Future<Either<DriverFailure, Unit>> updateDriverLocation(
-      {required String driverId, required LocationDetail locationDetail}) {
-    // TODO: implement updateDriverLocation
-    throw UnimplementedError();
+      {required String driverId,
+      required LocationDetail locationDetail}) async {
+    try {
+      final ref = _firestore.driverColRef.doc(driverId);
+      await ref.update({DriverEntityDto.locationKey: locationDetail.toJson()});
+      return const Right(unit);
+    } on FirebaseException catch (e) {
+      return Left(DriverFailure.serverError(e.message));
+    }
   }
 
   @override
   Future<Either<DriverFailure, Unit>> updateRealTimeDriverLocation(
-      {required String driverId, required LocationDetail locationDetail}) {
-    // TODO: implement updateRealTimeDriverLocation
-    throw UnimplementedError();
+      {required String driverId,
+      required LocationDetail locationDetail}) async {
+    try {
+      final ref = _realTimeDatabase.userLocationRef(driverId);
+      await ref.set(locationDetail.toJson());
+      return const Right(unit);
+    } on FirebaseException catch (e) {
+      return Left(DriverFailure.serverError(e.message));
+    }
   }
 
   @override
   Stream<Either<DriverFailure, LocationDetail>> watchRealTimeDriverLocation(
       String driverId) {
-    // TODO: implement watchRealTimeDriverLocation
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<DriverFailure, Unit>> acceptTripRequest({
-    required String tripId,
-    required String driverId,
-  }) async {
-    // late Either<DriverFailure, Unit> result;
-
     try {
-      return await _firestore.runTransaction(
-        (transaction) async {
-          final tripDocRef = _firestore.tripColRef.doc(tripId);
-          final tripDoc = await tripDocRef.get();
-          final driverDocRef = _firestore.driverColRef.doc(driverId);
-          final driverDoc = await driverDocRef.get();
-
-          if (!tripDoc.exists) {
-            return Left(DriverFailure.tripRequestUnavailable());
-          }
-          if (!driverDoc.exists) {
-            return Left(DriverFailure.notExisted());
-          }
-
-          final tripData = tripDoc.data()!;
-          final driverData = driverDoc.data()!;
-
-          if (tripData.driverId != null) {
-            return Left(DriverFailure.tripRequestUnavailable());
-          }
-
-          transaction.set<TripEntityDto>(
-            tripDocRef,
-            tripData.copyWith(
-              driverId: driverId,
-              status: TripStatus.picking(),
-              startedTime: DateTime.now(),
-            ),
-          );
-          transaction.set<DriverEntityDto>(
-            driverDocRef,
-            driverData.copyWith(
-              available: tripData.toDomain().allowSharing,
-              inProgressTrip: tripId,
-            ),
-          );
-          return const Right(unit);
-        },
-      );
+      final ref = _realTimeDatabase.userLocationRef(driverId);
+      return ref.onValue.map((event) {
+        final json = event.snapshot.value as Map<String, dynamic>;
+        return right(LocationDetail.fromJson(json));
+      });
     } on FirebaseException catch (e) {
-      return Left(DriverFailure.serverError(e.message));
+      return Stream.error(Left(DriverFailure.serverError(e.message)));
     }
   }
 }

@@ -33,10 +33,6 @@ class _$DriverFailureTearOff {
   _NotExisted notExisted() {
     return _NotExisted();
   }
-
-  _TripRequestUnavailable tripRequestUnavailable() {
-    return _TripRequestUnavailable();
-  }
 }
 
 /// @nodoc
@@ -49,7 +45,6 @@ mixin _$DriverFailure {
     required TResult Function(String? mgs) serverError,
     required TResult Function(String tripId) bannedActionWhileInProgress,
     required TResult Function() notExisted,
-    required TResult Function() tripRequestUnavailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,7 +52,6 @@ mixin _$DriverFailure {
     TResult Function(String? mgs)? serverError,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
-    TResult Function()? tripRequestUnavailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,7 +59,6 @@ mixin _$DriverFailure {
     TResult Function(String? mgs)? serverError,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
-    TResult Function()? tripRequestUnavailable,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,8 +68,6 @@ mixin _$DriverFailure {
     required TResult Function(_BannedActionWhileInProgress value)
         bannedActionWhileInProgress,
     required TResult Function(_NotExisted value) notExisted,
-    required TResult Function(_TripRequestUnavailable value)
-        tripRequestUnavailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,7 +76,6 @@ mixin _$DriverFailure {
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
-    TResult Function(_TripRequestUnavailable value)? tripRequestUnavailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,7 +84,6 @@ mixin _$DriverFailure {
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
-    TResult Function(_TripRequestUnavailable value)? tripRequestUnavailable,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -184,7 +173,6 @@ class _$_ServerError implements _ServerError {
     required TResult Function(String? mgs) serverError,
     required TResult Function(String tripId) bannedActionWhileInProgress,
     required TResult Function() notExisted,
-    required TResult Function() tripRequestUnavailable,
   }) {
     return serverError(mgs);
   }
@@ -195,7 +183,6 @@ class _$_ServerError implements _ServerError {
     TResult Function(String? mgs)? serverError,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
-    TResult Function()? tripRequestUnavailable,
   }) {
     return serverError?.call(mgs);
   }
@@ -206,7 +193,6 @@ class _$_ServerError implements _ServerError {
     TResult Function(String? mgs)? serverError,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
-    TResult Function()? tripRequestUnavailable,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -222,8 +208,6 @@ class _$_ServerError implements _ServerError {
     required TResult Function(_BannedActionWhileInProgress value)
         bannedActionWhileInProgress,
     required TResult Function(_NotExisted value) notExisted,
-    required TResult Function(_TripRequestUnavailable value)
-        tripRequestUnavailable,
   }) {
     return serverError(this);
   }
@@ -235,7 +219,6 @@ class _$_ServerError implements _ServerError {
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
-    TResult Function(_TripRequestUnavailable value)? tripRequestUnavailable,
   }) {
     return serverError?.call(this);
   }
@@ -247,7 +230,6 @@ class _$_ServerError implements _ServerError {
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
-    TResult Function(_TripRequestUnavailable value)? tripRequestUnavailable,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -338,7 +320,6 @@ class _$_BannedActionWhileInProgress implements _BannedActionWhileInProgress {
     required TResult Function(String? mgs) serverError,
     required TResult Function(String tripId) bannedActionWhileInProgress,
     required TResult Function() notExisted,
-    required TResult Function() tripRequestUnavailable,
   }) {
     return bannedActionWhileInProgress(tripId);
   }
@@ -349,7 +330,6 @@ class _$_BannedActionWhileInProgress implements _BannedActionWhileInProgress {
     TResult Function(String? mgs)? serverError,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
-    TResult Function()? tripRequestUnavailable,
   }) {
     return bannedActionWhileInProgress?.call(tripId);
   }
@@ -360,7 +340,6 @@ class _$_BannedActionWhileInProgress implements _BannedActionWhileInProgress {
     TResult Function(String? mgs)? serverError,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
-    TResult Function()? tripRequestUnavailable,
     required TResult orElse(),
   }) {
     if (bannedActionWhileInProgress != null) {
@@ -376,8 +355,6 @@ class _$_BannedActionWhileInProgress implements _BannedActionWhileInProgress {
     required TResult Function(_BannedActionWhileInProgress value)
         bannedActionWhileInProgress,
     required TResult Function(_NotExisted value) notExisted,
-    required TResult Function(_TripRequestUnavailable value)
-        tripRequestUnavailable,
   }) {
     return bannedActionWhileInProgress(this);
   }
@@ -389,7 +366,6 @@ class _$_BannedActionWhileInProgress implements _BannedActionWhileInProgress {
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
-    TResult Function(_TripRequestUnavailable value)? tripRequestUnavailable,
   }) {
     return bannedActionWhileInProgress?.call(this);
   }
@@ -401,7 +377,6 @@ class _$_BannedActionWhileInProgress implements _BannedActionWhileInProgress {
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
-    TResult Function(_TripRequestUnavailable value)? tripRequestUnavailable,
     required TResult orElse(),
   }) {
     if (bannedActionWhileInProgress != null) {
@@ -464,7 +439,6 @@ class _$_NotExisted implements _NotExisted {
     required TResult Function(String? mgs) serverError,
     required TResult Function(String tripId) bannedActionWhileInProgress,
     required TResult Function() notExisted,
-    required TResult Function() tripRequestUnavailable,
   }) {
     return notExisted();
   }
@@ -475,7 +449,6 @@ class _$_NotExisted implements _NotExisted {
     TResult Function(String? mgs)? serverError,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
-    TResult Function()? tripRequestUnavailable,
   }) {
     return notExisted?.call();
   }
@@ -486,7 +459,6 @@ class _$_NotExisted implements _NotExisted {
     TResult Function(String? mgs)? serverError,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
-    TResult Function()? tripRequestUnavailable,
     required TResult orElse(),
   }) {
     if (notExisted != null) {
@@ -502,8 +474,6 @@ class _$_NotExisted implements _NotExisted {
     required TResult Function(_BannedActionWhileInProgress value)
         bannedActionWhileInProgress,
     required TResult Function(_NotExisted value) notExisted,
-    required TResult Function(_TripRequestUnavailable value)
-        tripRequestUnavailable,
   }) {
     return notExisted(this);
   }
@@ -515,7 +485,6 @@ class _$_NotExisted implements _NotExisted {
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
-    TResult Function(_TripRequestUnavailable value)? tripRequestUnavailable,
   }) {
     return notExisted?.call(this);
   }
@@ -527,7 +496,6 @@ class _$_NotExisted implements _NotExisted {
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
-    TResult Function(_TripRequestUnavailable value)? tripRequestUnavailable,
     required TResult orElse(),
   }) {
     if (notExisted != null) {
@@ -539,125 +507,4 @@ class _$_NotExisted implements _NotExisted {
 
 abstract class _NotExisted implements DriverFailure {
   factory _NotExisted() = _$_NotExisted;
-}
-
-/// @nodoc
-abstract class _$TripRequestUnavailableCopyWith<$Res> {
-  factory _$TripRequestUnavailableCopyWith(_TripRequestUnavailable value,
-          $Res Function(_TripRequestUnavailable) then) =
-      __$TripRequestUnavailableCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$TripRequestUnavailableCopyWithImpl<$Res>
-    extends _$DriverFailureCopyWithImpl<$Res>
-    implements _$TripRequestUnavailableCopyWith<$Res> {
-  __$TripRequestUnavailableCopyWithImpl(_TripRequestUnavailable _value,
-      $Res Function(_TripRequestUnavailable) _then)
-      : super(_value, (v) => _then(v as _TripRequestUnavailable));
-
-  @override
-  _TripRequestUnavailable get _value => super._value as _TripRequestUnavailable;
-}
-
-/// @nodoc
-
-class _$_TripRequestUnavailable implements _TripRequestUnavailable {
-  _$_TripRequestUnavailable();
-
-  @override
-  String toString() {
-    return 'DriverFailure.tripRequestUnavailable()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _TripRequestUnavailable);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? mgs) serverError,
-    required TResult Function(String tripId) bannedActionWhileInProgress,
-    required TResult Function() notExisted,
-    required TResult Function() tripRequestUnavailable,
-  }) {
-    return tripRequestUnavailable();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? mgs)? serverError,
-    TResult Function(String tripId)? bannedActionWhileInProgress,
-    TResult Function()? notExisted,
-    TResult Function()? tripRequestUnavailable,
-  }) {
-    return tripRequestUnavailable?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? mgs)? serverError,
-    TResult Function(String tripId)? bannedActionWhileInProgress,
-    TResult Function()? notExisted,
-    TResult Function()? tripRequestUnavailable,
-    required TResult orElse(),
-  }) {
-    if (tripRequestUnavailable != null) {
-      return tripRequestUnavailable();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ServerError value) serverError,
-    required TResult Function(_BannedActionWhileInProgress value)
-        bannedActionWhileInProgress,
-    required TResult Function(_NotExisted value) notExisted,
-    required TResult Function(_TripRequestUnavailable value)
-        tripRequestUnavailable,
-  }) {
-    return tripRequestUnavailable(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ServerError value)? serverError,
-    TResult Function(_BannedActionWhileInProgress value)?
-        bannedActionWhileInProgress,
-    TResult Function(_NotExisted value)? notExisted,
-    TResult Function(_TripRequestUnavailable value)? tripRequestUnavailable,
-  }) {
-    return tripRequestUnavailable?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ServerError value)? serverError,
-    TResult Function(_BannedActionWhileInProgress value)?
-        bannedActionWhileInProgress,
-    TResult Function(_NotExisted value)? notExisted,
-    TResult Function(_TripRequestUnavailable value)? tripRequestUnavailable,
-    required TResult orElse(),
-  }) {
-    if (tripRequestUnavailable != null) {
-      return tripRequestUnavailable(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _TripRequestUnavailable implements DriverFailure {
-  factory _TripRequestUnavailable() = _$_TripRequestUnavailable;
 }

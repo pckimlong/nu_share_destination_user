@@ -12,7 +12,4 @@ class DriverFailure with _$DriverFailure {
   factory DriverFailure.bannedActionWhileInProgress(String tripId) =
       _BannedActionWhileInProgress;
   factory DriverFailure.notExisted() = _NotExisted;
-
-  /// When try to archor to trip which already attach with other driver
-  factory DriverFailure.tripRequestUnavailable() = _TripRequestUnavailable;
 }

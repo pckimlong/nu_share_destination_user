@@ -1,11 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:nu_share_destination_user/src/infra/driver/driver_entity_dto.dart';
 import 'package:nu_share_destination_user/src/infra/trip/trip_entity_dto.dart';
 import 'package:nu_share_destination_user/src/infra/user/user_entity_dto.dart';
 
-import '../../../domain/driver/driver_entity.dart';
-
 part 'firebase_paths.dart';
+
+extension RDatabaseX on FirebaseDatabase {
+  DatabaseReference userLocationRef(String uid) {
+    return ref('user/$uid');
+  }
+}
 
 extension FirestoreX on FirebaseFirestore {
   CollectionReference<UserEntityDto> get userColRef {

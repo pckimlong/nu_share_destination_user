@@ -90,6 +90,8 @@ dependencies:
   google_place: ^0.4.7
   # For Delay fast callback, like on keyboad change...
   easy_debounce: ^2.0.2+1
+  # Use for real-time update of driver location: It cheaper than firestore
+  firebase_database: ^9.0.6
 
 
 dev_dependencies:

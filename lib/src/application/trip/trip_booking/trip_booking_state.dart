@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
 import 'package:nu_share_destination_user/src/domain/core/entities/location_address.dart';
 import 'package:nu_share_destination_user/src/domain/driver/driver_entity.dart';
+import 'package:nu_share_destination_user/src/domain/driver/driver_failure.dart';
 import 'package:nu_share_destination_user/src/domain/location/location_failure.dart';
 
 part 'trip_booking_state.freezed.dart';
@@ -17,6 +18,7 @@ class TripBookingState with _$TripBookingState {
     required bool isLoading,
     required String? note,
     required d.Option<LocationFailure> failure,
+    required d.Option<DriverFailure> driverFailure,
 
     /// This use for navigate to my location in google map
     /// because google map controller cannot put inside state.
@@ -33,5 +35,6 @@ class TripBookingState with _$TripBookingState {
         note: '',
         failure: d.none(),
         myLocation: d.none(),
+        driverFailure: d.none(),
       );
 }

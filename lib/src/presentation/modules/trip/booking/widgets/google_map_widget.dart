@@ -16,6 +16,59 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
     super.initState();
   }
 
+  void _drawerOriginAndDesinationMarker(Option<LocationAddress> originLoc,
+      Option<LocationAddress> destinationLoc, Map<MarkerId, Marker> markers) {
+    // only add marker when desition address has been add
+    useEffect(
+      () => originLoc.fold(
+        () => null,
+        (origin) => destinationLoc.fold(() => null, (destination) {
+          // create my marker
+          const originMarkerId = MarkerId('origin');
+          final originMarker = markers[originMarkerId];
+          if (originMarker != null) {
+            markers[originMarkerId] = originMarker.copyWith(
+              positionParam: LatLng(
+                origin.locationPoint.coordinate.latitude,
+                origin.locationPoint.coordinate.longitude,
+              ),
+            );
+          } else {
+            markers[originMarkerId] = Marker(
+              markerId: MarkerId(origin.locationPoint.geoHash),
+              position: LatLng(
+                origin.locationPoint.coordinate.latitude,
+                origin.locationPoint.coordinate.longitude,
+              ),
+            );
+          }
+
+          /// create destination mark
+          const desMarkerId = MarkerId('destination');
+          final desMarker = markers[desMarkerId];
+          if (desMarker != null) {
+            markers[desMarkerId] = desMarker.copyWith(
+              positionParam: LatLng(
+                destination.locationPoint.coordinate.latitude,
+                destination.locationPoint.coordinate.longitude,
+              ),
+            );
+          } else {
+            markers[desMarkerId] = Marker(
+              markerId: MarkerId(destination.locationPoint.geoHash),
+              position: LatLng(
+                destination.locationPoint.coordinate.latitude,
+                destination.locationPoint.coordinate.longitude,
+              ),
+            );
+          }
+          return;
+        }),
+      ),
+      [originLoc, destinationLoc],
+    );
+  }
+
   /// Move map to a coordinate
   void _moveToCoordinate(Coordinate coor) {
     _mapController.animateCamera(
@@ -34,7 +87,7 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
   }
 
   // When map stop moving update my address state
-  void _onMapIdle() async {
+  Future<void> _onMapIdle() async {
     final controller = ref.read(tripBookingController.notifier);
     //todo update only when ...
     await controller.mapEventToState(
@@ -97,63 +150,9 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
     );
 
     final markers = useMemoized<Map<MarkerId, Marker>>(() => {}, const []);
-    print(markers.toString());
 
-    useEffect(
-      () => originLoc.fold(
-        () => null,
-        (origin) {
-          const myMarkerId = MarkerId('origin');
-          final marker = markers[myMarkerId];
-          if (marker != null) {
-            markers[myMarkerId] = marker.copyWith(
-              positionParam: LatLng(
-                origin.locationPoint.coordinate.latitude,
-                origin.locationPoint.coordinate.longitude,
-              ),
-            );
-          } else {
-            markers[myMarkerId] = Marker(
-              markerId: MarkerId(origin.locationPoint.geoHash),
-              position: LatLng(
-                origin.locationPoint.coordinate.latitude,
-                origin.locationPoint.coordinate.longitude,
-              ),
-            );
-          }
-          return;
-        },
-      ),
-      [originLoc],
-    );
+    _drawerOriginAndDesinationMarker(originLoc, destinationLoc, markers);
 
-    useEffect(
-      () => destinationLoc.fold(
-        () => null,
-        (destination) {
-          const markId = MarkerId('destination');
-          final marker = markers[markId];
-          if (marker != null) {
-            markers[markId] = marker.copyWith(
-              positionParam: LatLng(
-                destination.locationPoint.coordinate.latitude,
-                destination.locationPoint.coordinate.longitude,
-              ),
-            );
-          } else {
-            markers[markId] = Marker(
-              markerId: MarkerId(destination.locationPoint.geoHash),
-              position: LatLng(
-                destination.locationPoint.coordinate.latitude,
-                destination.locationPoint.coordinate.longitude,
-              ),
-            );
-          }
-          return;
-        },
-      ),
-      [destinationLoc],
-    );
     useEffect(
       () {},
       [nearbyDrivers],

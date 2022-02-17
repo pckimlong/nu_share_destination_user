@@ -34,6 +34,9 @@ final tripBookingController =
     StateNotifierProvider.autoDispose<TripBookingNotifier, TripBookingState>(
   (ref) => TripBookingNotifier(
     ref.watch(locationServiceProvider),
+    ref.watch(driverReposProvider),
+    ref.watch(userReposProvider),
+    ref.watch(tripReposProvider),
   ),
 );
 

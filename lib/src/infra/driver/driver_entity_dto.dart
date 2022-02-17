@@ -1,10 +1,12 @@
 // ignore_for_file: invalid_annotation_target
 
-import 'package:dartz/dartz.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dartz/dartz.dart' as dz;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
 import 'package:nu_share_destination_user/src/domain/driver/vehicle_types.dart';
 import 'package:nu_share_destination_user/src/domain/driver/driver_entity.dart';
+import '../_core/firebase/firebase_extensions.dart';
 
 part 'driver_entity_dto.freezed.dart';
 part 'driver_entity_dto.g.dart';
@@ -44,10 +46,27 @@ abstract class DriverEntityDto with _$DriverEntityDto {
       available: domain.available,
       location: domain.location,
       vehicleType: domain.vehicleType,
-      inProgressTrip: domain.inProgressTrip.fold(() => null, id),
+      inProgressTrip: domain.inProgressTrip.fold(() => null, dz.id),
     );
   }
 
   factory DriverEntityDto.fromJson(Map<String, dynamic> json) =>
       _$DriverEntityDtoFromJson(json);
+
+  factory DriverEntityDto.fromDocument(DocumentSnapshot doc) =>
+      _$DriverEntityDtoFromJson(doc.toMap()).copyWith(id: doc.id);
+}
+
+extension DriverEntityDtoX on DriverEntityDto {
+  DriverEntity toDomain() {
+    return DriverEntity(
+      id: id,
+      fullname: fullname,
+      available: available,
+      location: location,
+      vehicleType: vehicleType,
+      inProgressTrip:
+          inProgressTrip == null ? dz.none() : dz.some(inProgressTrip!),
+    );
+  }
 }

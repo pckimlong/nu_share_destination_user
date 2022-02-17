@@ -38,6 +38,7 @@ final driverReposProvider = Provider<IDriverRepository>((ref) {
   return DriverReposImpl(
     ref.watch(firestoreProvider),
     ref.watch(geoFireProvider),
+    ref.watch(realTimeDatabaseProvider),
   );
 });
 

@@ -49,15 +49,4 @@ abstract class IDriverRepository {
   ///  if toggle [available] to false while in trip state
   /// ( [inProgress] not null )
   Future<Either<DriverFailure, Unit>> toggleAvailable(String driverId);
-
-  /// Accept trip request by adding a driver to that trip
-  ///
-  /// throw [DriverFailure.tripRequestUnavailable()] failure if the trip
-  /// is already attach to other driver.
-  /// After success attach driver to a trip this function will also update
-  /// driver state like [inProgress] , [available]...
-  Future<Either<DriverFailure, Unit>> acceptTripRequest({
-    required String tripId,
-    required String driverId,
-  });
 }

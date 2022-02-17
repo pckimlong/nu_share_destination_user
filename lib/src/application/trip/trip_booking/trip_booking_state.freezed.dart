@@ -25,6 +25,7 @@ class _$TripBookingStateTearOff {
       required bool isLoading,
       required String? note,
       required d.Option<LocationFailure> failure,
+      required d.Option<DriverFailure> driverFailure,
       required d.Option<Coordinate> myLocation}) {
     return _TripBookingState(
       nearbyDrivers: nearbyDrivers,
@@ -33,6 +34,7 @@ class _$TripBookingStateTearOff {
       isLoading: isLoading,
       note: note,
       failure: failure,
+      driverFailure: driverFailure,
       myLocation: myLocation,
     );
   }
@@ -51,6 +53,8 @@ mixin _$TripBookingState {
   bool get isLoading => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
   d.Option<LocationFailure> get failure => throw _privateConstructorUsedError;
+  d.Option<DriverFailure> get driverFailure =>
+      throw _privateConstructorUsedError;
 
   /// This use for navigate to my location in google map
   /// because google map controller cannot put inside state.
@@ -75,6 +79,7 @@ abstract class $TripBookingStateCopyWith<$Res> {
       bool isLoading,
       String? note,
       d.Option<LocationFailure> failure,
+      d.Option<DriverFailure> driverFailure,
       d.Option<Coordinate> myLocation});
 }
 
@@ -95,6 +100,7 @@ class _$TripBookingStateCopyWithImpl<$Res>
     Object? isLoading = freezed,
     Object? note = freezed,
     Object? failure = freezed,
+    Object? driverFailure = freezed,
     Object? myLocation = freezed,
   }) {
     return _then(_value.copyWith(
@@ -122,6 +128,10 @@ class _$TripBookingStateCopyWithImpl<$Res>
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as d.Option<LocationFailure>,
+      driverFailure: driverFailure == freezed
+          ? _value.driverFailure
+          : driverFailure // ignore: cast_nullable_to_non_nullable
+              as d.Option<DriverFailure>,
       myLocation: myLocation == freezed
           ? _value.myLocation
           : myLocation // ignore: cast_nullable_to_non_nullable
@@ -144,6 +154,7 @@ abstract class _$TripBookingStateCopyWith<$Res>
       bool isLoading,
       String? note,
       d.Option<LocationFailure> failure,
+      d.Option<DriverFailure> driverFailure,
       d.Option<Coordinate> myLocation});
 }
 
@@ -166,6 +177,7 @@ class __$TripBookingStateCopyWithImpl<$Res>
     Object? isLoading = freezed,
     Object? note = freezed,
     Object? failure = freezed,
+    Object? driverFailure = freezed,
     Object? myLocation = freezed,
   }) {
     return _then(_TripBookingState(
@@ -193,6 +205,10 @@ class __$TripBookingStateCopyWithImpl<$Res>
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as d.Option<LocationFailure>,
+      driverFailure: driverFailure == freezed
+          ? _value.driverFailure
+          : driverFailure // ignore: cast_nullable_to_non_nullable
+              as d.Option<DriverFailure>,
       myLocation: myLocation == freezed
           ? _value.myLocation
           : myLocation // ignore: cast_nullable_to_non_nullable
@@ -211,6 +227,7 @@ class _$_TripBookingState implements _TripBookingState {
       required this.isLoading,
       required this.note,
       required this.failure,
+      required this.driverFailure,
       required this.myLocation});
 
   @override
@@ -226,6 +243,8 @@ class _$_TripBookingState implements _TripBookingState {
   @override
   final d.Option<LocationFailure> failure;
   @override
+  final d.Option<DriverFailure> driverFailure;
+  @override
 
   /// This use for navigate to my location in google map
   /// because google map controller cannot put inside state.
@@ -235,7 +254,7 @@ class _$_TripBookingState implements _TripBookingState {
 
   @override
   String toString() {
-    return 'TripBookingState(nearbyDrivers: $nearbyDrivers, originLocation: $originLocation, definationLocation: $definationLocation, isLoading: $isLoading, note: $note, failure: $failure, myLocation: $myLocation)';
+    return 'TripBookingState(nearbyDrivers: $nearbyDrivers, originLocation: $originLocation, definationLocation: $definationLocation, isLoading: $isLoading, note: $note, failure: $failure, driverFailure: $driverFailure, myLocation: $myLocation)';
   }
 
   @override
@@ -253,6 +272,8 @@ class _$_TripBookingState implements _TripBookingState {
             const DeepCollectionEquality().equals(other.note, note) &&
             const DeepCollectionEquality().equals(other.failure, failure) &&
             const DeepCollectionEquality()
+                .equals(other.driverFailure, driverFailure) &&
+            const DeepCollectionEquality()
                 .equals(other.myLocation, myLocation));
   }
 
@@ -265,6 +286,7 @@ class _$_TripBookingState implements _TripBookingState {
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(note),
       const DeepCollectionEquality().hash(failure),
+      const DeepCollectionEquality().hash(driverFailure),
       const DeepCollectionEquality().hash(myLocation));
 
   @JsonKey(ignore: true)
@@ -281,6 +303,7 @@ abstract class _TripBookingState implements TripBookingState {
       required bool isLoading,
       required String? note,
       required d.Option<LocationFailure> failure,
+      required d.Option<DriverFailure> driverFailure,
       required d.Option<Coordinate> myLocation}) = _$_TripBookingState;
 
   @override
@@ -295,6 +318,8 @@ abstract class _TripBookingState implements TripBookingState {
   String? get note;
   @override
   d.Option<LocationFailure> get failure;
+  @override
+  d.Option<DriverFailure> get driverFailure;
   @override
 
   /// This use for navigate to my location in google map

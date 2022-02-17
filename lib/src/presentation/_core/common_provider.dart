@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_place/google_place.dart' as gp;
@@ -12,6 +13,10 @@ final firebaseAuthProvider = Provider<FirebaseAuth>((ref) {
 
 final firestoreProvider = Provider<FirebaseFirestore>((ref) {
   return FirebaseFirestore.instance;
+});
+
+final realTimeDatabaseProvider = Provider<FirebaseDatabase>((ref) {
+  return FirebaseDatabase.instance;
 });
 
 final getStorageProvider = Provider<GetStorage>((ref) {

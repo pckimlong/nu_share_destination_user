@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:nu_share_destination_user/src/application/trip/trip_booking/trip_booking_event.dart';
 import 'package:nu_share_destination_user/src/application/trip/trip_event.dart';
 
 import 'package:nu_share_destination_user/src/application/trip/trip_state.dart';
@@ -17,4 +18,6 @@ class TripControllerNotifier extends StateNotifier<Option<TripState>> {
   final ITripRepository _tripRepository;
   final IUserRepository _userRepository;
   final IDriverRepository _driverRepository;
+
+  Future mapEventToState(TripBookingEvent event) async {}
 }

@@ -21,10 +21,15 @@ abstract class ITripRepository {
     required PassengerEntity passenger,
   });
 
-  /// Bind driver to the requested trip, and start picking up passenger
-  /// this will be called by driver
+  /// Accept trip request by adding a driver to that trip
+  ///
+  /// throw [TripFailure.tripRequestUnavailable()] failure if the trip
+  /// is already attach to other driver.
+  /// After success attach driver to a trip this function will also update
+  /// driver state like [inProgress] , [available]...
   Future<Either<TripFailure, Unit>> acceptTripRequest({
     required String tripId,
+    required String driverId,
   });
 
   /// After driver arrived start the trip progress
