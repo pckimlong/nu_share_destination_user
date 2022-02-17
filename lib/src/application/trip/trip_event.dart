@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/coordinate.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
 import 'package:nu_share_destination_user/src/domain/trip/trip_entity.dart';
+
+import '../../domain/trip/passenger_entity.dart';
 
 part 'trip_event.freezed.dart';
 

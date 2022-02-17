@@ -1,11 +1,10 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../domain/_core/constants.dart';
-import '../../../domain/_core/entities/coordinate.dart';
-import '../../../domain/_core/entities/location_point_detail.dart';
+import '../../../domain/core/constants.dart';
+import '../../../domain/core/entities/coordinate.dart';
+import '../../../domain/core/entities/location_address.dart';
 import '../../_core/service_providers.dart';
 import '../../widgets/circle_location_button.dart';
 import '../../widgets/location_pin_widget.dart';
@@ -17,7 +16,7 @@ class LocationPickerFromMapPage extends ConsumerStatefulWidget {
     this.initial,
   }) : super(key: key);
 
-  final LocationPointDetail? initial;
+  final LocationAddress? initial;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -58,35 +57,34 @@ class _LocationPickerFromMapPageState
   Future<void> _updateAddress() async {
     final address = await ref
         .read(locationServiceProvider)
-        .getAddressByLocationPoint(Coordinate(
+        .getAddressByCoordinate(Coordinate(
           _currentLatLng.latitude,
           _currentLatLng.longitude,
         ));
-    address.fold(
-      (l) => '...',
-      (r) => setState(
-        () => _address = r.fold(() => 'Unknown', (a) => a.address),
-      ),
-    );
+    // address.fold(
+    //   (l) => '...',
+    //   (r) => setState(
+    //     () => _address = r.fold(() => 'Unknown', (a) => a.address),
+    //   ),
+    // );
   }
 
   Future<void> _moveToMyLocation() async {
-    final myLocation =
-        await ref.read(locationServiceProvider).getDeviceLocationPoint();
-    myLocation.fold(
-      (l) => null,
-      (r) => _mapController.animateCamera(
-        CameraUpdate.newCameraPosition(
-          CameraPosition(
-            target: LatLng(
-              r.coordinate.latitude,
-              r.coordinate.longitude,
-            ),
-            zoom: DomainValues.mapPointZoom,
-          ),
-        ),
-      ),
-    );
+    // final myLocation = await ref.read(locationServiceProvider).getMyAddress();
+    // myLocation.fold(
+    //   (l) => null,
+    //   (r) => _mapController.animateCamera(
+    //     CameraUpdate.newCameraPosition(
+    //       CameraPosition(
+    //         target: LatLng(
+    //           r.coordinate.latitude,
+    //           r.coordinate.longitude,
+    //         ),
+    //         zoom: DomainValues.mapPointZoom,
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 
   @override
@@ -154,20 +152,20 @@ class _LocationPickerFromMapPageState
                       child: MyElevatedButton(
                         label: 'Confirm',
                         onTap: () async {
-                          final result = LocationPointDetail(
-                            address: _address,
-                            locationPoint: await ref
-                                .read(locationServiceProvider)
-                                .coordinateToLocationPoint(
-                                  Coordinate(
-                                    _currentLatLng.latitude,
-                                    _currentLatLng.longitude,
-                                  ),
-                                ),
-                            time: null,
-                          );
+                          // final result = LocationAddress(
+                          //   address: _address,
+                          //   locationPoint: await ref
+                          //       .read(locationServiceProvider)
+                          //       .getAddressByCoordinate(
+                          //         Coordinate(
+                          //           _currentLatLng.latitude,
+                          //           _currentLatLng.longitude,
+                          //         ),
+                          //       ).then((value) => null),
+                          //   time: null,
+                          // );
 
-                          context.router.pop(result);
+                          // context.router.pop(result);
                         },
                       ),
                     ),

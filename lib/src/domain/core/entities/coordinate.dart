@@ -1,6 +1,8 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:geoflutterfire/geoflutterfire.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/location_point.dart';
 
 part 'coordinate.freezed.dart';
 part 'coordinate.g.dart';

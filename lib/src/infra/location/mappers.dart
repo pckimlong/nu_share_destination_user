@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
-import 'package:location/location.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/coordinate.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/location_detail.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/location_point.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/location_point.dart';
 
 extension GeoFirePointX on GeoFirePoint {
   LocationPoint toDomain() {
@@ -21,16 +21,29 @@ extension GeoFirePointX on GeoFirePoint {
   }
 }
 
-extension LocationDataX on LocationData {
+extension CoordinateX on Coordinate {
+  LocationPoint toLocationPoint() {
+    return GeoFirePoint(latitude, longitude).toDomain();
+  }
+
+  GeoFirePoint toGeoFirePoint() {
+    return GeoFirePoint(
+      latitude,
+      longitude,
+    );
+  }
+}
+
+extension LocationDataX on Position {
   LocationDetail toDomain() {
     return LocationDetail(
-      locationPoint: GeoFirePoint(latitude ?? 0, longitude ?? 0).toDomain(),
-      accuracy: latitude ?? 0,
-      altitude: altitude ?? 0,
-      speed: speed ?? 0,
-      speedAccuracy: speedAccuracy ?? 0,
-      heading: heading ?? 0,
-      time: DateTime.fromMillisecondsSinceEpoch(time?.toInt() ?? 0),
+      locationPoint: GeoFirePoint(latitude, longitude).toDomain(),
+      accuracy: latitude,
+      altitude: altitude,
+      speed: speed,
+      speedAccuracy: speedAccuracy,
+      heading: heading,
+      time: timestamp,
     );
   }
 }

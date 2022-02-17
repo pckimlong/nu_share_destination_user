@@ -21,14 +21,14 @@ class _$DriverEntityTearOff {
   _DriverEntity call(
       {required String? id,
       required String fullname,
-      required bool visible,
+      required bool available,
       required LocationDetail location,
       required VehicleTypes vehicleType,
       required Option<String> inProgressTrip}) {
     return _DriverEntity(
       id: id,
       fullname: fullname,
-      visible: visible,
+      available: available,
       location: location,
       vehicleType: vehicleType,
       inProgressTrip: inProgressTrip,
@@ -50,14 +50,16 @@ mixin _$DriverEntity {
   /// will update from passenger entity call
   /// When trip finished (if available) this will update to true automatically
   /// unless driver turn it of manualy
-  bool get visible => throw _privateConstructorUsedError;
+  bool get available => throw _privateConstructorUsedError;
 
   /// This is the location of driver. To improve app performance and battery
   /// This only update when meet the condition, not update everytime
-  /// My idea is to update it every defined meter and also when there are any
-  /// passenger nearby. This can accomplish by having a method to watch for all
-  /// nearby passenger request. If there is any nearby, do update the location.
-  /// This will visible to those passenger
+  /// My idea is to update it every defined meter and also when driver available
+  /// is set to true. Note that: when in a trip, instead of using firestore
+  /// I gonna use firebase realtime database instead. beacause it is cheap
+  /// and not count bill on read/write like firestore. this mean that when
+  /// driver [available] is false and [inProgressTrip] is true, update user
+  /// location in real-time to database
   LocationDetail get location => throw _privateConstructorUsedError;
 
   /// Vihicle type of taxi.
@@ -85,7 +87,7 @@ abstract class $DriverEntityCopyWith<$Res> {
   $Res call(
       {String? id,
       String fullname,
-      bool visible,
+      bool available,
       LocationDetail location,
       VehicleTypes vehicleType,
       Option<String> inProgressTrip});
@@ -105,7 +107,7 @@ class _$DriverEntityCopyWithImpl<$Res> implements $DriverEntityCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? fullname = freezed,
-    Object? visible = freezed,
+    Object? available = freezed,
     Object? location = freezed,
     Object? vehicleType = freezed,
     Object? inProgressTrip = freezed,
@@ -119,9 +121,9 @@ class _$DriverEntityCopyWithImpl<$Res> implements $DriverEntityCopyWith<$Res> {
           ? _value.fullname
           : fullname // ignore: cast_nullable_to_non_nullable
               as String,
-      visible: visible == freezed
-          ? _value.visible
-          : visible // ignore: cast_nullable_to_non_nullable
+      available: available == freezed
+          ? _value.available
+          : available // ignore: cast_nullable_to_non_nullable
               as bool,
       location: location == freezed
           ? _value.location
@@ -156,7 +158,7 @@ abstract class _$DriverEntityCopyWith<$Res>
   $Res call(
       {String? id,
       String fullname,
-      bool visible,
+      bool available,
       LocationDetail location,
       VehicleTypes vehicleType,
       Option<String> inProgressTrip});
@@ -179,7 +181,7 @@ class __$DriverEntityCopyWithImpl<$Res> extends _$DriverEntityCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? fullname = freezed,
-    Object? visible = freezed,
+    Object? available = freezed,
     Object? location = freezed,
     Object? vehicleType = freezed,
     Object? inProgressTrip = freezed,
@@ -193,9 +195,9 @@ class __$DriverEntityCopyWithImpl<$Res> extends _$DriverEntityCopyWithImpl<$Res>
           ? _value.fullname
           : fullname // ignore: cast_nullable_to_non_nullable
               as String,
-      visible: visible == freezed
-          ? _value.visible
-          : visible // ignore: cast_nullable_to_non_nullable
+      available: available == freezed
+          ? _value.available
+          : available // ignore: cast_nullable_to_non_nullable
               as bool,
       location: location == freezed
           ? _value.location
@@ -219,7 +221,7 @@ class _$_DriverEntity extends _DriverEntity {
   _$_DriverEntity(
       {required this.id,
       required this.fullname,
-      required this.visible,
+      required this.available,
       required this.location,
       required this.vehicleType,
       required this.inProgressTrip})
@@ -237,15 +239,17 @@ class _$_DriverEntity extends _DriverEntity {
   /// will update from passenger entity call
   /// When trip finished (if available) this will update to true automatically
   /// unless driver turn it of manualy
-  final bool visible;
+  final bool available;
   @override
 
   /// This is the location of driver. To improve app performance and battery
   /// This only update when meet the condition, not update everytime
-  /// My idea is to update it every defined meter and also when there are any
-  /// passenger nearby. This can accomplish by having a method to watch for all
-  /// nearby passenger request. If there is any nearby, do update the location.
-  /// This will visible to those passenger
+  /// My idea is to update it every defined meter and also when driver available
+  /// is set to true. Note that: when in a trip, instead of using firestore
+  /// I gonna use firebase realtime database instead. beacause it is cheap
+  /// and not count bill on read/write like firestore. this mean that when
+  /// driver [available] is false and [inProgressTrip] is true, update user
+  /// location in real-time to database
   final LocationDetail location;
   @override
 
@@ -264,7 +268,7 @@ class _$_DriverEntity extends _DriverEntity {
 
   @override
   String toString() {
-    return 'DriverEntity(id: $id, fullname: $fullname, visible: $visible, location: $location, vehicleType: $vehicleType, inProgressTrip: $inProgressTrip)';
+    return 'DriverEntity(id: $id, fullname: $fullname, available: $available, location: $location, vehicleType: $vehicleType, inProgressTrip: $inProgressTrip)';
   }
 
   @override
@@ -274,7 +278,7 @@ class _$_DriverEntity extends _DriverEntity {
             other is _DriverEntity &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.fullname, fullname) &&
-            const DeepCollectionEquality().equals(other.visible, visible) &&
+            const DeepCollectionEquality().equals(other.available, available) &&
             const DeepCollectionEquality().equals(other.location, location) &&
             const DeepCollectionEquality()
                 .equals(other.vehicleType, vehicleType) &&
@@ -287,7 +291,7 @@ class _$_DriverEntity extends _DriverEntity {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(fullname),
-      const DeepCollectionEquality().hash(visible),
+      const DeepCollectionEquality().hash(available),
       const DeepCollectionEquality().hash(location),
       const DeepCollectionEquality().hash(vehicleType),
       const DeepCollectionEquality().hash(inProgressTrip));
@@ -302,7 +306,7 @@ abstract class _DriverEntity extends DriverEntity {
   factory _DriverEntity(
       {required String? id,
       required String fullname,
-      required bool visible,
+      required bool available,
       required LocationDetail location,
       required VehicleTypes vehicleType,
       required Option<String> inProgressTrip}) = _$_DriverEntity;
@@ -320,15 +324,17 @@ abstract class _DriverEntity extends DriverEntity {
   /// will update from passenger entity call
   /// When trip finished (if available) this will update to true automatically
   /// unless driver turn it of manualy
-  bool get visible;
+  bool get available;
   @override
 
   /// This is the location of driver. To improve app performance and battery
   /// This only update when meet the condition, not update everytime
-  /// My idea is to update it every defined meter and also when there are any
-  /// passenger nearby. This can accomplish by having a method to watch for all
-  /// nearby passenger request. If there is any nearby, do update the location.
-  /// This will visible to those passenger
+  /// My idea is to update it every defined meter and also when driver available
+  /// is set to true. Note that: when in a trip, instead of using firestore
+  /// I gonna use firebase realtime database instead. beacause it is cheap
+  /// and not count bill on read/write like firestore. this mean that when
+  /// driver [available] is false and [inProgressTrip] is true, update user
+  /// location in real-time to database
   LocationDetail get location;
   @override
 

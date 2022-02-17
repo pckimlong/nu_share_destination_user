@@ -40,7 +40,7 @@ class _$BookingEventTearOff {
   }
 
   _ChangeDestinationPosition changeDestinationPosition(
-      Option<LocationPointDetail> pointDetailOption) {
+      Option<LocationAddress> pointDetailOption) {
     return _ChangeDestinationPosition(
       pointDetailOption,
     );
@@ -75,7 +75,7 @@ mixin _$BookingEvent {
     required TResult Function(Coordinate coordinate) onMapMoved,
     required TResult Function() moveToMyLocation,
     required TResult Function() updateOriginPosition,
-    required TResult Function(Option<LocationPointDetail> pointDetailOption)
+    required TResult Function(Option<LocationAddress> pointDetailOption)
         changeDestinationPosition,
     required TResult Function(VehicleTypes vehicle) changedVehicleType,
     required TResult Function(String note) changedNoteToDriver,
@@ -88,7 +88,7 @@ mixin _$BookingEvent {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -101,7 +101,7 @@ mixin _$BookingEvent {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -241,7 +241,7 @@ class _$_InitializeMapController implements _InitializeMapController {
     required TResult Function(Coordinate coordinate) onMapMoved,
     required TResult Function() moveToMyLocation,
     required TResult Function() updateOriginPosition,
-    required TResult Function(Option<LocationPointDetail> pointDetailOption)
+    required TResult Function(Option<LocationAddress> pointDetailOption)
         changeDestinationPosition,
     required TResult Function(VehicleTypes vehicle) changedVehicleType,
     required TResult Function(String note) changedNoteToDriver,
@@ -257,7 +257,7 @@ class _$_InitializeMapController implements _InitializeMapController {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -273,7 +273,7 @@ class _$_InitializeMapController implements _InitializeMapController {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -429,7 +429,7 @@ class _$_OnMapMoved implements _OnMapMoved {
     required TResult Function(Coordinate coordinate) onMapMoved,
     required TResult Function() moveToMyLocation,
     required TResult Function() updateOriginPosition,
-    required TResult Function(Option<LocationPointDetail> pointDetailOption)
+    required TResult Function(Option<LocationAddress> pointDetailOption)
         changeDestinationPosition,
     required TResult Function(VehicleTypes vehicle) changedVehicleType,
     required TResult Function(String note) changedNoteToDriver,
@@ -445,7 +445,7 @@ class _$_OnMapMoved implements _OnMapMoved {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -461,7 +461,7 @@ class _$_OnMapMoved implements _OnMapMoved {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -583,7 +583,7 @@ class _$_MoveToMyLocation implements _MoveToMyLocation {
     required TResult Function(Coordinate coordinate) onMapMoved,
     required TResult Function() moveToMyLocation,
     required TResult Function() updateOriginPosition,
-    required TResult Function(Option<LocationPointDetail> pointDetailOption)
+    required TResult Function(Option<LocationAddress> pointDetailOption)
         changeDestinationPosition,
     required TResult Function(VehicleTypes vehicle) changedVehicleType,
     required TResult Function(String note) changedNoteToDriver,
@@ -599,7 +599,7 @@ class _$_MoveToMyLocation implements _MoveToMyLocation {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -615,7 +615,7 @@ class _$_MoveToMyLocation implements _MoveToMyLocation {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -732,7 +732,7 @@ class _$_UpdateOriginPosition implements _UpdateOriginPosition {
     required TResult Function(Coordinate coordinate) onMapMoved,
     required TResult Function() moveToMyLocation,
     required TResult Function() updateOriginPosition,
-    required TResult Function(Option<LocationPointDetail> pointDetailOption)
+    required TResult Function(Option<LocationAddress> pointDetailOption)
         changeDestinationPosition,
     required TResult Function(VehicleTypes vehicle) changedVehicleType,
     required TResult Function(String note) changedNoteToDriver,
@@ -748,7 +748,7 @@ class _$_UpdateOriginPosition implements _UpdateOriginPosition {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -764,7 +764,7 @@ class _$_UpdateOriginPosition implements _UpdateOriginPosition {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -840,7 +840,7 @@ abstract class _$ChangeDestinationPositionCopyWith<$Res> {
   factory _$ChangeDestinationPositionCopyWith(_ChangeDestinationPosition value,
           $Res Function(_ChangeDestinationPosition) then) =
       __$ChangeDestinationPositionCopyWithImpl<$Res>;
-  $Res call({Option<LocationPointDetail> pointDetailOption});
+  $Res call({Option<LocationAddress> pointDetailOption});
 }
 
 /// @nodoc
@@ -863,7 +863,7 @@ class __$ChangeDestinationPositionCopyWithImpl<$Res>
       pointDetailOption == freezed
           ? _value.pointDetailOption
           : pointDetailOption // ignore: cast_nullable_to_non_nullable
-              as Option<LocationPointDetail>,
+              as Option<LocationAddress>,
     ));
   }
 }
@@ -874,7 +874,7 @@ class _$_ChangeDestinationPosition implements _ChangeDestinationPosition {
   const _$_ChangeDestinationPosition(this.pointDetailOption);
 
   @override
-  final Option<LocationPointDetail> pointDetailOption;
+  final Option<LocationAddress> pointDetailOption;
 
   @override
   String toString() {
@@ -909,7 +909,7 @@ class _$_ChangeDestinationPosition implements _ChangeDestinationPosition {
     required TResult Function(Coordinate coordinate) onMapMoved,
     required TResult Function() moveToMyLocation,
     required TResult Function() updateOriginPosition,
-    required TResult Function(Option<LocationPointDetail> pointDetailOption)
+    required TResult Function(Option<LocationAddress> pointDetailOption)
         changeDestinationPosition,
     required TResult Function(VehicleTypes vehicle) changedVehicleType,
     required TResult Function(String note) changedNoteToDriver,
@@ -925,7 +925,7 @@ class _$_ChangeDestinationPosition implements _ChangeDestinationPosition {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -941,7 +941,7 @@ class _$_ChangeDestinationPosition implements _ChangeDestinationPosition {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -1010,10 +1010,9 @@ class _$_ChangeDestinationPosition implements _ChangeDestinationPosition {
 
 abstract class _ChangeDestinationPosition implements BookingEvent {
   const factory _ChangeDestinationPosition(
-          Option<LocationPointDetail> pointDetailOption) =
-      _$_ChangeDestinationPosition;
+      Option<LocationAddress> pointDetailOption) = _$_ChangeDestinationPosition;
 
-  Option<LocationPointDetail> get pointDetailOption;
+  Option<LocationAddress> get pointDetailOption;
   @JsonKey(ignore: true)
   _$ChangeDestinationPositionCopyWith<_ChangeDestinationPosition>
       get copyWith => throw _privateConstructorUsedError;
@@ -1089,7 +1088,7 @@ class _$_ChangeVehicleType implements _ChangeVehicleType {
     required TResult Function(Coordinate coordinate) onMapMoved,
     required TResult Function() moveToMyLocation,
     required TResult Function() updateOriginPosition,
-    required TResult Function(Option<LocationPointDetail> pointDetailOption)
+    required TResult Function(Option<LocationAddress> pointDetailOption)
         changeDestinationPosition,
     required TResult Function(VehicleTypes vehicle) changedVehicleType,
     required TResult Function(String note) changedNoteToDriver,
@@ -1105,7 +1104,7 @@ class _$_ChangeVehicleType implements _ChangeVehicleType {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -1121,7 +1120,7 @@ class _$_ChangeVehicleType implements _ChangeVehicleType {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -1268,7 +1267,7 @@ class _$_ChangedNoteToDriver implements _ChangedNoteToDriver {
     required TResult Function(Coordinate coordinate) onMapMoved,
     required TResult Function() moveToMyLocation,
     required TResult Function() updateOriginPosition,
-    required TResult Function(Option<LocationPointDetail> pointDetailOption)
+    required TResult Function(Option<LocationAddress> pointDetailOption)
         changeDestinationPosition,
     required TResult Function(VehicleTypes vehicle) changedVehicleType,
     required TResult Function(String note) changedNoteToDriver,
@@ -1284,7 +1283,7 @@ class _$_ChangedNoteToDriver implements _ChangedNoteToDriver {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -1300,7 +1299,7 @@ class _$_ChangedNoteToDriver implements _ChangedNoteToDriver {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -1422,7 +1421,7 @@ class _$_ToggleAllowShare implements _ToggleAllowShare {
     required TResult Function(Coordinate coordinate) onMapMoved,
     required TResult Function() moveToMyLocation,
     required TResult Function() updateOriginPosition,
-    required TResult Function(Option<LocationPointDetail> pointDetailOption)
+    required TResult Function(Option<LocationAddress> pointDetailOption)
         changeDestinationPosition,
     required TResult Function(VehicleTypes vehicle) changedVehicleType,
     required TResult Function(String note) changedNoteToDriver,
@@ -1438,7 +1437,7 @@ class _$_ToggleAllowShare implements _ToggleAllowShare {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,
@@ -1454,7 +1453,7 @@ class _$_ToggleAllowShare implements _ToggleAllowShare {
     TResult Function(Coordinate coordinate)? onMapMoved,
     TResult Function()? moveToMyLocation,
     TResult Function()? updateOriginPosition,
-    TResult Function(Option<LocationPointDetail> pointDetailOption)?
+    TResult Function(Option<LocationAddress> pointDetailOption)?
         changeDestinationPosition,
     TResult Function(VehicleTypes vehicle)? changedVehicleType,
     TResult Function(String note)? changedNoteToDriver,

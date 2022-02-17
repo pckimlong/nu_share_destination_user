@@ -20,8 +20,8 @@ class _$LocationPickerStateTearOff {
 
   _LocationPickerState call(
       {required fic.IList<PlaceEntity> places,
-      required Option<LocationPointDetail> initialOriginLocation,
-      required Option<LocationPointDetail> selectedDesitination,
+      required Option<LocationAddress> initialOriginLocation,
+      required Option<LocationAddress> selectedDesitination,
       bool isLoading = false,
       required Option<LocationFailure> failure}) {
     return _LocationPickerState(
@@ -40,9 +40,9 @@ const $LocationPickerState = _$LocationPickerStateTearOff();
 /// @nodoc
 mixin _$LocationPickerState {
   fic.IList<PlaceEntity> get places => throw _privateConstructorUsedError;
-  Option<LocationPointDetail> get initialOriginLocation =>
+  Option<LocationAddress> get initialOriginLocation =>
       throw _privateConstructorUsedError;
-  Option<LocationPointDetail> get selectedDesitination =>
+  Option<LocationAddress> get selectedDesitination =>
       throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   Option<LocationFailure> get failure => throw _privateConstructorUsedError;
@@ -59,8 +59,8 @@ abstract class $LocationPickerStateCopyWith<$Res> {
       _$LocationPickerStateCopyWithImpl<$Res>;
   $Res call(
       {fic.IList<PlaceEntity> places,
-      Option<LocationPointDetail> initialOriginLocation,
-      Option<LocationPointDetail> selectedDesitination,
+      Option<LocationAddress> initialOriginLocation,
+      Option<LocationAddress> selectedDesitination,
       bool isLoading,
       Option<LocationFailure> failure});
 }
@@ -90,11 +90,11 @@ class _$LocationPickerStateCopyWithImpl<$Res>
       initialOriginLocation: initialOriginLocation == freezed
           ? _value.initialOriginLocation
           : initialOriginLocation // ignore: cast_nullable_to_non_nullable
-              as Option<LocationPointDetail>,
+              as Option<LocationAddress>,
       selectedDesitination: selectedDesitination == freezed
           ? _value.selectedDesitination
           : selectedDesitination // ignore: cast_nullable_to_non_nullable
-              as Option<LocationPointDetail>,
+              as Option<LocationAddress>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -116,8 +116,8 @@ abstract class _$LocationPickerStateCopyWith<$Res>
   @override
   $Res call(
       {fic.IList<PlaceEntity> places,
-      Option<LocationPointDetail> initialOriginLocation,
-      Option<LocationPointDetail> selectedDesitination,
+      Option<LocationAddress> initialOriginLocation,
+      Option<LocationAddress> selectedDesitination,
       bool isLoading,
       Option<LocationFailure> failure});
 }
@@ -149,11 +149,11 @@ class __$LocationPickerStateCopyWithImpl<$Res>
       initialOriginLocation: initialOriginLocation == freezed
           ? _value.initialOriginLocation
           : initialOriginLocation // ignore: cast_nullable_to_non_nullable
-              as Option<LocationPointDetail>,
+              as Option<LocationAddress>,
       selectedDesitination: selectedDesitination == freezed
           ? _value.selectedDesitination
           : selectedDesitination // ignore: cast_nullable_to_non_nullable
-              as Option<LocationPointDetail>,
+              as Option<LocationAddress>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -179,9 +179,9 @@ class _$_LocationPickerState implements _LocationPickerState {
   @override
   final fic.IList<PlaceEntity> places;
   @override
-  final Option<LocationPointDetail> initialOriginLocation;
+  final Option<LocationAddress> initialOriginLocation;
   @override
-  final Option<LocationPointDetail> selectedDesitination;
+  final Option<LocationAddress> selectedDesitination;
   @JsonKey()
   @override
   final bool isLoading;
@@ -226,17 +226,17 @@ class _$_LocationPickerState implements _LocationPickerState {
 abstract class _LocationPickerState implements LocationPickerState {
   factory _LocationPickerState(
       {required fic.IList<PlaceEntity> places,
-      required Option<LocationPointDetail> initialOriginLocation,
-      required Option<LocationPointDetail> selectedDesitination,
+      required Option<LocationAddress> initialOriginLocation,
+      required Option<LocationAddress> selectedDesitination,
       bool isLoading,
       required Option<LocationFailure> failure}) = _$_LocationPickerState;
 
   @override
   fic.IList<PlaceEntity> get places;
   @override
-  Option<LocationPointDetail> get initialOriginLocation;
+  Option<LocationAddress> get initialOriginLocation;
   @override
-  Option<LocationPointDetail> get selectedDesitination;
+  Option<LocationAddress> get selectedDesitination;
   @override
   bool get isLoading;
   @override

@@ -8,7 +8,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nu_share_destination_user/src/application/location/picker/location_picker_controller.dart';
 import 'package:nu_share_destination_user/src/application/location/picker/location_picker_state.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/location_point_detail.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/location_address.dart';
 import 'package:nu_share_destination_user/src/presentation/_core/app_styles.dart';
 import 'package:nu_share_destination_user/src/presentation/_core/app_utilz.dart';
 import 'package:nu_share_destination_user/src/presentation/_core/service_providers.dart';
@@ -23,7 +23,7 @@ final _controllerProvider = StateNotifierProvider.autoDispose<
 });
 
 class LocationPickerPage extends HookConsumerWidget {
-  /// Get [LocationPointDetail] by search or pick on map
+  /// Get [LocationAddress] by search or pick on map
   const LocationPickerPage({
     Key? key,
     this.initial,
@@ -34,8 +34,8 @@ class LocationPickerPage extends HookConsumerWidget {
   }) : super(key: key);
 
   /// Where address start from
-  final LocationPointDetail? initialOrigin;
-  final LocationPointDetail? initial;
+  final LocationAddress? initialOrigin;
+  final LocationAddress? initial;
   final String? title;
   final String textFieldHint;
 
@@ -95,12 +95,11 @@ class LocationPickerPage extends HookConsumerWidget {
                     () async {
                       /// Get result from map instead
                       final result = await context.router
-                          .replace<LocationPointDetail?>(
-                              LocationPickerFromMapRoute(
-                                  initial: ref
-                                      .read(_controllerProvider)
-                                      .selectedDesitination
-                                      .fold(() => null, id)));
+                          .replace<LocationAddress?>(LocationPickerFromMapRoute(
+                              initial: ref
+                                  .read(_controllerProvider)
+                                  .selectedDesitination
+                                  .fold(() => null, id)));
 
                       if (result != null) {
                         controller.onChangeDestination(result);

@@ -7,6 +7,8 @@ import 'package:nu_share_destination_user/src/domain/trip/i_trip_repository.dart
 import 'package:nu_share_destination_user/src/domain/trip/trip_entity.dart';
 import 'package:nu_share_destination_user/src/domain/trip/trip_failure.dart';
 
+import '../../domain/trip/passenger_entity.dart';
+
 class TripReposImpl implements ITripRepository {
   final FirebaseFirestore _firestore;
 

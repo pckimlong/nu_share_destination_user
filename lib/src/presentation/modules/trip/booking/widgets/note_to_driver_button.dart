@@ -5,9 +5,7 @@ class _NoteToDriverButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = ref.watch(bookingController.select(
-      (value) => value.note.fold(() => null, id),
-    ));
+    final note = ref.watch(tripBookingController.select((value) => value.note));
 
     return _Item(
       icon: const Icon(
@@ -26,9 +24,9 @@ class _NoteToDriverButton extends ConsumerWidget {
         );
 
         if (result != null) {
-          ref.read(bookingController.notifier).mapEventToState(
-                BookingEvent.changedNoteToDriver(result),
-              );
+          // ref.read(tripBookingController.notifier).mapEventToState(
+          //       BookingEvent.changedNoteToDriver(result),
+          //     );
         }
       },
     );

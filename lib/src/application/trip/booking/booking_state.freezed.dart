@@ -23,8 +23,8 @@ class _$BookingStateTearOff {
       required Option<String> note,
       required Option<VehicleTypes> vehicleTypes,
       bool allowShare = false,
-      required Option<LocationPointDetail> startedPositionDetail,
-      required Option<LocationPointDetail> expectedEndedPositionDetail,
+      required Option<LocationAddress> originLocation,
+      required Option<LocationAddress> desitionationLocation,
       bool isLoading = false,
       required Option<String> errorMessage}) {
     return _BookingState(
@@ -32,8 +32,8 @@ class _$BookingStateTearOff {
       note: note,
       vehicleTypes: vehicleTypes,
       allowShare: allowShare,
-      startedPositionDetail: startedPositionDetail,
-      expectedEndedPositionDetail: expectedEndedPositionDetail,
+      originLocation: originLocation,
+      desitionationLocation: desitionationLocation,
       isLoading: isLoading,
       errorMessage: errorMessage,
     );
@@ -49,9 +49,9 @@ mixin _$BookingState {
   Option<String> get note => throw _privateConstructorUsedError;
   Option<VehicleTypes> get vehicleTypes => throw _privateConstructorUsedError;
   bool get allowShare => throw _privateConstructorUsedError;
-  Option<LocationPointDetail> get startedPositionDetail =>
+  Option<LocationAddress> get originLocation =>
       throw _privateConstructorUsedError;
-  Option<LocationPointDetail> get expectedEndedPositionDetail =>
+  Option<LocationAddress> get desitionationLocation =>
       throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   Option<String> get errorMessage => throw _privateConstructorUsedError;
@@ -71,8 +71,8 @@ abstract class $BookingStateCopyWith<$Res> {
       Option<String> note,
       Option<VehicleTypes> vehicleTypes,
       bool allowShare,
-      Option<LocationPointDetail> startedPositionDetail,
-      Option<LocationPointDetail> expectedEndedPositionDetail,
+      Option<LocationAddress> originLocation,
+      Option<LocationAddress> desitionationLocation,
       bool isLoading,
       Option<String> errorMessage});
 
@@ -93,8 +93,8 @@ class _$BookingStateCopyWithImpl<$Res> implements $BookingStateCopyWith<$Res> {
     Object? note = freezed,
     Object? vehicleTypes = freezed,
     Object? allowShare = freezed,
-    Object? startedPositionDetail = freezed,
-    Object? expectedEndedPositionDetail = freezed,
+    Object? originLocation = freezed,
+    Object? desitionationLocation = freezed,
     Object? isLoading = freezed,
     Object? errorMessage = freezed,
   }) {
@@ -115,14 +115,14 @@ class _$BookingStateCopyWithImpl<$Res> implements $BookingStateCopyWith<$Res> {
           ? _value.allowShare
           : allowShare // ignore: cast_nullable_to_non_nullable
               as bool,
-      startedPositionDetail: startedPositionDetail == freezed
-          ? _value.startedPositionDetail
-          : startedPositionDetail // ignore: cast_nullable_to_non_nullable
-              as Option<LocationPointDetail>,
-      expectedEndedPositionDetail: expectedEndedPositionDetail == freezed
-          ? _value.expectedEndedPositionDetail
-          : expectedEndedPositionDetail // ignore: cast_nullable_to_non_nullable
-              as Option<LocationPointDetail>,
+      originLocation: originLocation == freezed
+          ? _value.originLocation
+          : originLocation // ignore: cast_nullable_to_non_nullable
+              as Option<LocationAddress>,
+      desitionationLocation: desitionationLocation == freezed
+          ? _value.desitionationLocation
+          : desitionationLocation // ignore: cast_nullable_to_non_nullable
+              as Option<LocationAddress>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -154,8 +154,8 @@ abstract class _$BookingStateCopyWith<$Res>
       Option<String> note,
       Option<VehicleTypes> vehicleTypes,
       bool allowShare,
-      Option<LocationPointDetail> startedPositionDetail,
-      Option<LocationPointDetail> expectedEndedPositionDetail,
+      Option<LocationAddress> originLocation,
+      Option<LocationAddress> desitionationLocation,
       bool isLoading,
       Option<String> errorMessage});
 
@@ -179,8 +179,8 @@ class __$BookingStateCopyWithImpl<$Res> extends _$BookingStateCopyWithImpl<$Res>
     Object? note = freezed,
     Object? vehicleTypes = freezed,
     Object? allowShare = freezed,
-    Object? startedPositionDetail = freezed,
-    Object? expectedEndedPositionDetail = freezed,
+    Object? originLocation = freezed,
+    Object? desitionationLocation = freezed,
     Object? isLoading = freezed,
     Object? errorMessage = freezed,
   }) {
@@ -201,14 +201,14 @@ class __$BookingStateCopyWithImpl<$Res> extends _$BookingStateCopyWithImpl<$Res>
           ? _value.allowShare
           : allowShare // ignore: cast_nullable_to_non_nullable
               as bool,
-      startedPositionDetail: startedPositionDetail == freezed
-          ? _value.startedPositionDetail
-          : startedPositionDetail // ignore: cast_nullable_to_non_nullable
-              as Option<LocationPointDetail>,
-      expectedEndedPositionDetail: expectedEndedPositionDetail == freezed
-          ? _value.expectedEndedPositionDetail
-          : expectedEndedPositionDetail // ignore: cast_nullable_to_non_nullable
-              as Option<LocationPointDetail>,
+      originLocation: originLocation == freezed
+          ? _value.originLocation
+          : originLocation // ignore: cast_nullable_to_non_nullable
+              as Option<LocationAddress>,
+      desitionationLocation: desitionationLocation == freezed
+          ? _value.desitionationLocation
+          : desitionationLocation // ignore: cast_nullable_to_non_nullable
+              as Option<LocationAddress>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -229,8 +229,8 @@ class _$_BookingState extends _BookingState {
       required this.note,
       required this.vehicleTypes,
       this.allowShare = false,
-      required this.startedPositionDetail,
-      required this.expectedEndedPositionDetail,
+      required this.originLocation,
+      required this.desitionationLocation,
       this.isLoading = false,
       required this.errorMessage})
       : super._();
@@ -245,9 +245,9 @@ class _$_BookingState extends _BookingState {
   @override
   final bool allowShare;
   @override
-  final Option<LocationPointDetail> startedPositionDetail;
+  final Option<LocationAddress> originLocation;
   @override
-  final Option<LocationPointDetail> expectedEndedPositionDetail;
+  final Option<LocationAddress> desitionationLocation;
   @JsonKey()
   @override
   final bool isLoading;
@@ -256,7 +256,7 @@ class _$_BookingState extends _BookingState {
 
   @override
   String toString() {
-    return 'BookingState(user: $user, note: $note, vehicleTypes: $vehicleTypes, allowShare: $allowShare, startedPositionDetail: $startedPositionDetail, expectedEndedPositionDetail: $expectedEndedPositionDetail, isLoading: $isLoading, errorMessage: $errorMessage)';
+    return 'BookingState(user: $user, note: $note, vehicleTypes: $vehicleTypes, allowShare: $allowShare, originLocation: $originLocation, desitionationLocation: $desitionationLocation, isLoading: $isLoading, errorMessage: $errorMessage)';
   }
 
   @override
@@ -271,10 +271,9 @@ class _$_BookingState extends _BookingState {
             const DeepCollectionEquality()
                 .equals(other.allowShare, allowShare) &&
             const DeepCollectionEquality()
-                .equals(other.startedPositionDetail, startedPositionDetail) &&
-            const DeepCollectionEquality().equals(
-                other.expectedEndedPositionDetail,
-                expectedEndedPositionDetail) &&
+                .equals(other.originLocation, originLocation) &&
+            const DeepCollectionEquality()
+                .equals(other.desitionationLocation, desitionationLocation) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
                 .equals(other.errorMessage, errorMessage));
@@ -287,8 +286,8 @@ class _$_BookingState extends _BookingState {
       const DeepCollectionEquality().hash(note),
       const DeepCollectionEquality().hash(vehicleTypes),
       const DeepCollectionEquality().hash(allowShare),
-      const DeepCollectionEquality().hash(startedPositionDetail),
-      const DeepCollectionEquality().hash(expectedEndedPositionDetail),
+      const DeepCollectionEquality().hash(originLocation),
+      const DeepCollectionEquality().hash(desitionationLocation),
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(errorMessage));
 
@@ -304,8 +303,8 @@ abstract class _BookingState extends BookingState {
       required Option<String> note,
       required Option<VehicleTypes> vehicleTypes,
       bool allowShare,
-      required Option<LocationPointDetail> startedPositionDetail,
-      required Option<LocationPointDetail> expectedEndedPositionDetail,
+      required Option<LocationAddress> originLocation,
+      required Option<LocationAddress> desitionationLocation,
       bool isLoading,
       required Option<String> errorMessage}) = _$_BookingState;
   _BookingState._() : super._();
@@ -319,9 +318,9 @@ abstract class _BookingState extends BookingState {
   @override
   bool get allowShare;
   @override
-  Option<LocationPointDetail> get startedPositionDetail;
+  Option<LocationAddress> get originLocation;
   @override
-  Option<LocationPointDetail> get expectedEndedPositionDetail;
+  Option<LocationAddress> get desitionationLocation;
   @override
   bool get isLoading;
   @override

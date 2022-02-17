@@ -1,7 +1,6 @@
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:location/location.dart';
 import 'package:nu_share_destination_user/src/domain/auth/i_auth_facade.dart';
 import 'package:nu_share_destination_user/src/domain/cache/i_cache_service.dart';
 import 'package:nu_share_destination_user/src/domain/driver/i_driver_repository.dart';
@@ -36,7 +35,10 @@ final userReposProvider = Provider<IUserRepository>((ref) {
 });
 
 final driverReposProvider = Provider<IDriverRepository>((ref) {
-  return DriverReposImpl(ref.watch(firestoreProvider));
+  return DriverReposImpl(
+    ref.watch(firestoreProvider),
+    ref.watch(geoFireProvider),
+  );
 });
 
 final tripReposProvider = Provider<ITripRepository>((ref) {
@@ -50,8 +52,8 @@ final cachServiceProvider = Provider<ICacheService>((ref) {
 
 final locationServiceProvider = Provider<ILocationService>((ref) {
   return LocationServiceImpl(
-    ref.watch(locationProvider),
     ref.watch(geoFireProvider),
     ref.watch(googlePlaceProvider),
+    ref.watch(locationProvider),
   );
 });

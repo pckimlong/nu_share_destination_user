@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/location_detail.dart';
-import 'package:nu_share_destination_user/src/domain/_core/enums/vehicle_types.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
+import 'package:nu_share_destination_user/src/domain/driver/vehicle_types.dart';
 
 part 'driver_entity.freezed.dart';
 
@@ -18,14 +18,16 @@ class DriverEntity with _$DriverEntity {
     /// will update from passenger entity call
     /// When trip finished (if available) this will update to true automatically
     /// unless driver turn it of manualy
-    required bool visible,
+    required bool available,
 
     /// This is the location of driver. To improve app performance and battery
     /// This only update when meet the condition, not update everytime
-    /// My idea is to update it every defined meter and also when there are any
-    /// passenger nearby. This can accomplish by having a method to watch for all
-    /// nearby passenger request. If there is any nearby, do update the location.
-    /// This will visible to those passenger
+    /// My idea is to update it every defined meter and also when driver available
+    /// is set to true. Note that: when in a trip, instead of using firestore
+    /// I gonna use firebase realtime database instead. beacause it is cheap
+    /// and not count bill on read/write like firestore. this mean that when
+    /// driver [available] is false and [inProgressTrip] is true, update user
+    /// location in real-time to database
     required LocationDetail location,
 
     /// Vihicle type of taxi.
@@ -48,5 +50,6 @@ class DriverEntity with _$DriverEntity {
   /// passenger1 toggle [allowToShare] field to true this will update [visible] to true
   /// too even when driver is in trip
   ///
-  bool get inProgressOfSharedTrip => inProgressTrip.isSome() && visible == true;
+  bool get inProgressOfSharedTrip =>
+      inProgressTrip.isSome() && available == true;
 }

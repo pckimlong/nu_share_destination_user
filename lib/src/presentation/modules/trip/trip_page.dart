@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/domain/_core/enums/vehicle_types.dart';
+import 'package:nu_share_destination_user/src/domain/driver/vehicle_types.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/trip/booking/trip_booking_page.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/trip/cancel/trip_cancel_page.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/trip/finished/trip_finished_page.dart';

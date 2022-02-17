@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/domain/_core/enums/vehicle_types.dart';
+import 'package:nu_share_destination_user/src/domain/driver/vehicle_types.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/home/widget/vehicle_type_card.dart';
 import 'package:nu_share_destination_user/src/presentation/routes/router.gr.dart';
 

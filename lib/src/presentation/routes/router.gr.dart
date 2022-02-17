@@ -14,8 +14,8 @@ import 'package:auto_route/auto_route.dart' as _i20;
 import 'package:dartz/dartz.dart' as _i26;
 import 'package:flutter/material.dart' as _i25;
 
-import '../../domain/_core/entities/location_point_detail.dart' as _i27;
-import '../../domain/_core/enums/vehicle_types.dart' as _i28;
+import '../../domain/core/entities/location_address.dart' as _i27;
+import '../../domain/driver/vehicle_types.dart' as _i28;
 import '../modules/account/account_page.dart' as _i24;
 import '../modules/account/edit/edit_profile_page.dart' as _i4;
 import '../modules/account/register/user_register_page.dart' as _i3;
@@ -143,7 +143,7 @@ class AppRouter extends _i20.RootStackRouter {
     LocationPickerRoute.name: (routeData) {
       final args = routeData.argsAs<LocationPickerRouteArgs>(
           orElse: () => const LocationPickerRouteArgs());
-      return _i20.CupertinoPageX<_i26.Option<_i27.LocationPointDetail>?>(
+      return _i20.CupertinoPageX<_i26.Option<_i27.LocationAddress>?>(
           routeData: routeData,
           child: _i17.LocationPickerPage(
               key: args.key,
@@ -157,7 +157,7 @@ class AppRouter extends _i20.RootStackRouter {
     LocationPickerFromMapRoute.name: (routeData) {
       final args = routeData.argsAs<LocationPickerFromMapRouteArgs>(
           orElse: () => const LocationPickerFromMapRouteArgs());
-      return _i20.CupertinoPageX<_i27.LocationPointDetail?>(
+      return _i20.CupertinoPageX<_i27.LocationAddress?>(
           routeData: routeData,
           child: _i18.LocationPickerFromMapPage(
               key: args.key, initial: args.initial));
@@ -500,8 +500,8 @@ class TextInputRouteArgs {
 class LocationPickerRoute extends _i20.PageRouteInfo<LocationPickerRouteArgs> {
   LocationPickerRoute(
       {_i25.Key? key,
-      _i27.LocationPointDetail? initial,
-      _i27.LocationPointDetail? initialOrigin,
+      _i27.LocationAddress? initial,
+      _i27.LocationAddress? initialOrigin,
       String? title,
       String textFieldHint = "Where to?",
       void Function()? onPickByMapPress})
@@ -529,9 +529,9 @@ class LocationPickerRouteArgs {
 
   final _i25.Key? key;
 
-  final _i27.LocationPointDetail? initial;
+  final _i27.LocationAddress? initial;
 
-  final _i27.LocationPointDetail? initialOrigin;
+  final _i27.LocationAddress? initialOrigin;
 
   final String? title;
 
@@ -549,7 +549,7 @@ class LocationPickerRouteArgs {
 /// [_i18.LocationPickerFromMapPage]
 class LocationPickerFromMapRoute
     extends _i20.PageRouteInfo<LocationPickerFromMapRouteArgs> {
-  LocationPickerFromMapRoute({_i25.Key? key, _i27.LocationPointDetail? initial})
+  LocationPickerFromMapRoute({_i25.Key? key, _i27.LocationAddress? initial})
       : super(LocationPickerFromMapRoute.name,
             path: '/location-picker-map',
             args: LocationPickerFromMapRouteArgs(key: key, initial: initial));
@@ -562,7 +562,7 @@ class LocationPickerFromMapRouteArgs {
 
   final _i25.Key? key;
 
-  final _i27.LocationPointDetail? initial;
+  final _i27.LocationAddress? initial;
 
   @override
   String toString() {

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/coordinate.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
 import 'package:nu_share_destination_user/src/domain/cache/i_cache_service.dart';
 
 class LastCoordinateNotifier extends StateNotifier<Option<Coordinate>> {

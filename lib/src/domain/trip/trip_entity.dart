@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/location_point_detail.dart';
-import 'package:nu_share_destination_user/src/domain/user/user_entity.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/location_address.dart';
+import 'package:nu_share_destination_user/src/domain/trip/passenger_entity.dart';
 
 part 'trip_entity.freezed.dart';
 
@@ -29,7 +29,7 @@ class TripEntity with _$TripEntity {
     /// passenger1 allow share is toggle
     required Option<String> driverId,
 
-    /// Started time since taxi riding to pick passenger
+    /// Started time since taxi riding to pick passenger (accepted state)
     /// This will be update to some() when taxi accepted and start picking up
     /// the passenger
     required Option<DateTime> startedTime,
@@ -39,11 +39,11 @@ class TripEntity with _$TripEntity {
     required Option<DateTime> endedTime,
   }) = _TripEntity;
 
+  /// This will be true if passenger1 allowshare
   bool get allowSharing => passenger1.allowToShare;
 
   /// Where the trip start from after pick a passenger
-  LocationPointDetail get startedPositionDetail =>
-      passenger1.startedPositionDetail;
+  LocationAddress get startedPositionDetail => passenger1.originLocation;
 
   /// For first request
   factory TripEntity.create(PassengerEntity passenger) => TripEntity(
@@ -55,29 +55,6 @@ class TripEntity with _$TripEntity {
         startedTime: none(),
         endedTime: none(),
       );
-}
-
-@freezed
-class PassengerEntity with _$PassengerEntity {
-  factory PassengerEntity({
-    required UserEntity user,
-
-    /// Note user create for driver in this trip
-    required String note,
-
-    /// Allow trip to share or not
-    required bool allowToShare,
-
-    /// The started point when taxi picked up
-    required LocationPointDetail startedPositionDetail,
-
-    /// Location where user want to go when booking
-    ///todo: multiple location - will update in the next version
-    required Option<LocationPointDetail> expectedEndedPositionDetail,
-
-    /// if user stop the trip in the middle way without reach destination
-    required Option<LocationPointDetail> actualEndedPositionDetail,
-  }) = _PassengerEntity;
 }
 
 @freezed
@@ -101,4 +78,32 @@ class TripStatus with _$TripStatus {
   //todo -- add expired when user wait for a long amount of time,
   // this show retry button
   // factory TripStatus.finished() = _Finished;
+  factory TripStatus.fromString(String source) {
+    switch (source) {
+      case "exploring":
+        return TripStatus.exploring();
+      case "cancelled":
+        return TripStatus.cancelled();
+      case "picking":
+        return TripStatus.picking();
+      case "inProgress":
+        return TripStatus.inProgress();
+      case "finished":
+        return TripStatus.finished();
+    }
+
+    throw Error();
+  }
+}
+
+extension TripStatusX on TripStatus {
+  String toValidString() {
+    return when(
+      exploring: () => "exploring",
+      cancelled: () => "cancelled",
+      picking: () => "picking",
+      inProgress: () => "inProgress",
+      finished: () => "finished",
+    );
+  }
 }

@@ -1,4 +1,4 @@
-import 'package:nu_share_destination_user/src/domain/_core/entities/coordinate.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
 
 /// Create some unchange value for domain and other layer
 abstract class DomainValues {
@@ -13,4 +13,7 @@ abstract class DomainValues {
 
   // Vehicle static price
 
+  /// How long should location update in meter
+  /// Use to filter gps listen stream not to update every single time
+  static const locationUpdateFilterInMeter = 10; // meter
 }

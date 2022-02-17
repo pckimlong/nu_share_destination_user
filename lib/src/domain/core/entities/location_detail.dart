@@ -1,7 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/location_point.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/location_point.dart';
 
 part 'location_detail.freezed.dart';
 part 'location_detail.g.dart';
@@ -27,7 +27,7 @@ class LocationDetail with _$LocationDetail {
     @JsonKey(name: LocationDetail.speedAccuracyKey)
         required double speedAccuracy,
     @JsonKey(name: LocationDetail.headingKey) required double heading,
-    @JsonKey(name: LocationDetail.timeKey) required DateTime time,
+    @JsonKey(name: LocationDetail.timeKey) required DateTime? time,
   }) = _LocationDetail;
 
   factory LocationDetail.fromJson(Map<String, dynamic> json) =>

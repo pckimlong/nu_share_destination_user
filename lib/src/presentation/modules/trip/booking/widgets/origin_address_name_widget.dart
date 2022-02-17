@@ -7,8 +7,8 @@ class _OriginAddressWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // Filter rebuild. increase app performance
     final String originAddress = ref.watch(
-      bookingController.select(
-        (state) => state.startedPositionDetail.fold(
+      tripBookingController.select(
+        (state) => state.originLocation.fold(
           () => 'Loading...',
           (a) => a.address,
         ),

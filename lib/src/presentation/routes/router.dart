@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/location_point_detail.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/location_address.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/account/account_page.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/account/edit/edit_profile_page.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/account/register/user_register_page.dart';
@@ -161,12 +161,12 @@ import 'package:nu_share_destination_user/src/presentation/modules/voucher/picke
       page: TextInputPage,
       fullscreenDialog: true,
     ),
-    CupertinoRoute<Option<LocationPointDetail>?>(
+    CupertinoRoute<Option<LocationAddress>?>(
       path: '/location-detail-picker',
       page: LocationPickerPage,
       fullscreenDialog: true,
     ),
-    CupertinoRoute<LocationPointDetail?>(
+    CupertinoRoute<LocationAddress?>(
       path: '/location-picker-map',
       page: LocationPickerFromMapPage,
     ),

@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/_core/enums/vehicle_types.dart';
-import 'package:nu_share_destination_user/src/domain/_core/errors.dart';
+import 'package:nu_share_destination_user/src/domain/driver/vehicle_types.dart';
+import 'package:nu_share_destination_user/src/domain/core/errors.dart';
 import 'package:nu_share_destination_user/src/domain/trip/trip_entity.dart';
 import 'package:nu_share_destination_user/src/domain/user/user_entity.dart';
 
-import '../../../domain/_core/entities/location_point_detail.dart';
+import '../../../domain/core/entities/location_address.dart';
+import '../../../domain/trip/passenger_entity.dart';
 
 part 'booking_state.freezed.dart';
 
@@ -17,8 +18,8 @@ class BookingState with _$BookingState {
     required Option<String> note,
     required Option<VehicleTypes> vehicleTypes,
     @Default(false) bool allowShare,
-    required Option<LocationPointDetail> startedPositionDetail,
-    required Option<LocationPointDetail> expectedEndedPositionDetail,
+    required Option<LocationAddress> originLocation,
+    required Option<LocationAddress> desitionationLocation,
     @Default(false) bool isLoading,
     required Option<String> errorMessage,
   }) = _BookingState;
@@ -27,23 +28,23 @@ class BookingState with _$BookingState {
         user: userEntity,
         note: none(),
         vehicleTypes: none(),
-        startedPositionDetail: none(),
-        expectedEndedPositionDetail: none(),
+        originLocation: none(),
+        desitionationLocation: none(),
         errorMessage: none(),
       );
 
   bool get isValidForPassengerEntity =>
       vehicleTypes.isSome() &&
-      startedPositionDetail.isSome() &&
-      expectedEndedPositionDetail.isSome();
+      originLocation.isSome() &&
+      desitionationLocation.isSome();
 
   PassengerEntity get passengerEntity => PassengerEntity(
         user: user,
         note: note.getOrElse(() => ''),
         allowToShare: allowShare,
-        startedPositionDetail: startedPositionDetail.getOrElse(
-            () => throw EmptyRequiredFieldError(startedPositionDetail)),
-        expectedEndedPositionDetail: expectedEndedPositionDetail,
-        actualEndedPositionDetail: none(),
+        originLocation: originLocation
+            .getOrElse(() => throw EmptyRequiredFieldError(originLocation)),
+        destinationLocation: desitionationLocation,
+        actualDestinationLocation: none(),
       );
 }

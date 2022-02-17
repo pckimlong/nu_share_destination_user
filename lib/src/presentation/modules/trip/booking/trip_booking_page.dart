@@ -1,33 +1,49 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/location_point_detail.dart';
+import 'package:nu_share_destination_user/src/application/trip/trip_booking/trip_booking_event.dart';
+import 'package:nu_share_destination_user/src/application/trip/trip_booking/trip_booking_state.dart';
+import 'package:nu_share_destination_user/src/application/trip/trip_booking/trip_booking_controller.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
+import 'package:nu_share_destination_user/src/presentation/_core/service_providers.dart';
 
-import '../../../../application/trip/booking/booking_event.dart';
-import '../../../../domain/_core/constants.dart';
-import '../../../../domain/_core/entities/coordinate.dart';
+import '../../../../domain/core/constants.dart';
+import '../../../../domain/core/entities/location_address.dart';
 import '../../../_core/app_styles.dart';
 import '../../../routes/router.gr.dart';
 import '../../../widgets/circle_location_button.dart';
 import '../../../widgets/location_pin_widget.dart';
 import '../../../widgets/my_elevated_button.dart';
-import '../trip_provider.dart';
 
 part 'widgets/actions_tile_bar_widget.dart';
 part 'widgets/book_now_button.dart';
 part 'widgets/note_to_driver_button.dart';
 part 'widgets/vehicle_tile_widget.dart';
-part 'widgets/where_to_tile_widget.dart';
+// part 'widgets/where_to_tile_widget.dart';
 part 'widgets/origin_address_name_widget.dart';
 part 'widgets/location_pin_widget.dart';
+part 'widgets/google_map_widget.dart';
+
+final tripBookingController =
+    StateNotifierProvider.autoDispose<TripBookingNotifier, TripBookingState>(
+  (ref) => TripBookingNotifier(
+    ref.watch(locationServiceProvider),
+  ),
+);
 
 class TripBookingPage extends ConsumerWidget {
   const TripBookingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(tripBookingController.notifier);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -45,16 +61,7 @@ class TripBookingPage extends ConsumerWidget {
           Expanded(
             child: Stack(
               children: [
-                //Todo - replace this with map widget
-                // Container(
-                //   decoration: const BoxDecoration(
-                //     image: DecorationImage(
-                //       fit: BoxFit.fitHeight,
-                //       image: AssetImage('assets/map.png'),
-                //     ),
-                //   ),
-                // ),
-                const _GoogleMap(),
+                const _MapWidget(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -70,11 +77,11 @@ class TripBookingPage extends ConsumerWidget {
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: CircleLocationButton(
-                          onTap: () => ref
-                              .read(bookingController.notifier)
-                              .mapEventToState(
-                                const BookingEvent.moveToMyLocation(),
-                              ),
+                          onTap: () async {
+                            await controller.mapEventToState(
+                              const TripBookingEvent.moveToMyLocation(),
+                            );
+                          },
                         ),
                       ),
                     ),
@@ -116,7 +123,7 @@ class _ActionCard extends StatelessWidget {
       ),
       child: Column(
         children: const [
-          _WhereToTileWidget(),
+          // _WhereToTileWidget(),
           Divider(height: 0),
           _VehicleTileWidget(),
           Divider(height: 0),
@@ -129,48 +136,48 @@ class _ActionCard extends StatelessWidget {
   }
 }
 
-class _GoogleMap extends ConsumerWidget {
-  const _GoogleMap({Key? key}) : super(key: key);
+// class _GoogleMap extends ConsumerWidget {
+//   const _GoogleMap({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final initialCamera = LatLng(
-      DomainValues.initialMapPoint.latitude,
-      DomainValues.initialMapPoint.longitude,
-    );
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     final initialCamera = LatLng(
+//       DomainValues.initialMapPoint.latitude,
+//       DomainValues.initialMapPoint.longitude,
+//     );
 
-    final stateController = ref.watch(bookingController.notifier);
+//     final stateController = ref.watch(tripBookingController.notifier);
 
-    return GoogleMap(
-      initialCameraPosition: CameraPosition(
-        zoom: DomainValues.initialMapZoom,
-        target: initialCamera,
-      ),
-      onMapCreated: (controller) async {
-        stateController.mapEventToState(
-          BookingEvent.initializeMapController(controller),
-        );
-      },
-      onCameraMove: (pos) {
-        final coor = pos.target;
-        stateController.mapEventToState(
-          BookingEvent.onMapMoved(
-            Coordinate(
-              coor.latitude,
-              coor.longitude,
-            ),
-          ),
-        );
-      },
-      onCameraIdle: () async {
-        await stateController.mapEventToState(
-          const BookingEvent.updateOriginPosition(),
-        );
-      },
-      mapToolbarEnabled: true,
-      myLocationEnabled: true,
-      zoomControlsEnabled: false,
-      myLocationButtonEnabled: false,
-    );
-  }
-}
+//     return GoogleMap(
+//       initialCameraPosition: CameraPosition(
+//         zoom: DomainValues.initialMapZoom,
+//         target: initialCamera,
+//       ),
+//       onMapCreated: (controller) async {
+//         stateController.mapEventToState(
+//           BookingEvent.initializeMapController(controller),
+//         );
+//       },
+//       onCameraMove: (pos) {
+//         final coor = pos.target;
+//         stateController.mapEventToState(
+//           BookingEvent.onMapMoved(
+//             Coordinate(
+//               coor.latitude,
+//               coor.longitude,
+//             ),
+//           ),
+//         );
+//       },
+//       onCameraIdle: () async {
+//         await stateController.mapEventToState(
+//           const BookingEvent.updateOriginPosition(),
+//         );
+//       },
+//       mapToolbarEnabled: true,
+//       myLocationEnabled: true,
+//       zoomControlsEnabled: false,
+//       myLocationButtonEnabled: false,
+//     );
+//   }
+// }

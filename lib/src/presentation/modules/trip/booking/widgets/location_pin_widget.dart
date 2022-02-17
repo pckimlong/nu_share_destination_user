@@ -6,7 +6,7 @@ class _LocationPinWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool loading = ref.watch(
-      bookingController.select(
+      tripBookingController.select(
         (state) => state.isLoading,
       ),
     );

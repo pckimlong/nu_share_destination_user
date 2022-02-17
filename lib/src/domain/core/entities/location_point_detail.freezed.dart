@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'location_point_detail.dart';
+part of 'location_address.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,20 +14,20 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-LocationPointDetail _$LocationPointDetailFromJson(Map<String, dynamic> json) {
+LocationAddress _$LocationAddressFromJson(Map<String, dynamic> json) {
   return _LocationPointDetail.fromJson(json);
 }
 
 /// @nodoc
-class _$LocationPointDetailTearOff {
-  const _$LocationPointDetailTearOff();
+class _$LocationAddressTearOff {
+  const _$LocationAddressTearOff();
 
   _LocationPointDetail call(
-      {@JsonKey(name: LocationPointDetail.addressKey)
+      {@JsonKey(name: LocationAddress.addressKey)
           required String address,
-      @JsonKey(name: LocationPointDetail.locationPointKey)
+      @JsonKey(name: LocationAddress.locationPointKey)
           required LocationPoint locationPoint,
-      @JsonKey(name: LocationPointDetail.timeKey)
+      @JsonKey(name: LocationAddress.timeKey)
           required DateTime? time}) {
     return _LocationPointDetail(
       address: address,
@@ -36,56 +36,56 @@ class _$LocationPointDetailTearOff {
     );
   }
 
-  LocationPointDetail fromJson(Map<String, Object?> json) {
-    return LocationPointDetail.fromJson(json);
+  LocationAddress fromJson(Map<String, Object?> json) {
+    return LocationAddress.fromJson(json);
   }
 }
 
 /// @nodoc
-const $LocationPointDetail = _$LocationPointDetailTearOff();
+const $LocationAddress = _$LocationAddressTearOff();
 
 /// @nodoc
-mixin _$LocationPointDetail {
+mixin _$LocationAddress {
   /// Name of place, like Phnom Penh...
-  @JsonKey(name: LocationPointDetail.addressKey)
+  @JsonKey(name: LocationAddress.addressKey)
   String get address => throw _privateConstructorUsedError;
-  @JsonKey(name: LocationPointDetail.locationPointKey)
+  @JsonKey(name: LocationAddress.locationPointKey)
   LocationPoint get locationPoint => throw _privateConstructorUsedError;
 
   /// Time at this location
-  @JsonKey(name: LocationPointDetail.timeKey)
+  @JsonKey(name: LocationAddress.timeKey)
   DateTime? get time => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LocationPointDetailCopyWith<LocationPointDetail> get copyWith =>
+  $LocationAddressCopyWith<LocationAddress> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LocationPointDetailCopyWith<$Res> {
-  factory $LocationPointDetailCopyWith(
-          LocationPointDetail value, $Res Function(LocationPointDetail) then) =
-      _$LocationPointDetailCopyWithImpl<$Res>;
+abstract class $LocationAddressCopyWith<$Res> {
+  factory $LocationAddressCopyWith(
+          LocationAddress value, $Res Function(LocationAddress) then) =
+      _$LocationAddressCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: LocationPointDetail.addressKey)
+      {@JsonKey(name: LocationAddress.addressKey)
           String address,
-      @JsonKey(name: LocationPointDetail.locationPointKey)
+      @JsonKey(name: LocationAddress.locationPointKey)
           LocationPoint locationPoint,
-      @JsonKey(name: LocationPointDetail.timeKey)
+      @JsonKey(name: LocationAddress.timeKey)
           DateTime? time});
 
   $LocationPointCopyWith<$Res> get locationPoint;
 }
 
 /// @nodoc
-class _$LocationPointDetailCopyWithImpl<$Res>
-    implements $LocationPointDetailCopyWith<$Res> {
-  _$LocationPointDetailCopyWithImpl(this._value, this._then);
+class _$LocationAddressCopyWithImpl<$Res>
+    implements $LocationAddressCopyWith<$Res> {
+  _$LocationAddressCopyWithImpl(this._value, this._then);
 
-  final LocationPointDetail _value;
+  final LocationAddress _value;
   // ignore: unused_field
-  final $Res Function(LocationPointDetail) _then;
+  final $Res Function(LocationAddress) _then;
 
   @override
   $Res call({
@@ -119,17 +119,17 @@ class _$LocationPointDetailCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class _$LocationPointDetailCopyWith<$Res>
-    implements $LocationPointDetailCopyWith<$Res> {
+    implements $LocationAddressCopyWith<$Res> {
   factory _$LocationPointDetailCopyWith(_LocationPointDetail value,
           $Res Function(_LocationPointDetail) then) =
       __$LocationPointDetailCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: LocationPointDetail.addressKey)
+      {@JsonKey(name: LocationAddress.addressKey)
           String address,
-      @JsonKey(name: LocationPointDetail.locationPointKey)
+      @JsonKey(name: LocationAddress.locationPointKey)
           LocationPoint locationPoint,
-      @JsonKey(name: LocationPointDetail.timeKey)
+      @JsonKey(name: LocationAddress.timeKey)
           DateTime? time});
 
   @override
@@ -138,7 +138,7 @@ abstract class _$LocationPointDetailCopyWith<$Res>
 
 /// @nodoc
 class __$LocationPointDetailCopyWithImpl<$Res>
-    extends _$LocationPointDetailCopyWithImpl<$Res>
+    extends _$LocationAddressCopyWithImpl<$Res>
     implements _$LocationPointDetailCopyWith<$Res> {
   __$LocationPointDetailCopyWithImpl(
       _LocationPointDetail _value, $Res Function(_LocationPointDetail) _then)
@@ -174,11 +174,11 @@ class __$LocationPointDetailCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_LocationPointDetail extends _LocationPointDetail {
   _$_LocationPointDetail(
-      {@JsonKey(name: LocationPointDetail.addressKey)
+      {@JsonKey(name: LocationAddress.addressKey)
           required this.address,
-      @JsonKey(name: LocationPointDetail.locationPointKey)
+      @JsonKey(name: LocationAddress.locationPointKey)
           required this.locationPoint,
-      @JsonKey(name: LocationPointDetail.timeKey)
+      @JsonKey(name: LocationAddress.timeKey)
           required this.time})
       : super._();
 
@@ -188,20 +188,20 @@ class _$_LocationPointDetail extends _LocationPointDetail {
   @override
 
   /// Name of place, like Phnom Penh...
-  @JsonKey(name: LocationPointDetail.addressKey)
+  @JsonKey(name: LocationAddress.addressKey)
   final String address;
   @override
-  @JsonKey(name: LocationPointDetail.locationPointKey)
+  @JsonKey(name: LocationAddress.locationPointKey)
   final LocationPoint locationPoint;
   @override
 
   /// Time at this location
-  @JsonKey(name: LocationPointDetail.timeKey)
+  @JsonKey(name: LocationAddress.timeKey)
   final DateTime? time;
 
   @override
   String toString() {
-    return 'LocationPointDetail(address: $address, locationPoint: $locationPoint, time: $time)';
+    return 'LocationAddress(address: $address, locationPoint: $locationPoint, time: $time)';
   }
 
   @override
@@ -234,13 +234,13 @@ class _$_LocationPointDetail extends _LocationPointDetail {
   }
 }
 
-abstract class _LocationPointDetail extends LocationPointDetail {
+abstract class _LocationPointDetail extends LocationAddress {
   factory _LocationPointDetail(
-      {@JsonKey(name: LocationPointDetail.addressKey)
+      {@JsonKey(name: LocationAddress.addressKey)
           required String address,
-      @JsonKey(name: LocationPointDetail.locationPointKey)
+      @JsonKey(name: LocationAddress.locationPointKey)
           required LocationPoint locationPoint,
-      @JsonKey(name: LocationPointDetail.timeKey)
+      @JsonKey(name: LocationAddress.timeKey)
           required DateTime? time}) = _$_LocationPointDetail;
   _LocationPointDetail._() : super._();
 
@@ -250,15 +250,15 @@ abstract class _LocationPointDetail extends LocationPointDetail {
   @override
 
   /// Name of place, like Phnom Penh...
-  @JsonKey(name: LocationPointDetail.addressKey)
+  @JsonKey(name: LocationAddress.addressKey)
   String get address;
   @override
-  @JsonKey(name: LocationPointDetail.locationPointKey)
+  @JsonKey(name: LocationAddress.locationPointKey)
   LocationPoint get locationPoint;
   @override
 
   /// Time at this location
-  @JsonKey(name: LocationPointDetail.timeKey)
+  @JsonKey(name: LocationAddress.timeKey)
   DateTime? get time;
   @override
   @JsonKey(ignore: true)

@@ -36,7 +36,7 @@ class _$LocationDetailTearOff {
       @JsonKey(name: LocationDetail.headingKey)
           required double heading,
       @JsonKey(name: LocationDetail.timeKey)
-          required DateTime time}) {
+          required DateTime? time}) {
     return _LocationDetail(
       locationPoint: locationPoint,
       accuracy: accuracy,
@@ -72,7 +72,7 @@ mixin _$LocationDetail {
   @JsonKey(name: LocationDetail.headingKey)
   double get heading => throw _privateConstructorUsedError;
   @JsonKey(name: LocationDetail.timeKey)
-  DateTime get time => throw _privateConstructorUsedError;
+  DateTime? get time => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -99,7 +99,7 @@ abstract class $LocationDetailCopyWith<$Res> {
       @JsonKey(name: LocationDetail.headingKey)
           double heading,
       @JsonKey(name: LocationDetail.timeKey)
-          DateTime time});
+          DateTime? time});
 
   $LocationPointCopyWith<$Res> get locationPoint;
 }
@@ -151,7 +151,7 @@ class _$LocationDetailCopyWithImpl<$Res>
       time: time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 
@@ -184,7 +184,7 @@ abstract class _$LocationDetailCopyWith<$Res>
       @JsonKey(name: LocationDetail.headingKey)
           double heading,
       @JsonKey(name: LocationDetail.timeKey)
-          DateTime time});
+          DateTime? time});
 
   @override
   $LocationPointCopyWith<$Res> get locationPoint;
@@ -239,7 +239,7 @@ class __$LocationDetailCopyWithImpl<$Res>
       time: time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -289,7 +289,7 @@ class _$_LocationDetail extends _LocationDetail {
   final double heading;
   @override
   @JsonKey(name: LocationDetail.timeKey)
-  final DateTime time;
+  final DateTime? time;
 
   @override
   String toString() {
@@ -349,7 +349,7 @@ abstract class _LocationDetail extends LocationDetail {
       @JsonKey(name: LocationDetail.headingKey)
           required double heading,
       @JsonKey(name: LocationDetail.timeKey)
-          required DateTime time}) = _$_LocationDetail;
+          required DateTime? time}) = _$_LocationDetail;
   _LocationDetail._() : super._();
 
   factory _LocationDetail.fromJson(Map<String, dynamic> json) =
@@ -377,7 +377,7 @@ abstract class _LocationDetail extends LocationDetail {
   double get heading;
   @override
   @JsonKey(name: LocationDetail.timeKey)
-  DateTime get time;
+  DateTime? get time;
   @override
   @JsonKey(ignore: true)
   _$LocationDetailCopyWith<_LocationDetail> get copyWith =>

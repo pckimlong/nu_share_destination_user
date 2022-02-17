@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nu_share_destination_user/src/application/location/picker/location_picker_state.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/location_point_detail.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/location_address.dart';
 import 'package:nu_share_destination_user/src/domain/location/i_location_service.dart';
 import 'package:nu_share_destination_user/src/domain/location/place_entity.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart'
@@ -14,8 +14,8 @@ class LocationPickerController extends StateNotifier<LocationPickerState> {
   final ILocationService _locationService;
 
   void initialLocation({
-    required LocationPointDetail? initialOrigin,
-    required LocationPointDetail? initialDestination,
+    required LocationAddress? initialOrigin,
+    required LocationAddress? initialDestination,
   }) {
     state = state.copyWith(
       initialOriginLocation:
@@ -25,7 +25,7 @@ class LocationPickerController extends StateNotifier<LocationPickerState> {
     );
   }
 
-  void onChangeDestination(LocationPointDetail pointDetail) {
+  void onChangeDestination(LocationAddress pointDetail) {
     state = state.copyWith(selectedDesitination: some(pointDetail));
   }
 

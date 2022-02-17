@@ -1,8 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/_core/entities/location_detail.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
 import 'package:nu_share_destination_user/src/domain/driver/driver_entity.dart';
 import 'package:nu_share_destination_user/src/domain/trip/trip_entity.dart';
+
+import '../../domain/trip/passenger_entity.dart';
 
 part 'trip_state.freezed.dart';
 

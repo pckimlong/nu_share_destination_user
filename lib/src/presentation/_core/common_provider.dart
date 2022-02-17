@@ -4,7 +4,7 @@ import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_place/google_place.dart' as gp;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:location/location.dart';
+import 'package:location/location.dart' as lc;
 
 final firebaseAuthProvider = Provider<FirebaseAuth>((ref) {
   return FirebaseAuth.instance;
@@ -12,10 +12,6 @@ final firebaseAuthProvider = Provider<FirebaseAuth>((ref) {
 
 final firestoreProvider = Provider<FirebaseFirestore>((ref) {
   return FirebaseFirestore.instance;
-});
-
-final locationProvider = Provider<Location>((ref) {
-  return Location();
 });
 
 final getStorageProvider = Provider<GetStorage>((ref) {
@@ -28,4 +24,8 @@ final geoFireProvider = Provider<Geoflutterfire>((ref) {
 
 final googlePlaceProvider = Provider<gp.GooglePlace>((ref) {
   return gp.GooglePlace('AIzaSyAKkIU49XTswfYXshm0kC5QnTHODKc3EIA');
+});
+
+final locationProvider = Provider<lc.Location>((ref) {
+  return lc.Location();
 });
