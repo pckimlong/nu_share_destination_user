@@ -1,21 +1,21 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fpdart/fpdart.dart';
-import 'package:fast_immutable_collections/fast_immutable_collections.dart'
-    as fic;
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
-import 'package:nu_share_destination_user/src/domain/driver/driver_entity.dart';
-import 'package:nu_share_destination_user/src/domain/driver/driver_failure.dart';
-import 'package:nu_share_destination_user/src/domain/driver/i_driver_repository.dart';
-import 'package:nu_share_destination_user/src/infra/_core/entity_dtos/location_detail_dto.dart';
-import 'package:nu_share_destination_user/src/infra/driver/driver_entity_dto.dart';
+import 'package:nu_share_destination_user/src/infra/_core/dto_extensions.dart';
 
+import '../../domain/core/entities/coordinate.dart';
+import '../../domain/core/entities/location_detail.dart';
+import '../../domain/driver/driver_entity.dart';
+import '../../domain/driver/driver_failure.dart';
+import '../../domain/driver/i_driver_repository.dart';
+import '../_core/entity_dtos/location_detail_dto.dart';
 import '../_core/firebase/firebase_extensions.dart';
 import '../location/mappers.dart';
+import 'driver_entity_dto.dart';
 
 class DriverReposImpl implements IDriverRepository {
   final FirebaseFirestore _firestore;
@@ -42,7 +42,7 @@ class DriverReposImpl implements IDriverRepository {
   }
 
   @override
-  Future<Either<DriverFailure, fic.IList<DriverEntity>>> getAroundCoordinate(
+  Future<Either<DriverFailure, IList<DriverEntity>>> getAroundCoordinate(
       {required Coordinate coordinate, double radius = 1}) async {
     try {
       final collectionRef = _firestore.driverColRef;
@@ -148,6 +148,40 @@ class DriverReposImpl implements IDriverRepository {
       final dto = DriverEntityDto.fromDomain(driver);
       await docRef.set(dto);
       return const Right(unit);
+    } on FirebaseException catch (e) {
+      return Left(DriverFailure.serverError(e.message));
+    }
+  }
+
+  @override
+  Future<Either<DriverFailure, IList<LocationDetail>>> getLocationByCoor(
+      {required Coordinate coordinate, double radius = 1}) async {
+    try {
+      final collectionRef = _firestore.driverColRef;
+
+      final geoRef = _geoflutterfire.collection(collectionRef: collectionRef);
+
+      final result = geoRef.within(
+        center: coordinate.toGeoFirePoint(),
+        radius: 0.1, //use map zoom
+        field: DriverEntityDto.geoFirePointKey,
+        strictMode: true,
+      );
+
+      final resultFuture = await result.first;
+      final r = resultFuture
+          .map(
+            (e) {
+              final map = e.toMap();
+              final locationDetailJson = map[DriverEntityDto.locationKey];
+              final dto = LocationDetailDto.fromJson(locationDetailJson);
+              return dto.toDomain();
+            },
+          )
+          .toList()
+          .lock;
+
+      return Right(r);
     } on FirebaseException catch (e) {
       return Left(DriverFailure.serverError(e.message));
     }

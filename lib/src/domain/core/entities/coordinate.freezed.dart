@@ -14,15 +14,24 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Coordinate _$CoordinateFromJson(Map<String, dynamic> json) {
+  return _Coordinate.fromJson(json);
+}
+
 /// @nodoc
 class _$CoordinateTearOff {
   const _$CoordinateTearOff();
 
-  _Coordinate call(double latitude, double longitude) {
+  _Coordinate call(@JsonKey(name: Coordinate.latitudeKey) double latitude,
+      @JsonKey(name: Coordinate.longitudeKey) double longitude) {
     return _Coordinate(
       latitude,
       longitude,
     );
+  }
+
+  Coordinate fromJson(Map<String, Object?> json) {
+    return Coordinate.fromJson(json);
   }
 }
 
@@ -31,9 +40,12 @@ const $Coordinate = _$CoordinateTearOff();
 
 /// @nodoc
 mixin _$Coordinate {
+  @JsonKey(name: Coordinate.latitudeKey)
   double get latitude => throw _privateConstructorUsedError;
+  @JsonKey(name: Coordinate.longitudeKey)
   double get longitude => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CoordinateCopyWith<Coordinate> get copyWith =>
       throw _privateConstructorUsedError;
@@ -44,7 +56,9 @@ abstract class $CoordinateCopyWith<$Res> {
   factory $CoordinateCopyWith(
           Coordinate value, $Res Function(Coordinate) then) =
       _$CoordinateCopyWithImpl<$Res>;
-  $Res call({double latitude, double longitude});
+  $Res call(
+      {@JsonKey(name: Coordinate.latitudeKey) double latitude,
+      @JsonKey(name: Coordinate.longitudeKey) double longitude});
 }
 
 /// @nodoc
@@ -79,7 +93,9 @@ abstract class _$CoordinateCopyWith<$Res> implements $CoordinateCopyWith<$Res> {
           _Coordinate value, $Res Function(_Coordinate) then) =
       __$CoordinateCopyWithImpl<$Res>;
   @override
-  $Res call({double latitude, double longitude});
+  $Res call(
+      {@JsonKey(name: Coordinate.latitudeKey) double latitude,
+      @JsonKey(name: Coordinate.longitudeKey) double longitude});
 }
 
 /// @nodoc
@@ -111,13 +127,20 @@ class __$CoordinateCopyWithImpl<$Res> extends _$CoordinateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Coordinate extends _Coordinate {
-  const _$_Coordinate(this.latitude, this.longitude) : super._();
+  const _$_Coordinate(@JsonKey(name: Coordinate.latitudeKey) this.latitude,
+      @JsonKey(name: Coordinate.longitudeKey) this.longitude)
+      : super._();
+
+  factory _$_Coordinate.fromJson(Map<String, dynamic> json) =>
+      _$$_CoordinateFromJson(json);
 
   @override
+  @JsonKey(name: Coordinate.latitudeKey)
   final double latitude;
   @override
+  @JsonKey(name: Coordinate.longitudeKey)
   final double longitude;
 
   @override
@@ -144,15 +167,27 @@ class _$_Coordinate extends _Coordinate {
   @override
   _$CoordinateCopyWith<_Coordinate> get copyWith =>
       __$CoordinateCopyWithImpl<_Coordinate>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CoordinateToJson(this);
+  }
 }
 
 abstract class _Coordinate extends Coordinate {
-  const factory _Coordinate(double latitude, double longitude) = _$_Coordinate;
+  const factory _Coordinate(
+      @JsonKey(name: Coordinate.latitudeKey) double latitude,
+      @JsonKey(name: Coordinate.longitudeKey) double longitude) = _$_Coordinate;
   const _Coordinate._() : super._();
 
+  factory _Coordinate.fromJson(Map<String, dynamic> json) =
+      _$_Coordinate.fromJson;
+
   @override
+  @JsonKey(name: Coordinate.latitudeKey)
   double get latitude;
   @override
+  @JsonKey(name: Coordinate.longitudeKey)
   double get longitude;
   @override
   @JsonKey(ignore: true)

@@ -1,6 +1,7 @@
 import 'package:fpdart/fpdart.dart' as d;
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
 import '../../../domain/core/entities/coordinate.dart';
 import '../../../domain/core/entities/location_address.dart';
 import '../../../domain/driver/driver_entity.dart';
@@ -12,7 +13,7 @@ part 'trip_booking_state.freezed.dart';
 @freezed
 class TripBookingState with _$TripBookingState {
   factory TripBookingState({
-    required IList<DriverEntity> nearbyDrivers,
+    required IList<LocationDetail> nearbyDrivers,
     required d.Option<LocationAddress> originLocation,
     required d.Option<LocationAddress> definationLocation,
     required bool isLoading,
@@ -30,7 +31,7 @@ class TripBookingState with _$TripBookingState {
   factory TripBookingState.initial() => TripBookingState(
         originLocation: d.none(),
         definationLocation: d.none(),
-        nearbyDrivers: <DriverEntity>[].lock,
+        nearbyDrivers: <LocationDetail>[].lock,
         isLoading: false,
         note: '',
         failure: d.none(),

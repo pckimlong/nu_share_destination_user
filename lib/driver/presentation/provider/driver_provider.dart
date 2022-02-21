@@ -135,7 +135,7 @@ class DriverNotifier extends StateNotifier<DriverState> {
 
   void _delayLocationListener() {
     _locationStream?.cancel();
-    _locationStream = _locationService.watchMyLocationDetail(0).listen(
+    _locationStream = _locationService.watchMyLocationDetail(1).listen(
       (locationOrFailure) {
         locationOrFailure.fold(
           (failure) {
@@ -151,7 +151,7 @@ class DriverNotifier extends StateNotifier<DriverState> {
 
   void _realTimeLocationListener() {
     _realTimeLocationStream?.cancel();
-    _realTimeLocationStream = _locationService.watchMyLocationDetail(0).listen(
+    _realTimeLocationStream = _locationService.watchMyLocationDetail(1).listen(
       (locationOrFailure) {
         locationOrFailure.fold(
           (failure) {

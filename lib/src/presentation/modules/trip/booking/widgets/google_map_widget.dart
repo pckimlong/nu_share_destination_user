@@ -13,6 +13,17 @@ final _initialCameraPosition = CameraPosition(
   ),
 );
 
+Future<Uint8List> getBytesFromAsset(
+    {required String path, required int width}) async {
+  ByteData data = await rootBundle.load(path);
+  ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
+      targetWidth: width);
+  ui.FrameInfo fi = await codec.getNextFrame();
+  return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!
+      .buffer
+      .asUint8List();
+}
+
 class _MapWidget extends StatefulHookConsumerWidget {
   const _MapWidget({Key? key}) : super(key: key);
 
@@ -23,6 +34,7 @@ class _MapWidget extends StatefulHookConsumerWidget {
 class __MapWidgetState extends ConsumerState<_MapWidget> {
   Coordinate _currentCoordinate = DomainValues.initialMapPoint;
   late final GoogleMapController _mapController;
+  BitmapDescriptor? _carMarker;
 
   @override
   void initState() {
@@ -30,7 +42,7 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
   }
 
   void _drawDriverMarkers(
-      Map<MarkerId, Marker> markers, fic.IList<DriverEntity> nearbyDrivers) {
+      Map<MarkerId, Marker> markers, IList<LocationDetail> coordinates) {
     useEffect(
       () {
         /// Remove all old drivers marker to fetch new one
@@ -38,25 +50,22 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
           (key, value) => key != _originMarkerId && key != _destinationMarkerId,
         );
 
-        for (final driver in nearbyDrivers) {
+        for (final driver in coordinates) {
           /// Add marker
-          final id = MarkerId(driver.id!);
-          final double lat = driver.location.match(
-            (a) => a.locationPoint.coordinate.latitude,
-            () => 0,
-          );
-          final double long = driver.location.match(
-            (a) => a.locationPoint.coordinate.longitude,
-            () => 0,
-          );
+          final id = MarkerId(driver.altitude.toString());
           markers[id] = Marker(
             markerId: id,
-            position: LatLng(lat, long),
+            rotation: driver.heading,
+            position: LatLng(
+              driver.locationPoint.coordinate.latitude,
+              driver.locationPoint.coordinate.longitude,
+            ),
+            icon: _carMarker!,
           );
         }
         return;
       },
-      [nearbyDrivers],
+      [coordinates],
     );
   }
 
@@ -181,6 +190,11 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
   Widget build(BuildContext context) {
     debugPrint('Trip booking map widget rebuild............................');
 
+    BitmapDescriptor.fromAssetImage(
+      createLocalImageConfiguration(context, size: const Size.square(48)),
+      'assets/car.png',
+    ).then((value) => _carMarker = value);
+
     /// Listen for some change and perform some task
     _stateListener();
 
@@ -194,6 +208,7 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
       tripBookingController.select((value) => value.nearbyDrivers),
     );
 
+    /// Markers
     final markers = useMemoized<Map<MarkerId, Marker>>(() => {}, const []);
 
     _drawerOriginAndDesinationMarker(originLoc, destinationLoc, markers);

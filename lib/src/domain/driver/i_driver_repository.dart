@@ -2,8 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import '../core/entities/coordinate.dart';
 import '../core/entities/location_detail.dart';
 import 'driver_failure.dart';
-import 'package:fast_immutable_collections/fast_immutable_collections.dart'
-    as fic;
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 
 import 'driver_entity.dart';
 
@@ -15,7 +14,17 @@ abstract class IDriverRepository {
 
   /// Get list of available drivers around a coordinate. [radius] is circle
   /// around area to query within default is 1km
-  Future<Either<DriverFailure, fic.IList<DriverEntity>>> getAroundCoordinate(
+  Future<Either<DriverFailure, IList<DriverEntity>>> getAroundCoordinate(
+      {required Coordinate coordinate, double radius = 1});
+
+  /// Get list of locationDetail around a coordinate.
+  /// LocationDetail in this case represent as drivers.
+  /// This will return all available driver around the coordinate,
+  ///
+  /// Why not return DriverEntity? This is because parsing big json to data object is expensive
+  /// In our app we just want to fetch nearby taxi driver without view any infomation of them
+  /// So parsing only coordinate could be better
+  Future<Either<DriverFailure, IList<LocationDetail>>> getLocationByCoor(
       {required Coordinate coordinate, double radius = 1});
 
   /// Watch real time location update of given driver id

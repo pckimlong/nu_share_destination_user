@@ -3,6 +3,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'coordinate.freezed.dart';
+part 'coordinate.g.dart';
 
 @freezed
 class Coordinate with _$Coordinate {
@@ -10,9 +11,12 @@ class Coordinate with _$Coordinate {
   static const longitudeKey = "longitude";
 
   const factory Coordinate(
-    double latitude,
-    double longitude,
+    @JsonKey(name: Coordinate.latitudeKey) double latitude,
+    @JsonKey(name: Coordinate.longitudeKey) double longitude,
   ) = _Coordinate;
 
   const Coordinate._();
+
+  factory Coordinate.fromJson(Map<String, dynamic> json) =>
+      _$CoordinateFromJson(json);
 }

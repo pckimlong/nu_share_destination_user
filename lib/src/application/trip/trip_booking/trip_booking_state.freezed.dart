@@ -19,7 +19,7 @@ class _$TripBookingStateTearOff {
   const _$TripBookingStateTearOff();
 
   _TripBookingState call(
-      {required IList<DriverEntity> nearbyDrivers,
+      {required IList<LocationDetail> nearbyDrivers,
       required d.Option<LocationAddress> originLocation,
       required d.Option<LocationAddress> definationLocation,
       required bool isLoading,
@@ -45,7 +45,7 @@ const $TripBookingState = _$TripBookingStateTearOff();
 
 /// @nodoc
 mixin _$TripBookingState {
-  IList<DriverEntity> get nearbyDrivers => throw _privateConstructorUsedError;
+  IList<LocationDetail> get nearbyDrivers => throw _privateConstructorUsedError;
   d.Option<LocationAddress> get originLocation =>
       throw _privateConstructorUsedError;
   d.Option<LocationAddress> get definationLocation =>
@@ -73,7 +73,7 @@ abstract class $TripBookingStateCopyWith<$Res> {
           TripBookingState value, $Res Function(TripBookingState) then) =
       _$TripBookingStateCopyWithImpl<$Res>;
   $Res call(
-      {IList<DriverEntity> nearbyDrivers,
+      {IList<LocationDetail> nearbyDrivers,
       d.Option<LocationAddress> originLocation,
       d.Option<LocationAddress> definationLocation,
       bool isLoading,
@@ -107,7 +107,7 @@ class _$TripBookingStateCopyWithImpl<$Res>
       nearbyDrivers: nearbyDrivers == freezed
           ? _value.nearbyDrivers
           : nearbyDrivers // ignore: cast_nullable_to_non_nullable
-              as IList<DriverEntity>,
+              as IList<LocationDetail>,
       originLocation: originLocation == freezed
           ? _value.originLocation
           : originLocation // ignore: cast_nullable_to_non_nullable
@@ -148,7 +148,7 @@ abstract class _$TripBookingStateCopyWith<$Res>
       __$TripBookingStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {IList<DriverEntity> nearbyDrivers,
+      {IList<LocationDetail> nearbyDrivers,
       d.Option<LocationAddress> originLocation,
       d.Option<LocationAddress> definationLocation,
       bool isLoading,
@@ -184,7 +184,7 @@ class __$TripBookingStateCopyWithImpl<$Res>
       nearbyDrivers: nearbyDrivers == freezed
           ? _value.nearbyDrivers
           : nearbyDrivers // ignore: cast_nullable_to_non_nullable
-              as IList<DriverEntity>,
+              as IList<LocationDetail>,
       originLocation: originLocation == freezed
           ? _value.originLocation
           : originLocation // ignore: cast_nullable_to_non_nullable
@@ -231,7 +231,7 @@ class _$_TripBookingState implements _TripBookingState {
       required this.myLocation});
 
   @override
-  final IList<DriverEntity> nearbyDrivers;
+  final IList<LocationDetail> nearbyDrivers;
   @override
   final d.Option<LocationAddress> originLocation;
   @override
@@ -297,7 +297,7 @@ class _$_TripBookingState implements _TripBookingState {
 
 abstract class _TripBookingState implements TripBookingState {
   factory _TripBookingState(
-      {required IList<DriverEntity> nearbyDrivers,
+      {required IList<LocationDetail> nearbyDrivers,
       required d.Option<LocationAddress> originLocation,
       required d.Option<LocationAddress> definationLocation,
       required bool isLoading,
@@ -307,7 +307,7 @@ abstract class _TripBookingState implements TripBookingState {
       required d.Option<Coordinate> myLocation}) = _$_TripBookingState;
 
   @override
-  IList<DriverEntity> get nearbyDrivers;
+  IList<LocationDetail> get nearbyDrivers;
   @override
   d.Option<LocationAddress> get originLocation;
   @override
