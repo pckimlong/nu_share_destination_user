@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/application/auth/auth_state.dart';
-import 'package:nu_share_destination_user/src/domain/auth/i_auth_facade.dart';
+import 'auth_state.dart';
+import '../../domain/auth/i_auth_facade.dart';
 
 class AuthControllerNotifier extends StateNotifier<AuthState> {
   AuthControllerNotifier(this._authFacade) : super(const AuthState.initial()) {
@@ -23,9 +23,9 @@ class AuthControllerNotifier extends StateNotifier<AuthState> {
     _streamSubscription?.cancel();
     _streamSubscription = _authFacade.watchAuthStateChanges().listen(
       (authUserOption) {
-        authUserOption.fold(
-          () => state = const AuthState.unauthenticated(),
+        authUserOption.match(
           (uid) => state = AuthState.authenticated(uid),
+          () => state = const AuthState.unauthenticated(),
         );
       },
     );

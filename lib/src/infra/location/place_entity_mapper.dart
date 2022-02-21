@@ -1,6 +1,6 @@
 import 'package:google_place/google_place.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
-import 'package:nu_share_destination_user/src/domain/location/place_entity.dart';
+import '../../domain/core/entities/coordinate.dart';
+import '../../domain/location/place_entity.dart';
 
 extension SearchResultX on SearchResult {
   PlaceEntity toDomain() {

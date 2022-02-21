@@ -24,6 +24,10 @@ class _$DriverFailureTearOff {
     );
   }
 
+  DriverNotExisted driverNotExisted() {
+    return const DriverNotExisted();
+  }
+
   _BannedActionWhileInProgress bannedActionWhileInProgress(String tripId) {
     return _BannedActionWhileInProgress(
       tripId,
@@ -43,6 +47,7 @@ mixin _$DriverFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? mgs) serverError,
+    required TResult Function() driverNotExisted,
     required TResult Function(String tripId) bannedActionWhileInProgress,
     required TResult Function() notExisted,
   }) =>
@@ -50,6 +55,7 @@ mixin _$DriverFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String? mgs)? serverError,
+    TResult Function()? driverNotExisted,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
   }) =>
@@ -57,6 +63,7 @@ mixin _$DriverFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? mgs)? serverError,
+    TResult Function()? driverNotExisted,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
     required TResult orElse(),
@@ -65,6 +72,7 @@ mixin _$DriverFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
+    required TResult Function(DriverNotExisted value) driverNotExisted,
     required TResult Function(_BannedActionWhileInProgress value)
         bannedActionWhileInProgress,
     required TResult Function(_NotExisted value) notExisted,
@@ -73,6 +81,7 @@ mixin _$DriverFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
+    TResult Function(DriverNotExisted value)? driverNotExisted,
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
@@ -81,6 +90,7 @@ mixin _$DriverFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
+    TResult Function(DriverNotExisted value)? driverNotExisted,
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
@@ -171,6 +181,7 @@ class _$_ServerError implements _ServerError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? mgs) serverError,
+    required TResult Function() driverNotExisted,
     required TResult Function(String tripId) bannedActionWhileInProgress,
     required TResult Function() notExisted,
   }) {
@@ -181,6 +192,7 @@ class _$_ServerError implements _ServerError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String? mgs)? serverError,
+    TResult Function()? driverNotExisted,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
   }) {
@@ -191,6 +203,7 @@ class _$_ServerError implements _ServerError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? mgs)? serverError,
+    TResult Function()? driverNotExisted,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
     required TResult orElse(),
@@ -205,6 +218,7 @@ class _$_ServerError implements _ServerError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
+    required TResult Function(DriverNotExisted value) driverNotExisted,
     required TResult Function(_BannedActionWhileInProgress value)
         bannedActionWhileInProgress,
     required TResult Function(_NotExisted value) notExisted,
@@ -216,6 +230,7 @@ class _$_ServerError implements _ServerError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
+    TResult Function(DriverNotExisted value)? driverNotExisted,
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
@@ -227,6 +242,7 @@ class _$_ServerError implements _ServerError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
+    TResult Function(DriverNotExisted value)? driverNotExisted,
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
@@ -246,6 +262,126 @@ abstract class _ServerError implements DriverFailure {
   @JsonKey(ignore: true)
   _$ServerErrorCopyWith<_ServerError> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DriverNotExistedCopyWith<$Res> {
+  factory $DriverNotExistedCopyWith(
+          DriverNotExisted value, $Res Function(DriverNotExisted) then) =
+      _$DriverNotExistedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$DriverNotExistedCopyWithImpl<$Res>
+    extends _$DriverFailureCopyWithImpl<$Res>
+    implements $DriverNotExistedCopyWith<$Res> {
+  _$DriverNotExistedCopyWithImpl(
+      DriverNotExisted _value, $Res Function(DriverNotExisted) _then)
+      : super(_value, (v) => _then(v as DriverNotExisted));
+
+  @override
+  DriverNotExisted get _value => super._value as DriverNotExisted;
+}
+
+/// @nodoc
+
+class _$DriverNotExisted implements DriverNotExisted {
+  const _$DriverNotExisted();
+
+  @override
+  String toString() {
+    return 'DriverFailure.driverNotExisted()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is DriverNotExisted);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? mgs) serverError,
+    required TResult Function() driverNotExisted,
+    required TResult Function(String tripId) bannedActionWhileInProgress,
+    required TResult Function() notExisted,
+  }) {
+    return driverNotExisted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? mgs)? serverError,
+    TResult Function()? driverNotExisted,
+    TResult Function(String tripId)? bannedActionWhileInProgress,
+    TResult Function()? notExisted,
+  }) {
+    return driverNotExisted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? mgs)? serverError,
+    TResult Function()? driverNotExisted,
+    TResult Function(String tripId)? bannedActionWhileInProgress,
+    TResult Function()? notExisted,
+    required TResult orElse(),
+  }) {
+    if (driverNotExisted != null) {
+      return driverNotExisted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(DriverNotExisted value) driverNotExisted,
+    required TResult Function(_BannedActionWhileInProgress value)
+        bannedActionWhileInProgress,
+    required TResult Function(_NotExisted value) notExisted,
+  }) {
+    return driverNotExisted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(DriverNotExisted value)? driverNotExisted,
+    TResult Function(_BannedActionWhileInProgress value)?
+        bannedActionWhileInProgress,
+    TResult Function(_NotExisted value)? notExisted,
+  }) {
+    return driverNotExisted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(DriverNotExisted value)? driverNotExisted,
+    TResult Function(_BannedActionWhileInProgress value)?
+        bannedActionWhileInProgress,
+    TResult Function(_NotExisted value)? notExisted,
+    required TResult orElse(),
+  }) {
+    if (driverNotExisted != null) {
+      return driverNotExisted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DriverNotExisted implements DriverFailure {
+  const factory DriverNotExisted() = _$DriverNotExisted;
 }
 
 /// @nodoc
@@ -318,6 +454,7 @@ class _$_BannedActionWhileInProgress implements _BannedActionWhileInProgress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? mgs) serverError,
+    required TResult Function() driverNotExisted,
     required TResult Function(String tripId) bannedActionWhileInProgress,
     required TResult Function() notExisted,
   }) {
@@ -328,6 +465,7 @@ class _$_BannedActionWhileInProgress implements _BannedActionWhileInProgress {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String? mgs)? serverError,
+    TResult Function()? driverNotExisted,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
   }) {
@@ -338,6 +476,7 @@ class _$_BannedActionWhileInProgress implements _BannedActionWhileInProgress {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? mgs)? serverError,
+    TResult Function()? driverNotExisted,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
     required TResult orElse(),
@@ -352,6 +491,7 @@ class _$_BannedActionWhileInProgress implements _BannedActionWhileInProgress {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
+    required TResult Function(DriverNotExisted value) driverNotExisted,
     required TResult Function(_BannedActionWhileInProgress value)
         bannedActionWhileInProgress,
     required TResult Function(_NotExisted value) notExisted,
@@ -363,6 +503,7 @@ class _$_BannedActionWhileInProgress implements _BannedActionWhileInProgress {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
+    TResult Function(DriverNotExisted value)? driverNotExisted,
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
@@ -374,6 +515,7 @@ class _$_BannedActionWhileInProgress implements _BannedActionWhileInProgress {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
+    TResult Function(DriverNotExisted value)? driverNotExisted,
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
@@ -437,6 +579,7 @@ class _$_NotExisted implements _NotExisted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? mgs) serverError,
+    required TResult Function() driverNotExisted,
     required TResult Function(String tripId) bannedActionWhileInProgress,
     required TResult Function() notExisted,
   }) {
@@ -447,6 +590,7 @@ class _$_NotExisted implements _NotExisted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String? mgs)? serverError,
+    TResult Function()? driverNotExisted,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
   }) {
@@ -457,6 +601,7 @@ class _$_NotExisted implements _NotExisted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? mgs)? serverError,
+    TResult Function()? driverNotExisted,
     TResult Function(String tripId)? bannedActionWhileInProgress,
     TResult Function()? notExisted,
     required TResult orElse(),
@@ -471,6 +616,7 @@ class _$_NotExisted implements _NotExisted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
+    required TResult Function(DriverNotExisted value) driverNotExisted,
     required TResult Function(_BannedActionWhileInProgress value)
         bannedActionWhileInProgress,
     required TResult Function(_NotExisted value) notExisted,
@@ -482,6 +628,7 @@ class _$_NotExisted implements _NotExisted {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
+    TResult Function(DriverNotExisted value)? driverNotExisted,
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,
@@ -493,6 +640,7 @@ class _$_NotExisted implements _NotExisted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
+    TResult Function(DriverNotExisted value)? driverNotExisted,
     TResult Function(_BannedActionWhileInProgress value)?
         bannedActionWhileInProgress,
     TResult Function(_NotExisted value)? notExisted,

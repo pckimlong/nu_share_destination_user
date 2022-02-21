@@ -43,7 +43,8 @@ dependencies:
   cloud_firestore: ^3.1.7
   cupertino_icons: ^1.0.2
   # Use functional programming inside dart
-  dartz: ^0.10.1
+  # dartz: ^0.10.1
+  fpdart: ^0.0.14
   # For authentication
   firebase_auth: ^3.3.6
   # Core of firebase

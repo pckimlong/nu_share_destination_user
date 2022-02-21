@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nu_share_destination_user/src/presentation/widgets/my_list_tile.dart';
+
+import '../../widgets/my_list_tile.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({Key? key}) : super(key: key);

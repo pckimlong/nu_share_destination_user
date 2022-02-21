@@ -14,30 +14,19 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-LocationAddress _$LocationAddressFromJson(Map<String, dynamic> json) {
-  return _LocationPointDetail.fromJson(json);
-}
-
 /// @nodoc
 class _$LocationAddressTearOff {
   const _$LocationAddressTearOff();
 
   _LocationPointDetail call(
-      {@JsonKey(name: LocationAddress.addressKey)
-          required String address,
-      @JsonKey(name: LocationAddress.locationPointKey)
-          required LocationPoint locationPoint,
-      @JsonKey(name: LocationAddress.timeKey)
-          required DateTime? time}) {
+      {required String address,
+      required LocationPoint locationPoint,
+      required DateTime? time}) {
     return _LocationPointDetail(
       address: address,
       locationPoint: locationPoint,
       time: time,
     );
-  }
-
-  LocationAddress fromJson(Map<String, Object?> json) {
-    return LocationAddress.fromJson(json);
   }
 }
 
@@ -47,16 +36,10 @@ const $LocationAddress = _$LocationAddressTearOff();
 /// @nodoc
 mixin _$LocationAddress {
   /// Name of place, like Phnom Penh...
-  @JsonKey(name: LocationAddress.addressKey)
   String get address => throw _privateConstructorUsedError;
-  @JsonKey(name: LocationAddress.locationPointKey)
   LocationPoint get locationPoint => throw _privateConstructorUsedError;
-
-  /// Time at this location
-  @JsonKey(name: LocationAddress.timeKey)
   DateTime? get time => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LocationAddressCopyWith<LocationAddress> get copyWith =>
       throw _privateConstructorUsedError;
@@ -67,13 +50,7 @@ abstract class $LocationAddressCopyWith<$Res> {
   factory $LocationAddressCopyWith(
           LocationAddress value, $Res Function(LocationAddress) then) =
       _$LocationAddressCopyWithImpl<$Res>;
-  $Res call(
-      {@JsonKey(name: LocationAddress.addressKey)
-          String address,
-      @JsonKey(name: LocationAddress.locationPointKey)
-          LocationPoint locationPoint,
-      @JsonKey(name: LocationAddress.timeKey)
-          DateTime? time});
+  $Res call({String address, LocationPoint locationPoint, DateTime? time});
 
   $LocationPointCopyWith<$Res> get locationPoint;
 }
@@ -124,13 +101,7 @@ abstract class _$LocationPointDetailCopyWith<$Res>
           $Res Function(_LocationPointDetail) then) =
       __$LocationPointDetailCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@JsonKey(name: LocationAddress.addressKey)
-          String address,
-      @JsonKey(name: LocationAddress.locationPointKey)
-          LocationPoint locationPoint,
-      @JsonKey(name: LocationAddress.timeKey)
-          DateTime? time});
+  $Res call({String address, LocationPoint locationPoint, DateTime? time});
 
   @override
   $LocationPointCopyWith<$Res> get locationPoint;
@@ -171,32 +142,19 @@ class __$LocationPointDetailCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_LocationPointDetail extends _LocationPointDetail {
   _$_LocationPointDetail(
-      {@JsonKey(name: LocationAddress.addressKey)
-          required this.address,
-      @JsonKey(name: LocationAddress.locationPointKey)
-          required this.locationPoint,
-      @JsonKey(name: LocationAddress.timeKey)
-          required this.time})
+      {required this.address, required this.locationPoint, required this.time})
       : super._();
-
-  factory _$_LocationPointDetail.fromJson(Map<String, dynamic> json) =>
-      _$$_LocationPointDetailFromJson(json);
 
   @override
 
   /// Name of place, like Phnom Penh...
-  @JsonKey(name: LocationAddress.addressKey)
   final String address;
   @override
-  @JsonKey(name: LocationAddress.locationPointKey)
   final LocationPoint locationPoint;
   @override
-
-  /// Time at this location
-  @JsonKey(name: LocationAddress.timeKey)
   final DateTime? time;
 
   @override
@@ -227,38 +185,22 @@ class _$_LocationPointDetail extends _LocationPointDetail {
   _$LocationPointDetailCopyWith<_LocationPointDetail> get copyWith =>
       __$LocationPointDetailCopyWithImpl<_LocationPointDetail>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_LocationPointDetailToJson(this);
-  }
 }
 
 abstract class _LocationPointDetail extends LocationAddress {
   factory _LocationPointDetail(
-      {@JsonKey(name: LocationAddress.addressKey)
-          required String address,
-      @JsonKey(name: LocationAddress.locationPointKey)
-          required LocationPoint locationPoint,
-      @JsonKey(name: LocationAddress.timeKey)
-          required DateTime? time}) = _$_LocationPointDetail;
+      {required String address,
+      required LocationPoint locationPoint,
+      required DateTime? time}) = _$_LocationPointDetail;
   _LocationPointDetail._() : super._();
-
-  factory _LocationPointDetail.fromJson(Map<String, dynamic> json) =
-      _$_LocationPointDetail.fromJson;
 
   @override
 
   /// Name of place, like Phnom Penh...
-  @JsonKey(name: LocationAddress.addressKey)
   String get address;
   @override
-  @JsonKey(name: LocationAddress.locationPointKey)
   LocationPoint get locationPoint;
   @override
-
-  /// Time at this location
-  @JsonKey(name: LocationAddress.timeKey)
   DateTime? get time;
   @override
   @JsonKey(ignore: true)

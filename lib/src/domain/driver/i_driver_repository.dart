@@ -1,13 +1,15 @@
-import 'package:dartz/dartz.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
-import 'package:nu_share_destination_user/src/domain/driver/driver_failure.dart';
+import 'package:fpdart/fpdart.dart';
+import '../core/entities/coordinate.dart';
+import '../core/entities/location_detail.dart';
+import 'driver_failure.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart'
     as fic;
 
 import 'driver_entity.dart';
 
 abstract class IDriverRepository {
+  Future<Either<DriverFailure, Unit>> update(DriverEntity driver);
+
   /// Watch stream of one driver
   Stream<Either<DriverFailure, DriverEntity>> watchOne(String driverId);
 

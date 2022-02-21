@@ -1,11 +1,12 @@
-import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_address.dart';
-import 'package:nu_share_destination_user/src/domain/location/place_entity.dart';
-
-import '../../../domain/location/location_failure.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart'
     as fic;
+import 'package:fpdart/fpdart.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../domain/core/entities/location_address.dart';
+import '../../../domain/location/location_failure.dart';
+import '../../../domain/location/place_entity.dart';
+
 part "location_picker_state.freezed.dart";
 
 @freezed

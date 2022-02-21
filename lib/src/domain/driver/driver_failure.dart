@@ -5,6 +5,7 @@ part 'driver_failure.freezed.dart';
 @freezed
 class DriverFailure with _$DriverFailure {
   factory DriverFailure.serverError(String? mgs) = _ServerError;
+  const factory DriverFailure.driverNotExisted() = DriverNotExisted;
 
   /// When driver want to perform some actions which are not allow to do
   ///  when driver is in a trip state,

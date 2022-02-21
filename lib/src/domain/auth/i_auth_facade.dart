@@ -1,4 +1,4 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 
 import 'auth_failure.dart';
 
@@ -21,4 +21,10 @@ abstract class IAuthFacade {
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
 
   Future<Either<AuthFailure, Unit>> signInWithFacebook();
+
+  /// This only use with driver
+  Future<Either<AuthFailure, Unit>> signInWithEmailPassword({
+    required String email,
+    required String password,
+  });
 }

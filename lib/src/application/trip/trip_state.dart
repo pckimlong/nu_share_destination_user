@@ -1,8 +1,9 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
-import 'package:nu_share_destination_user/src/domain/driver/driver_entity.dart';
-import 'package:nu_share_destination_user/src/domain/trip/trip_entity.dart';
+import '../../domain/core/entities/location_detail.dart';
+import '../../domain/core/errors.dart';
+import '../../domain/driver/driver_entity.dart';
+import '../../domain/trip/trip_entity.dart';
 
 import '../../domain/trip/passenger_entity.dart';
 
@@ -27,9 +28,11 @@ class TripState with _$TripState {
 
   /// Location detail contain speed, heading... This will get from driver entity
   /// stream which currenly listening
-  Option<LocationDetail> get location => driver.fold(
+
+  Option<LocationDetail> get location => driver.match(
+        (t) =>
+            some(t.location.getOrElse(() => throw EmptyRequiredFieldError())),
         () => none(),
-        (a) => some(a.location),
       );
 
   PassengerEntity get passenger1 => tripEntity.passenger1;

@@ -1,11 +1,11 @@
-import 'package:dartz/dartz.dart' as d;
+import 'package:fpdart/fpdart.dart' as d;
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_address.dart';
-import 'package:nu_share_destination_user/src/domain/driver/driver_entity.dart';
-import 'package:nu_share_destination_user/src/domain/driver/driver_failure.dart';
-import 'package:nu_share_destination_user/src/domain/location/location_failure.dart';
+import '../../../domain/core/entities/coordinate.dart';
+import '../../../domain/core/entities/location_address.dart';
+import '../../../domain/driver/driver_entity.dart';
+import '../../../domain/driver/driver_failure.dart';
+import '../../../domain/location/location_failure.dart';
 
 part 'trip_booking_state.freezed.dart';
 

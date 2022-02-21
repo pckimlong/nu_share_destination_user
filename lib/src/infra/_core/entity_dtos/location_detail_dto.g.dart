@@ -1,15 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'location_detail.dart';
+part of 'location_detail_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_LocationDetail _$$_LocationDetailFromJson(Map<String, dynamic> json) =>
-    _$_LocationDetail(
-      locationPoint:
-          LocationPoint.fromJson(json['locationPoint'] as Map<String, dynamic>),
+_$_LocationDetailDto _$$_LocationDetailDtoFromJson(Map<String, dynamic> json) =>
+    _$_LocationDetailDto(
+      locationPoint: LocationDetailDto._geoPointFromJson(
+          json['locationPoint'] as Map<String, dynamic>),
       accuracy: (json['accuracy'] as num).toDouble(),
       altitude: (json['altitude'] as num).toDouble(),
       speed: (json['speed'] as num).toDouble(),
@@ -19,9 +19,11 @@ _$_LocationDetail _$$_LocationDetailFromJson(Map<String, dynamic> json) =>
           json['time'] == null ? null : DateTime.parse(json['time'] as String),
     );
 
-Map<String, dynamic> _$$_LocationDetailToJson(_$_LocationDetail instance) =>
+Map<String, dynamic> _$$_LocationDetailDtoToJson(
+        _$_LocationDetailDto instance) =>
     <String, dynamic>{
-      'locationPoint': instance.locationPoint,
+      'locationPoint':
+          LocationDetailDto._geoPointToJson(instance.locationPoint),
       'accuracy': instance.accuracy,
       'altitude': instance.altitude,
       'speed': instance.speed,

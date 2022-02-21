@@ -425,9 +425,9 @@ class _$PassengerEntityDtoTearOff {
       {required UserEntityDto user,
       required String note,
       required bool allowToShare,
-      required LocationAddress originLocation,
-      required LocationAddress? destinationLocation,
-      required LocationAddress? actualDestinationLocation}) {
+      required LocationAddressDto originLocation,
+      required LocationAddressDto? destinationLocation,
+      required LocationAddressDto? actualDestinationLocation}) {
     return _PassengerEntity(
       user: user,
       note: note,
@@ -451,10 +451,10 @@ mixin _$PassengerEntityDto {
   UserEntityDto get user => throw _privateConstructorUsedError;
   String get note => throw _privateConstructorUsedError;
   bool get allowToShare => throw _privateConstructorUsedError;
-  LocationAddress get originLocation => throw _privateConstructorUsedError;
-  LocationAddress? get destinationLocation =>
+  LocationAddressDto get originLocation => throw _privateConstructorUsedError;
+  LocationAddressDto? get destinationLocation =>
       throw _privateConstructorUsedError;
-  LocationAddress? get actualDestinationLocation =>
+  LocationAddressDto? get actualDestinationLocation =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -472,14 +472,14 @@ abstract class $PassengerEntityDtoCopyWith<$Res> {
       {UserEntityDto user,
       String note,
       bool allowToShare,
-      LocationAddress originLocation,
-      LocationAddress? destinationLocation,
-      LocationAddress? actualDestinationLocation});
+      LocationAddressDto originLocation,
+      LocationAddressDto? destinationLocation,
+      LocationAddressDto? actualDestinationLocation});
 
   $UserEntityDtoCopyWith<$Res> get user;
-  $LocationAddressCopyWith<$Res> get originLocation;
-  $LocationAddressCopyWith<$Res>? get destinationLocation;
-  $LocationAddressCopyWith<$Res>? get actualDestinationLocation;
+  $LocationAddressDtoCopyWith<$Res> get originLocation;
+  $LocationAddressDtoCopyWith<$Res>? get destinationLocation;
+  $LocationAddressDtoCopyWith<$Res>? get actualDestinationLocation;
 }
 
 /// @nodoc
@@ -516,15 +516,15 @@ class _$PassengerEntityDtoCopyWithImpl<$Res>
       originLocation: originLocation == freezed
           ? _value.originLocation
           : originLocation // ignore: cast_nullable_to_non_nullable
-              as LocationAddress,
+              as LocationAddressDto,
       destinationLocation: destinationLocation == freezed
           ? _value.destinationLocation
           : destinationLocation // ignore: cast_nullable_to_non_nullable
-              as LocationAddress?,
+              as LocationAddressDto?,
       actualDestinationLocation: actualDestinationLocation == freezed
           ? _value.actualDestinationLocation
           : actualDestinationLocation // ignore: cast_nullable_to_non_nullable
-              as LocationAddress?,
+              as LocationAddressDto?,
     ));
   }
 
@@ -536,30 +536,31 @@ class _$PassengerEntityDtoCopyWithImpl<$Res>
   }
 
   @override
-  $LocationAddressCopyWith<$Res> get originLocation {
-    return $LocationAddressCopyWith<$Res>(_value.originLocation, (value) {
+  $LocationAddressDtoCopyWith<$Res> get originLocation {
+    return $LocationAddressDtoCopyWith<$Res>(_value.originLocation, (value) {
       return _then(_value.copyWith(originLocation: value));
     });
   }
 
   @override
-  $LocationAddressCopyWith<$Res>? get destinationLocation {
+  $LocationAddressDtoCopyWith<$Res>? get destinationLocation {
     if (_value.destinationLocation == null) {
       return null;
     }
 
-    return $LocationAddressCopyWith<$Res>(_value.destinationLocation!, (value) {
+    return $LocationAddressDtoCopyWith<$Res>(_value.destinationLocation!,
+        (value) {
       return _then(_value.copyWith(destinationLocation: value));
     });
   }
 
   @override
-  $LocationAddressCopyWith<$Res>? get actualDestinationLocation {
+  $LocationAddressDtoCopyWith<$Res>? get actualDestinationLocation {
     if (_value.actualDestinationLocation == null) {
       return null;
     }
 
-    return $LocationAddressCopyWith<$Res>(_value.actualDestinationLocation!,
+    return $LocationAddressDtoCopyWith<$Res>(_value.actualDestinationLocation!,
         (value) {
       return _then(_value.copyWith(actualDestinationLocation: value));
     });
@@ -577,18 +578,18 @@ abstract class _$PassengerEntityCopyWith<$Res>
       {UserEntityDto user,
       String note,
       bool allowToShare,
-      LocationAddress originLocation,
-      LocationAddress? destinationLocation,
-      LocationAddress? actualDestinationLocation});
+      LocationAddressDto originLocation,
+      LocationAddressDto? destinationLocation,
+      LocationAddressDto? actualDestinationLocation});
 
   @override
   $UserEntityDtoCopyWith<$Res> get user;
   @override
-  $LocationAddressCopyWith<$Res> get originLocation;
+  $LocationAddressDtoCopyWith<$Res> get originLocation;
   @override
-  $LocationAddressCopyWith<$Res>? get destinationLocation;
+  $LocationAddressDtoCopyWith<$Res>? get destinationLocation;
   @override
-  $LocationAddressCopyWith<$Res>? get actualDestinationLocation;
+  $LocationAddressDtoCopyWith<$Res>? get actualDestinationLocation;
 }
 
 /// @nodoc
@@ -627,15 +628,15 @@ class __$PassengerEntityCopyWithImpl<$Res>
       originLocation: originLocation == freezed
           ? _value.originLocation
           : originLocation // ignore: cast_nullable_to_non_nullable
-              as LocationAddress,
+              as LocationAddressDto,
       destinationLocation: destinationLocation == freezed
           ? _value.destinationLocation
           : destinationLocation // ignore: cast_nullable_to_non_nullable
-              as LocationAddress?,
+              as LocationAddressDto?,
       actualDestinationLocation: actualDestinationLocation == freezed
           ? _value.actualDestinationLocation
           : actualDestinationLocation // ignore: cast_nullable_to_non_nullable
-              as LocationAddress?,
+              as LocationAddressDto?,
     ));
   }
 }
@@ -662,11 +663,11 @@ class _$_PassengerEntity extends _PassengerEntity {
   @override
   final bool allowToShare;
   @override
-  final LocationAddress originLocation;
+  final LocationAddressDto originLocation;
   @override
-  final LocationAddress? destinationLocation;
+  final LocationAddressDto? destinationLocation;
   @override
-  final LocationAddress? actualDestinationLocation;
+  final LocationAddressDto? actualDestinationLocation;
 
   @override
   String toString() {
@@ -716,9 +717,9 @@ abstract class _PassengerEntity extends PassengerEntityDto {
           {required UserEntityDto user,
           required String note,
           required bool allowToShare,
-          required LocationAddress originLocation,
-          required LocationAddress? destinationLocation,
-          required LocationAddress? actualDestinationLocation}) =
+          required LocationAddressDto originLocation,
+          required LocationAddressDto? destinationLocation,
+          required LocationAddressDto? actualDestinationLocation}) =
       _$_PassengerEntity;
   _PassengerEntity._() : super._();
 
@@ -732,11 +733,11 @@ abstract class _PassengerEntity extends PassengerEntityDto {
   @override
   bool get allowToShare;
   @override
-  LocationAddress get originLocation;
+  LocationAddressDto get originLocation;
   @override
-  LocationAddress? get destinationLocation;
+  LocationAddressDto? get destinationLocation;
   @override
-  LocationAddress? get actualDestinationLocation;
+  LocationAddressDto? get actualDestinationLocation;
   @override
   @JsonKey(ignore: true)
   _$PassengerEntityCopyWith<_PassengerEntity> get copyWith =>

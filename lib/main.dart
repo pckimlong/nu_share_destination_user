@@ -4,8 +4,11 @@ import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_place/google_place.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:nu_share_destination_user/driver/presentation/core/app_widget.dart'
+    as driver;
 import 'package:nu_share_destination_user/firebase_options.dart';
-import 'package:nu_share_destination_user/src/presentation/_core/app_widget.dart';
+import 'package:nu_share_destination_user/src/presentation/_core/app_widget.dart'
+    as user;
 import 'package:nu_share_destination_user/src/presentation/_core/common_provider.dart';
 
 void main() async {
@@ -21,15 +24,11 @@ void main() async {
       overrides: [
         getStorageProvider.overrideWithValue(GetStorage()),
       ],
-      child: const AppWidget(),
+      child: const user.AppWidget(),
+      // child: const driver.AppWidget(),
     ),
   );
 }
-
-final geo = Geoflutterfire();
-
-var googlePlace = GooglePlace("Your-Key");
-var result = googlePlace.search.getTextSearch("restaurants in Sydney");
 
 class Logger extends ProviderObserver {
   @override

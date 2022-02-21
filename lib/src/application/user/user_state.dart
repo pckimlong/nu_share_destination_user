@@ -1,6 +1,6 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/core/errors.dart';
+import '../../domain/core/errors.dart';
 
 import '../../domain/user/user_entity.dart';
 import '../../domain/user/user_failure.dart';

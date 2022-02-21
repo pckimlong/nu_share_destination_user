@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:nu_share_destination_user/src/domain/auth/auth_failure.dart';
-import 'package:nu_share_destination_user/src/domain/auth/i_auth_facade.dart';
+import '../../domain/auth/auth_failure.dart';
+import '../../domain/auth/i_auth_facade.dart';
 
 class AuthFacadeImpl implements IAuthFacade {
   AuthFacadeImpl(
@@ -138,5 +138,20 @@ class AuthFacadeImpl implements IAuthFacade {
       if (user == null) return none();
       return some(user.uid);
     });
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signInWithEmailPassword(
+      {required String email, required String password}) async {
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      return const Right(unit);
+    } on FirebaseAuthException catch (e) {
+      debugPrint(e.code);
+      if (e.code == "invalid-email") {
+        return const Left(AuthFailure.invalidEmailOrPassword());
+      }
+      return const Left(AuthFailure.serverError());
+    }
   }
 }

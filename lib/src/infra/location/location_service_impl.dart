@@ -1,4 +1,4 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart'
     as fic;
 import 'package:flutter/foundation.dart';
@@ -147,11 +147,12 @@ class LocationServiceImpl implements ILocationService {
   }
 
   @override
-  Stream<Either<LocationFailure, LocationDetail>> watchMyLocationDetail() {
+  Stream<Either<LocationFailure, LocationDetail>> watchMyLocationDetail(
+      [int meterFilter = 10]) {
     return Geolocator.getPositionStream(
-      locationSettings: const LocationSettings(
+      locationSettings: LocationSettings(
         accuracy: LocationAccuracy.bestForNavigation,
-        distanceFilter: DomainValues.locationUpdateFilterInMeter,
+        distanceFilter: meterFilter,
       ),
     ).map(
       (event) {

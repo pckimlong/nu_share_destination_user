@@ -1,13 +1,13 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:nu_share_destination_user/src/application/trip/trip_booking/trip_booking_event.dart';
-import 'package:nu_share_destination_user/src/application/trip/trip_booking/trip_booking_state.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
-import 'package:nu_share_destination_user/src/domain/driver/i_driver_repository.dart';
-import 'package:nu_share_destination_user/src/domain/location/i_location_service.dart';
-import 'package:nu_share_destination_user/src/domain/trip/i_trip_repository.dart';
-import 'package:nu_share_destination_user/src/domain/user/i_user_repository.dart';
+import 'trip_booking_event.dart';
+import 'trip_booking_state.dart';
+import '../../../domain/core/entities/coordinate.dart';
+import '../../../domain/driver/i_driver_repository.dart';
+import '../../../domain/location/i_location_service.dart';
+import '../../../domain/trip/i_trip_repository.dart';
+import '../../../domain/user/i_user_repository.dart';
 
 class TripBookingNotifier extends StateNotifier<TripBookingState> {
   TripBookingNotifier(
@@ -78,6 +78,11 @@ class TripBookingNotifier extends StateNotifier<TripBookingState> {
 
     /// Fetch all nearby driver around this location
     await _fetchNearbyDrivers(coor);
+
+    // _driverRepository.streamAroundCoordinate(coordinate: coor).listen((event) {
+    //   print(event.toString());
+    //   state = state.copyWith(nearbyDrivers: event);
+    // });
 
     state = state.copyWith(isLoading: false);
   }

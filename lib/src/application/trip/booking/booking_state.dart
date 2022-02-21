@@ -1,9 +1,9 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/driver/vehicle_types.dart';
-import 'package:nu_share_destination_user/src/domain/core/errors.dart';
-import 'package:nu_share_destination_user/src/domain/trip/trip_entity.dart';
-import 'package:nu_share_destination_user/src/domain/user/user_entity.dart';
+import '../../../domain/driver/vehicle_types.dart';
+import '../../../domain/core/errors.dart';
+import '../../../domain/trip/trip_entity.dart';
+import '../../../domain/user/user_entity.dart';
 
 import '../../../domain/core/entities/location_address.dart';
 import '../../../domain/trip/passenger_entity.dart';

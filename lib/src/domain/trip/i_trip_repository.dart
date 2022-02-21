@@ -1,4 +1,4 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart'
     as fic;
 import 'package:nu_share_destination_user/src/domain/trip/passenger_entity.dart';

@@ -1,5 +1,18 @@
 part of '../trip_booking_page.dart';
 
+/// Default marker id fro origin marker and destination marker
+const _originMarkerId = MarkerId('origin');
+const _destinationMarkerId = MarkerId('destination');
+
+/// Where the map camera should be placed when first created
+final _initialCameraPosition = CameraPosition(
+  zoom: DomainValues.initialMapZoom,
+  target: LatLng(
+    DomainValues.initialMapPoint.latitude,
+    DomainValues.initialMapPoint.longitude,
+  ),
+);
+
 class _MapWidget extends StatefulHookConsumerWidget {
   const _MapWidget({Key? key}) : super(key: key);
 
@@ -16,54 +29,86 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
     super.initState();
   }
 
+  void _drawDriverMarkers(
+      Map<MarkerId, Marker> markers, fic.IList<DriverEntity> nearbyDrivers) {
+    useEffect(
+      () {
+        /// Remove all old drivers marker to fetch new one
+        markers.removeWhere(
+          (key, value) => key != _originMarkerId && key != _destinationMarkerId,
+        );
+
+        for (final driver in nearbyDrivers) {
+          /// Add marker
+          final id = MarkerId(driver.id!);
+          final double lat = driver.location.match(
+            (a) => a.locationPoint.coordinate.latitude,
+            () => 0,
+          );
+          final double long = driver.location.match(
+            (a) => a.locationPoint.coordinate.longitude,
+            () => 0,
+          );
+          markers[id] = Marker(
+            markerId: id,
+            position: LatLng(lat, long),
+          );
+        }
+        return;
+      },
+      [nearbyDrivers],
+    );
+  }
+
   void _drawerOriginAndDesinationMarker(Option<LocationAddress> originLoc,
       Option<LocationAddress> destinationLoc, Map<MarkerId, Marker> markers) {
     // only add marker when desition address has been add
     useEffect(
-      () => originLoc.fold(
-        () => null,
-        (origin) => destinationLoc.fold(() => null, (destination) {
-          // create my marker
-          const originMarkerId = MarkerId('origin');
-          final originMarker = markers[originMarkerId];
-          if (originMarker != null) {
-            markers[originMarkerId] = originMarker.copyWith(
-              positionParam: LatLng(
-                origin.locationPoint.coordinate.latitude,
-                origin.locationPoint.coordinate.longitude,
-              ),
-            );
-          } else {
-            markers[originMarkerId] = Marker(
-              markerId: MarkerId(origin.locationPoint.geoHash),
-              position: LatLng(
-                origin.locationPoint.coordinate.latitude,
-                origin.locationPoint.coordinate.longitude,
-              ),
-            );
-          }
+      () => originLoc.match(
+        (origin) => destinationLoc.match(
+          (destination) {
+            // create my marker
+            final originMarker = markers[_originMarkerId];
+            if (originMarker != null) {
+              markers[_originMarkerId] = originMarker.copyWith(
+                positionParam: LatLng(
+                  origin.locationPoint.coordinate.latitude,
+                  origin.locationPoint.coordinate.longitude,
+                ),
+              );
+            } else {
+              markers[_originMarkerId] = Marker(
+                markerId: MarkerId(origin.locationPoint.geoHash),
+                position: LatLng(
+                  origin.locationPoint.coordinate.latitude,
+                  origin.locationPoint.coordinate.longitude,
+                ),
+              );
+            }
 
-          /// create destination mark
-          const desMarkerId = MarkerId('destination');
-          final desMarker = markers[desMarkerId];
-          if (desMarker != null) {
-            markers[desMarkerId] = desMarker.copyWith(
-              positionParam: LatLng(
-                destination.locationPoint.coordinate.latitude,
-                destination.locationPoint.coordinate.longitude,
-              ),
-            );
-          } else {
-            markers[desMarkerId] = Marker(
-              markerId: MarkerId(destination.locationPoint.geoHash),
-              position: LatLng(
-                destination.locationPoint.coordinate.latitude,
-                destination.locationPoint.coordinate.longitude,
-              ),
-            );
-          }
-          return;
-        }),
+            /// create destination mark
+            final desMarker = markers[_destinationMarkerId];
+            if (desMarker != null) {
+              markers[_destinationMarkerId] = desMarker.copyWith(
+                positionParam: LatLng(
+                  destination.locationPoint.coordinate.latitude,
+                  destination.locationPoint.coordinate.longitude,
+                ),
+              );
+            } else {
+              markers[_destinationMarkerId] = Marker(
+                markerId: MarkerId(destination.locationPoint.geoHash),
+                position: LatLng(
+                  destination.locationPoint.coordinate.latitude,
+                  destination.locationPoint.coordinate.longitude,
+                ),
+              );
+            }
+            return;
+          },
+          () => null,
+        ),
+        () => null,
       ),
       [originLoc, destinationLoc],
     );
@@ -108,25 +153,25 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
       tripBookingController,
       (previous, next) {
         /// Move map to my location when I click my location button
-        next.myLocation.fold(
-          () => null,
+        next.myLocation.match(
           (myLocation) {
-            next.originLocation.fold(
-              () => _moveToCoordinate(myLocation),
+            next.originLocation.match(
               (originAddress) {
                 if (originAddress.locationPoint.coordinate != myLocation) {
-                  previous!.myLocation.fold(
-                    () => _moveToCoordinate(myLocation),
+                  previous!.myLocation.match(
                     (preLoc) {
                       if (myLocation != preLoc) {
                         _moveToCoordinate(myLocation);
                       }
                     },
+                    () => _moveToCoordinate(myLocation),
                   );
                 }
               },
+              () => _moveToCoordinate(myLocation),
             );
           },
+          () => null,
         );
       },
     );
@@ -153,10 +198,7 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
 
     _drawerOriginAndDesinationMarker(originLoc, destinationLoc, markers);
 
-    useEffect(
-      () {},
-      [nearbyDrivers],
-    );
+    _drawDriverMarkers(markers, nearbyDrivers);
 
     return GoogleMap(
       markers: Set<Marker>.from(markers.values),
@@ -171,12 +213,3 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
     );
   }
 }
-
-/// Where the map camera should be placed when first created
-final _initialCameraPosition = CameraPosition(
-  zoom: DomainValues.initialMapZoom,
-  target: LatLng(
-    DomainValues.initialMapPoint.latitude,
-    DomainValues.initialMapPoint.longitude,
-  ),
-);

@@ -1,8 +1,8 @@
-import 'package:dartz/dartz.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_address.dart';
-import 'package:nu_share_destination_user/src/domain/location/location_failure.dart';
+import 'package:fpdart/fpdart.dart';
+import '../core/entities/coordinate.dart';
+import '../core/entities/location_detail.dart';
+import '../core/entities/location_address.dart';
+import 'location_failure.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart'
     as fic;
 import 'package:nu_share_destination_user/src/domain/location/place_entity.dart';
@@ -21,8 +21,10 @@ abstract class ILocationService {
   /// Get last know address which this device is at that could saveed in catch...
   Future<LocationAddress?> getMyLastLocationAddress();
 
-  /// Watch current device location detail
-  Stream<Either<LocationFailure, LocationDetail>> watchMyLocationDetail();
+  /// Watch current device location detail,
+  /// [meterFilter] determine how many meter should location be update
+  Stream<Either<LocationFailure, LocationDetail>> watchMyLocationDetail(
+      [int meterFilter = 10]);
 
   /// Covert address string into location point
   Future<Either<LocationFailure, Option<LocationAddress>>> getAddressByString(

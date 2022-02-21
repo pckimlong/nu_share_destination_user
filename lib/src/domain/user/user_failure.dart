@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/user/user_entity.dart';
+import 'user_entity.dart';
 
 part 'user_failure.freezed.dart';
 

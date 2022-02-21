@@ -26,6 +26,10 @@ class _$AuthFailureTearOff {
     return const _InvalidPhoneNumber();
   }
 
+  _InvalidEmailOrPassword invalidEmailOrPassword() {
+    return const _InvalidEmailOrPassword();
+  }
+
   _ToManyRequest toManyRequest() {
     return const _ToManyRequest();
   }
@@ -60,6 +64,7 @@ mixin _$AuthFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidEmailOrPassword,
     required TResult Function() toManyRequest,
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
@@ -72,6 +77,7 @@ mixin _$AuthFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -84,6 +90,7 @@ mixin _$AuthFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -97,6 +104,8 @@ mixin _$AuthFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_InvalidEmailOrPassword value)
+        invalidEmailOrPassword,
     required TResult Function(_ToManyRequest value) toManyRequest,
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
@@ -110,6 +119,7 @@ mixin _$AuthFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -122,6 +132,7 @@ mixin _$AuthFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -191,6 +202,7 @@ class _$_ServerError implements _ServerError {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidEmailOrPassword,
     required TResult Function() toManyRequest,
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
@@ -206,6 +218,7 @@ class _$_ServerError implements _ServerError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -221,6 +234,7 @@ class _$_ServerError implements _ServerError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -240,6 +254,8 @@ class _$_ServerError implements _ServerError {
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_InvalidEmailOrPassword value)
+        invalidEmailOrPassword,
     required TResult Function(_ToManyRequest value) toManyRequest,
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
@@ -256,6 +272,7 @@ class _$_ServerError implements _ServerError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -271,6 +288,7 @@ class _$_ServerError implements _ServerError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -333,6 +351,7 @@ class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidEmailOrPassword,
     required TResult Function() toManyRequest,
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
@@ -348,6 +367,7 @@ class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -363,6 +383,7 @@ class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -382,6 +403,8 @@ class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_InvalidEmailOrPassword value)
+        invalidEmailOrPassword,
     required TResult Function(_ToManyRequest value) toManyRequest,
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
@@ -398,6 +421,7 @@ class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -413,6 +437,7 @@ class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -430,6 +455,155 @@ class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
 
 abstract class _InvalidPhoneNumber implements AuthFailure {
   const factory _InvalidPhoneNumber() = _$_InvalidPhoneNumber;
+}
+
+/// @nodoc
+abstract class _$InvalidEmailOrPasswordCopyWith<$Res> {
+  factory _$InvalidEmailOrPasswordCopyWith(_InvalidEmailOrPassword value,
+          $Res Function(_InvalidEmailOrPassword) then) =
+      __$InvalidEmailOrPasswordCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$InvalidEmailOrPasswordCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$InvalidEmailOrPasswordCopyWith<$Res> {
+  __$InvalidEmailOrPasswordCopyWithImpl(_InvalidEmailOrPassword _value,
+      $Res Function(_InvalidEmailOrPassword) _then)
+      : super(_value, (v) => _then(v as _InvalidEmailOrPassword));
+
+  @override
+  _InvalidEmailOrPassword get _value => super._value as _InvalidEmailOrPassword;
+}
+
+/// @nodoc
+
+class _$_InvalidEmailOrPassword implements _InvalidEmailOrPassword {
+  const _$_InvalidEmailOrPassword();
+
+  @override
+  String toString() {
+    return 'AuthFailure.invalidEmailOrPassword()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _InvalidEmailOrPassword);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidEmailOrPassword,
+    required TResult Function() toManyRequest,
+    required TResult Function() smsTimeout,
+    required TResult Function() sessionExpired,
+    required TResult Function() unauthorized,
+    required TResult Function() cancelledByUser,
+    required TResult Function() invalidVerificationCode,
+  }) {
+    return invalidEmailOrPassword();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
+    TResult Function()? toManyRequest,
+    TResult Function()? smsTimeout,
+    TResult Function()? sessionExpired,
+    TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
+    TResult Function()? invalidVerificationCode,
+  }) {
+    return invalidEmailOrPassword?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
+    TResult Function()? toManyRequest,
+    TResult Function()? smsTimeout,
+    TResult Function()? sessionExpired,
+    TResult Function()? unauthorized,
+    TResult Function()? cancelledByUser,
+    TResult Function()? invalidVerificationCode,
+    required TResult orElse(),
+  }) {
+    if (invalidEmailOrPassword != null) {
+      return invalidEmailOrPassword();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_InvalidEmailOrPassword value)
+        invalidEmailOrPassword,
+    required TResult Function(_ToManyRequest value) toManyRequest,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_SessionExpired value) sessionExpired,
+    required TResult Function(_Unauthorized value) unauthorized,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
+    required TResult Function(_InvalidVertificationCode value)
+        invalidVerificationCode,
+  }) {
+    return invalidEmailOrPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(_ToManyRequest value)? toManyRequest,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_SessionExpired value)? sessionExpired,
+    TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
+    TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
+  }) {
+    return invalidEmailOrPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(_ToManyRequest value)? toManyRequest,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_SessionExpired value)? sessionExpired,
+    TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
+    TResult Function(_InvalidVertificationCode value)? invalidVerificationCode,
+    required TResult orElse(),
+  }) {
+    if (invalidEmailOrPassword != null) {
+      return invalidEmailOrPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidEmailOrPassword implements AuthFailure {
+  const factory _InvalidEmailOrPassword() = _$_InvalidEmailOrPassword;
 }
 
 /// @nodoc
@@ -474,6 +648,7 @@ class _$_ToManyRequest implements _ToManyRequest {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidEmailOrPassword,
     required TResult Function() toManyRequest,
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
@@ -489,6 +664,7 @@ class _$_ToManyRequest implements _ToManyRequest {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -504,6 +680,7 @@ class _$_ToManyRequest implements _ToManyRequest {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -523,6 +700,8 @@ class _$_ToManyRequest implements _ToManyRequest {
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_InvalidEmailOrPassword value)
+        invalidEmailOrPassword,
     required TResult Function(_ToManyRequest value) toManyRequest,
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
@@ -539,6 +718,7 @@ class _$_ToManyRequest implements _ToManyRequest {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -554,6 +734,7 @@ class _$_ToManyRequest implements _ToManyRequest {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -615,6 +796,7 @@ class _$_SmsTimeout implements _SmsTimeout {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidEmailOrPassword,
     required TResult Function() toManyRequest,
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
@@ -630,6 +812,7 @@ class _$_SmsTimeout implements _SmsTimeout {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -645,6 +828,7 @@ class _$_SmsTimeout implements _SmsTimeout {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -664,6 +848,8 @@ class _$_SmsTimeout implements _SmsTimeout {
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_InvalidEmailOrPassword value)
+        invalidEmailOrPassword,
     required TResult Function(_ToManyRequest value) toManyRequest,
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
@@ -680,6 +866,7 @@ class _$_SmsTimeout implements _SmsTimeout {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -695,6 +882,7 @@ class _$_SmsTimeout implements _SmsTimeout {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -757,6 +945,7 @@ class _$_SessionExpired implements _SessionExpired {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidEmailOrPassword,
     required TResult Function() toManyRequest,
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
@@ -772,6 +961,7 @@ class _$_SessionExpired implements _SessionExpired {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -787,6 +977,7 @@ class _$_SessionExpired implements _SessionExpired {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -806,6 +997,8 @@ class _$_SessionExpired implements _SessionExpired {
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_InvalidEmailOrPassword value)
+        invalidEmailOrPassword,
     required TResult Function(_ToManyRequest value) toManyRequest,
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
@@ -822,6 +1015,7 @@ class _$_SessionExpired implements _SessionExpired {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -837,6 +1031,7 @@ class _$_SessionExpired implements _SessionExpired {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -898,6 +1093,7 @@ class _$_Unauthorized implements _Unauthorized {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidEmailOrPassword,
     required TResult Function() toManyRequest,
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
@@ -913,6 +1109,7 @@ class _$_Unauthorized implements _Unauthorized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -928,6 +1125,7 @@ class _$_Unauthorized implements _Unauthorized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -947,6 +1145,8 @@ class _$_Unauthorized implements _Unauthorized {
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_InvalidEmailOrPassword value)
+        invalidEmailOrPassword,
     required TResult Function(_ToManyRequest value) toManyRequest,
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
@@ -963,6 +1163,7 @@ class _$_Unauthorized implements _Unauthorized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -978,6 +1179,7 @@ class _$_Unauthorized implements _Unauthorized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -1040,6 +1242,7 @@ class _$_CancelledByUser implements _CancelledByUser {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidEmailOrPassword,
     required TResult Function() toManyRequest,
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
@@ -1055,6 +1258,7 @@ class _$_CancelledByUser implements _CancelledByUser {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -1070,6 +1274,7 @@ class _$_CancelledByUser implements _CancelledByUser {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -1089,6 +1294,8 @@ class _$_CancelledByUser implements _CancelledByUser {
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_InvalidEmailOrPassword value)
+        invalidEmailOrPassword,
     required TResult Function(_ToManyRequest value) toManyRequest,
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
@@ -1105,6 +1312,7 @@ class _$_CancelledByUser implements _CancelledByUser {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -1120,6 +1328,7 @@ class _$_CancelledByUser implements _CancelledByUser {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -1184,6 +1393,7 @@ class _$_InvalidVertificationCode implements _InvalidVertificationCode {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidEmailOrPassword,
     required TResult Function() toManyRequest,
     required TResult Function() smsTimeout,
     required TResult Function() sessionExpired,
@@ -1199,6 +1409,7 @@ class _$_InvalidVertificationCode implements _InvalidVertificationCode {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -1214,6 +1425,7 @@ class _$_InvalidVertificationCode implements _InvalidVertificationCode {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidEmailOrPassword,
     TResult Function()? toManyRequest,
     TResult Function()? smsTimeout,
     TResult Function()? sessionExpired,
@@ -1233,6 +1445,8 @@ class _$_InvalidVertificationCode implements _InvalidVertificationCode {
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_InvalidEmailOrPassword value)
+        invalidEmailOrPassword,
     required TResult Function(_ToManyRequest value) toManyRequest,
     required TResult Function(_SmsTimeout value) smsTimeout,
     required TResult Function(_SessionExpired value) sessionExpired,
@@ -1249,6 +1463,7 @@ class _$_InvalidVertificationCode implements _InvalidVertificationCode {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,
@@ -1264,6 +1479,7 @@ class _$_InvalidVertificationCode implements _InvalidVertificationCode {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
     TResult Function(_ToManyRequest value)? toManyRequest,
     TResult Function(_SmsTimeout value)? smsTimeout,
     TResult Function(_SessionExpired value)? sessionExpired,

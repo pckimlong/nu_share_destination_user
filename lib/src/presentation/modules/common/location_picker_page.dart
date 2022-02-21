@@ -1,20 +1,20 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bot_toast/bot_toast.dart';
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 
 import 'package:flutter/material.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/application/location/picker/location_picker_controller.dart';
-import 'package:nu_share_destination_user/src/application/location/picker/location_picker_state.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_address.dart';
-import 'package:nu_share_destination_user/src/presentation/_core/app_styles.dart';
-import 'package:nu_share_destination_user/src/presentation/_core/app_utilz.dart';
-import 'package:nu_share_destination_user/src/presentation/_core/service_providers.dart';
-import 'package:nu_share_destination_user/src/presentation/routes/router.gr.dart';
-import 'package:nu_share_destination_user/src/presentation/widgets/circle_icon.dart';
-import 'package:nu_share_destination_user/src/presentation/widgets/my_textform_field.dart';
+import '../../../application/location/picker/location_picker_controller.dart';
+import '../../../application/location/picker/location_picker_state.dart';
+import '../../../domain/core/entities/location_address.dart';
+import '../../_core/app_styles.dart';
+import '../../_core/app_utilz.dart';
+import '../../_core/service_providers.dart';
+import '../../routes/router.gr.dart';
+import '../../widgets/circle_icon.dart';
+import '../../widgets/my_textform_field.dart';
 
 final _controllerProvider = StateNotifierProvider.autoDispose<
     LocationPickerController, LocationPickerState>((ref) {
@@ -62,8 +62,7 @@ class LocationPickerPage extends HookConsumerWidget {
       _controllerProvider,
       (previous, next) {
         if (previous?.failure != next.failure) {
-          next.failure.fold(
-            () => null,
+          next.failure.match(
             (failure) {
               String message = "";
               failure.when(
@@ -74,6 +73,7 @@ class LocationPickerPage extends HookConsumerWidget {
               );
               BotToast.showText(text: message);
             },
+            () => null,
           );
         }
       },
@@ -99,7 +99,7 @@ class LocationPickerPage extends HookConsumerWidget {
                               initial: ref
                                   .read(_controllerProvider)
                                   .selectedDesitination
-                                  .fold(() => null, id)));
+                                  .match(id, () => null)));
 
                       if (result != null) {
                         controller.onChangeDestination(result);
@@ -138,9 +138,9 @@ class LocationPickerPage extends HookConsumerWidget {
                       );
                     },
                     //todo - this not update...
-                    initialValue: state.selectedDesitination.fold(
-                      () => null,
+                    initialValue: state.selectedDesitination.match(
                       (a) => a.address,
+                      () => null,
                     ),
                     prefixIcon: const Icon(
                       Icons.my_location_sharp,
@@ -171,9 +171,9 @@ class _InitialOriginAddress extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final state = ref.watch(
       _controllerProvider.select(
-        (value) => value.initialOriginLocation.fold(
-          () => 'Not specified',
+        (value) => value.initialOriginLocation.match(
           (a) => a.address,
+          () => 'Not specified',
         ),
       ),
     );

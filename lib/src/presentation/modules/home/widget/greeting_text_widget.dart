@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/presentation/_core/app_extensions.dart';
-import 'package:nu_share_destination_user/src/presentation/_providers/user_provider.dart';
+import '../../../_core/app_extensions.dart';
+import '../../../_providers/user_provider.dart';
 
 class GreetingTextWithNameWidget extends ConsumerWidget {
   const GreetingTextWithNameWidget({Key? key}) : super(key: key);
@@ -10,9 +10,9 @@ class GreetingTextWithNameWidget extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final userFullname = ref.watch(
       userControllerProvider.select(
-        (value) => value.user.fold(
-          () => '',
+        (value) => value.user.match(
           (user) => user.fullname,
+          () => '',
         ),
       ),
     );

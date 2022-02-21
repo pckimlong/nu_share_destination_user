@@ -1,6 +1,6 @@
-import 'package:dartz/dartz.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
-import 'package:nu_share_destination_user/src/domain/cache/cache_failure.dart';
+import 'package:fpdart/fpdart.dart';
+import '../core/entities/coordinate.dart';
+import 'cache_failure.dart';
 
 abstract class ICacheService {
   /// Cache last coordinate, will be use to initial camera for google map

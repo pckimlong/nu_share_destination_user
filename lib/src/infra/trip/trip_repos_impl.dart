@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart'
     as fic;
 
@@ -57,7 +57,7 @@ class TripReposImpl implements ITripRepository {
         (transaction) async {
           final tripDocRef = _firestore.tripColRef.doc(tripId);
           final tripDoc = await transaction.get(tripDocRef);
-          final driverDocRef = _firestore.driverColRef.doc(driverId);
+          final driverDocRef = _firestore.driverColRefConverter.doc(driverId);
           final driverDoc = await transaction.get(driverDocRef);
 
           if (!tripDoc.exists) {

@@ -1,7 +1,7 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
-import 'package:nu_share_destination_user/src/domain/driver/vehicle_types.dart';
+import '../core/entities/location_detail.dart';
+import 'vehicle_types.dart';
 
 part 'driver_entity.freezed.dart';
 
@@ -28,7 +28,7 @@ class DriverEntity with _$DriverEntity {
     /// and not count bill on read/write like firestore. this mean that when
     /// driver [available] is false and [inProgressTrip] is true, update user
     /// location in real-time to database
-    required LocationDetail location,
+    required Option<LocationDetail> location,
 
     /// Vihicle type of taxi.
     ///
@@ -52,4 +52,11 @@ class DriverEntity with _$DriverEntity {
   ///
   bool get inProgressOfSharedTrip =>
       inProgressTrip.isSome() && available == true;
+
+  /// Can update real time location of driver to real time database
+  bool get updateRealTimeLocation => inProgressTrip.isSome();
+
+  /// this is not alway realtime
+  bool get updateDriverLocation =>
+      inProgressOfSharedTrip || (inProgressTrip.isNone() && available == true);
 }

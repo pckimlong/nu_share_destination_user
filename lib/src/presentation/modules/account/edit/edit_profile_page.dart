@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/presentation/modules/account/register/user_register_page.dart';
+import '../register/user_register_page.dart';
 
 class EditProfilePage extends ConsumerWidget {
   const EditProfilePage({Key? key}) : super(key: key);

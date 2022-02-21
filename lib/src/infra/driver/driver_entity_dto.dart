@@ -1,11 +1,12 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart' as dz;
+import 'package:fpdart/fpdart.dart' as dz;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
-import 'package:nu_share_destination_user/src/domain/driver/vehicle_types.dart';
 import 'package:nu_share_destination_user/src/domain/driver/driver_entity.dart';
+import 'package:nu_share_destination_user/src/domain/driver/vehicle_types.dart';
+import 'package:nu_share_destination_user/src/infra/_core/entity_dtos/location_detail_dto.dart';
+
 import '../_core/firebase/firebase_extensions.dart';
 
 part 'driver_entity_dto.freezed.dart';
@@ -18,7 +19,7 @@ abstract class DriverEntityDto with _$DriverEntityDto {
 
   /// Place where geo fire point store
   static const String geoFirePointKey =
-      DriverEntityDto.locationKey + "." + LocationDetail.locationPointKey;
+      DriverEntityDto.locationKey + "." + LocationDetailDto.locationPointKey;
 
   static const idKey = "id";
   static const inProgressTripKey = "inProgressTrip";
@@ -30,7 +31,7 @@ abstract class DriverEntityDto with _$DriverEntityDto {
     @JsonKey(name: DriverEntityDto.fullnameKey) required String fullname,
     @JsonKey(name: DriverEntityDto.availableKey) required bool available,
     @JsonKey(name: DriverEntityDto.locationKey)
-        required LocationDetail location,
+        required LocationDetailDto? location,
     @JsonKey(name: DriverEntityDto.vehicleTypeKey)
         required VehicleTypes vehicleType,
     @JsonKey(name: DriverEntityDto.inProgressTripKey)
@@ -44,9 +45,15 @@ abstract class DriverEntityDto with _$DriverEntityDto {
       id: domain.id,
       fullname: domain.fullname,
       available: domain.available,
-      location: domain.location,
+      location: domain.location.match(
+        (domain) => LocationDetailDto.fromDomain(domain),
+        () => null,
+      ),
       vehicleType: domain.vehicleType,
-      inProgressTrip: domain.inProgressTrip.fold(() => null, dz.id),
+      inProgressTrip: domain.inProgressTrip.match(
+        dz.id,
+        () => null,
+      ),
     );
   }
 
@@ -63,7 +70,7 @@ extension DriverEntityDtoX on DriverEntityDto {
       id: id,
       fullname: fullname,
       available: available,
-      location: location,
+      location: location == null ? dz.none() : dz.some(location!.toDomain()),
       vehicleType: vehicleType,
       inProgressTrip:
           inProgressTrip == null ? dz.none() : dz.some(inProgressTrip!),

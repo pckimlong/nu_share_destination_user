@@ -17,17 +17,20 @@ class _ConfirmPhonePage extends HookConsumerWidget {
 
     // If user input wrong verification code
     bool hasWrongVerificationCode = false;
-    failure.fold(() => null, (failure) {
-      failure.whenOrNull(
-        invalidVerificationCode: () {
-          hasWrongVerificationCode = true;
-          textController.selection = TextSelection(
-            baseOffset: 0,
-            extentOffset: textController.text.length,
-          );
-        },
-      );
-    });
+    failure.match(
+      (failure) {
+        failure.whenOrNull(
+          invalidVerificationCode: () {
+            hasWrongVerificationCode = true;
+            textController.selection = TextSelection(
+              baseOffset: 0,
+              extentOffset: textController.text.length,
+            );
+          },
+        );
+      },
+      () => null,
+    );
 
     return Scaffold(
       backgroundColor: Colors.white,

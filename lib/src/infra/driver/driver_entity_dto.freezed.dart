@@ -30,7 +30,7 @@ class _$DriverEntityDtoTearOff {
       @JsonKey(name: DriverEntityDto.availableKey)
           required bool available,
       @JsonKey(name: DriverEntityDto.locationKey)
-          required LocationDetail location,
+          required LocationDetailDto? location,
       @JsonKey(name: DriverEntityDto.vehicleTypeKey)
           required VehicleTypes vehicleType,
       @JsonKey(name: DriverEntityDto.inProgressTripKey)
@@ -62,7 +62,7 @@ mixin _$DriverEntityDto {
   @JsonKey(name: DriverEntityDto.availableKey)
   bool get available => throw _privateConstructorUsedError;
   @JsonKey(name: DriverEntityDto.locationKey)
-  LocationDetail get location => throw _privateConstructorUsedError;
+  LocationDetailDto? get location => throw _privateConstructorUsedError;
   @JsonKey(name: DriverEntityDto.vehicleTypeKey)
   VehicleTypes get vehicleType => throw _privateConstructorUsedError;
   @JsonKey(name: DriverEntityDto.inProgressTripKey)
@@ -87,13 +87,13 @@ abstract class $DriverEntityDtoCopyWith<$Res> {
       @JsonKey(name: DriverEntityDto.availableKey)
           bool available,
       @JsonKey(name: DriverEntityDto.locationKey)
-          LocationDetail location,
+          LocationDetailDto? location,
       @JsonKey(name: DriverEntityDto.vehicleTypeKey)
           VehicleTypes vehicleType,
       @JsonKey(name: DriverEntityDto.inProgressTripKey)
           String? inProgressTrip});
 
-  $LocationDetailCopyWith<$Res> get location;
+  $LocationDetailDtoCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -130,7 +130,7 @@ class _$DriverEntityDtoCopyWithImpl<$Res>
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as LocationDetail,
+              as LocationDetailDto?,
       vehicleType: vehicleType == freezed
           ? _value.vehicleType
           : vehicleType // ignore: cast_nullable_to_non_nullable
@@ -143,8 +143,12 @@ class _$DriverEntityDtoCopyWithImpl<$Res>
   }
 
   @override
-  $LocationDetailCopyWith<$Res> get location {
-    return $LocationDetailCopyWith<$Res>(_value.location, (value) {
+  $LocationDetailDtoCopyWith<$Res>? get location {
+    if (_value.location == null) {
+      return null;
+    }
+
+    return $LocationDetailDtoCopyWith<$Res>(_value.location!, (value) {
       return _then(_value.copyWith(location: value));
     });
   }
@@ -165,14 +169,14 @@ abstract class _$DriverEntityDtoCopyWith<$Res>
       @JsonKey(name: DriverEntityDto.availableKey)
           bool available,
       @JsonKey(name: DriverEntityDto.locationKey)
-          LocationDetail location,
+          LocationDetailDto? location,
       @JsonKey(name: DriverEntityDto.vehicleTypeKey)
           VehicleTypes vehicleType,
       @JsonKey(name: DriverEntityDto.inProgressTripKey)
           String? inProgressTrip});
 
   @override
-  $LocationDetailCopyWith<$Res> get location;
+  $LocationDetailDtoCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -211,7 +215,7 @@ class __$DriverEntityDtoCopyWithImpl<$Res>
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as LocationDetail,
+              as LocationDetailDto?,
       vehicleType: vehicleType == freezed
           ? _value.vehicleType
           : vehicleType // ignore: cast_nullable_to_non_nullable
@@ -256,7 +260,7 @@ class _$_DriverEntityDto extends _DriverEntityDto {
   final bool available;
   @override
   @JsonKey(name: DriverEntityDto.locationKey)
-  final LocationDetail location;
+  final LocationDetailDto? location;
   @override
   @JsonKey(name: DriverEntityDto.vehicleTypeKey)
   final VehicleTypes vehicleType;
@@ -314,7 +318,7 @@ abstract class _DriverEntityDto extends DriverEntityDto {
       @JsonKey(name: DriverEntityDto.availableKey)
           required bool available,
       @JsonKey(name: DriverEntityDto.locationKey)
-          required LocationDetail location,
+          required LocationDetailDto? location,
       @JsonKey(name: DriverEntityDto.vehicleTypeKey)
           required VehicleTypes vehicleType,
       @JsonKey(name: DriverEntityDto.inProgressTripKey)
@@ -335,7 +339,7 @@ abstract class _DriverEntityDto extends DriverEntityDto {
   bool get available;
   @override
   @JsonKey(name: DriverEntityDto.locationKey)
-  LocationDetail get location;
+  LocationDetailDto? get location;
   @override
   @JsonKey(name: DriverEntityDto.vehicleTypeKey)
   VehicleTypes get vehicleType;

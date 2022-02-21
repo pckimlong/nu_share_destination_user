@@ -7,14 +7,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/application/auth/auth_state.dart';
-import 'package:nu_share_destination_user/src/application/auth/phone_sign_in/phone_sign_in_controller.dart';
-import 'package:nu_share_destination_user/src/application/auth/phone_sign_in/phone_sign_in_event.dart';
-import 'package:nu_share_destination_user/src/application/auth/phone_sign_in/phone_sign_in_state.dart';
-import 'package:nu_share_destination_user/src/presentation/_core/app_utilz.dart';
-import 'package:nu_share_destination_user/src/presentation/_core/service_providers.dart';
-import 'package:nu_share_destination_user/src/presentation/_providers/user_provider.dart';
-import 'package:nu_share_destination_user/src/presentation/routes/router.gr.dart';
+import '../../../application/auth/auth_state.dart';
+import '../../../application/auth/phone_sign_in/phone_sign_in_controller.dart';
+import '../../../application/auth/phone_sign_in/phone_sign_in_event.dart';
+import '../../../application/auth/phone_sign_in/phone_sign_in_state.dart';
+import '../../_core/app_utilz.dart';
+import '../../_core/service_providers.dart';
+import '../../_providers/user_provider.dart';
+import '../../routes/router.gr.dart';
 
 import '../../_core/app_styles.dart';
 import '../../widgets/app_logo.dart';
@@ -67,8 +67,7 @@ class SignInPage extends ConsumerWidget {
 
         /// Show error message when exception or failure accured
         if (previous!.falureOption != state.falureOption) {
-          state.falureOption.fold(
-            () => null,
+          state.falureOption.match(
             (failure) {
               String errorText = "";
 
@@ -81,6 +80,7 @@ class SignInPage extends ConsumerWidget {
               );
               if (errorText.isNotEmpty) BotToast.showText(text: errorText);
             },
+            () => null,
           );
         }
       },
@@ -110,7 +110,11 @@ class SignInPage extends ConsumerWidget {
                       ],
                     ),
                     const SizedBox(height: 30),
-                    const Expanded(child: _OtherLoginProvider())
+                    const Expanded(child: _OtherLoginProvider()),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text('Driver Login'),
+                    )
                   ],
                 ),
               ),

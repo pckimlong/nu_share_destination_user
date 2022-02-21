@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nu_share_destination_user/src/presentation/modules/payment/list/payment_list_page.dart';
+import '../list/payment_list_page.dart';
 
 class PaymentPickerPage extends StatelessWidget {
   const PaymentPickerPage({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_address.dart';
-import 'package:nu_share_destination_user/src/domain/trip/passenger_entity.dart';
+import '../core/entities/location_address.dart';
+import 'passenger_entity.dart';
 
 part 'trip_entity.freezed.dart';
 

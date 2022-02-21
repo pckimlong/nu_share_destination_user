@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nu_share_destination_user/src/infra/user/user_entity_dto.dart';
+import 'user_entity_dto.dart';
 
 extension UserX on User {
   /// Copy data from firebase user to user enetity

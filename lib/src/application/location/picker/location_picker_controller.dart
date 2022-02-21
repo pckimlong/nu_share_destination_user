@@ -1,9 +1,9 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/application/location/picker/location_picker_state.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_address.dart';
-import 'package:nu_share_destination_user/src/domain/location/i_location_service.dart';
-import 'package:nu_share_destination_user/src/domain/location/place_entity.dart';
+import 'location_picker_state.dart';
+import '../../../domain/core/entities/location_address.dart';
+import '../../../domain/location/i_location_service.dart';
+import '../../../domain/location/place_entity.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart'
     as fic;
 

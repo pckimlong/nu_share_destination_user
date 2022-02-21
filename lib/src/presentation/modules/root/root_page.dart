@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/application/user/user_state.dart';
-import 'package:nu_share_destination_user/src/presentation/routes/router.gr.dart';
+import '../../../application/user/user_state.dart';
+import '../../routes/router.gr.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 import '../../../application/auth/auth_state.dart';
@@ -31,8 +31,7 @@ class RootPage extends HookConsumerWidget {
     ref.listen<UserState>(
       userControllerProvider,
       (previous, next) {
-        next.failureOption.fold(
-          () => null,
+        next.failureOption.match(
           (failure) {
             failure.whenOrNull(
               missedRequiredInfoField: (_) async {
@@ -47,6 +46,7 @@ class RootPage extends HookConsumerWidget {
               },
             );
           },
+          () => null,
         );
       },
     );

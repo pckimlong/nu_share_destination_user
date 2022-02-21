@@ -2,15 +2,20 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:bot_toast/bot_toast.dart';
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
+import 'package:fast_immutable_collections/fast_immutable_collections.dart'
+    as fic;
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:location/location.dart';
 import 'package:nu_share_destination_user/src/application/trip/trip_booking/trip_booking_event.dart';
 import 'package:nu_share_destination_user/src/application/trip/trip_booking/trip_booking_state.dart';
 import 'package:nu_share_destination_user/src/application/trip/trip_booking/trip_booking_controller.dart';
 import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
+import 'package:nu_share_destination_user/src/domain/driver/driver_entity.dart';
 import 'package:nu_share_destination_user/src/presentation/_core/service_providers.dart';
 
 import '../../../../domain/core/constants.dart';

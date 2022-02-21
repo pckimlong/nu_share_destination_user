@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_point.dart';
+import '../../domain/core/entities/coordinate.dart';
+import '../../domain/core/entities/location_detail.dart';
+import '../../domain/core/entities/location_point.dart';
 
 extension GeoFirePointX on GeoFirePoint {
   LocationPoint toDomain() {

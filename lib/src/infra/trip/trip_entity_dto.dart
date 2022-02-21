@@ -1,8 +1,10 @@
 // ignore_for_file: invalid_annotation_target
 
-import 'package:dartz/dartz.dart' as z;
+import 'package:fpdart/fpdart.dart' as z;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nu_share_destination_user/src/domain/trip/trip_entity.dart';
+import 'package:nu_share_destination_user/src/infra/_core/entity_dtos/location_address_dto.dart';
+import 'package:nu_share_destination_user/src/infra/_core/entity_dtos/location_detail_dto.dart';
 import 'package:nu_share_destination_user/src/infra/user/user_entity_dto.dart';
 
 import '../../domain/core/entities/location_address.dart';
@@ -13,15 +15,13 @@ part 'trip_entity_dto.g.dart';
 
 @freezed
 class TripEntityDto with _$TripEntityDto {
-  const TripEntityDto._();
-
+  static const driverIdKey = "driverId";
+  static const endedTimeKey = "endedTime";
   static const idKey = "id";
-  static const statusKey = "status";
   static const passenger1Key = "passenger1";
   static const passenger2Key = "passenger2";
-  static const driverIdKey = "driverId";
   static const startedTimeKey = "startedTime";
-  static const endedTimeKey = "endedTime";
+  static const statusKey = "status";
 
   factory TripEntityDto({
     @JsonKey(name: TripEntityDto.idKey, ignore: true)
@@ -44,29 +44,40 @@ class TripEntityDto with _$TripEntityDto {
         required DateTime? endedTime,
   }) = _TripEntityDto;
 
+  const TripEntityDto._();
+
   factory TripEntityDto.fromDomain(TripEntity domain) {
     return TripEntityDto(
       status: domain.status,
       passenger1: PassengerEntityDto.fromDomain(domain.passenger1),
-      passenger2: domain.passenger2.fold(
-        () => null,
+      passenger2: domain.passenger2.match(
         (a) => PassengerEntityDto.fromDomain(a),
+        () => null,
       ),
-      driverId: domain.driverId.fold(() => null, z.id),
-      startedTime: domain.startedTime.fold(() => null, z.id),
-      endedTime: domain.endedTime.fold(() => null, z.id),
+      driverId: domain.driverId.match(
+        z.id,
+        () => null,
+      ),
+      startedTime: domain.startedTime.match(
+        z.id,
+        () => null,
+      ),
+      endedTime: domain.endedTime.match(
+        z.id,
+        () => null,
+      ),
     );
   }
 
   factory TripEntityDto.fromJson(Map<String, dynamic> json) =>
       _$TripEntityDtoFromJson(json);
 
-  static String _statusToJson(TripStatus status) {
-    return status.toValidString();
-  }
-
   static TripStatus _statusFromJson(String status) {
     return TripStatus.fromString(status);
+  }
+
+  static String _statusToJson(TripStatus status) {
+    return status.toValidString();
   }
 }
 
@@ -98,9 +109,9 @@ class PassengerEntityDto with _$PassengerEntityDto {
     required UserEntityDto user,
     required String note,
     required bool allowToShare,
-    required LocationAddress originLocation,
-    required LocationAddress? destinationLocation,
-    required LocationAddress? actualDestinationLocation,
+    required LocationAddressDto originLocation,
+    required LocationAddressDto? destinationLocation,
+    required LocationAddressDto? actualDestinationLocation,
   }) = _PassengerEntity;
 
   const PassengerEntityDto._();
@@ -110,10 +121,15 @@ class PassengerEntityDto with _$PassengerEntityDto {
       user: UserEntityDto.fromDomain(domain.user),
       note: domain.note,
       allowToShare: domain.allowToShare,
-      originLocation: domain.originLocation,
-      destinationLocation: domain.destinationLocation.fold(() => null, z.id),
-      actualDestinationLocation:
-          domain.destinationLocation.fold(() => null, z.id),
+      originLocation: LocationAddressDto.fromDomain(domain.originLocation),
+      destinationLocation: domain.destinationLocation.match(
+        (address) => LocationAddressDto.fromDomain(address),
+        () => null,
+      ),
+      actualDestinationLocation: domain.destinationLocation.match(
+        (address) => LocationAddressDto.fromDomain(address),
+        () => null,
+      ),
     );
   }
 
@@ -127,12 +143,13 @@ extension PassengerEntityDtoX on PassengerEntityDto {
       user: user.toDomain(),
       note: note,
       allowToShare: allowToShare,
-      originLocation: originLocation,
-      destinationLocation:
-          destinationLocation == null ? z.none() : z.some(destinationLocation!),
+      originLocation: originLocation.toDomain(),
+      destinationLocation: destinationLocation == null
+          ? z.none()
+          : z.some(destinationLocation!.toDomain()),
       actualDestinationLocation: actualDestinationLocation == null
           ? z.none()
-          : z.some(actualDestinationLocation!),
+          : z.some(actualDestinationLocation!.toDomain()),
     );
   }
 }

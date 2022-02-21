@@ -2,10 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:nu_share_destination_user/src/presentation/_providers/user_provider.dart';
-import 'package:nu_share_destination_user/src/presentation/routes/router.gr.dart';
-import 'package:nu_share_destination_user/src/presentation/widgets/my_list_tile.dart';
-import 'package:nu_share_destination_user/src/presentation/widgets/user_photo_avartar.dart';
+import '../../_providers/user_provider.dart';
+import '../../routes/router.gr.dart';
+import '../../widgets/my_list_tile.dart';
+import '../../widgets/user_photo_avartar.dart';
 
 part 'widgets/user_info_card.dart';
 

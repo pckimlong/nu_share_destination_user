@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-LocationPoint _$LocationPointFromJson(Map<String, dynamic> json) {
-  return _LocationPoint.fromJson(json);
-}
-
 /// @nodoc
 class _$LocationPointTearOff {
   const _$LocationPointTearOff();
@@ -29,10 +25,6 @@ class _$LocationPointTearOff {
       coordinate: coordinate,
     );
   }
-
-  LocationPoint fromJson(Map<String, Object?> json) {
-    return LocationPoint.fromJson(json);
-  }
 }
 
 /// @nodoc
@@ -43,7 +35,6 @@ mixin _$LocationPoint {
   String get geoHash => throw _privateConstructorUsedError;
   Coordinate get coordinate => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LocationPointCopyWith<LocationPoint> get copyWith =>
       throw _privateConstructorUsedError;
@@ -136,13 +127,10 @@ class __$LocationPointCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_LocationPoint extends _LocationPoint {
   _$_LocationPoint({required this.geoHash, required this.coordinate})
       : super._();
-
-  factory _$_LocationPoint.fromJson(Map<String, dynamic> json) =>
-      _$$_LocationPointFromJson(json);
 
   @override
   final String geoHash;
@@ -174,11 +162,6 @@ class _$_LocationPoint extends _LocationPoint {
   @override
   _$LocationPointCopyWith<_LocationPoint> get copyWith =>
       __$LocationPointCopyWithImpl<_LocationPoint>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_LocationPointToJson(this);
-  }
 }
 
 abstract class _LocationPoint extends LocationPoint {
@@ -186,9 +169,6 @@ abstract class _LocationPoint extends LocationPoint {
       {required String geoHash,
       required Coordinate coordinate}) = _$_LocationPoint;
   _LocationPoint._() : super._();
-
-  factory _LocationPoint.fromJson(Map<String, dynamic> json) =
-      _$_LocationPoint.fromJson;
 
   @override
   String get geoHash;

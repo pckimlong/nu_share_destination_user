@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/application/auth/phone_sign_in/phone_sign_in_event.dart';
-import 'package:nu_share_destination_user/src/application/auth/phone_sign_in/phone_sign_in_state.dart';
-import 'package:nu_share_destination_user/src/domain/auth/auth_failure.dart';
-import 'package:nu_share_destination_user/src/domain/auth/i_auth_facade.dart';
+import 'phone_sign_in_event.dart';
+import 'phone_sign_in_state.dart';
+import '../../../domain/auth/auth_failure.dart';
+import '../../../domain/auth/i_auth_facade.dart';
 
 class PhoneSignInControllerNotifier extends StateNotifier<PhoneSignInState> {
   PhoneSignInControllerNotifier(this._authFacade)
@@ -80,8 +80,7 @@ class PhoneSignInControllerNotifier extends StateNotifier<PhoneSignInState> {
   Future<void> _performVerifyCode() async {
     state = state.copyWith(isLoading: true, isInProgress: true);
 
-    await state.verificationIdOption.fold(
-      () => null,
+    await state.verificationIdOption.match(
       (verificationId) async {
         final result = await _authFacade.vertifySmcCode(
           smsCode: state.smsCode,
@@ -100,6 +99,7 @@ class PhoneSignInControllerNotifier extends StateNotifier<PhoneSignInState> {
           ),
         );
       },
+      () => null,
     );
   }
 }

@@ -22,7 +22,7 @@ class _$DriverEntityTearOff {
       {required String? id,
       required String fullname,
       required bool available,
-      required LocationDetail location,
+      required Option<LocationDetail> location,
       required VehicleTypes vehicleType,
       required Option<String> inProgressTrip}) {
     return _DriverEntity(
@@ -60,7 +60,7 @@ mixin _$DriverEntity {
   /// and not count bill on read/write like firestore. this mean that when
   /// driver [available] is false and [inProgressTrip] is true, update user
   /// location in real-time to database
-  LocationDetail get location => throw _privateConstructorUsedError;
+  Option<LocationDetail> get location => throw _privateConstructorUsedError;
 
   /// Vihicle type of taxi.
   ///
@@ -88,11 +88,9 @@ abstract class $DriverEntityCopyWith<$Res> {
       {String? id,
       String fullname,
       bool available,
-      LocationDetail location,
+      Option<LocationDetail> location,
       VehicleTypes vehicleType,
       Option<String> inProgressTrip});
-
-  $LocationDetailCopyWith<$Res> get location;
 }
 
 /// @nodoc
@@ -128,7 +126,7 @@ class _$DriverEntityCopyWithImpl<$Res> implements $DriverEntityCopyWith<$Res> {
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as LocationDetail,
+              as Option<LocationDetail>,
       vehicleType: vehicleType == freezed
           ? _value.vehicleType
           : vehicleType // ignore: cast_nullable_to_non_nullable
@@ -138,13 +136,6 @@ class _$DriverEntityCopyWithImpl<$Res> implements $DriverEntityCopyWith<$Res> {
           : inProgressTrip // ignore: cast_nullable_to_non_nullable
               as Option<String>,
     ));
-  }
-
-  @override
-  $LocationDetailCopyWith<$Res> get location {
-    return $LocationDetailCopyWith<$Res>(_value.location, (value) {
-      return _then(_value.copyWith(location: value));
-    });
   }
 }
 
@@ -159,12 +150,9 @@ abstract class _$DriverEntityCopyWith<$Res>
       {String? id,
       String fullname,
       bool available,
-      LocationDetail location,
+      Option<LocationDetail> location,
       VehicleTypes vehicleType,
       Option<String> inProgressTrip});
-
-  @override
-  $LocationDetailCopyWith<$Res> get location;
 }
 
 /// @nodoc
@@ -202,7 +190,7 @@ class __$DriverEntityCopyWithImpl<$Res> extends _$DriverEntityCopyWithImpl<$Res>
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as LocationDetail,
+              as Option<LocationDetail>,
       vehicleType: vehicleType == freezed
           ? _value.vehicleType
           : vehicleType // ignore: cast_nullable_to_non_nullable
@@ -250,7 +238,7 @@ class _$_DriverEntity extends _DriverEntity {
   /// and not count bill on read/write like firestore. this mean that when
   /// driver [available] is false and [inProgressTrip] is true, update user
   /// location in real-time to database
-  final LocationDetail location;
+  final Option<LocationDetail> location;
   @override
 
   /// Vihicle type of taxi.
@@ -307,7 +295,7 @@ abstract class _DriverEntity extends DriverEntity {
       {required String? id,
       required String fullname,
       required bool available,
-      required LocationDetail location,
+      required Option<LocationDetail> location,
       required VehicleTypes vehicleType,
       required Option<String> inProgressTrip}) = _$_DriverEntity;
   _DriverEntity._() : super._();
@@ -335,7 +323,7 @@ abstract class _DriverEntity extends DriverEntity {
   /// and not count bill on read/write like firestore. this mean that when
   /// driver [available] is false and [inProgressTrip] is true, update user
   /// location in real-time to database
-  LocationDetail get location;
+  Option<LocationDetail> get location;
   @override
 
   /// Vihicle type of taxi.

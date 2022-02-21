@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/application/auth/auth_state.dart';
-import 'package:nu_share_destination_user/src/application/user/user_state.dart';
-import 'package:nu_share_destination_user/src/domain/user/i_user_repository.dart';
-import 'package:nu_share_destination_user/src/domain/user/user_entity.dart';
-import 'package:nu_share_destination_user/src/domain/user/user_failure.dart';
+import '../auth/auth_state.dart';
+import 'user_state.dart';
+import '../../domain/user/i_user_repository.dart';
+import '../../domain/user/user_entity.dart';
+import '../../domain/user/user_failure.dart';
 
 class UserControllerNotifier extends StateNotifier<UserState> {
   UserControllerNotifier(this._authState, this._repository)

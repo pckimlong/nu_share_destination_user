@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nu_share_destination_user/src/domain/user/i_user_repository.dart';
-import 'package:nu_share_destination_user/src/domain/user/user_failure.dart';
-import 'package:nu_share_destination_user/src/domain/user/user_entity.dart';
-import 'package:nu_share_destination_user/src/infra/_core/firebase/firebase_extensions.dart';
+import '../../domain/user/i_user_repository.dart';
+import '../../domain/user/user_failure.dart';
+import '../../domain/user/user_entity.dart';
+import '../_core/firebase/firebase_extensions.dart';
 import 'user_entity_dto.dart';
 import 'firebase_user_mapper.dart';
 

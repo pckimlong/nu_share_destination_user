@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/domain/driver/vehicle_types.dart';
-import 'package:nu_share_destination_user/src/presentation/modules/trip/booking/trip_booking_page.dart';
-import 'package:nu_share_destination_user/src/presentation/modules/trip/cancel/trip_cancel_page.dart';
-import 'package:nu_share_destination_user/src/presentation/modules/trip/finished/trip_finished_page.dart';
-import 'package:nu_share_destination_user/src/presentation/modules/trip/picking/trip_picking_page.dart';
-import 'package:nu_share_destination_user/src/presentation/modules/trip/progress/trip_in_progress_page.dart';
-import 'package:nu_share_destination_user/src/presentation/modules/trip/trip_provider.dart';
+import '../../../domain/driver/vehicle_types.dart';
+import 'booking/trip_booking_page.dart';
+import 'cancel/trip_cancel_page.dart';
+import 'finished/trip_finished_page.dart';
+import 'picking/trip_picking_page.dart';
+import 'progress/trip_in_progress_page.dart';
+import 'trip_provider.dart';
 
 class TripPage extends ConsumerWidget {
   const TripPage({
@@ -22,11 +22,7 @@ class TripPage extends ConsumerWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: stateOption.fold(
-        /// User not yet booking trip. This leave it none() option
-        /// So show trip booking page
-        () => const TripBookingPage(),
-
+      body: stateOption.match(
         /// After booked and create trip request. State option become some()
         (tripState) {
           /// Change the screen depening on status of trip
@@ -38,6 +34,10 @@ class TripPage extends ConsumerWidget {
             finished: () => const TripFinishedPage(),
           );
         },
+
+        /// User not yet booking trip. This leave it none() option
+        /// So show trip booking page
+        () => const TripBookingPage(),
       ),
     );
   }

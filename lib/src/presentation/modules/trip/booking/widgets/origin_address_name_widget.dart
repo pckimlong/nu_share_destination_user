@@ -8,9 +8,9 @@ class _OriginAddressWidget extends ConsumerWidget {
     // Filter rebuild. increase app performance
     final String originAddress = ref.watch(
       tripBookingController.select(
-        (state) => state.originLocation.fold(
-          () => 'Loading...',
+        (state) => state.originLocation.match(
           (a) => a.address,
+          () => 'Loading...',
         ),
       ),
     );

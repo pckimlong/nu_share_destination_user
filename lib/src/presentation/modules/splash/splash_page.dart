@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/presentation/_core/app_permission.dart';
-import 'package:nu_share_destination_user/src/presentation/routes/router.gr.dart';
-import 'package:nu_share_destination_user/src/presentation/widgets/app_logo.dart';
+import '../../_core/app_permission.dart';
+import '../../routes/router.gr.dart';
+import '../../widgets/app_logo.dart';
 
 import '../../../application/auth/auth_state.dart';
 import '../../_providers/user_provider.dart';
