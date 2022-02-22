@@ -1,13 +1,68 @@
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'trip_booking_event.dart';
-import 'trip_booking_state.dart';
-import '../../../domain/core/entities/coordinate.dart';
-import '../../../domain/driver/i_driver_repository.dart';
-import '../../../domain/location/i_location_service.dart';
-import '../../../domain/trip/i_trip_repository.dart';
-import '../../../domain/user/i_user_repository.dart';
+import '../../../../../driver/domain/domain.dart';
+import '../../../../domain/core/entities/coordinate.dart';
+import '../../../../domain/core/entities/location_address.dart';
+import '../../../../domain/core/entities/location_detail.dart';
+import '../../../../domain/location/i_location_service.dart';
+import '../../../../domain/location/location_failure.dart';
+import '../../../../domain/trip/i_trip_repository.dart';
+import '../../../../domain/user/i_user_repository.dart';
+import '../../../_core/service_providers.dart';
+
+part 'trip_booking_provider.freezed.dart';
+
+final tripBookingController =
+    StateNotifierProvider.autoDispose<TripBookingNotifier, TripBookingState>(
+  (ref) => TripBookingNotifier(
+    ref.watch(locationServiceProvider),
+    ref.watch(driverReposProvider),
+    ref.watch(userReposProvider),
+    ref.watch(tripReposProvider),
+  ),
+);
+
+@freezed
+class TripBookingEvent with _$TripBookingEvent {
+  const factory TripBookingEvent.moveToMyLocation() = _MoveToMyLocation;
+  const factory TripBookingEvent.changeOriginLocation(Coordinate coor) =
+      _ChangeOriginLocation;
+  const factory TripBookingEvent.changeDestinationLocation(Coordinate coor) =
+      _ChangeDestinationLocation;
+}
+
+@freezed
+class TripBookingState with _$TripBookingState {
+  factory TripBookingState({
+    required IList<LocationDetail> nearbyDrivers,
+    required Option<LocationAddress> originLocation,
+    required Option<LocationAddress> definationLocation,
+    required bool isLoading,
+    required String? note,
+    required Option<LocationFailure> failure,
+    required Option<DriverFailure> driverFailure,
+
+    /// This use for navigate to my location in google map
+    /// because google map controller cannot put inside state.
+    /// And I want to move to my location from other widget which not contain
+    /// google map controller. This will use listener to navigate
+    required Option<Coordinate> myLocation,
+  }) = _TripBookingState;
+
+  factory TripBookingState.initial() => TripBookingState(
+        originLocation: none(),
+        definationLocation: none(),
+        nearbyDrivers: <LocationDetail>[].lock,
+        isLoading: false,
+        note: '',
+        failure: none(),
+        myLocation: none(),
+        driverFailure: none(),
+      );
+}
 
 class TripBookingNotifier extends StateNotifier<TripBookingState> {
   TripBookingNotifier(
@@ -48,7 +103,7 @@ class TripBookingNotifier extends StateNotifier<TripBookingState> {
   Future<void> _fetchNearbyDrivers(Coordinate coor) async {
     final driversOrFail = await _driverRepository.getLocationByCoor(
       coordinate: coor,
-      radius: 0.5, // 10KM
+      radius: 1,
     );
 
     driversOrFail.fold(

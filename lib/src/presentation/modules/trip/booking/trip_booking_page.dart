@@ -1,48 +1,35 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'dart:ui' as ui;
 
 import 'package:auto_route/auto_route.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/application/trip/trip_booking/trip_booking_event.dart';
-import 'package:nu_share_destination_user/src/application/trip/trip_booking/trip_booking_state.dart';
-import 'package:nu_share_destination_user/src/application/trip/trip_booking/trip_booking_controller.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
-import 'package:nu_share_destination_user/src/presentation/_core/service_providers.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:ui' as ui;
-import '../../../../domain/core/constants.dart';
 
+import '../../../../domain/core/constants.dart';
+import '../../../../domain/core/entities/coordinate.dart';
 import '../../../../domain/core/entities/location_address.dart';
+import '../../../../domain/core/entities/location_detail.dart';
 import '../../../_core/app_styles.dart';
 import '../../../routes/router.gr.dart';
 import '../../../widgets/circle_location_button.dart';
 import '../../../widgets/location_pin_widget.dart';
 import '../../../widgets/my_elevated_button.dart';
+import 'trip_booking_provider.dart';
 
 part 'widgets/actions_tile_bar_widget.dart';
 part 'widgets/book_now_button.dart';
+part 'widgets/google_map_widget.dart';
+part 'widgets/location_pin_widget.dart';
 part 'widgets/note_to_driver_button.dart';
-part 'widgets/vehicle_tile_widget.dart';
 // part 'widgets/where_to_tile_widget.dart';
 part 'widgets/origin_address_name_widget.dart';
-part 'widgets/location_pin_widget.dart';
-part 'widgets/google_map_widget.dart';
-
-final tripBookingController =
-    StateNotifierProvider.autoDispose<TripBookingNotifier, TripBookingState>(
-  (ref) => TripBookingNotifier(
-    ref.watch(locationServiceProvider),
-    ref.watch(driverReposProvider),
-    ref.watch(userReposProvider),
-    ref.watch(tripReposProvider),
-  ),
-);
+part 'widgets/vehicle_tile_widget.dart';
 
 class TripBookingPage extends ConsumerWidget {
   const TripBookingPage({Key? key}) : super(key: key);

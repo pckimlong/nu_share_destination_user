@@ -7,27 +7,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../application/auth/auth_state.dart';
-import '../../../application/auth/phone_sign_in/phone_sign_in_controller.dart';
-import '../../../application/auth/phone_sign_in/phone_sign_in_event.dart';
-import '../../../application/auth/phone_sign_in/phone_sign_in_state.dart';
 import '../../_core/app_utilz.dart';
-import '../../_core/service_providers.dart';
 import '../../_providers/user_provider.dart';
 import '../../routes/router.gr.dart';
 
 import '../../_core/app_styles.dart';
 import '../../widgets/app_logo.dart';
+import 'phone_sign_in_provider.dart';
 
 part 'widget/countdown_time_widget.dart';
 part 'widget/other_sign_in_provider_widget.dart';
 part 'widget/mobile_login_widget.dart';
 part 'confirm_phone_page.dart';
-
-final _signInWithGoogleController = StateNotifierProvider.autoDispose<
-    PhoneSignInControllerNotifier, PhoneSignInState>(
-  (ref) => PhoneSignInControllerNotifier(ref.watch(authFacadeProvider)),
-);
 
 class SignInPage extends ConsumerWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -49,7 +40,7 @@ class SignInPage extends ConsumerWidget {
 
     /// Listen to Phone Sign in state. to see if there're any failure or ...
     ref.listen<PhoneSignInState>(
-      _signInWithGoogleController,
+      signInWithGoogleController,
       (previous, state) {
         /// Navigate to input verify code page
         if ((previous?.showSmsCodeEntry ?? false) == false &&

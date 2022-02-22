@@ -1,11 +1,56 @@
 import 'dart:async';
 
 import 'package:fpdart/fpdart.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'phone_sign_in_event.dart';
-import 'phone_sign_in_state.dart';
-import '../../../domain/auth/auth_failure.dart';
+import 'package:nu_share_destination_user/src/domain/auth/auth_failure.dart';
+
 import '../../../domain/auth/i_auth_facade.dart';
+import '../../_core/service_providers.dart';
+
+part "phone_sign_in_provider.freezed.dart";
+
+final signInWithGoogleController = StateNotifierProvider.autoDispose<
+    PhoneSignInControllerNotifier, PhoneSignInState>(
+  (ref) => PhoneSignInControllerNotifier(ref.watch(authFacadeProvider)),
+);
+
+@freezed
+class PhoneSignInState with _$PhoneSignInState {
+  PhoneSignInState._();
+
+  factory PhoneSignInState({
+    required String phoneNumber,
+    required String smsCode,
+    required Option<AuthFailure> falureOption,
+    required Option<String> verificationIdOption,
+    required bool isInProgress,
+    required bool isLoading,
+  }) = _PhoneSignInState;
+
+  factory PhoneSignInState.initial() {
+    return PhoneSignInState(
+      phoneNumber: '',
+      smsCode: '',
+      falureOption: none(),
+      verificationIdOption: none(),
+      isInProgress: false,
+      isLoading: false,
+    );
+  }
+
+  bool get showNextButton => verificationIdOption.isNone() && !isInProgress;
+  bool get showSmsCodeEntry => verificationIdOption.isSome();
+}
+
+@freezed
+class PhoneSignInEvent with _$PhoneSignInEvent {
+  const factory PhoneSignInEvent.nextButtonPress() = NextButtonPress;
+  const factory PhoneSignInEvent.smsCodeChanged(String? smsCode) =
+      SmsCodeChanged;
+  const factory PhoneSignInEvent.phoneNumberChanged(String? phoneNumber) =
+      PhoneNumberChanged;
+}
 
 class PhoneSignInControllerNotifier extends StateNotifier<PhoneSignInState> {
   PhoneSignInControllerNotifier(this._authFacade)

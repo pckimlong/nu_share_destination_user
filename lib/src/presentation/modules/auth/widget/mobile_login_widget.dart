@@ -9,8 +9,8 @@ class _MobileLogin extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final phoneNumberController = useTextEditingController();
-    final formEvent = ref.watch(_signInWithGoogleController.notifier);
-    final formState = ref.watch(_signInWithGoogleController);
+    final formEvent = ref.watch(signInWithGoogleController.notifier);
+    final formState = ref.watch(signInWithGoogleController);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

@@ -10,24 +10,22 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i20;
-import 'package:flutter/material.dart' as _i25;
-import 'package:fpdart/fpdart.dart' as _i26;
+import 'package:auto_route/auto_route.dart' as _i19;
+import 'package:flutter/material.dart' as _i24;
 
-import '../../domain/core/entities/location_address.dart' as _i27;
-import '../../domain/driver/vehicle_types.dart' as _i28;
-import '../modules/account/account_page.dart' as _i24;
+import '../../domain/core/entities/location_address.dart' as _i25;
+import '../../domain/driver/vehicle_types.dart' as _i26;
+import '../modules/account/account_page.dart' as _i23;
 import '../modules/account/edit/edit_profile_page.dart' as _i4;
 import '../modules/account/register/user_register_page.dart' as _i3;
 import '../modules/auth/sign_in_page.dart' as _i2;
-import '../modules/common/location_picker_map_page.dart' as _i18;
-import '../modules/common/location_picker_page.dart' as _i17;
+import '../modules/common/location_picker_map_page.dart' as _i17;
 import '../modules/common/text_input_page.dart' as _i16;
 import '../modules/contact_us/contact_us_page.dart' as _i13;
-import '../modules/history/detail/history_detail_page.dart' as _i22;
-import '../modules/history/list/history_list_page.dart' as _i21;
-import '../modules/home/home_page.dart' as _i19;
-import '../modules/inbox/list/inbox_list_page.dart' as _i23;
+import '../modules/history/detail/history_detail_page.dart' as _i21;
+import '../modules/history/list/history_list_page.dart' as _i20;
+import '../modules/home/home_page.dart' as _i18;
+import '../modules/inbox/list/inbox_list_page.dart' as _i22;
 import '../modules/message/list/message_list_page.dart' as _i14;
 import '../modules/payment/list/payment_list_page.dart' as _i9;
 import '../modules/payment/picker/payment_picker_page.dart' as _i10;
@@ -40,98 +38,98 @@ import '../modules/trip/trip_page.dart' as _i5;
 import '../modules/voucher/list/voucher_list_page.dart' as _i6;
 import '../modules/voucher/picker/voucher_picker_page.dart' as _i7;
 
-class AppRouter extends _i20.RootStackRouter {
-  AppRouter([_i25.GlobalKey<_i25.NavigatorState>? navigatorKey])
+class AppRouter extends _i19.RootStackRouter {
+  AppRouter([_i24.GlobalKey<_i24.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i20.PageFactory> pagesMap = {
+  final Map<String, _i19.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData, child: const _i1.SplashPage());
     },
     SignInRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData, child: const _i2.SignInPage());
     },
     UserRegisterRoute.name: (routeData) {
       final args = routeData.argsAs<UserRegisterRouteArgs>(
           orElse: () => const UserRegisterRouteArgs());
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData,
           child: _i3.UserRegisterPage(
               key: args.key, openAsRegister: args.openAsRegister));
     },
     EditProfileRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData, child: const _i4.EditProfilePage());
     },
     TripRoute.name: (routeData) {
       final args = routeData.argsAs<TripRouteArgs>();
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData,
           child: _i5.TripPage(key: args.key, vehicleTypes: args.vehicleTypes));
     },
     VoucherListRoute.name: (routeData) {
       final args = routeData.argsAs<VoucherListRouteArgs>(
           orElse: () => const VoucherListRouteArgs());
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData,
           child: _i6.VoucherListPage(
               key: args.key, openAsPicker: args.openAsPicker));
     },
     VoucherPickerRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData, child: const _i7.VoucherPickerPage());
     },
     SettingRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData, child: const _i8.SettingPage());
     },
     PaymentListRoute.name: (routeData) {
       final args = routeData.argsAs<PaymentListRouteArgs>(
           orElse: () => const PaymentListRouteArgs());
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData,
           child: _i9.PaymentListPage(
               key: args.key, openAsPicker: args.openAsPicker));
     },
     PaymentPickerRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData, child: const _i10.PaymentPickerPage());
     },
     SavedPlaceListRoute.name: (routeData) {
       final args = routeData.argsAs<SavedPlaceListRouteArgs>(
           orElse: () => const SavedPlaceListRouteArgs());
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData,
           child: _i11.SavedPlaceListPage(
               key: args.key, openAsPicker: args.openAsPicker));
     },
     SavedPlacePickerRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData, child: const _i12.SavedPlacePickerPage());
     },
     ContactUsRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData, child: const _i13.ContactUsPage());
     },
     MessageListRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<dynamic>(
           routeData: routeData, child: const _i14.MessageListPage());
     },
     RootRoute.name: (routeData) {
-      return _i20.CustomPage<dynamic>(
+      return _i19.CustomPage<dynamic>(
           routeData: routeData,
           child: const _i15.RootPage(),
-          transitionsBuilder: _i20.TransitionsBuilders.fadeIn,
+          transitionsBuilder: _i19.TransitionsBuilders.fadeIn,
           durationInMilliseconds: 300,
           opaque: true,
           barrierDismissible: false);
     },
     TextInputRoute.name: (routeData) {
       final args = routeData.argsAs<TextInputRouteArgs>();
-      return _i20.CupertinoPageX<String?>(
+      return _i19.CupertinoPageX<String?>(
           routeData: routeData,
           child: _i16.TextInputPage(
               key: args.key,
@@ -140,117 +138,101 @@ class AppRouter extends _i20.RootStackRouter {
               submitButtonLabel: args.submitButtonLabel),
           fullscreenDialog: true);
     },
-    LocationPickerRoute.name: (routeData) {
-      final args = routeData.argsAs<LocationPickerRouteArgs>(
-          orElse: () => const LocationPickerRouteArgs());
-      return _i20.CupertinoPageX<_i26.Option<_i27.LocationAddress>?>(
-          routeData: routeData,
-          child: _i17.LocationPickerPage(
-              key: args.key,
-              initial: args.initial,
-              initialOrigin: args.initialOrigin,
-              title: args.title,
-              textFieldHint: args.textFieldHint,
-              onPickByMapPress: args.onPickByMapPress),
-          fullscreenDialog: true);
-    },
     LocationPickerFromMapRoute.name: (routeData) {
       final args = routeData.argsAs<LocationPickerFromMapRouteArgs>(
           orElse: () => const LocationPickerFromMapRouteArgs());
-      return _i20.CupertinoPageX<_i27.LocationAddress?>(
+      return _i19.CupertinoPageX<_i25.LocationAddress?>(
           routeData: routeData,
-          child: _i18.LocationPickerFromMapPage(
+          child: _i17.LocationPickerFromMapPage(
               key: args.key, initial: args.initial));
     },
     HomeRouter.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
-          routeData: routeData, child: const _i19.HomePage());
+      return _i19.CupertinoPageX<dynamic>(
+          routeData: routeData, child: const _i18.HomePage());
     },
     HistoryRouter.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
-          routeData: routeData, child: const _i20.EmptyRouterPage());
+      return _i19.CupertinoPageX<dynamic>(
+          routeData: routeData, child: const _i19.EmptyRouterPage());
     },
     InboxRouter.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
-          routeData: routeData, child: const _i20.EmptyRouterPage());
+      return _i19.CupertinoPageX<dynamic>(
+          routeData: routeData, child: const _i19.EmptyRouterPage());
     },
     AccountRouter.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
-          routeData: routeData, child: const _i20.EmptyRouterPage());
+      return _i19.CupertinoPageX<dynamic>(
+          routeData: routeData, child: const _i19.EmptyRouterPage());
     },
     HistoryListRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
-          routeData: routeData, child: const _i21.HistoryListPage());
+      return _i19.CupertinoPageX<dynamic>(
+          routeData: routeData, child: const _i20.HistoryListPage());
     },
     HistoryDetailRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
-          routeData: routeData, child: const _i22.HistoryDetailPage());
+      return _i19.CupertinoPageX<dynamic>(
+          routeData: routeData, child: const _i21.HistoryDetailPage());
     },
     InboxListRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
-          routeData: routeData, child: const _i23.InboxListPage());
+      return _i19.CupertinoPageX<dynamic>(
+          routeData: routeData, child: const _i22.InboxListPage());
     },
     AccountRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
-          routeData: routeData, child: const _i24.AccountPage());
+      return _i19.CupertinoPageX<dynamic>(
+          routeData: routeData, child: const _i23.AccountPage());
     }
   };
 
   @override
-  List<_i20.RouteConfig> get routes => [
-        _i20.RouteConfig(SplashRoute.name, path: '/'),
-        _i20.RouteConfig(SignInRoute.name, path: '/sign-in'),
-        _i20.RouteConfig(UserRegisterRoute.name, path: '/register'),
-        _i20.RouteConfig(EditProfileRoute.name, path: '/edit-profile'),
-        _i20.RouteConfig(TripRoute.name, path: '/trip'),
-        _i20.RouteConfig(VoucherListRoute.name, path: '/vouchers-list'),
-        _i20.RouteConfig(VoucherPickerRoute.name, path: '/voucher-picker'),
-        _i20.RouteConfig(SettingRoute.name, path: '/setting'),
-        _i20.RouteConfig(PaymentListRoute.name, path: '/payments-list'),
-        _i20.RouteConfig(PaymentPickerRoute.name, path: '/payment-picker'),
-        _i20.RouteConfig(SavedPlaceListRoute.name, path: '/saved-places-list'),
-        _i20.RouteConfig(SavedPlacePickerRoute.name,
+  List<_i19.RouteConfig> get routes => [
+        _i19.RouteConfig(SplashRoute.name, path: '/'),
+        _i19.RouteConfig(SignInRoute.name, path: '/sign-in'),
+        _i19.RouteConfig(UserRegisterRoute.name, path: '/register'),
+        _i19.RouteConfig(EditProfileRoute.name, path: '/edit-profile'),
+        _i19.RouteConfig(TripRoute.name, path: '/trip'),
+        _i19.RouteConfig(VoucherListRoute.name, path: '/vouchers-list'),
+        _i19.RouteConfig(VoucherPickerRoute.name, path: '/voucher-picker'),
+        _i19.RouteConfig(SettingRoute.name, path: '/setting'),
+        _i19.RouteConfig(PaymentListRoute.name, path: '/payments-list'),
+        _i19.RouteConfig(PaymentPickerRoute.name, path: '/payment-picker'),
+        _i19.RouteConfig(SavedPlaceListRoute.name, path: '/saved-places-list'),
+        _i19.RouteConfig(SavedPlacePickerRoute.name,
             path: '/saved-place-picker'),
-        _i20.RouteConfig(ContactUsRoute.name, path: '/contact-us'),
-        _i20.RouteConfig(MessageListRoute.name, path: '/messages'),
-        _i20.RouteConfig(RootRoute.name, path: '/root', children: [
-          _i20.RouteConfig(HomeRouter.name,
+        _i19.RouteConfig(ContactUsRoute.name, path: '/contact-us'),
+        _i19.RouteConfig(MessageListRoute.name, path: '/messages'),
+        _i19.RouteConfig(RootRoute.name, path: '/root', children: [
+          _i19.RouteConfig(HomeRouter.name,
               path: 'home', parent: RootRoute.name),
-          _i20.RouteConfig(HistoryRouter.name,
+          _i19.RouteConfig(HistoryRouter.name,
               path: 'histories',
               parent: RootRoute.name,
               children: [
-                _i20.RouteConfig(HistoryListRoute.name,
+                _i19.RouteConfig(HistoryListRoute.name,
                     path: '', parent: HistoryRouter.name),
-                _i20.RouteConfig(HistoryDetailRoute.name,
+                _i19.RouteConfig(HistoryDetailRoute.name,
                     path: ':historyId', parent: HistoryRouter.name)
               ]),
-          _i20.RouteConfig(InboxRouter.name,
+          _i19.RouteConfig(InboxRouter.name,
               path: 'inboxes',
               parent: RootRoute.name,
               children: [
-                _i20.RouteConfig(InboxListRoute.name,
+                _i19.RouteConfig(InboxListRoute.name,
                     path: '', parent: InboxRouter.name)
               ]),
-          _i20.RouteConfig(AccountRouter.name,
+          _i19.RouteConfig(AccountRouter.name,
               path: 'account',
               parent: RootRoute.name,
               children: [
-                _i20.RouteConfig(AccountRoute.name,
+                _i19.RouteConfig(AccountRoute.name,
                     path: '', parent: AccountRouter.name)
               ])
         ]),
-        _i20.RouteConfig(TextInputRoute.name, path: '/text-input'),
-        _i20.RouteConfig(LocationPickerRoute.name,
-            path: '/location-detail-picker'),
-        _i20.RouteConfig(LocationPickerFromMapRoute.name,
+        _i19.RouteConfig(TextInputRoute.name, path: '/text-input'),
+        _i19.RouteConfig(LocationPickerFromMapRoute.name,
             path: '/location-picker-map')
       ];
 }
 
 /// generated route for
 /// [_i1.SplashPage]
-class SplashRoute extends _i20.PageRouteInfo<void> {
+class SplashRoute extends _i19.PageRouteInfo<void> {
   const SplashRoute() : super(SplashRoute.name, path: '/');
 
   static const String name = 'SplashRoute';
@@ -258,7 +240,7 @@ class SplashRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.SignInPage]
-class SignInRoute extends _i20.PageRouteInfo<void> {
+class SignInRoute extends _i19.PageRouteInfo<void> {
   const SignInRoute() : super(SignInRoute.name, path: '/sign-in');
 
   static const String name = 'SignInRoute';
@@ -266,8 +248,8 @@ class SignInRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.UserRegisterPage]
-class UserRegisterRoute extends _i20.PageRouteInfo<UserRegisterRouteArgs> {
-  UserRegisterRoute({_i25.Key? key, bool openAsRegister = true})
+class UserRegisterRoute extends _i19.PageRouteInfo<UserRegisterRouteArgs> {
+  UserRegisterRoute({_i24.Key? key, bool openAsRegister = true})
       : super(UserRegisterRoute.name,
             path: '/register',
             args: UserRegisterRouteArgs(
@@ -279,7 +261,7 @@ class UserRegisterRoute extends _i20.PageRouteInfo<UserRegisterRouteArgs> {
 class UserRegisterRouteArgs {
   const UserRegisterRouteArgs({this.key, this.openAsRegister = true});
 
-  final _i25.Key? key;
+  final _i24.Key? key;
 
   final bool openAsRegister;
 
@@ -291,7 +273,7 @@ class UserRegisterRouteArgs {
 
 /// generated route for
 /// [_i4.EditProfilePage]
-class EditProfileRoute extends _i20.PageRouteInfo<void> {
+class EditProfileRoute extends _i19.PageRouteInfo<void> {
   const EditProfileRoute()
       : super(EditProfileRoute.name, path: '/edit-profile');
 
@@ -300,8 +282,8 @@ class EditProfileRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.TripPage]
-class TripRoute extends _i20.PageRouteInfo<TripRouteArgs> {
-  TripRoute({_i25.Key? key, required _i28.VehicleTypes vehicleTypes})
+class TripRoute extends _i19.PageRouteInfo<TripRouteArgs> {
+  TripRoute({_i24.Key? key, required _i26.VehicleTypes vehicleTypes})
       : super(TripRoute.name,
             path: '/trip',
             args: TripRouteArgs(key: key, vehicleTypes: vehicleTypes));
@@ -312,9 +294,9 @@ class TripRoute extends _i20.PageRouteInfo<TripRouteArgs> {
 class TripRouteArgs {
   const TripRouteArgs({this.key, required this.vehicleTypes});
 
-  final _i25.Key? key;
+  final _i24.Key? key;
 
-  final _i28.VehicleTypes vehicleTypes;
+  final _i26.VehicleTypes vehicleTypes;
 
   @override
   String toString() {
@@ -324,8 +306,8 @@ class TripRouteArgs {
 
 /// generated route for
 /// [_i6.VoucherListPage]
-class VoucherListRoute extends _i20.PageRouteInfo<VoucherListRouteArgs> {
-  VoucherListRoute({_i25.Key? key, bool openAsPicker = false})
+class VoucherListRoute extends _i19.PageRouteInfo<VoucherListRouteArgs> {
+  VoucherListRoute({_i24.Key? key, bool openAsPicker = false})
       : super(VoucherListRoute.name,
             path: '/vouchers-list',
             args: VoucherListRouteArgs(key: key, openAsPicker: openAsPicker));
@@ -336,7 +318,7 @@ class VoucherListRoute extends _i20.PageRouteInfo<VoucherListRouteArgs> {
 class VoucherListRouteArgs {
   const VoucherListRouteArgs({this.key, this.openAsPicker = false});
 
-  final _i25.Key? key;
+  final _i24.Key? key;
 
   final bool openAsPicker;
 
@@ -348,7 +330,7 @@ class VoucherListRouteArgs {
 
 /// generated route for
 /// [_i7.VoucherPickerPage]
-class VoucherPickerRoute extends _i20.PageRouteInfo<void> {
+class VoucherPickerRoute extends _i19.PageRouteInfo<void> {
   const VoucherPickerRoute()
       : super(VoucherPickerRoute.name, path: '/voucher-picker');
 
@@ -357,7 +339,7 @@ class VoucherPickerRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.SettingPage]
-class SettingRoute extends _i20.PageRouteInfo<void> {
+class SettingRoute extends _i19.PageRouteInfo<void> {
   const SettingRoute() : super(SettingRoute.name, path: '/setting');
 
   static const String name = 'SettingRoute';
@@ -365,8 +347,8 @@ class SettingRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.PaymentListPage]
-class PaymentListRoute extends _i20.PageRouteInfo<PaymentListRouteArgs> {
-  PaymentListRoute({_i25.Key? key, bool openAsPicker = false})
+class PaymentListRoute extends _i19.PageRouteInfo<PaymentListRouteArgs> {
+  PaymentListRoute({_i24.Key? key, bool openAsPicker = false})
       : super(PaymentListRoute.name,
             path: '/payments-list',
             args: PaymentListRouteArgs(key: key, openAsPicker: openAsPicker));
@@ -377,7 +359,7 @@ class PaymentListRoute extends _i20.PageRouteInfo<PaymentListRouteArgs> {
 class PaymentListRouteArgs {
   const PaymentListRouteArgs({this.key, this.openAsPicker = false});
 
-  final _i25.Key? key;
+  final _i24.Key? key;
 
   final bool openAsPicker;
 
@@ -389,7 +371,7 @@ class PaymentListRouteArgs {
 
 /// generated route for
 /// [_i10.PaymentPickerPage]
-class PaymentPickerRoute extends _i20.PageRouteInfo<void> {
+class PaymentPickerRoute extends _i19.PageRouteInfo<void> {
   const PaymentPickerRoute()
       : super(PaymentPickerRoute.name, path: '/payment-picker');
 
@@ -398,8 +380,8 @@ class PaymentPickerRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i11.SavedPlaceListPage]
-class SavedPlaceListRoute extends _i20.PageRouteInfo<SavedPlaceListRouteArgs> {
-  SavedPlaceListRoute({_i25.Key? key, bool openAsPicker = false})
+class SavedPlaceListRoute extends _i19.PageRouteInfo<SavedPlaceListRouteArgs> {
+  SavedPlaceListRoute({_i24.Key? key, bool openAsPicker = false})
       : super(SavedPlaceListRoute.name,
             path: '/saved-places-list',
             args:
@@ -411,7 +393,7 @@ class SavedPlaceListRoute extends _i20.PageRouteInfo<SavedPlaceListRouteArgs> {
 class SavedPlaceListRouteArgs {
   const SavedPlaceListRouteArgs({this.key, this.openAsPicker = false});
 
-  final _i25.Key? key;
+  final _i24.Key? key;
 
   final bool openAsPicker;
 
@@ -423,7 +405,7 @@ class SavedPlaceListRouteArgs {
 
 /// generated route for
 /// [_i12.SavedPlacePickerPage]
-class SavedPlacePickerRoute extends _i20.PageRouteInfo<void> {
+class SavedPlacePickerRoute extends _i19.PageRouteInfo<void> {
   const SavedPlacePickerRoute()
       : super(SavedPlacePickerRoute.name, path: '/saved-place-picker');
 
@@ -432,7 +414,7 @@ class SavedPlacePickerRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i13.ContactUsPage]
-class ContactUsRoute extends _i20.PageRouteInfo<void> {
+class ContactUsRoute extends _i19.PageRouteInfo<void> {
   const ContactUsRoute() : super(ContactUsRoute.name, path: '/contact-us');
 
   static const String name = 'ContactUsRoute';
@@ -440,7 +422,7 @@ class ContactUsRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i14.MessageListPage]
-class MessageListRoute extends _i20.PageRouteInfo<void> {
+class MessageListRoute extends _i19.PageRouteInfo<void> {
   const MessageListRoute() : super(MessageListRoute.name, path: '/messages');
 
   static const String name = 'MessageListRoute';
@@ -448,8 +430,8 @@ class MessageListRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i15.RootPage]
-class RootRoute extends _i20.PageRouteInfo<void> {
-  const RootRoute({List<_i20.PageRouteInfo>? children})
+class RootRoute extends _i19.PageRouteInfo<void> {
+  const RootRoute({List<_i19.PageRouteInfo>? children})
       : super(RootRoute.name, path: '/root', initialChildren: children);
 
   static const String name = 'RootRoute';
@@ -457,9 +439,9 @@ class RootRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i16.TextInputPage]
-class TextInputRoute extends _i20.PageRouteInfo<TextInputRouteArgs> {
+class TextInputRoute extends _i19.PageRouteInfo<TextInputRouteArgs> {
   TextInputRoute(
-      {_i25.Key? key,
+      {_i24.Key? key,
       required String pageTitle,
       String? initialText,
       String submitButtonLabel = "Submit"})
@@ -481,7 +463,7 @@ class TextInputRouteArgs {
       this.initialText,
       this.submitButtonLabel = "Submit"});
 
-  final _i25.Key? key;
+  final _i24.Key? key;
 
   final String pageTitle;
 
@@ -496,60 +478,10 @@ class TextInputRouteArgs {
 }
 
 /// generated route for
-/// [_i17.LocationPickerPage]
-class LocationPickerRoute extends _i20.PageRouteInfo<LocationPickerRouteArgs> {
-  LocationPickerRoute(
-      {_i25.Key? key,
-      _i27.LocationAddress? initial,
-      _i27.LocationAddress? initialOrigin,
-      String? title,
-      String textFieldHint = "Where to?",
-      void Function()? onPickByMapPress})
-      : super(LocationPickerRoute.name,
-            path: '/location-detail-picker',
-            args: LocationPickerRouteArgs(
-                key: key,
-                initial: initial,
-                initialOrigin: initialOrigin,
-                title: title,
-                textFieldHint: textFieldHint,
-                onPickByMapPress: onPickByMapPress));
-
-  static const String name = 'LocationPickerRoute';
-}
-
-class LocationPickerRouteArgs {
-  const LocationPickerRouteArgs(
-      {this.key,
-      this.initial,
-      this.initialOrigin,
-      this.title,
-      this.textFieldHint = "Where to?",
-      this.onPickByMapPress});
-
-  final _i25.Key? key;
-
-  final _i27.LocationAddress? initial;
-
-  final _i27.LocationAddress? initialOrigin;
-
-  final String? title;
-
-  final String textFieldHint;
-
-  final void Function()? onPickByMapPress;
-
-  @override
-  String toString() {
-    return 'LocationPickerRouteArgs{key: $key, initial: $initial, initialOrigin: $initialOrigin, title: $title, textFieldHint: $textFieldHint, onPickByMapPress: $onPickByMapPress}';
-  }
-}
-
-/// generated route for
-/// [_i18.LocationPickerFromMapPage]
+/// [_i17.LocationPickerFromMapPage]
 class LocationPickerFromMapRoute
-    extends _i20.PageRouteInfo<LocationPickerFromMapRouteArgs> {
-  LocationPickerFromMapRoute({_i25.Key? key, _i27.LocationAddress? initial})
+    extends _i19.PageRouteInfo<LocationPickerFromMapRouteArgs> {
+  LocationPickerFromMapRoute({_i24.Key? key, _i25.LocationAddress? initial})
       : super(LocationPickerFromMapRoute.name,
             path: '/location-picker-map',
             args: LocationPickerFromMapRouteArgs(key: key, initial: initial));
@@ -560,9 +492,9 @@ class LocationPickerFromMapRoute
 class LocationPickerFromMapRouteArgs {
   const LocationPickerFromMapRouteArgs({this.key, this.initial});
 
-  final _i25.Key? key;
+  final _i24.Key? key;
 
-  final _i27.LocationAddress? initial;
+  final _i25.LocationAddress? initial;
 
   @override
   String toString() {
@@ -571,51 +503,51 @@ class LocationPickerFromMapRouteArgs {
 }
 
 /// generated route for
-/// [_i19.HomePage]
-class HomeRouter extends _i20.PageRouteInfo<void> {
+/// [_i18.HomePage]
+class HomeRouter extends _i19.PageRouteInfo<void> {
   const HomeRouter() : super(HomeRouter.name, path: 'home');
 
   static const String name = 'HomeRouter';
 }
 
 /// generated route for
-/// [_i20.EmptyRouterPage]
-class HistoryRouter extends _i20.PageRouteInfo<void> {
-  const HistoryRouter({List<_i20.PageRouteInfo>? children})
+/// [_i19.EmptyRouterPage]
+class HistoryRouter extends _i19.PageRouteInfo<void> {
+  const HistoryRouter({List<_i19.PageRouteInfo>? children})
       : super(HistoryRouter.name, path: 'histories', initialChildren: children);
 
   static const String name = 'HistoryRouter';
 }
 
 /// generated route for
-/// [_i20.EmptyRouterPage]
-class InboxRouter extends _i20.PageRouteInfo<void> {
-  const InboxRouter({List<_i20.PageRouteInfo>? children})
+/// [_i19.EmptyRouterPage]
+class InboxRouter extends _i19.PageRouteInfo<void> {
+  const InboxRouter({List<_i19.PageRouteInfo>? children})
       : super(InboxRouter.name, path: 'inboxes', initialChildren: children);
 
   static const String name = 'InboxRouter';
 }
 
 /// generated route for
-/// [_i20.EmptyRouterPage]
-class AccountRouter extends _i20.PageRouteInfo<void> {
-  const AccountRouter({List<_i20.PageRouteInfo>? children})
+/// [_i19.EmptyRouterPage]
+class AccountRouter extends _i19.PageRouteInfo<void> {
+  const AccountRouter({List<_i19.PageRouteInfo>? children})
       : super(AccountRouter.name, path: 'account', initialChildren: children);
 
   static const String name = 'AccountRouter';
 }
 
 /// generated route for
-/// [_i21.HistoryListPage]
-class HistoryListRoute extends _i20.PageRouteInfo<void> {
+/// [_i20.HistoryListPage]
+class HistoryListRoute extends _i19.PageRouteInfo<void> {
   const HistoryListRoute() : super(HistoryListRoute.name, path: '');
 
   static const String name = 'HistoryListRoute';
 }
 
 /// generated route for
-/// [_i22.HistoryDetailPage]
-class HistoryDetailRoute extends _i20.PageRouteInfo<void> {
+/// [_i21.HistoryDetailPage]
+class HistoryDetailRoute extends _i19.PageRouteInfo<void> {
   const HistoryDetailRoute()
       : super(HistoryDetailRoute.name, path: ':historyId');
 
@@ -623,16 +555,16 @@ class HistoryDetailRoute extends _i20.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i23.InboxListPage]
-class InboxListRoute extends _i20.PageRouteInfo<void> {
+/// [_i22.InboxListPage]
+class InboxListRoute extends _i19.PageRouteInfo<void> {
   const InboxListRoute() : super(InboxListRoute.name, path: '');
 
   static const String name = 'InboxListRoute';
 }
 
 /// generated route for
-/// [_i24.AccountPage]
-class AccountRoute extends _i20.PageRouteInfo<void> {
+/// [_i23.AccountPage]
+class AccountRoute extends _i19.PageRouteInfo<void> {
   const AccountRoute() : super(AccountRoute.name, path: '');
 
   static const String name = 'AccountRoute';

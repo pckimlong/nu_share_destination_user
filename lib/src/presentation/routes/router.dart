@@ -7,7 +7,6 @@ import '../modules/account/edit/edit_profile_page.dart';
 import '../modules/account/register/user_register_page.dart';
 import '../modules/auth/sign_in_page.dart';
 import '../modules/common/location_picker_map_page.dart';
-import '../modules/common/location_picker_page.dart';
 import '../modules/common/text_input_page.dart';
 import '../modules/contact_us/contact_us_page.dart';
 import '../modules/history/detail/history_detail_page.dart';
@@ -161,11 +160,11 @@ import '../modules/voucher/picker/voucher_picker_page.dart';
       page: TextInputPage,
       fullscreenDialog: true,
     ),
-    CupertinoRoute<Option<LocationAddress>?>(
-      path: '/location-detail-picker',
-      page: LocationPickerPage,
-      fullscreenDialog: true,
-    ),
+    // CupertinoRoute<Option<LocationAddress>?>(
+    //   path: '/location-detail-picker',
+    //   page: LocationPickerPage,
+    //   fullscreenDialog: true,
+    // ),
     CupertinoRoute<LocationAddress?>(
       path: '/location-picker-map',
       page: LocationPickerFromMapPage,

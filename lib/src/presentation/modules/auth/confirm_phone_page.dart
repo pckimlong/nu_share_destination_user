@@ -7,13 +7,13 @@ class _ConfirmPhonePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final textController = useTextEditingController();
     final textFocus = useFocusNode();
-    final formEvent = ref.watch(_signInWithGoogleController.notifier);
+    final formEvent = ref.watch(signInWithGoogleController.notifier);
     final showResendButton = useState<bool>(false);
 
-    final phone = ref.watch(
-        _signInWithGoogleController.select((value) => value.phoneNumber));
+    final phone = ref
+        .watch(signInWithGoogleController.select((value) => value.phoneNumber));
     final failure = ref.watch(
-        _signInWithGoogleController.select((value) => value.falureOption));
+        signInWithGoogleController.select((value) => value.falureOption));
 
     // If user input wrong verification code
     bool hasWrongVerificationCode = false;

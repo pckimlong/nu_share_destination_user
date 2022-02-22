@@ -18,27 +18,28 @@ class TripPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stateOption = ref.watch(tripController);
+    return const TripBookingPage();
+    // final stateOption = ref.watch(tripController);
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: stateOption.match(
-        /// After booked and create trip request. State option become some()
-        (tripState) {
-          /// Change the screen depening on status of trip
-          return tripState.tripStatus.when(
-            exploring: () {},
-            cancelled: () => const TripCancelPage(),
-            picking: () => const TripPickingPage(),
-            inProgress: () => const TripInProgressPage(),
-            finished: () => const TripFinishedPage(),
-          );
-        },
+    // return Scaffold(
+    //   resizeToAvoidBottomInset: false,
+    //   body: stateOption.match(
+    //     /// After booked and create trip request. State option become some()
+    //     (tripState) {
+    //       /// Change the screen depening on status of trip
+    //       return tripState.tripStatus.when(
+    //         exploring: () {},
+    //         cancelled: () => const TripCancelPage(),
+    //         picking: () => const TripPickingPage(),
+    //         inProgress: () => const TripInProgressPage(),
+    //         finished: () => const TripFinishedPage(),
+    //       );
+    //     },
 
-        /// User not yet booking trip. This leave it none() option
-        /// So show trip booking page
-        () => const TripBookingPage(),
-      ),
-    );
+    //     /// User not yet booking trip. This leave it none() option
+    //     /// So show trip booking page
+    //     () => const TripBookingPage(),
+    //   ),
+    // );
   }
 }
