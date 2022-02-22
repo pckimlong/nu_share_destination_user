@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../_providers/user_provider.dart';
+import '../../providers/user_provider.dart';
 import '../../routes/router.gr.dart';
 import '../../widgets/my_list_tile.dart';
 import '../../widgets/user_photo_avartar.dart';

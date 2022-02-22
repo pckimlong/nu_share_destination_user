@@ -15,7 +15,7 @@ import '../../../../domain/core/constants.dart';
 import '../../../../domain/core/entities/coordinate.dart';
 import '../../../../domain/core/entities/location_address.dart';
 import '../../../../domain/core/entities/location_detail.dart';
-import '../../../_core/app_styles.dart';
+import '../../../core/app_styles.dart';
 import '../../../routes/router.gr.dart';
 import '../../../widgets/circle_location_button.dart';
 import '../../../widgets/location_pin_widget.dart';

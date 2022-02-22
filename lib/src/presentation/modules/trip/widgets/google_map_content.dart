@@ -8,7 +8,7 @@
 // import 'package:nu_share_destination_user/src/presentation/modules/trip/trip_provider.dart';
 
 // import '../../../../domain/core/constants.dart';
-// import '../../../_core/common_provider.dart';
+// import '../../../core/common_provider.dart';
 
 // class GoogleMapWidget extends StatefulHookConsumerWidget {
 //   const GoogleMapWidget({Key? key}) : super(key: key);

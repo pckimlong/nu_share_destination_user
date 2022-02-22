@@ -6,7 +6,7 @@ import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
 import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
 import 'package:nu_share_destination_user/src/domain/core/entities/location_point.dart';
-import 'package:nu_share_destination_user/src/infra/_core/dto_extensions.dart';
+import 'package:nu_share_destination_user/src/infra/core/dto_extensions.dart';
 
 part 'location_detail_dto.freezed.dart';
 part 'location_detail_dto.g.dart';

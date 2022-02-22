@@ -11,8 +11,8 @@ import '../../domain/core/entities/location_detail.dart';
 import '../../domain/driver/driver_entity.dart';
 import '../../domain/driver/driver_failure.dart';
 import '../../domain/driver/i_driver_repository.dart';
-import '../_core/entity_dtos/location_detail_dto.dart';
-import '../_core/firebase/firebase_extensions.dart';
+import '../core/entity_dtos/location_detail_dto.dart';
+import '../core/firebase/firebase_extensions.dart';
 import '../location/mappers.dart';
 import 'driver_entity_dto.dart';
 

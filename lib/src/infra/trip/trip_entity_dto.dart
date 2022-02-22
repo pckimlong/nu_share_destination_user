@@ -3,8 +3,8 @@
 import 'package:fpdart/fpdart.dart' as z;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nu_share_destination_user/src/domain/trip/trip_entity.dart';
-import 'package:nu_share_destination_user/src/infra/_core/entity_dtos/location_address_dto.dart';
-import 'package:nu_share_destination_user/src/infra/_core/entity_dtos/location_detail_dto.dart';
+import 'package:nu_share_destination_user/src/infra/core/entity_dtos/location_address_dto.dart';
+import 'package:nu_share_destination_user/src/infra/core/entity_dtos/location_detail_dto.dart';
 import 'package:nu_share_destination_user/src/infra/user/user_entity_dto.dart';
 
 import '../../domain/core/entities/location_address.dart';

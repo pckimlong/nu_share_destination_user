@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../domain/core/constants.dart';
 import '../../../domain/core/entities/coordinate.dart';
 import '../../../domain/core/entities/location_address.dart';
-import '../../_core/service_providers.dart';
+import '../../core/service_providers.dart';
 import '../../widgets/circle_location_button.dart';
 import '../../widgets/location_pin_widget.dart';
 import '../../widgets/my_elevated_button.dart';

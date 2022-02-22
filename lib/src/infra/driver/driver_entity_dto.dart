@@ -5,9 +5,9 @@ import 'package:fpdart/fpdart.dart' as dz;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nu_share_destination_user/src/domain/driver/driver_entity.dart';
 import 'package:nu_share_destination_user/src/domain/driver/vehicle_types.dart';
-import 'package:nu_share_destination_user/src/infra/_core/entity_dtos/location_detail_dto.dart';
+import 'package:nu_share_destination_user/src/infra/core/entity_dtos/location_detail_dto.dart';
 
-import '../_core/firebase/firebase_extensions.dart';
+import '../core/firebase/firebase_extensions.dart';
 
 part 'driver_entity_dto.freezed.dart';
 part 'driver_entity_dto.g.dart';

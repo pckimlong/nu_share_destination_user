@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../routes/router.gr.dart';
 
-import '../_core/app_styles.dart';
+import '../core/app_styles.dart';
 import '../routes/router_obs.dart';
 
 class AppWidget extends HookWidget {

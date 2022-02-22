@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../_core/app_permission.dart';
+import '../../../core/app_permission.dart';
 
 class VehicleTypeCard extends StatelessWidget {
   const VehicleTypeCard({

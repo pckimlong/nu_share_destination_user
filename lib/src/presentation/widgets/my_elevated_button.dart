@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../_core/app_styles.dart';
+import '../core/app_styles.dart';
 
 class MyElevatedButton extends StatelessWidget {
   const MyElevatedButton({

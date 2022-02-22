@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nu_share_destination_user/src/domain/auth/auth_failure.dart';
 
 import '../../../domain/auth/i_auth_facade.dart';
-import '../../_core/service_providers.dart';
+import '../../core/service_providers.dart';
 
 part "phone_sign_in_provider.freezed.dart";
 

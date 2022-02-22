@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../_core/app_styles.dart';
+import '../core/app_styles.dart';
 
 class CircleIcon extends StatelessWidget {
   const CircleIcon({Key? key, this.size = 18}) : super(key: key);

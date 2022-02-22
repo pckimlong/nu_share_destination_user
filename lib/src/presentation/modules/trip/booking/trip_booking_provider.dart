@@ -11,7 +11,7 @@ import '../../../../domain/location/i_location_service.dart';
 import '../../../../domain/location/location_failure.dart';
 import '../../../../domain/trip/i_trip_repository.dart';
 import '../../../../domain/user/i_user_repository.dart';
-import '../../../_core/service_providers.dart';
+import '../../../core/service_providers.dart';
 
 part 'trip_booking_provider.freezed.dart';
 

@@ -6,7 +6,7 @@ import 'package:fast_immutable_collections/fast_immutable_collections.dart'
 import 'package:nu_share_destination_user/src/domain/trip/i_trip_repository.dart';
 import 'package:nu_share_destination_user/src/domain/trip/trip_entity.dart';
 import 'package:nu_share_destination_user/src/domain/trip/trip_failure.dart';
-import 'package:nu_share_destination_user/src/infra/_core/firebase/firebase_extensions.dart';
+import 'package:nu_share_destination_user/src/infra/core/firebase/firebase_extensions.dart';
 import 'package:nu_share_destination_user/src/infra/trip/trip_entity_dto.dart';
 
 import '../../domain/trip/passenger_entity.dart';

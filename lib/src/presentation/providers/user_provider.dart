@@ -8,7 +8,7 @@ import '../../domain/core/errors.dart';
 import '../../domain/user/i_user_repository.dart';
 import '../../domain/user/user_entity.dart';
 import '../../domain/user/user_failure.dart';
-import '../_core/service_providers.dart';
+import '../core/service_providers.dart';
 
 part 'user_provider.freezed.dart';
 

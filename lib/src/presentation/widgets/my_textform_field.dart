@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../_core/app_styles.dart';
+import '../core/app_styles.dart';
 
 class MyTextFormField extends StatelessWidget {
   const MyTextFormField({

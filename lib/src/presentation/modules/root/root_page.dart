@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../routes/router.gr.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-import '../../_providers/user_provider.dart';
+import '../../providers/user_provider.dart';
 
 class RootPage extends HookConsumerWidget {
   const RootPage({Key? key}) : super(key: key);

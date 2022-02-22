@@ -5,9 +5,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nu_share_destination_user/driver/presentation/core/app_widget.dart'
     as driver;
 import 'package:nu_share_destination_user/firebase_options.dart';
-import 'package:nu_share_destination_user/src/presentation/_core/app_widget.dart'
+import 'package:nu_share_destination_user/src/presentation/core/app_widget.dart'
     as user;
-import 'package:nu_share_destination_user/src/presentation/_core/common_provider.dart';
+import 'package:nu_share_destination_user/src/presentation/core/common_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
