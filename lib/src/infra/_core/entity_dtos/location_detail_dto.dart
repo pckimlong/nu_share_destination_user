@@ -56,7 +56,7 @@ class LocationDetailDto with _$LocationDetailDto {
   static LocationPoint _geoPointFromJson(Map<String, dynamic> json) {
     final geoPoint = json['geopoint'] as GeoPoint;
     return LocationPoint(
-      geoHash: 'geohash',
+      geoHash: json['geohash'],
       coordinate: geoPoint.toCoordinate(),
     );
   }

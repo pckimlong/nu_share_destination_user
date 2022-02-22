@@ -60,4 +60,8 @@ abstract class IDriverRepository {
   ///  if toggle [available] to false while in trip state
   /// ( [inProgress] not null )
   Future<Either<DriverFailure, Unit>> toggleAvailable(String driverId);
+
+  ///! For testing purpose
+  Future<Unit> createMockDriver(DriverEntity driverEntity);
+  Stream<IList<DriverEntity>> streamAll();
 }

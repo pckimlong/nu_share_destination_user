@@ -14,8 +14,8 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   /// Initialize cache box
-  await GetStorage.init();
 
+  await GetStorage.init();
   runApp(
     ProviderScope(
       // observers: [Logger()],

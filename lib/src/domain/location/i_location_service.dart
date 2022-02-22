@@ -11,6 +11,8 @@ abstract class ILocationService {
   /// Get current device location point (geoPoint)
   Future<Either<LocationFailure, LocationAddress>> getMyAddress();
 
+  Either<LocationFailure, String> coordinateToGeoHash(Coordinate coordinate);
+
   /// Get my coordinate
   Future<Either<LocationFailure, Coordinate>> getMyCoordinate();
 

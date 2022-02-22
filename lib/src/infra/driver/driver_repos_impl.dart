@@ -5,7 +5,6 @@ import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
-import 'package:nu_share_destination_user/src/infra/_core/dto_extensions.dart';
 
 import '../../domain/core/entities/coordinate.dart';
 import '../../domain/core/entities/location_detail.dart';
@@ -51,7 +50,7 @@ class DriverReposImpl implements IDriverRepository {
 
       final result = geoRef.within(
         center: coordinate.toGeoFirePoint(),
-        radius: 0.1, //use map zoom
+        radius: radius,
         field: DriverEntityDto.geoFirePointKey,
         strictMode: true,
       );
@@ -117,8 +116,13 @@ class DriverReposImpl implements IDriverRepository {
       required LocationDetail locationDetail}) async {
     try {
       final dto = LocationDetailDto.fromDomain(locationDetail);
+      final json = dto.toJson();
+
+      /// Change from geoPoint object to normal map, reason: Real-time database not support GeoPoint object
+      json[LocationDetailDto.locationPointKey]['geopoint'] =
+          dto.locationPoint.coordinate.toJson();
       final ref = _realTimeDatabase.driverLocationRef(driverId);
-      await ref.set(dto.toJson());
+      await ref.set(json);
       return const Right(unit);
     } on FirebaseException catch (e) {
       return Left(DriverFailure.serverError(e.message));
@@ -133,7 +137,20 @@ class DriverReposImpl implements IDriverRepository {
       return ref.onValue.map((event) {
         final Map<String, dynamic> json =
             jsonDecode(jsonEncode(event.snapshot.value));
-        return right(LocationDetailDto.fromJson(json).toDomain());
+
+        /// Replace map with geopoint.
+        /// Because data model support geopoint, but real time database not support
+        /// so when write to real-time database, I need to convert it to normal map
+        /// then in read, i need to convert it back
+        final Map<String, dynamic> locationPointMap =
+            json[LocationDetailDto.locationPointKey];
+        final Map<String, dynamic> geoPointMap = locationPointMap['geopoint'];
+        json[LocationDetailDto.locationPointKey]['geopoint'] = GeoPoint(
+            geoPointMap[Coordinate.latitudeKey],
+            geoPointMap[Coordinate.longitudeKey]);
+
+        final result = LocationDetailDto.fromJson(json).toDomain();
+        return right(result);
       });
     } on FirebaseException catch (e) {
       return Stream.error(Left(DriverFailure.serverError(e.message)));
@@ -163,7 +180,7 @@ class DriverReposImpl implements IDriverRepository {
 
       final result = geoRef.within(
         center: coordinate.toGeoFirePoint(),
-        radius: 0.1, //use map zoom
+        radius: radius,
         field: DriverEntityDto.geoFirePointKey,
         strictMode: true,
       );
@@ -185,5 +202,19 @@ class DriverReposImpl implements IDriverRepository {
     } on FirebaseException catch (e) {
       return Left(DriverFailure.serverError(e.message));
     }
+  }
+
+  @override
+  Future<Unit> createMockDriver(DriverEntity driverEntity) async {
+    final dto = DriverEntityDto.fromDomain(driverEntity);
+    await _firestore.driverColRefConverter.add(dto);
+    return unit;
+  }
+
+  @override
+  Stream<IList<DriverEntity>> streamAll() {
+    return _firestore.driverColRefConverter
+        .snapshots()
+        .map((event) => event.docs.map((e) => e.data().toDomain()).toIList());
   }
 }

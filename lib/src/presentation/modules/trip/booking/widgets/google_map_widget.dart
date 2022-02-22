@@ -33,7 +33,7 @@ class _MapWidget extends StatefulHookConsumerWidget {
 
 class __MapWidgetState extends ConsumerState<_MapWidget> {
   Coordinate _currentCoordinate = DomainValues.initialMapPoint;
-  late final GoogleMapController _mapController;
+  GoogleMapController? _mapController;
   BitmapDescriptor? _carMarker;
 
   @override
@@ -52,7 +52,7 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
 
         for (final driver in coordinates) {
           /// Add marker
-          final id = MarkerId(driver.altitude.toString());
+          final id = MarkerId(driver.hashCode.toString());
           markers[id] = Marker(
             markerId: id,
             rotation: driver.heading,
@@ -125,14 +125,16 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
 
   /// Move map to a coordinate
   void _moveToCoordinate(Coordinate coor) {
-    _mapController.animateCamera(
-      CameraUpdate.newCameraPosition(
-        CameraPosition(
-          target: LatLng(coor.latitude, coor.longitude),
-          zoom: DomainValues.mapPointZoom,
+    if (_mapController != null) {
+      _mapController!.animateCamera(
+        CameraUpdate.newCameraPosition(
+          CameraPosition(
+            target: LatLng(coor.latitude, coor.longitude),
+            zoom: DomainValues.mapPointZoom,
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   /// Bind map controller to local map controller
@@ -209,7 +211,7 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
     );
 
     /// Markers
-    final markers = useMemoized<Map<MarkerId, Marker>>(() => {}, const []);
+    final markers = useMemoized<Map<MarkerId, Marker>>(() => {});
 
     _drawerOriginAndDesinationMarker(originLoc, destinationLoc, markers);
 

@@ -46,8 +46,10 @@ class TripBookingNotifier extends StateNotifier<TripBookingState> {
   }
 
   Future<void> _fetchNearbyDrivers(Coordinate coor) async {
-    final driversOrFail =
-        await _driverRepository.getLocationByCoor(coordinate: coor);
+    final driversOrFail = await _driverRepository.getLocationByCoor(
+      coordinate: coor,
+      radius: 0.5, // 10KM
+    );
 
     driversOrFail.fold(
       (fail) => state = state.copyWith(driverFailure: some(fail)),

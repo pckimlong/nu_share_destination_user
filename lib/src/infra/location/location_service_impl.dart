@@ -183,7 +183,6 @@ class LocationServiceImpl implements ILocationService {
     if (placeMarks.isEmpty) return 'Unknown';
 
     final placeMark = placeMarks.first;
-    debugPrint(placeMark.toString());
     String address = "";
 
     if (placeMark.subThoroughfare!.isNotEmpty) {
@@ -208,5 +207,18 @@ class LocationServiceImpl implements ILocationService {
     }
 
     return address;
+  }
+
+  @override
+  Either<LocationFailure, String> coordinateToGeoHash(Coordinate coordinate) {
+    try {
+      final result = _geoflutterfire.point(
+        latitude: coordinate.latitude,
+        longitude: coordinate.longitude,
+      );
+      return Right(result.hash);
+    } catch (e) {
+      return Left(LocationFailure.packageError(e.toString()));
+    }
   }
 }
