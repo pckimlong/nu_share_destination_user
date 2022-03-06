@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
-import '../../../src2/infra/dtos/driver_entity_dto.dart';
-import '../../../src2/infra/dtos/trip_entity_dto.dart';
-import '../../../src2/infra/dtos/user_entity_dto.dart';
+import '../dtos/dtos.dart';
 
 part 'firebase_paths.dart';
 
@@ -13,19 +11,19 @@ extension RDatabaseX on FirebaseDatabase {
 }
 
 extension FirestoreX on FirebaseFirestore {
-  CollectionReference<UserEntityDto> get userColRef {
+  CollectionReference<UserDto> get userColRef {
     return collection(_userColPath).withConverter(
       fromFirestore: (doc, _) {
-        return UserEntityDto.fromJson(doc.toMap()).copyWith(id: doc.id);
+        return UserDto.fromJson(doc.toMap()).copyWith(id: doc.id);
       },
       toFirestore: (user, _) => user.toJson(),
     );
   }
 
-  CollectionReference<DriverEntityDto> get driverColRefConverter {
+  CollectionReference<DriverDto> get driverColRefConverter {
     return driverColRef.withConverter(
       fromFirestore: (doc, _) {
-        return DriverEntityDto.fromJson(doc.toMap()).copyWith(id: doc.id);
+        return DriverDto.fromJson(doc.toMap()).copyWith(id: doc.id);
       },
       toFirestore: (driver, _) => driver.toJson(),
     );
@@ -35,10 +33,10 @@ extension FirestoreX on FirebaseFirestore {
     return collection(_driverColPath);
   }
 
-  CollectionReference<TripEntityDto> get tripColRef {
+  CollectionReference<TripDto> get tripColRef {
     return collection(_driverColPath).withConverter(
       fromFirestore: (doc, _) {
-        return TripEntityDto.fromJson(doc.toMap()).copyWith(id: doc.id);
+        return TripDto.fromJson(doc.toMap()).copyWith(id: doc.id);
       },
       toFirestore: (trip, _) => trip.toJson(),
     );

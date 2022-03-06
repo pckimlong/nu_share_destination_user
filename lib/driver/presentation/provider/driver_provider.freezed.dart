@@ -58,8 +58,6 @@ abstract class $DriverStateCopyWith<$Res> {
       Option<DriverFailure> failureOption,
       Option<LocationFailure> locationFailureOption,
       LocationDetail? realtime});
-
-  $LocationDetailCopyWith<$Res>? get realtime;
 }
 
 /// @nodoc
@@ -96,17 +94,6 @@ class _$DriverStateCopyWithImpl<$Res> implements $DriverStateCopyWith<$Res> {
               as LocationDetail?,
     ));
   }
-
-  @override
-  $LocationDetailCopyWith<$Res>? get realtime {
-    if (_value.realtime == null) {
-      return null;
-    }
-
-    return $LocationDetailCopyWith<$Res>(_value.realtime!, (value) {
-      return _then(_value.copyWith(realtime: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -121,9 +108,6 @@ abstract class _$DriverStateCopyWith<$Res>
       Option<DriverFailure> failureOption,
       Option<LocationFailure> locationFailureOption,
       LocationDetail? realtime});
-
-  @override
-  $LocationDetailCopyWith<$Res>? get realtime;
 }
 
 /// @nodoc

@@ -1,10 +1,9 @@
 import 'package:google_place/google_place.dart';
-import '../../../src/domain/core/entities/coordinate.dart';
-import '../../domain/entities/place_entity.dart';
+import '../../domain/domain.dart';
 
 extension SearchResultX on SearchResult {
-  PlaceEntity toDomain() {
-    return PlaceEntity(
+  Place toDomain() {
+    return Place(
       coordinate: Coordinate(
         geometry?.location?.lat ?? 0,
         geometry?.location?.lng ?? 0,

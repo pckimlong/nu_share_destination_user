@@ -2,13 +2,11 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_address.dart';
+import '../../domain/domain.dart';
+import 'dtos.dart';
 
-import '../../domain/core/entities/coordinate.dart';
-import '../datasource/dto_extensions.dart';
-
-part '../core/entity_dtos/location_address_dto.freezed.dart';
-part '../core/entity_dtos/location_address_dto.g.dart';
+part "location_address_dto.freezed.dart";
+part "location_address_dto.g.dart";
 
 @freezed
 class LocationAddressDto with _$LocationAddressDto {

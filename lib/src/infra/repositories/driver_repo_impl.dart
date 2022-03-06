@@ -5,10 +5,10 @@ import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
-import '../dtos/location_detail_dto.dart';
 import '../datasource/firebase_extensions.dart';
 
 import '../../domain/domain.dart';
+import '../dtos/dtos.dart';
 
 class DriverRepoImpl implements IDriverRepository {
   final FirebaseFirestore _firestore;

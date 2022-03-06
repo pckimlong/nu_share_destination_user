@@ -226,8 +226,6 @@ abstract class _$ChangeOriginLocationCopyWith<$Res> {
           $Res Function(_ChangeOriginLocation) then) =
       __$ChangeOriginLocationCopyWithImpl<$Res>;
   $Res call({Coordinate coor});
-
-  $CoordinateCopyWith<$Res> get coor;
 }
 
 /// @nodoc
@@ -251,13 +249,6 @@ class __$ChangeOriginLocationCopyWithImpl<$Res>
           : coor // ignore: cast_nullable_to_non_nullable
               as Coordinate,
     ));
-  }
-
-  @override
-  $CoordinateCopyWith<$Res> get coor {
-    return $CoordinateCopyWith<$Res>(_value.coor, (value) {
-      return _then(_value.copyWith(coor: value));
-    });
   }
 }
 
@@ -380,8 +371,6 @@ abstract class _$ChangeDestinationLocationCopyWith<$Res> {
           $Res Function(_ChangeDestinationLocation) then) =
       __$ChangeDestinationLocationCopyWithImpl<$Res>;
   $Res call({Coordinate coor});
-
-  $CoordinateCopyWith<$Res> get coor;
 }
 
 /// @nodoc
@@ -406,13 +395,6 @@ class __$ChangeDestinationLocationCopyWithImpl<$Res>
           : coor // ignore: cast_nullable_to_non_nullable
               as Coordinate,
     ));
-  }
-
-  @override
-  $CoordinateCopyWith<$Res> get coor {
-    return $CoordinateCopyWith<$Res>(_value.coor, (value) {
-      return _then(_value.copyWith(coor: value));
-    });
   }
 }
 

@@ -6,8 +6,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nu_share_destination_user/src/infra/dtos/location_detail_dto.dart';
 
 import '../datasource/firebase_extensions.dart';
+import '../../domain/domain.dart';
 
-part "driver_entity_dto.freezed.dart";
+part "driver_dto.freezed.dart";
+part "driver_dto.g.dart";
 
 @freezed
 abstract class DriverDto with _$DriverDto {
@@ -34,6 +36,9 @@ abstract class DriverDto with _$DriverDto {
 
   const DriverDto._();
 
+  factory DriverDto.fromDocument(DocumentSnapshot doc) =>
+      _$DriverDtoFromJson(doc.toMap()).copyWith(id: doc.id);
+
   factory DriverDto.fromDomain(Driver domain) {
     return DriverDto(
       id: domain.id,
@@ -53,9 +58,6 @@ abstract class DriverDto with _$DriverDto {
 
   factory DriverDto.fromJson(Map<String, dynamic> json) =>
       _$DriverDtoFromJson(json);
-
-  factory DriverDto.fromDocument(DocumentSnapshot doc) =>
-      _$DriverDtoFromJson(doc.toMap()).copyWith(id: doc.id);
 }
 
 extension DriverDtoX on DriverDto {

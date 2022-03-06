@@ -2,14 +2,11 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:geoflutterfire/geoflutterfire.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_point.dart';
-import 'package:nu_share_destination_user/src/infra/datasource/dto_extensions.dart';
+import 'package:nu_share_destination_user/src/infra/dtos/dto_extensions.dart';
+import '../../domain/domain.dart';
 
-part '../core/entity_dtos/location_detail_dto.freezed.dart';
-part '../core/entity_dtos/location_detail_dto.g.dart';
+part "location_detail_dto.freezed.dart";
+part "location_detail_dto.g.dart";
 
 @freezed
 class LocationDetailDto with _$LocationDetailDto {

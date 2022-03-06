@@ -3,6 +3,8 @@ import 'package:fpdart/fpdart.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart'
     as fic;
 import '../../domain/domain.dart';
+import '../dtos/dtos.dart';
+import '../datasource/firebase_extensions.dart';
 
 class TripReposImpl implements ITripRepository {
   final FirebaseFirestore _firestore;

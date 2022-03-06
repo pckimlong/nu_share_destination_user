@@ -1,9 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart' hide User;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import '../../domain/repositories/i_user_repository.dart';
-import '../../domain/failures/user_failure.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide User;
 import '../datasource/firebase_extensions.dart';
+import '../dtos/dtos.dart';
+import '../../domain/domain.dart';
 
 class UserRepoImpl implements IUserRepository {
   final FirebaseFirestore _firestore;
@@ -57,6 +57,6 @@ class UserRepoImpl implements IUserRepository {
   void _createUserFromFirebaseUser() async {
     // it won't be null, coz called from authenticated user
     final user = _auth.currentUser!;
-    await _firestore.userColRef.doc(user.uid).set(user.to());
+    await _firestore.userColRef.doc(user.uid).set(user.toEntity());
   }
 }

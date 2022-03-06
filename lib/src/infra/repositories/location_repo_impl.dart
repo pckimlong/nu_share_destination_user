@@ -9,6 +9,7 @@ import 'package:google_place/google_place.dart' as gp;
 
 import '../dtos/mappers.dart';
 import '../../domain/domain.dart';
+import '../dtos/dtos.dart';
 
 import 'package:location/location.dart' as lc;
 
