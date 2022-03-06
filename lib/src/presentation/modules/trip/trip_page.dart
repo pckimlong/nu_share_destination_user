@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../domain/driver/vehicle_types.dart';
+import '../../../domain/domain.dart';
 import 'booking/trip_booking_page.dart';
-import 'cancel/trip_cancel_page.dart';
-import 'finished/trip_finished_page.dart';
-import 'picking/trip_picking_page.dart';
-import 'progress/trip_in_progress_page.dart';
-import 'trip_provider.dart';
 
 class TripPage extends ConsumerWidget {
   const TripPage({

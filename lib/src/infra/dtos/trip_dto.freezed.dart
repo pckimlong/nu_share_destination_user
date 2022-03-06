@@ -102,6 +102,8 @@ abstract class $TripDtoCopyWith<$Res> {
           DateTime? endedTime});
 
   $TripStatusCopyWith<$Res> get status;
+  $PassengerDtoCopyWith<$Res> get passenger1;
+  $PassengerDtoCopyWith<$Res>? get passenger2;
 }
 
 /// @nodoc
@@ -160,6 +162,24 @@ class _$TripDtoCopyWithImpl<$Res> implements $TripDtoCopyWith<$Res> {
       return _then(_value.copyWith(status: value));
     });
   }
+
+  @override
+  $PassengerDtoCopyWith<$Res> get passenger1 {
+    return $PassengerDtoCopyWith<$Res>(_value.passenger1, (value) {
+      return _then(_value.copyWith(passenger1: value));
+    });
+  }
+
+  @override
+  $PassengerDtoCopyWith<$Res>? get passenger2 {
+    if (_value.passenger2 == null) {
+      return null;
+    }
+
+    return $PassengerDtoCopyWith<$Res>(_value.passenger2!, (value) {
+      return _then(_value.copyWith(passenger2: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -185,6 +205,10 @@ abstract class _$TripDtoCopyWith<$Res> implements $TripDtoCopyWith<$Res> {
 
   @override
   $TripStatusCopyWith<$Res> get status;
+  @override
+  $PassengerDtoCopyWith<$Res> get passenger1;
+  @override
+  $PassengerDtoCopyWith<$Res>? get passenger2;
 }
 
 /// @nodoc

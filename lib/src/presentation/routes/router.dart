@@ -1,7 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fpdart/fpdart.dart';
-
-import '../../domain/core/entities/location_address.dart';
+import '../../domain/domain.dart';
 import '../modules/account/account_page.dart';
 import '../modules/account/edit/edit_profile_page.dart';
 import '../modules/account/register/user_register_page.dart';

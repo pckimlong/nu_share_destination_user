@@ -3,18 +3,16 @@ import 'dart:async';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/driver/domain/domain.dart';
-import '../../domain/core/errors.dart';
-import '../../../src2/domain/repositories/i_user_repository.dart';
-import '../../domain/user/user_entity.dart';
-import '../../../src2/domain/failures/user_failure.dart';
-import '../core/service_providers.dart';
+
+import '../../../dependency_injection.dart';
+import '../../core/errors.dart';
+import '../../domain/domain.dart';
 
 part 'user_provider.freezed.dart';
 
 final authControllerProvider =
     StateNotifierProvider<AuthControllerNotifier, AuthState>((ref) {
-  final authFacade = ref.watch(authFacadeProvider);
+  final authFacade = ref.watch(authRepoProvider);
   return AuthControllerNotifier(authFacade);
 });
 
@@ -35,7 +33,7 @@ class AuthState with _$AuthState {
 @freezed
 class UserState with _$UserState {
   factory UserState({
-    required Option<UserEntity> user,
+    required Option<User> user,
     required Option<UserFailure> failureOption,
   }) = _UserState;
 
@@ -44,7 +42,7 @@ class UserState with _$UserState {
   factory UserState.initial() => UserState(user: none(), failureOption: none());
 
   /// Get the current user. if it is none() throw error
-  UserEntity get userOrCrash =>
+  User get userOrCrash =>
       user.getOrElse(() => throw EmptyRequiredFieldError(user));
   bool get isLoggedIn => user.isSome();
   bool get hasError => failureOption.isSome();
@@ -55,7 +53,7 @@ class AuthControllerNotifier extends StateNotifier<AuthState> {
     _bindStream();
   }
 
-  final IAuthFacade _authFacade;
+  final IAuthRepository _authFacade;
   StreamSubscription<Option<String>>? _streamSubscription;
 
   @override
@@ -134,7 +132,7 @@ class UserControllerNotifier extends StateNotifier<UserState> {
   }
 
   final IUserRepository _repository;
-  StreamSubscription<Either<UserFailure, UserEntity>>? _streamSubscription;
+  StreamSubscription<Either<UserFailure, User>>? _streamSubscription;
   final AuthState _authState;
 
   @override
@@ -148,9 +146,9 @@ class UserControllerNotifier extends StateNotifier<UserState> {
     required String? email,
     required String? phone,
   }) async {
-    final entity = state.user.getOrElse(() => throw Error());
+    final user = state.user.getOrElse(() => throw Error());
     final result = await _repository.update(
-      entity.copyWith(
+      user.copyWith(
         fullname: fullName,
         email: email,
         phone: phone,

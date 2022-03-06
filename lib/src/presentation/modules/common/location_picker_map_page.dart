@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../domain/core/constants.dart';
-import '../../../domain/core/entities/coordinate.dart';
-import '../../../domain/core/entities/location_address.dart';
-import '../../core/service_providers.dart';
+import '../../../../dependency_injection.dart';
+import '../../../core/constants.dart';
+import '../../../domain/domain.dart';
 import '../../widgets/circle_location_button.dart';
 import '../../widgets/location_pin_widget.dart';
 import '../../widgets/my_elevated_button.dart';

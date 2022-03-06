@@ -3,15 +3,8 @@ import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../../driver/domain/domain.dart';
-import '../../../../domain/core/entities/coordinate.dart';
-import '../../../../domain/core/entities/location_address.dart';
-import '../../../../domain/core/entities/location_detail.dart';
-import '../../../../../src2/domain/repositories/i_location_service.dart';
-import '../../../../../src2/domain/failures/location_failure.dart';
-import '../../../../../src2/domain/repositories/i_trip_repository.dart';
-import '../../../../../src2/domain/repositories/i_user_repository.dart';
-import '../../../core/service_providers.dart';
+import '../../../../../dependency_injection.dart';
+import '../../../../domain/domain.dart';
 
 part 'trip_booking_provider.freezed.dart';
 

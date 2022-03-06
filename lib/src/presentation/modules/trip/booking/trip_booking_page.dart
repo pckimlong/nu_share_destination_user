@@ -11,10 +11,8 @@ import 'package:fpdart/fpdart.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../domain/core/constants.dart';
-import '../../../../domain/core/entities/coordinate.dart';
-import '../../../../domain/core/entities/location_address.dart';
-import '../../../../domain/core/entities/location_detail.dart';
+import '../../../../core/constants.dart';
+import '../../../../domain/domain.dart';
 import '../../../core/app_styles.dart';
 import '../../../routes/router.gr.dart';
 import '../../../widgets/circle_location_button.dart';

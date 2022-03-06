@@ -8,18 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/driver/domain/domain.dart';
-import 'package:nu_share_destination_user/driver/presentation/core/core.dart';
-import 'package:nu_share_destination_user/driver/presentation/widgets/location_pin_widget.dart';
-import 'package:nu_share_destination_user/driver/presentation/widgets/my_textform_field.dart';
-import 'package:nu_share_destination_user/src/domain/core/constants.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
-import 'package:nu_share_destination_user/src/domain/core/entities/location_point.dart';
-import 'package:nu_share_destination_user/src2/domain/repositories/i_location_service.dart';
+
+import '../../../../dependency_injection.dart';
+import '../../../core/constants.dart';
+import '../../../domain/domain.dart';
+import '../../widgets/location_pin_widget.dart';
 
 final _mockDriverProvider =
-    StateNotifierProvider.autoDispose<_MockDriverNotifier, IList<DriverEntity>>(
+    StateNotifierProvider.autoDispose<_MockDriverNotifier, IList<Driver>>(
         (ref) {
   return _MockDriverNotifier(
     ref.watch(driverReposProvider),
@@ -27,9 +23,9 @@ final _mockDriverProvider =
   );
 });
 
-class _MockDriverNotifier extends StateNotifier<IList<DriverEntity>> {
+class _MockDriverNotifier extends StateNotifier<IList<Driver>> {
   _MockDriverNotifier(this._repository, this._locationService)
-      : super(<DriverEntity>[].lock) {
+      : super(<Driver>[].lock) {
     _subscription?.cancel();
     _subscription = _repository.streamAll().listen((event) {
       state = event;
@@ -38,7 +34,7 @@ class _MockDriverNotifier extends StateNotifier<IList<DriverEntity>> {
 
   final IDriverRepository _repository;
   final ILocationService _locationService;
-  StreamSubscription<IList<DriverEntity>>? _subscription;
+  StreamSubscription<IList<Driver>>? _subscription;
 
   double lat = DomainValues.initialMapPoint.latitude;
   double long = DomainValues.initialMapPoint.longitude;
@@ -48,7 +44,7 @@ class _MockDriverNotifier extends StateNotifier<IList<DriverEntity>> {
     final old = state.lastOrNull;
     final oldLoc = old?.location.match(id, () => null);
 
-    final driver = DriverEntity(
+    final driver = Driver(
       id: null,
       fullname: mockName(),
       available: true,

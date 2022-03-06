@@ -7,7 +7,8 @@ import 'package:nu_share_destination_user/driver/presentation/core/app_widget.da
 import 'package:nu_share_destination_user/firebase_options.dart';
 import 'package:nu_share_destination_user/src/presentation/core/app_widget.dart'
     as user;
-import 'package:nu_share_destination_user/src/presentation/core/common_provider.dart';
+
+import 'dependency_injection.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

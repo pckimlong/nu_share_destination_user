@@ -76,6 +76,11 @@ abstract class $PassengerDtoCopyWith<$Res> {
       LocationAddressDto originLocation,
       LocationAddressDto? destinationLocation,
       LocationAddressDto? actualDestinationLocation});
+
+  $UserDtoCopyWith<$Res> get user;
+  $LocationAddressDtoCopyWith<$Res> get originLocation;
+  $LocationAddressDtoCopyWith<$Res>? get destinationLocation;
+  $LocationAddressDtoCopyWith<$Res>? get actualDestinationLocation;
 }
 
 /// @nodoc
@@ -122,6 +127,44 @@ class _$PassengerDtoCopyWithImpl<$Res> implements $PassengerDtoCopyWith<$Res> {
               as LocationAddressDto?,
     ));
   }
+
+  @override
+  $UserDtoCopyWith<$Res> get user {
+    return $UserDtoCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+
+  @override
+  $LocationAddressDtoCopyWith<$Res> get originLocation {
+    return $LocationAddressDtoCopyWith<$Res>(_value.originLocation, (value) {
+      return _then(_value.copyWith(originLocation: value));
+    });
+  }
+
+  @override
+  $LocationAddressDtoCopyWith<$Res>? get destinationLocation {
+    if (_value.destinationLocation == null) {
+      return null;
+    }
+
+    return $LocationAddressDtoCopyWith<$Res>(_value.destinationLocation!,
+        (value) {
+      return _then(_value.copyWith(destinationLocation: value));
+    });
+  }
+
+  @override
+  $LocationAddressDtoCopyWith<$Res>? get actualDestinationLocation {
+    if (_value.actualDestinationLocation == null) {
+      return null;
+    }
+
+    return $LocationAddressDtoCopyWith<$Res>(_value.actualDestinationLocation!,
+        (value) {
+      return _then(_value.copyWith(actualDestinationLocation: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -138,6 +181,15 @@ abstract class _$PassengerCopyWith<$Res>
       LocationAddressDto originLocation,
       LocationAddressDto? destinationLocation,
       LocationAddressDto? actualDestinationLocation});
+
+  @override
+  $UserDtoCopyWith<$Res> get user;
+  @override
+  $LocationAddressDtoCopyWith<$Res> get originLocation;
+  @override
+  $LocationAddressDtoCopyWith<$Res>? get destinationLocation;
+  @override
+  $LocationAddressDtoCopyWith<$Res>? get actualDestinationLocation;
 }
 
 /// @nodoc

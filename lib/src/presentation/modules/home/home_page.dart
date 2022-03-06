@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nu_share_destination_user/src/presentation/modules/mock/create_mock_driver_page.dart';
-import '../../../domain/driver/vehicle_types.dart';
+import '../../../domain/domain.dart';
 import 'widget/vehicle_type_card.dart';
 import '../../routes/router.gr.dart';
 

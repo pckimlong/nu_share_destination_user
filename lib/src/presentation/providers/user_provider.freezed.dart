@@ -461,7 +461,7 @@ class _$UserStateTearOff {
   const _$UserStateTearOff();
 
   _UserState call(
-      {required Option<UserEntity> user,
+      {required Option<User> user,
       required Option<UserFailure> failureOption}) {
     return _UserState(
       user: user,
@@ -475,7 +475,7 @@ const $UserState = _$UserStateTearOff();
 
 /// @nodoc
 mixin _$UserState {
-  Option<UserEntity> get user => throw _privateConstructorUsedError;
+  Option<User> get user => throw _privateConstructorUsedError;
   Option<UserFailure> get failureOption => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -487,7 +487,7 @@ mixin _$UserState {
 abstract class $UserStateCopyWith<$Res> {
   factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
       _$UserStateCopyWithImpl<$Res>;
-  $Res call({Option<UserEntity> user, Option<UserFailure> failureOption});
+  $Res call({Option<User> user, Option<UserFailure> failureOption});
 }
 
 /// @nodoc
@@ -507,7 +507,7 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as Option<UserEntity>,
+              as Option<User>,
       failureOption: failureOption == freezed
           ? _value.failureOption
           : failureOption // ignore: cast_nullable_to_non_nullable
@@ -522,7 +522,7 @@ abstract class _$UserStateCopyWith<$Res> implements $UserStateCopyWith<$Res> {
           _UserState value, $Res Function(_UserState) then) =
       __$UserStateCopyWithImpl<$Res>;
   @override
-  $Res call({Option<UserEntity> user, Option<UserFailure> failureOption});
+  $Res call({Option<User> user, Option<UserFailure> failureOption});
 }
 
 /// @nodoc
@@ -543,7 +543,7 @@ class __$UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as Option<UserEntity>,
+              as Option<User>,
       failureOption: failureOption == freezed
           ? _value.failureOption
           : failureOption // ignore: cast_nullable_to_non_nullable
@@ -558,7 +558,7 @@ class _$_UserState extends _UserState {
   _$_UserState({required this.user, required this.failureOption}) : super._();
 
   @override
-  final Option<UserEntity> user;
+  final Option<User> user;
   @override
   final Option<UserFailure> failureOption;
 
@@ -591,12 +591,12 @@ class _$_UserState extends _UserState {
 
 abstract class _UserState extends UserState {
   factory _UserState(
-      {required Option<UserEntity> user,
+      {required Option<User> user,
       required Option<UserFailure> failureOption}) = _$_UserState;
   _UserState._() : super._();
 
   @override
-  Option<UserEntity> get user;
+  Option<User> get user;
   @override
   Option<UserFailure> get failureOption;
   @override

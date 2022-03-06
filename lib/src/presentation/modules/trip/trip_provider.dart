@@ -1,8 +1,3 @@
-import 'package:fpdart/fpdart.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../providers/user_provider.dart';
-
-import '../../core/service_providers.dart';
 
 /// For prepare data and collect info before save to server
 // final bookingController =

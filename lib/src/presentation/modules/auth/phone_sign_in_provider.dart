@@ -3,16 +3,15 @@ import 'dart:async';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nu_share_destination_user/src/domain/auth/auth_failure.dart';
 
-import '../../../domain/auth/i_auth_facade.dart';
-import '../../core/service_providers.dart';
+import '../../../../dependency_injection.dart';
+import '../../../domain/domain.dart';
 
 part "phone_sign_in_provider.freezed.dart";
 
 final signInWithGoogleController = StateNotifierProvider.autoDispose<
     PhoneSignInControllerNotifier, PhoneSignInState>(
-  (ref) => PhoneSignInControllerNotifier(ref.watch(authFacadeProvider)),
+  (ref) => PhoneSignInControllerNotifier(ref.watch(authRepoProvider)),
 );
 
 @freezed
@@ -58,7 +57,7 @@ class PhoneSignInControllerNotifier extends StateNotifier<PhoneSignInState> {
 
   final Duration verificationCodeTimeout = const Duration(seconds: 30);
 
-  final IAuthFacade _authFacade;
+  final IAuthRepository _authFacade;
   final int _smcCodeMaxLength = 6;
   StreamSubscription<Either<AuthFailure, String>>? _streamSubscription;
 
