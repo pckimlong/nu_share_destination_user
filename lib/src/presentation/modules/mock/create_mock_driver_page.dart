@@ -16,7 +16,7 @@ import 'package:nu_share_destination_user/src/domain/core/constants.dart';
 import 'package:nu_share_destination_user/src/domain/core/entities/coordinate.dart';
 import 'package:nu_share_destination_user/src/domain/core/entities/location_detail.dart';
 import 'package:nu_share_destination_user/src/domain/core/entities/location_point.dart';
-import 'package:nu_share_destination_user/src/domain/location/i_location_service.dart';
+import 'package:nu_share_destination_user/src2/domain/repositories/i_location_service.dart';
 
 final _mockDriverProvider =
     StateNotifierProvider.autoDispose<_MockDriverNotifier, IList<DriverEntity>>(

@@ -5,9 +5,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nu_share_destination_user/driver/domain/domain.dart';
 import '../../domain/core/errors.dart';
-import '../../domain/user/i_user_repository.dart';
+import '../../../src2/domain/repositories/i_user_repository.dart';
 import '../../domain/user/user_entity.dart';
-import '../../domain/user/user_failure.dart';
+import '../../../src2/domain/failures/user_failure.dart';
 import '../core/service_providers.dart';
 
 part 'user_provider.freezed.dart';

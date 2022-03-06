@@ -14,7 +14,6 @@ import 'package:auto_route/auto_route.dart' as _i19;
 import 'package:flutter/material.dart' as _i24;
 
 import '../../domain/core/entities/location_address.dart' as _i25;
-import '../../domain/driver/vehicle_types.dart' as _i26;
 import '../modules/account/account_page.dart' as _i23;
 import '../modules/account/edit/edit_profile_page.dart' as _i4;
 import '../modules/account/register/user_register_page.dart' as _i3;
@@ -283,7 +282,7 @@ class EditProfileRoute extends _i19.PageRouteInfo<void> {
 /// generated route for
 /// [_i5.TripPage]
 class TripRoute extends _i19.PageRouteInfo<TripRouteArgs> {
-  TripRoute({_i24.Key? key, required _i26.VehicleTypes vehicleTypes})
+  TripRoute({_i24.Key? key, required dynamic vehicleTypes})
       : super(TripRoute.name,
             path: '/trip',
             args: TripRouteArgs(key: key, vehicleTypes: vehicleTypes));
@@ -296,7 +295,7 @@ class TripRouteArgs {
 
   final _i24.Key? key;
 
-  final _i26.VehicleTypes vehicleTypes;
+  final dynamic vehicleTypes;
 
   @override
   String toString() {

@@ -7,10 +7,10 @@ import '../../../../../driver/domain/domain.dart';
 import '../../../../domain/core/entities/coordinate.dart';
 import '../../../../domain/core/entities/location_address.dart';
 import '../../../../domain/core/entities/location_detail.dart';
-import '../../../../domain/location/i_location_service.dart';
-import '../../../../domain/location/location_failure.dart';
-import '../../../../domain/trip/i_trip_repository.dart';
-import '../../../../domain/user/i_user_repository.dart';
+import '../../../../../src2/domain/repositories/i_location_service.dart';
+import '../../../../../src2/domain/failures/location_failure.dart';
+import '../../../../../src2/domain/repositories/i_trip_repository.dart';
+import '../../../../../src2/domain/repositories/i_user_repository.dart';
 import '../../../core/service_providers.dart';
 
 part 'trip_booking_provider.freezed.dart';

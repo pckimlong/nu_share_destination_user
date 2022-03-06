@@ -2,17 +2,17 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../src/domain/auth/i_auth_facade.dart';
-import '../../../src/domain/cache/i_cache_service.dart';
-import '../../../src/domain/driver/i_driver_repository.dart';
-import '../../../src/domain/location/i_location_service.dart';
-import '../../../src/domain/trip/i_trip_repository.dart';
-import '../../../src/domain/user/i_user_repository.dart';
-import '../../../src/infra/auth/auth_facade_impl.dart';
+import '../../../src2/domain/repositories/i_cache_service.dart';
+import '../../../src2/domain/repositories/i_driver_repository.dart';
+import '../../../src2/domain/repositories/i_location_service.dart';
+import '../../../src2/domain/repositories/i_trip_repository.dart';
+import '../../../src2/domain/repositories/i_user_repository.dart';
+import '../../../src2/infra/repositories/auth_facade_impl.dart';
 import '../../../src/infra/cache/cache_service.dart';
-import '../../../src/infra/driver/driver_repos_impl.dart';
-import '../../../src/infra/location/location_service_impl.dart';
-import '../../../src/infra/trip/trip_repos_impl.dart';
-import '../../../src/infra/user/user_repos_impl.dart';
+import '../../../src2/infra/repositories/driver_repos_impl.dart';
+import '../../../src2/infra/repositories/location_service_impl.dart';
+import '../../../src2/infra/repositories/trip_repos_impl.dart';
+import '../../../src2/infra/repositories/user_repos_impl.dart';
 
 import 'common_provider.dart';
 

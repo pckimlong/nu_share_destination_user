@@ -8,8 +8,8 @@ import '../../domain/domain.dart';
 import '../core/core.dart';
 import 'auth_provider.dart';
 import '../../../src/domain/core/entities/location_detail.dart';
-import '../../../src/domain/location/i_location_service.dart';
-import '../../../src/domain/location/location_failure.dart';
+import '../../../src2/domain/repositories/i_location_service.dart';
+import '../../../src2/domain/failures/location_failure.dart';
 
 part 'driver_provider.freezed.dart';
 

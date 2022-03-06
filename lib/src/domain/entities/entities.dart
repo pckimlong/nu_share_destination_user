@@ -1,0 +1,9 @@
+export 'coordinate.dart';
+export 'driver.dart';
+export 'location_address.dart';
+export 'location_detail.dart';
+export 'location_point.dart';
+export 'passenger.dart';
+export 'place.dart';
+export 'trip.dart';
+export 'user.dart';
