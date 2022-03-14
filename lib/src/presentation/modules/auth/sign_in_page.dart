@@ -80,6 +80,7 @@ class SignInPage extends ConsumerWidget {
     return GestureDetector(
       onTap: () => AppUtilzs.closeKeyBoard(context),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
           minimum: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(

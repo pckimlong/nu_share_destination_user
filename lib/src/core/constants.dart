@@ -1,4 +1,4 @@
-import '../domain/entities/entities.dart';
+import 'package:nu_share_destination_domain/nu_share_destination_domain.dart';
 
 /// Create some unchange value for domain and other layer
 abstract class DomainValues {

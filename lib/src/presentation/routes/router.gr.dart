@@ -13,6 +13,7 @@
 import 'package:auto_route/auto_route.dart' as _i19;
 import 'package:flutter/material.dart' as _i24;
 
+import '../../domain/domain.dart' as _i25;
 import '../modules/account/account_page.dart' as _i23;
 import '../modules/account/edit/edit_profile_page.dart' as _i4;
 import '../modules/account/register/user_register_page.dart' as _i3;
@@ -139,7 +140,7 @@ class AppRouter extends _i19.RootStackRouter {
     LocationPickerFromMapRoute.name: (routeData) {
       final args = routeData.argsAs<LocationPickerFromMapRouteArgs>(
           orElse: () => const LocationPickerFromMapRouteArgs());
-      return _i19.CupertinoPageX<dynamic>(
+      return _i19.CupertinoPageX<_i25.LocationAddress?>(
           routeData: routeData,
           child: _i17.LocationPickerFromMapPage(
               key: args.key, initial: args.initial));
@@ -281,7 +282,7 @@ class EditProfileRoute extends _i19.PageRouteInfo<void> {
 /// generated route for
 /// [_i5.TripPage]
 class TripRoute extends _i19.PageRouteInfo<TripRouteArgs> {
-  TripRoute({_i24.Key? key, required dynamic vehicleTypes})
+  TripRoute({_i24.Key? key, required _i25.VehicleTypes vehicleTypes})
       : super(TripRoute.name,
             path: '/trip',
             args: TripRouteArgs(key: key, vehicleTypes: vehicleTypes));
@@ -294,7 +295,7 @@ class TripRouteArgs {
 
   final _i24.Key? key;
 
-  final dynamic vehicleTypes;
+  final _i25.VehicleTypes vehicleTypes;
 
   @override
   String toString() {
@@ -479,7 +480,7 @@ class TextInputRouteArgs {
 /// [_i17.LocationPickerFromMapPage]
 class LocationPickerFromMapRoute
     extends _i19.PageRouteInfo<LocationPickerFromMapRouteArgs> {
-  LocationPickerFromMapRoute({_i24.Key? key, dynamic initial})
+  LocationPickerFromMapRoute({_i24.Key? key, _i25.LocationAddress? initial})
       : super(LocationPickerFromMapRoute.name,
             path: '/location-picker-map',
             args: LocationPickerFromMapRouteArgs(key: key, initial: initial));
@@ -492,7 +493,7 @@ class LocationPickerFromMapRouteArgs {
 
   final _i24.Key? key;
 
-  final dynamic initial;
+  final _i25.LocationAddress? initial;
 
   @override
   String toString() {

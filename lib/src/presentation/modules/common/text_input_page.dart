@@ -21,7 +21,7 @@ class TextInputPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final textController = useTextEditingController(text: initialText);
-    final showClearButton = useState<bool>(initialText != null);
+    final showClearButton = useState<bool>((initialText ?? "").isNotEmpty);
 
     useEffect(() {
       textController.addListener(() {

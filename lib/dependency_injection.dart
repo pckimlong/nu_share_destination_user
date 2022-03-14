@@ -8,6 +8,7 @@ import 'package:google_place/google_place.dart' as gp;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:location/location.dart' as lc;
+
 import 'src/domain/domain.dart';
 import 'src/infra/infra.dart';
 
@@ -40,11 +41,6 @@ final driverReposProvider = Provider<IDriverRepository>((ref) {
 final tripReposProvider = Provider<ITripRepository>((ref) {
   return TripReposImpl(ref.watch(firestoreProvider));
 });
-
-// final cachServiceProvider = Provider<ICacheService>((ref) {
-//   final getStorage = ref.watch(getStorageProvider);
-//   return CacheServiceImpl(getStorage);
-// });
 
 final locationServiceProvider = Provider<ILocationService>((ref) {
   return LocationRepoImpl(

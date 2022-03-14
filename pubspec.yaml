@@ -27,6 +27,9 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  # nu_share_destination_domain:
+  #   git:
+  #     url: https://github.com/pckimlong/nu_share_destination_domain.git
   # Create mock data like name etc..
   mock_data: ^2.0.0
   # For handle permission in app

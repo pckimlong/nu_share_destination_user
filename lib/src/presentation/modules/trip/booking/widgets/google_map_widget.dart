@@ -4,15 +4,6 @@ part of '../trip_booking_page.dart';
 const _originMarkerId = MarkerId('origin');
 const _destinationMarkerId = MarkerId('destination');
 
-/// Where the map camera should be placed when first created
-final _initialCameraPosition = CameraPosition(
-  zoom: DomainValues.initialMapZoom,
-  target: LatLng(
-    DomainValues.initialMapPoint.latitude,
-    DomainValues.initialMapPoint.longitude,
-  ),
-);
-
 Future<Uint8List> getBytesFromAsset(
     {required String path, required int width}) async {
   ByteData data = await rootBundle.load(path);
@@ -32,17 +23,21 @@ class _MapWidget extends StatefulHookConsumerWidget {
 }
 
 class __MapWidgetState extends ConsumerState<_MapWidget> {
+  BitmapDescriptor? _carMarker;
   Coordinate _currentCoordinate = DomainValues.initialMapPoint;
   GoogleMapController? _mapController;
-  BitmapDescriptor? _carMarker;
 
   @override
   void initState() {
+    final user = ref.read(userControllerProvider).initialCoordinate;
+    _currentCoordinate = user.match(id, () => DomainValues.initialMapPoint);
     super.initState();
   }
 
   void _drawDriverMarkers(
-      Map<MarkerId, Marker> markers, IList<LocationDetail> coordinates) {
+    Map<MarkerId, Marker> markers,
+    IList<LocationDetail> coordinates,
+  ) {
     useEffect(
       () {
         /// Remove all old drivers marker to fetch new one
@@ -120,6 +115,17 @@ class __MapWidgetState extends ConsumerState<_MapWidget> {
         () => null,
       ),
       [originLoc, destinationLoc],
+    );
+  }
+
+  /// Where the map camera should be placed when first created
+  CameraPosition get _initialCameraPosition {
+    return CameraPosition(
+      zoom: DomainValues.initialMapZoom,
+      target: LatLng(
+        _currentCoordinate.latitude,
+        _currentCoordinate.longitude,
+      ),
     );
   }
 

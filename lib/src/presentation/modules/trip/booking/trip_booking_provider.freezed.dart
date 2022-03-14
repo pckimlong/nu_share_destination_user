@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$TripBookingEventTearOff {
   const _$TripBookingEventTearOff();
 
-  _MoveToMyLocation moveToMyLocation() {
-    return const _MoveToMyLocation();
+  _ChangeDestinationLocation changeDestinationLocation(Coordinate coor) {
+    return _ChangeDestinationLocation(
+      coor,
+    );
   }
 
   _ChangeOriginLocation changeOriginLocation(Coordinate coor) {
@@ -28,9 +30,13 @@ class _$TripBookingEventTearOff {
     );
   }
 
-  _ChangeDestinationLocation changeDestinationLocation(Coordinate coor) {
-    return _ChangeDestinationLocation(
-      coor,
+  _MoveToMyLocation moveToMyLocation() {
+    return const _MoveToMyLocation();
+  }
+
+  _ChangeNote changeNote(String value) {
+    return _ChangeNote(
+      value,
     );
   }
 }
@@ -42,48 +48,54 @@ const $TripBookingEvent = _$TripBookingEventTearOff();
 mixin _$TripBookingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() moveToMyLocation,
-    required TResult Function(Coordinate coor) changeOriginLocation,
     required TResult Function(Coordinate coor) changeDestinationLocation,
+    required TResult Function(Coordinate coor) changeOriginLocation,
+    required TResult Function() moveToMyLocation,
+    required TResult Function(String value) changeNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? moveToMyLocation,
-    TResult Function(Coordinate coor)? changeOriginLocation,
     TResult Function(Coordinate coor)? changeDestinationLocation,
+    TResult Function(Coordinate coor)? changeOriginLocation,
+    TResult Function()? moveToMyLocation,
+    TResult Function(String value)? changeNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? moveToMyLocation,
-    TResult Function(Coordinate coor)? changeOriginLocation,
     TResult Function(Coordinate coor)? changeDestinationLocation,
+    TResult Function(Coordinate coor)? changeOriginLocation,
+    TResult Function()? moveToMyLocation,
+    TResult Function(String value)? changeNote,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_MoveToMyLocation value) moveToMyLocation,
-    required TResult Function(_ChangeOriginLocation value) changeOriginLocation,
     required TResult Function(_ChangeDestinationLocation value)
         changeDestinationLocation,
+    required TResult Function(_ChangeOriginLocation value) changeOriginLocation,
+    required TResult Function(_MoveToMyLocation value) moveToMyLocation,
+    required TResult Function(_ChangeNote value) changeNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
-    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
     TResult Function(_ChangeDestinationLocation value)?
         changeDestinationLocation,
+    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
+    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
+    TResult Function(_ChangeNote value)? changeNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
-    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
     TResult Function(_ChangeDestinationLocation value)?
         changeDestinationLocation,
+    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
+    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
+    TResult Function(_ChangeNote value)? changeNote,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -104,6 +116,328 @@ class _$TripBookingEventCopyWithImpl<$Res>
   final TripBookingEvent _value;
   // ignore: unused_field
   final $Res Function(TripBookingEvent) _then;
+}
+
+/// @nodoc
+abstract class _$ChangeDestinationLocationCopyWith<$Res> {
+  factory _$ChangeDestinationLocationCopyWith(_ChangeDestinationLocation value,
+          $Res Function(_ChangeDestinationLocation) then) =
+      __$ChangeDestinationLocationCopyWithImpl<$Res>;
+  $Res call({Coordinate coor});
+
+  $CoordinateCopyWith<$Res> get coor;
+}
+
+/// @nodoc
+class __$ChangeDestinationLocationCopyWithImpl<$Res>
+    extends _$TripBookingEventCopyWithImpl<$Res>
+    implements _$ChangeDestinationLocationCopyWith<$Res> {
+  __$ChangeDestinationLocationCopyWithImpl(_ChangeDestinationLocation _value,
+      $Res Function(_ChangeDestinationLocation) _then)
+      : super(_value, (v) => _then(v as _ChangeDestinationLocation));
+
+  @override
+  _ChangeDestinationLocation get _value =>
+      super._value as _ChangeDestinationLocation;
+
+  @override
+  $Res call({
+    Object? coor = freezed,
+  }) {
+    return _then(_ChangeDestinationLocation(
+      coor == freezed
+          ? _value.coor
+          : coor // ignore: cast_nullable_to_non_nullable
+              as Coordinate,
+    ));
+  }
+
+  @override
+  $CoordinateCopyWith<$Res> get coor {
+    return $CoordinateCopyWith<$Res>(_value.coor, (value) {
+      return _then(_value.copyWith(coor: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_ChangeDestinationLocation implements _ChangeDestinationLocation {
+  const _$_ChangeDestinationLocation(this.coor);
+
+  @override
+  final Coordinate coor;
+
+  @override
+  String toString() {
+    return 'TripBookingEvent.changeDestinationLocation(coor: $coor)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ChangeDestinationLocation &&
+            const DeepCollectionEquality().equals(other.coor, coor));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(coor));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ChangeDestinationLocationCopyWith<_ChangeDestinationLocation>
+      get copyWith =>
+          __$ChangeDestinationLocationCopyWithImpl<_ChangeDestinationLocation>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Coordinate coor) changeDestinationLocation,
+    required TResult Function(Coordinate coor) changeOriginLocation,
+    required TResult Function() moveToMyLocation,
+    required TResult Function(String value) changeNote,
+  }) {
+    return changeDestinationLocation(coor);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Coordinate coor)? changeDestinationLocation,
+    TResult Function(Coordinate coor)? changeOriginLocation,
+    TResult Function()? moveToMyLocation,
+    TResult Function(String value)? changeNote,
+  }) {
+    return changeDestinationLocation?.call(coor);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Coordinate coor)? changeDestinationLocation,
+    TResult Function(Coordinate coor)? changeOriginLocation,
+    TResult Function()? moveToMyLocation,
+    TResult Function(String value)? changeNote,
+    required TResult orElse(),
+  }) {
+    if (changeDestinationLocation != null) {
+      return changeDestinationLocation(coor);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeDestinationLocation value)
+        changeDestinationLocation,
+    required TResult Function(_ChangeOriginLocation value) changeOriginLocation,
+    required TResult Function(_MoveToMyLocation value) moveToMyLocation,
+    required TResult Function(_ChangeNote value) changeNote,
+  }) {
+    return changeDestinationLocation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ChangeDestinationLocation value)?
+        changeDestinationLocation,
+    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
+    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
+    TResult Function(_ChangeNote value)? changeNote,
+  }) {
+    return changeDestinationLocation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeDestinationLocation value)?
+        changeDestinationLocation,
+    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
+    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
+    TResult Function(_ChangeNote value)? changeNote,
+    required TResult orElse(),
+  }) {
+    if (changeDestinationLocation != null) {
+      return changeDestinationLocation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeDestinationLocation implements TripBookingEvent {
+  const factory _ChangeDestinationLocation(Coordinate coor) =
+      _$_ChangeDestinationLocation;
+
+  Coordinate get coor;
+  @JsonKey(ignore: true)
+  _$ChangeDestinationLocationCopyWith<_ChangeDestinationLocation>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ChangeOriginLocationCopyWith<$Res> {
+  factory _$ChangeOriginLocationCopyWith(_ChangeOriginLocation value,
+          $Res Function(_ChangeOriginLocation) then) =
+      __$ChangeOriginLocationCopyWithImpl<$Res>;
+  $Res call({Coordinate coor});
+
+  $CoordinateCopyWith<$Res> get coor;
+}
+
+/// @nodoc
+class __$ChangeOriginLocationCopyWithImpl<$Res>
+    extends _$TripBookingEventCopyWithImpl<$Res>
+    implements _$ChangeOriginLocationCopyWith<$Res> {
+  __$ChangeOriginLocationCopyWithImpl(
+      _ChangeOriginLocation _value, $Res Function(_ChangeOriginLocation) _then)
+      : super(_value, (v) => _then(v as _ChangeOriginLocation));
+
+  @override
+  _ChangeOriginLocation get _value => super._value as _ChangeOriginLocation;
+
+  @override
+  $Res call({
+    Object? coor = freezed,
+  }) {
+    return _then(_ChangeOriginLocation(
+      coor == freezed
+          ? _value.coor
+          : coor // ignore: cast_nullable_to_non_nullable
+              as Coordinate,
+    ));
+  }
+
+  @override
+  $CoordinateCopyWith<$Res> get coor {
+    return $CoordinateCopyWith<$Res>(_value.coor, (value) {
+      return _then(_value.copyWith(coor: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_ChangeOriginLocation implements _ChangeOriginLocation {
+  const _$_ChangeOriginLocation(this.coor);
+
+  @override
+  final Coordinate coor;
+
+  @override
+  String toString() {
+    return 'TripBookingEvent.changeOriginLocation(coor: $coor)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ChangeOriginLocation &&
+            const DeepCollectionEquality().equals(other.coor, coor));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(coor));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ChangeOriginLocationCopyWith<_ChangeOriginLocation> get copyWith =>
+      __$ChangeOriginLocationCopyWithImpl<_ChangeOriginLocation>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Coordinate coor) changeDestinationLocation,
+    required TResult Function(Coordinate coor) changeOriginLocation,
+    required TResult Function() moveToMyLocation,
+    required TResult Function(String value) changeNote,
+  }) {
+    return changeOriginLocation(coor);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Coordinate coor)? changeDestinationLocation,
+    TResult Function(Coordinate coor)? changeOriginLocation,
+    TResult Function()? moveToMyLocation,
+    TResult Function(String value)? changeNote,
+  }) {
+    return changeOriginLocation?.call(coor);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Coordinate coor)? changeDestinationLocation,
+    TResult Function(Coordinate coor)? changeOriginLocation,
+    TResult Function()? moveToMyLocation,
+    TResult Function(String value)? changeNote,
+    required TResult orElse(),
+  }) {
+    if (changeOriginLocation != null) {
+      return changeOriginLocation(coor);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeDestinationLocation value)
+        changeDestinationLocation,
+    required TResult Function(_ChangeOriginLocation value) changeOriginLocation,
+    required TResult Function(_MoveToMyLocation value) moveToMyLocation,
+    required TResult Function(_ChangeNote value) changeNote,
+  }) {
+    return changeOriginLocation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ChangeDestinationLocation value)?
+        changeDestinationLocation,
+    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
+    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
+    TResult Function(_ChangeNote value)? changeNote,
+  }) {
+    return changeOriginLocation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeDestinationLocation value)?
+        changeDestinationLocation,
+    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
+    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
+    TResult Function(_ChangeNote value)? changeNote,
+    required TResult orElse(),
+  }) {
+    if (changeOriginLocation != null) {
+      return changeOriginLocation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeOriginLocation implements TripBookingEvent {
+  const factory _ChangeOriginLocation(Coordinate coor) =
+      _$_ChangeOriginLocation;
+
+  Coordinate get coor;
+  @JsonKey(ignore: true)
+  _$ChangeOriginLocationCopyWith<_ChangeOriginLocation> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -147,9 +481,10 @@ class _$_MoveToMyLocation implements _MoveToMyLocation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() moveToMyLocation,
-    required TResult Function(Coordinate coor) changeOriginLocation,
     required TResult Function(Coordinate coor) changeDestinationLocation,
+    required TResult Function(Coordinate coor) changeOriginLocation,
+    required TResult Function() moveToMyLocation,
+    required TResult Function(String value) changeNote,
   }) {
     return moveToMyLocation();
   }
@@ -157,9 +492,10 @@ class _$_MoveToMyLocation implements _MoveToMyLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? moveToMyLocation,
-    TResult Function(Coordinate coor)? changeOriginLocation,
     TResult Function(Coordinate coor)? changeDestinationLocation,
+    TResult Function(Coordinate coor)? changeOriginLocation,
+    TResult Function()? moveToMyLocation,
+    TResult Function(String value)? changeNote,
   }) {
     return moveToMyLocation?.call();
   }
@@ -167,9 +503,10 @@ class _$_MoveToMyLocation implements _MoveToMyLocation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? moveToMyLocation,
-    TResult Function(Coordinate coor)? changeOriginLocation,
     TResult Function(Coordinate coor)? changeDestinationLocation,
+    TResult Function(Coordinate coor)? changeOriginLocation,
+    TResult Function()? moveToMyLocation,
+    TResult Function(String value)? changeNote,
     required TResult orElse(),
   }) {
     if (moveToMyLocation != null) {
@@ -181,10 +518,11 @@ class _$_MoveToMyLocation implements _MoveToMyLocation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_MoveToMyLocation value) moveToMyLocation,
-    required TResult Function(_ChangeOriginLocation value) changeOriginLocation,
     required TResult Function(_ChangeDestinationLocation value)
         changeDestinationLocation,
+    required TResult Function(_ChangeOriginLocation value) changeOriginLocation,
+    required TResult Function(_MoveToMyLocation value) moveToMyLocation,
+    required TResult Function(_ChangeNote value) changeNote,
   }) {
     return moveToMyLocation(this);
   }
@@ -192,10 +530,11 @@ class _$_MoveToMyLocation implements _MoveToMyLocation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
-    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
     TResult Function(_ChangeDestinationLocation value)?
         changeDestinationLocation,
+    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
+    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
+    TResult Function(_ChangeNote value)? changeNote,
   }) {
     return moveToMyLocation?.call(this);
   }
@@ -203,10 +542,11 @@ class _$_MoveToMyLocation implements _MoveToMyLocation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
-    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
     TResult Function(_ChangeDestinationLocation value)?
         changeDestinationLocation,
+    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
+    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
+    TResult Function(_ChangeNote value)? changeNote,
     required TResult orElse(),
   }) {
     if (moveToMyLocation != null) {
@@ -221,98 +561,100 @@ abstract class _MoveToMyLocation implements TripBookingEvent {
 }
 
 /// @nodoc
-abstract class _$ChangeOriginLocationCopyWith<$Res> {
-  factory _$ChangeOriginLocationCopyWith(_ChangeOriginLocation value,
-          $Res Function(_ChangeOriginLocation) then) =
-      __$ChangeOriginLocationCopyWithImpl<$Res>;
-  $Res call({Coordinate coor});
+abstract class _$ChangeNoteCopyWith<$Res> {
+  factory _$ChangeNoteCopyWith(
+          _ChangeNote value, $Res Function(_ChangeNote) then) =
+      __$ChangeNoteCopyWithImpl<$Res>;
+  $Res call({String value});
 }
 
 /// @nodoc
-class __$ChangeOriginLocationCopyWithImpl<$Res>
+class __$ChangeNoteCopyWithImpl<$Res>
     extends _$TripBookingEventCopyWithImpl<$Res>
-    implements _$ChangeOriginLocationCopyWith<$Res> {
-  __$ChangeOriginLocationCopyWithImpl(
-      _ChangeOriginLocation _value, $Res Function(_ChangeOriginLocation) _then)
-      : super(_value, (v) => _then(v as _ChangeOriginLocation));
+    implements _$ChangeNoteCopyWith<$Res> {
+  __$ChangeNoteCopyWithImpl(
+      _ChangeNote _value, $Res Function(_ChangeNote) _then)
+      : super(_value, (v) => _then(v as _ChangeNote));
 
   @override
-  _ChangeOriginLocation get _value => super._value as _ChangeOriginLocation;
+  _ChangeNote get _value => super._value as _ChangeNote;
 
   @override
   $Res call({
-    Object? coor = freezed,
+    Object? value = freezed,
   }) {
-    return _then(_ChangeOriginLocation(
-      coor == freezed
-          ? _value.coor
-          : coor // ignore: cast_nullable_to_non_nullable
-              as Coordinate,
+    return _then(_ChangeNote(
+      value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_ChangeOriginLocation implements _ChangeOriginLocation {
-  const _$_ChangeOriginLocation(this.coor);
+class _$_ChangeNote implements _ChangeNote {
+  const _$_ChangeNote(this.value);
 
   @override
-  final Coordinate coor;
+  final String value;
 
   @override
   String toString() {
-    return 'TripBookingEvent.changeOriginLocation(coor: $coor)';
+    return 'TripBookingEvent.changeNote(value: $value)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ChangeOriginLocation &&
-            const DeepCollectionEquality().equals(other.coor, coor));
+            other is _ChangeNote &&
+            const DeepCollectionEquality().equals(other.value, value));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(coor));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
 
   @JsonKey(ignore: true)
   @override
-  _$ChangeOriginLocationCopyWith<_ChangeOriginLocation> get copyWith =>
-      __$ChangeOriginLocationCopyWithImpl<_ChangeOriginLocation>(
-          this, _$identity);
+  _$ChangeNoteCopyWith<_ChangeNote> get copyWith =>
+      __$ChangeNoteCopyWithImpl<_ChangeNote>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() moveToMyLocation,
-    required TResult Function(Coordinate coor) changeOriginLocation,
     required TResult Function(Coordinate coor) changeDestinationLocation,
+    required TResult Function(Coordinate coor) changeOriginLocation,
+    required TResult Function() moveToMyLocation,
+    required TResult Function(String value) changeNote,
   }) {
-    return changeOriginLocation(coor);
+    return changeNote(value);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? moveToMyLocation,
-    TResult Function(Coordinate coor)? changeOriginLocation,
     TResult Function(Coordinate coor)? changeDestinationLocation,
+    TResult Function(Coordinate coor)? changeOriginLocation,
+    TResult Function()? moveToMyLocation,
+    TResult Function(String value)? changeNote,
   }) {
-    return changeOriginLocation?.call(coor);
+    return changeNote?.call(value);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? moveToMyLocation,
-    TResult Function(Coordinate coor)? changeOriginLocation,
     TResult Function(Coordinate coor)? changeDestinationLocation,
+    TResult Function(Coordinate coor)? changeOriginLocation,
+    TResult Function()? moveToMyLocation,
+    TResult Function(String value)? changeNote,
     required TResult orElse(),
   }) {
-    if (changeOriginLocation != null) {
-      return changeOriginLocation(coor);
+    if (changeNote != null) {
+      return changeNote(value);
     }
     return orElse();
   }
@@ -320,196 +662,51 @@ class _$_ChangeOriginLocation implements _ChangeOriginLocation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_MoveToMyLocation value) moveToMyLocation,
-    required TResult Function(_ChangeOriginLocation value) changeOriginLocation,
     required TResult Function(_ChangeDestinationLocation value)
         changeDestinationLocation,
+    required TResult Function(_ChangeOriginLocation value) changeOriginLocation,
+    required TResult Function(_MoveToMyLocation value) moveToMyLocation,
+    required TResult Function(_ChangeNote value) changeNote,
   }) {
-    return changeOriginLocation(this);
+    return changeNote(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
-    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
     TResult Function(_ChangeDestinationLocation value)?
         changeDestinationLocation,
+    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
+    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
+    TResult Function(_ChangeNote value)? changeNote,
   }) {
-    return changeOriginLocation?.call(this);
+    return changeNote?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
-    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
     TResult Function(_ChangeDestinationLocation value)?
         changeDestinationLocation,
+    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
+    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
+    TResult Function(_ChangeNote value)? changeNote,
     required TResult orElse(),
   }) {
-    if (changeOriginLocation != null) {
-      return changeOriginLocation(this);
+    if (changeNote != null) {
+      return changeNote(this);
     }
     return orElse();
   }
 }
 
-abstract class _ChangeOriginLocation implements TripBookingEvent {
-  const factory _ChangeOriginLocation(Coordinate coor) =
-      _$_ChangeOriginLocation;
+abstract class _ChangeNote implements TripBookingEvent {
+  const factory _ChangeNote(String value) = _$_ChangeNote;
 
-  Coordinate get coor;
+  String get value;
   @JsonKey(ignore: true)
-  _$ChangeOriginLocationCopyWith<_ChangeOriginLocation> get copyWith =>
+  _$ChangeNoteCopyWith<_ChangeNote> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$ChangeDestinationLocationCopyWith<$Res> {
-  factory _$ChangeDestinationLocationCopyWith(_ChangeDestinationLocation value,
-          $Res Function(_ChangeDestinationLocation) then) =
-      __$ChangeDestinationLocationCopyWithImpl<$Res>;
-  $Res call({Coordinate coor});
-}
-
-/// @nodoc
-class __$ChangeDestinationLocationCopyWithImpl<$Res>
-    extends _$TripBookingEventCopyWithImpl<$Res>
-    implements _$ChangeDestinationLocationCopyWith<$Res> {
-  __$ChangeDestinationLocationCopyWithImpl(_ChangeDestinationLocation _value,
-      $Res Function(_ChangeDestinationLocation) _then)
-      : super(_value, (v) => _then(v as _ChangeDestinationLocation));
-
-  @override
-  _ChangeDestinationLocation get _value =>
-      super._value as _ChangeDestinationLocation;
-
-  @override
-  $Res call({
-    Object? coor = freezed,
-  }) {
-    return _then(_ChangeDestinationLocation(
-      coor == freezed
-          ? _value.coor
-          : coor // ignore: cast_nullable_to_non_nullable
-              as Coordinate,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_ChangeDestinationLocation implements _ChangeDestinationLocation {
-  const _$_ChangeDestinationLocation(this.coor);
-
-  @override
-  final Coordinate coor;
-
-  @override
-  String toString() {
-    return 'TripBookingEvent.changeDestinationLocation(coor: $coor)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _ChangeDestinationLocation &&
-            const DeepCollectionEquality().equals(other.coor, coor));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(coor));
-
-  @JsonKey(ignore: true)
-  @override
-  _$ChangeDestinationLocationCopyWith<_ChangeDestinationLocation>
-      get copyWith =>
-          __$ChangeDestinationLocationCopyWithImpl<_ChangeDestinationLocation>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() moveToMyLocation,
-    required TResult Function(Coordinate coor) changeOriginLocation,
-    required TResult Function(Coordinate coor) changeDestinationLocation,
-  }) {
-    return changeDestinationLocation(coor);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? moveToMyLocation,
-    TResult Function(Coordinate coor)? changeOriginLocation,
-    TResult Function(Coordinate coor)? changeDestinationLocation,
-  }) {
-    return changeDestinationLocation?.call(coor);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? moveToMyLocation,
-    TResult Function(Coordinate coor)? changeOriginLocation,
-    TResult Function(Coordinate coor)? changeDestinationLocation,
-    required TResult orElse(),
-  }) {
-    if (changeDestinationLocation != null) {
-      return changeDestinationLocation(coor);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_MoveToMyLocation value) moveToMyLocation,
-    required TResult Function(_ChangeOriginLocation value) changeOriginLocation,
-    required TResult Function(_ChangeDestinationLocation value)
-        changeDestinationLocation,
-  }) {
-    return changeDestinationLocation(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
-    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
-    TResult Function(_ChangeDestinationLocation value)?
-        changeDestinationLocation,
-  }) {
-    return changeDestinationLocation?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_MoveToMyLocation value)? moveToMyLocation,
-    TResult Function(_ChangeOriginLocation value)? changeOriginLocation,
-    TResult Function(_ChangeDestinationLocation value)?
-        changeDestinationLocation,
-    required TResult orElse(),
-  }) {
-    if (changeDestinationLocation != null) {
-      return changeDestinationLocation(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ChangeDestinationLocation implements TripBookingEvent {
-  const factory _ChangeDestinationLocation(Coordinate coor) =
-      _$_ChangeDestinationLocation;
-
-  Coordinate get coor;
-  @JsonKey(ignore: true)
-  _$ChangeDestinationLocationCopyWith<_ChangeDestinationLocation>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -521,7 +718,7 @@ class _$TripBookingStateTearOff {
       required Option<LocationAddress> originLocation,
       required Option<LocationAddress> definationLocation,
       required bool isLoading,
-      required String? note,
+      required String note,
       required Option<LocationFailure> failure,
       required Option<DriverFailure> driverFailure,
       required Option<Coordinate> myLocation}) {
@@ -549,7 +746,7 @@ mixin _$TripBookingState {
   Option<LocationAddress> get definationLocation =>
       throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
-  String? get note => throw _privateConstructorUsedError;
+  String get note => throw _privateConstructorUsedError;
   Option<LocationFailure> get failure => throw _privateConstructorUsedError;
   Option<DriverFailure> get driverFailure => throw _privateConstructorUsedError;
 
@@ -574,7 +771,7 @@ abstract class $TripBookingStateCopyWith<$Res> {
       Option<LocationAddress> originLocation,
       Option<LocationAddress> definationLocation,
       bool isLoading,
-      String? note,
+      String note,
       Option<LocationFailure> failure,
       Option<DriverFailure> driverFailure,
       Option<Coordinate> myLocation});
@@ -620,7 +817,7 @@ class _$TripBookingStateCopyWithImpl<$Res>
       note: note == freezed
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       failure: failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -649,7 +846,7 @@ abstract class _$TripBookingStateCopyWith<$Res>
       Option<LocationAddress> originLocation,
       Option<LocationAddress> definationLocation,
       bool isLoading,
-      String? note,
+      String note,
       Option<LocationFailure> failure,
       Option<DriverFailure> driverFailure,
       Option<Coordinate> myLocation});
@@ -697,7 +894,7 @@ class __$TripBookingStateCopyWithImpl<$Res>
       note: note == freezed
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       failure: failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -736,7 +933,7 @@ class _$_TripBookingState implements _TripBookingState {
   @override
   final bool isLoading;
   @override
-  final String? note;
+  final String note;
   @override
   final Option<LocationFailure> failure;
   @override
@@ -798,7 +995,7 @@ abstract class _TripBookingState implements TripBookingState {
       required Option<LocationAddress> originLocation,
       required Option<LocationAddress> definationLocation,
       required bool isLoading,
-      required String? note,
+      required String note,
       required Option<LocationFailure> failure,
       required Option<DriverFailure> driverFailure,
       required Option<Coordinate> myLocation}) = _$_TripBookingState;
@@ -812,7 +1009,7 @@ abstract class _TripBookingState implements TripBookingState {
   @override
   bool get isLoading;
   @override
-  String? get note;
+  String get note;
   @override
   Option<LocationFailure> get failure;
   @override

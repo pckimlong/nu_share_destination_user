@@ -20,11 +20,14 @@ final tripBookingController =
 
 @freezed
 class TripBookingEvent with _$TripBookingEvent {
-  const factory TripBookingEvent.moveToMyLocation() = _MoveToMyLocation;
-  const factory TripBookingEvent.changeOriginLocation(Coordinate coor) =
-      _ChangeOriginLocation;
   const factory TripBookingEvent.changeDestinationLocation(Coordinate coor) =
       _ChangeDestinationLocation;
+
+  const factory TripBookingEvent.changeOriginLocation(Coordinate coor) =
+      _ChangeOriginLocation;
+
+  const factory TripBookingEvent.moveToMyLocation() = _MoveToMyLocation;
+  const factory TripBookingEvent.changeNote(String value) = _ChangeNote;
 }
 
 @freezed
@@ -34,7 +37,7 @@ class TripBookingState with _$TripBookingState {
     required Option<LocationAddress> originLocation,
     required Option<LocationAddress> definationLocation,
     required bool isLoading,
-    required String? note,
+    required String note,
     required Option<LocationFailure> failure,
     required Option<DriverFailure> driverFailure,
 
@@ -67,16 +70,17 @@ class TripBookingNotifier extends StateNotifier<TripBookingState> {
     _moveToMyLocation();
   }
 
-  final ILocationService _locationService;
   final IDriverRepository _driverRepository;
-  final IUserRepository _userRepository;
+  final ILocationService _locationService;
   final ITripRepository _tripRepository;
+  final IUserRepository _userRepository;
 
   Future mapEventToState(TripBookingEvent event) async {
     event.when(
       moveToMyLocation: _moveToMyLocation,
       changeOriginLocation: _updateOriginAddress,
       changeDestinationLocation: _changeDestination,
+      changeNote: (v) => state = state.copyWith(note: v),
     );
   }
 

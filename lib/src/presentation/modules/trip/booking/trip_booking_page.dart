@@ -14,6 +14,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../core/constants.dart';
 import '../../../../domain/domain.dart';
 import '../../../core/app_styles.dart';
+import '../../../providers/user_provider.dart';
 import '../../../routes/router.gr.dart';
 import '../../../widgets/circle_location_button.dart';
 import '../../../widgets/location_pin_widget.dart';
@@ -25,9 +26,9 @@ part 'widgets/book_now_button.dart';
 part 'widgets/google_map_widget.dart';
 part 'widgets/location_pin_widget.dart';
 part 'widgets/note_to_driver_button.dart';
-// part 'widgets/where_to_tile_widget.dart';
 part 'widgets/origin_address_name_widget.dart';
 part 'widgets/vehicle_tile_widget.dart';
+part 'widgets/where_to_tile_widget.dart';
 
 class TripBookingPage extends ConsumerWidget {
   const TripBookingPage({Key? key}) : super(key: key);
@@ -42,9 +43,7 @@ class TripBookingPage extends ConsumerWidget {
         backgroundColor: Colors.transparent,
         title: const Text(
           'Pickup Location',
-          style: TextStyle(
-            fontWeight: FontWeight.w300,
-          ),
+          style: TextStyle(fontWeight: FontWeight.w300),
         ),
       ),
       body: Column(
@@ -115,7 +114,7 @@ class _ActionCard extends StatelessWidget {
       ),
       child: Column(
         children: const [
-          // _WhereToTileWidget(),
+          _WhereToTileWidget(),
           Divider(height: 0),
           _VehicleTileWidget(),
           Divider(height: 0),
@@ -127,49 +126,3 @@ class _ActionCard extends StatelessWidget {
     );
   }
 }
-
-// class _GoogleMap extends ConsumerWidget {
-//   const _GoogleMap({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final initialCamera = LatLng(
-//       DomainValues.initialMapPoint.latitude,
-//       DomainValues.initialMapPoint.longitude,
-//     );
-
-//     final stateController = ref.watch(tripBookingController.notifier);
-
-//     return GoogleMap(
-//       initialCameraPosition: CameraPosition(
-//         zoom: DomainValues.initialMapZoom,
-//         target: initialCamera,
-//       ),
-//       onMapCreated: (controller) async {
-//         stateController.mapEventToState(
-//           BookingEvent.initializeMapController(controller),
-//         );
-//       },
-//       onCameraMove: (pos) {
-//         final coor = pos.target;
-//         stateController.mapEventToState(
-//           BookingEvent.onMapMoved(
-//             Coordinate(
-//               coor.latitude,
-//               coor.longitude,
-//             ),
-//           ),
-//         );
-//       },
-//       onCameraIdle: () async {
-//         await stateController.mapEventToState(
-//           const BookingEvent.updateOriginPosition(),
-//         );
-//       },
-//       mapToolbarEnabled: true,
-//       myLocationEnabled: true,
-//       zoomControlsEnabled: false,
-//       myLocationButtonEnabled: false,
-//     );
-//   }
-// }

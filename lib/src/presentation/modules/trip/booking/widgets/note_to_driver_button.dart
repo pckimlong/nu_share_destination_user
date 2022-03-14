@@ -13,7 +13,7 @@ class _NoteToDriverButton extends ConsumerWidget {
         size: 36,
         color: AppColors.primaryColor,
       ),
-      label: note ?? 'Note to Driver',
+      label: note.trim().isEmpty ? 'Note to Driver' : note,
       onTap: () async {
         final result = await AutoRouter.of(context).push<String?>(
           TextInputRoute(
@@ -24,9 +24,9 @@ class _NoteToDriverButton extends ConsumerWidget {
         );
 
         if (result != null) {
-          // ref.read(tripBookingController.notifier).mapEventToState(
-          //       BookingEvent.changedNoteToDriver(result),
-          //     );
+          ref.read(tripBookingController.notifier).mapEventToState(
+                TripBookingEvent.changeNote(result),
+              );
         }
       },
     );

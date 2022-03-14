@@ -20,14 +20,17 @@ final userControllerProvider =
     StateNotifierProvider<UserControllerNotifier, UserState>((ref) {
   final userRepos = ref.watch(userReposProvider);
   final authState = ref.watch(authControllerProvider);
-  return UserControllerNotifier(authState, userRepos);
+  final locationService = ref.watch(locationServiceProvider);
+  return UserControllerNotifier(authState, userRepos, locationService);
 });
 
 @freezed
 class AuthState with _$AuthState {
   const factory AuthState.authenticated(String uid) = Authenticated;
-  const factory AuthState.unauthenticated() = Unauthenticated;
+
   const factory AuthState.initial() = Initial;
+
+  const factory AuthState.unauthenticated() = Unauthenticated;
 }
 
 @freezed
@@ -35,17 +38,24 @@ class UserState with _$UserState {
   factory UserState({
     required Option<User> user,
     required Option<UserFailure> failureOption,
+    required Option<Coordinate> initialCoordinate,
   }) = _UserState;
 
   const UserState._();
 
-  factory UserState.initial() => UserState(user: none(), failureOption: none());
+  factory UserState.initial() => UserState(
+        user: none(),
+        failureOption: none(),
+        initialCoordinate: none(),
+      );
+
+  bool get hasError => failureOption.isSome();
+
+  bool get isLoggedIn => user.isSome();
 
   /// Get the current user. if it is none() throw error
   User get userOrCrash =>
       user.getOrElse(() => throw EmptyRequiredFieldError(user));
-  bool get isLoggedIn => user.isSome();
-  bool get hasError => failureOption.isSome();
 }
 
 class AuthControllerNotifier extends StateNotifier<AuthState> {
@@ -62,6 +72,19 @@ class AuthControllerNotifier extends StateNotifier<AuthState> {
     super.dispose();
   }
 
+  Future<void> signInWithFacebook() async {
+    await _authFacade.signInWithFacebook();
+  }
+
+  Future<void> signInWithGoogle() async {
+    await _authFacade.signInWithGoogle();
+  }
+
+  Future<void> signOut() async {
+    await _authFacade.signOut();
+    state = const AuthState.initial();
+  }
+
   void _bindStream() {
     _streamSubscription?.cancel();
     _streamSubscription = _authFacade.watchAuthStateChanges().listen(
@@ -73,24 +96,14 @@ class AuthControllerNotifier extends StateNotifier<AuthState> {
       },
     );
   }
-
-  Future<void> signInWithGoogle() async {
-    await _authFacade.signInWithGoogle();
-  }
-
-  Future<void> signInWithFacebook() async {
-    await _authFacade.signInWithFacebook();
-  }
-
-  Future<void> signOut() async {
-    await _authFacade.signOut();
-    state = const AuthState.initial();
-  }
 }
 
 class UserControllerNotifier extends StateNotifier<UserState> {
-  UserControllerNotifier(this._authState, this._repository)
-      : super(UserState.initial()) {
+  UserControllerNotifier(
+    this._authState,
+    this._repository,
+    this._locationService,
+  ) : super(UserState.initial()) {
     _streamSubscription?.cancel();
     _authState.map(
       authenticated: (value) {
@@ -129,16 +142,25 @@ class UserControllerNotifier extends StateNotifier<UserState> {
       },
       initial: (Initial value) {},
     );
+    _getInitialUserCoordinate();
   }
 
-  final IUserRepository _repository;
-  StreamSubscription<Either<UserFailure, User>>? _streamSubscription;
   final AuthState _authState;
+  final IUserRepository _repository;
+  final ILocationService _locationService;
+  StreamSubscription<Either<UserFailure, User>>? _streamSubscription;
 
   @override
   void dispose() {
     _streamSubscription?.cancel();
     super.dispose();
+  }
+
+  void _getInitialUserCoordinate() async {
+    final coor = await _locationService.getMyCoordinate();
+    coor.fold((l) => null, (coor) {
+      state = state.copyWith(initialCoordinate: some(coor));
+    });
   }
 
   Future<void> update({

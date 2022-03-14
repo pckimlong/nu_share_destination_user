@@ -13,8 +13,8 @@ class SplashPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<AuthState>(
       authControllerProvider,
-      (_, next) {
-        next.maybeWhen(
+      (_, next) async {
+        await next.whenOrNull(
           authenticated: (_) async {
             await Future.delayed(const Duration(seconds: 1));
             context.router.replace(const RootRoute());
@@ -23,7 +23,6 @@ class SplashPage extends HookConsumerWidget {
             await Future.delayed(const Duration(seconds: 1));
             context.router.replace(const SignInRoute());
           },
-          orElse: () {},
         );
       },
     );
